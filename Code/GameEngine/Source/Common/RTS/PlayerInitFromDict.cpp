@@ -232,7 +232,8 @@ bool Rva002ACFC1Equal(int,int);
 struct DifficultyView{char pad[0x1a4c4];int value;};class ScriptEngine;extern ScriptEngine*TheScriptEngine;
 struct Rva004DFC20{void clear();};
 struct RegionManagerView{void*getCurrent();};
-class Rva0020E6B7RegionManager{public:class LivingWorldBattle*rva0020E6B7();};
+class Rva003F468D;
+class Rva0020E6B7RegionManager{public:Rva003F468D*rva0020E6B7();};
 class LivingWorldBattle{public:char pad[0x24];class LivingWorldRegion*region;void*rva003F4DA9();};
 class RegionOwner{public:char pad[0x14];int index;};class CreateAHeroData;
 class LivingWorldRegion{public:char pad[0x11c];bool flag;int rva003F0614(CreateAHeroData*)const;};
@@ -307,7 +308,7 @@ void Player::initFromDict(const Dict*dict){
  if(selection){::delete selection;selection=0;}selection=new Squad;
  text74C=dict->getAsciiString(const_cast<StaticNameKey&>(TheKey_playerFactionIcon).get(),&exists);int ri=dict->getInt(const_cast<StaticNameKey&>(TheKey_livingWorldPlayerID).get(),&exists);if(exists)unknown3AC=ri;
  if(((LogicModeView*)TheGameLogic)->mode!=3 && ((CampaignView*)TheLivingWorldLogic)->active){
-  LivingWorldBattle*cur=((CampaignView*)TheLivingWorldLogic)->regions->rva0020E6B7();
+  LivingWorldBattle*cur=(LivingWorldBattle*)((CampaignView*)TheLivingWorldLogic)->regions->rva0020E6B7();
   if(cur){RegionOwner*owner=(RegionOwner*)cur->rva003F4DA9();LivingWorldRegion*livingWorldRegion;if(owner && unknown3AC==*(volatile int*)&owner->index && ((livingWorldRegion=cur->region)->rva003F0614((CreateAHeroData*)1)>=1 || livingWorldRegion->flag))money.rva003B0D7C(TheLivingWorldLogic->getStartingMoney(),(Rva0039B7AD*)&score,false);else money.rva003B0D7C(TheLivingWorldLogic->rva002B479F(),(Rva0039B7AD*)&score,false);}
  }
 }

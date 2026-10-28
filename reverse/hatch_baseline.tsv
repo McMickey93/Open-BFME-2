@@ -2869,7 +2869,6 @@ alternatename	Code/GameEngine/Source/GameClient/GUI/HeaderTemplate_Rva002604ba.c
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/AptRadialMenu_PositionButton.cpp	?Move@ButtonShell@Impl@AptRadialMenu@@QAEXVCoord2D@@0@Z	2
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/InGameSimpleHelp.cpp	??1InGameSimpleHelp@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/InGameSimpleHelp.cpp	??1Rva005398CDRefCounted@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUI.cpp	?rva0020E6B7@Rva0020E6B7RegionManager@@QAEPAVLivingWorldBattle@@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpdate.cpp	?GetStateString@Rva00215EA4BannerState@@SAPBDH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpdate.cpp	?bfmeShowDN@ControlBar@@QAEXPAUBfmeMsgDN@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpdate.cpp	?rva0023D075@GameLogicFwd@@QAEHH@Z	1
@@ -6117,7 +6116,6 @@ pin	reverse/symbols.csv	0x0020DF0B	1
 pin	reverse/symbols.csv	0x0020E1E1	1
 pin	reverse/symbols.csv	0x0020E205	1
 pin	reverse/symbols.csv	0x0020E400	3
-pin	reverse/symbols.csv	0x0020E6B7	1
 pin	reverse/symbols.csv	0x0020E7BD	1
 pin	reverse/symbols.csv	0x0020E873	4
 pin	reverse/symbols.csv	0x0020E9A1	1

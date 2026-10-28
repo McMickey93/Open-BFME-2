@@ -2122,7 +2122,7 @@ public:
 class Rva0020E6B7RegionManager
 {
 public:
-	LivingWorldBattle *rva0020E6B7();			// 0x0020E6B7
+	Rva003F468D *rva0020E6B7();			// 0x0020E6B7, existing owner
 };
 struct Rva002BC1DAArmy
 {
@@ -2160,7 +2160,7 @@ void LivingWorldLogic::GameLogic_tacticalBattleComplete()
 {
 	void *region = ((Rva002BA8F1Logic *)this)->rva002B2B2D();
 	m_tacticalBattleCompleted = true;
-	LivingWorldBattle *battle = ((Rva0020E6B7RegionManager *)m_field0B0)->rva0020E6B7();
+	LivingWorldBattle *battle = (LivingWorldBattle *)((Rva0020E6B7RegionManager *)m_field0B0)->rva0020E6B7();
 	if (battle != 0 && battle->m_side != -1 && region != 0)
 	{
 		Int team = battle->GetTeamNumberForSide(battle->m_side);
