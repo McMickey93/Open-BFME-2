@@ -1023,7 +1023,19 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 ### LINK-005: units blocked by several incompatible dependencies
 
-**Status: Open. Updated: 2026-10-25.**
+**Status: Open. Updated: 2026-10-28.**
+
+- **Publication full control (2026-10-28, `b0238684f4`):**
+  [The completed post-rebase gate](../reverse/attempt_support/critter-emitter-consolidation-20261028-codex.md#completed-full-gate-control-after-conflict-resolution)
+  exits 1 solely on two existing DIR32 conflicts: `Rva003F498ACallback` tables
+  at VAs `00C1C780`/`00C37080` and `Rva0056224F` tables at
+  `00BBB554`/`00C1D358`. Both pairs match the upstream 2026-10-27 native
+  control; the relevant owner files, lifetime identities, gate and whitelist
+  have no outgoing changes. All 98,941 function rows, 2,201 data rows,
+  literal/import checks, pins, module registry, source claims and no-op patch
+  pass. The callback's visitor/provider identities and the particle info
+  family's complete Snapshot/secondary-table contracts remain prerequisites.
+  This is a completed red full control, not full-gate closure or census credit.
 
 - **BuddyThread consolidation prerequisite (2026-10-27):**
   [the scoped handoff](../reverse/attempt_support/buddy-thread-base-cleanup-20261027-codex3.md)
@@ -1266,24 +1278,26 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-28.**
 
 - **E036 containment guard-index follow-up (2026-10-28, control `d67dec6909`):**
-  [The six-accessor check](../reverse/attempt_support/contain-e036-guard-data-index-20261028-codex.md)
-  adopts twelve generated key/guard index rows after the earlier E036 clearer
-  retirement and accessor renames. All 18 function rows, six literals and six
-  parent EH graphs pass; both data checks report zero findings. The owning
-  retirement tool removes six registered source keys. Paired ordinary previews
-  retain 6/6 LINKS and 472 authored bytes against index `14dc3d2467`.
-  Other E036/E037 entries, broader storage closure and census confirmation
-  remain open; no new linked-byte or image-ownership gain is claimed.
+  [The scoped handoff](../reverse/attempt_support/contain-e036-guard-data-index-20261028-codex.md)
+  independently verifies twelve generated key/guard index rows after the E036
+  clearer removal and accessor renames. The six sources retain 18/18 exact
+  function rows, six EXACT EH graphs, zero data findings and paired LINKS
+  previews (472 authored bytes, index `14dc3d2467`). Publication found that
+  upstream `22ec257aa5` already retired all six keys; no additional six-key
+  reduction is claimed. The remaining generated-row change tightens the
+  HealContain guard index bound from twelve to four bytes. Broader storage
+  closure and census confirmation remain open; no runtime gain is claimed.
 
 - **E038 update guard-index follow-up (2026-10-28, control `bd82c0156d2e`):**
   [The scoped current-owner check](../reverse/attempt_support/update-e038-guard-data-index-20261028-codex.md)
   adopts nine changed generated key/guard index rows for six standalone update
   accessors after the earlier E038 clearer retirement and getter renames. All
   18 function rows, six literals and six parent EH graphs pass; both data checks
-  report zero findings. The owning retirement tool removes six source keys.
-  Ordinary previews retain 6/6 LINKS and 466 authored bytes against index
-  `73061d9452`. Broader E038 storage closure and census confirmation remain
-  open; no new linked-byte or image-ownership gain is claimed.
+  report zero findings. Publication found that upstream `ed979c9e6b` already
+  supplied all six source-key retirements and index changes; this check adds
+  no further retirement. Ordinary previews retain 6/6 LINKS and 466 authored
+  bytes against index `73061d9452`. Broader E038 storage closure and census
+  confirmation remain open; no new linked-byte or image-ownership gain is claimed.
 
 - **FX default-module guard index follow-up (2026-10-27, control `38e60a3ba930`):**
   [The current-owner check](../reverse/attempt_support/fx-default-guard-data-index-20261027-codex.md)

@@ -54,6 +54,10 @@ bytes). That confirms LINK-112's existing repair; the claim was released
 without a source edit. LINK-121's older constructor lead is superseded in this
 bounded scope.
 
-This retires six stale data-debt keys under LINK-007. Broader E038 ownership
+At the inspected control, the owning tools removed six stale data-debt keys.
+Publication later rebased this batch onto upstream `ed979c9e6b`, which already
+supplied all six retirements and the generated index changes. The rebase
+preserves those upstream results; this handoff records independent validation
+and adds no further six-key retirement or index change. Broader E038 ownership
 work and census confirmation remain open; no new census-linked bytes or image
 ownership gain is claimed.

@@ -55,6 +55,12 @@ The initial default link pick, Rva00415704Ctor.cpp, still previews LINKS
 (90 authored bytes) against that same index. LINK-112's existing repair needs
 no new source change; its claim was released before selecting the data work.
 
-This retires six stale data-debt keys under LINK-007. The remaining E036/E037
-index entries, broader storage closure and census confirmation remain open.
-No new census-linked bytes or image-ownership gain is claimed.
+At the inspected control, the six owning-tool retirements above removed six
+stale data-debt keys. During publication, upstream `22ec257aa5` supplied all
+six retirements and eleven of the twelve identical generated index rows.
+The rebase preserves those upstream retirements and claims no additional
+six-key debt reduction. The remaining generated-row change tightens
+HealContain's guard index upper bound at `0x00A03658` from twelve to four bytes;
+it changes no symbol, source or explicit data extent. Broader storage closure
+and census confirmation remain open. No new census-linked bytes or
+image-ownership gain is claimed.

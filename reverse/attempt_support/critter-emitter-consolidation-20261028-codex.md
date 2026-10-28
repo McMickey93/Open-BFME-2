@@ -104,3 +104,58 @@ findings fall outside the carried old-name key. It changes nothing. A separate
 data-identity repair must reconcile the current owners and shared clearer
 before the owning tool can retire the remaining baseline key; no key is added
 or hand-deleted here.
+
+## Publication reconciliation with the module pool-key refresh
+
+A further publication rebase onto `22ec257aa5` encountered the upstream
+module pool-key refresh. That refresh already corrected CritterEmitter's key
+and guard identities and retired its old guard key. The conflict resolution
+preserves those current `getModuleNameKey` names, owned status, one definition
+and relocation counts; both generated data-index rows (`0x00A04314` and
+`0x00A04318`) now name the merged TU. No baseline key is reintroduced or
+retired again. The earlier data-retirement boundary above describes the
+previous inspected control and is superseded in this scope.
+
+At `b0238684f4`, enforced data checks pass for the merged TU and six E036
+containment accessors (seven sources, zero findings). EH verification reports
+eight EXACT graphs across this scope; the merged TU accounts for two.
+`tu_ownership.py --commit dc5bb034e4 --shadow` passes without findings.
+
+The complete source-path batch is unchanged: the two CritterEmitter donors
+are the only deleted source paths from `22ec257aa5..b0238684f4`. A combined
+full-path/basename audit across tools, hooks, workflows, Code, documentation
+and registers finds no active executable, include or build-list consumer
+requiring a change. The data index, function ledger and TU map name the merged
+TU. Remaining donor mentions are the provenance comments, historical
+attempt/deleted-row/census records, and the PartTheHeavens comparison comment
+previously classified above. The new upstream module-pool-key handoff is also
+historical evidence and retains its inspected source paths. This audit does
+not clear the existing strict batch-audit or census prerequisites.
+
+## Completed full-gate control after conflict resolution
+
+`BUILD_POOL=12 ./build.sh` at `b0238684f4` completed with actual exit **1**.
+It passed 98,941/98,941 function rows across 22,248 sources, 31,537 string
+literals plus 2,253 empty-string references, 9,117 float literals, 6,423 named
+imports, pin consistency, module registration, all 22,075 source claims,
+2,201 byte-verified data rows and the no-op patch. The sole red check is
+DIR32 consistency, with these two unresolved vtable identities:
+
+| Symbol | Conflicting table VAs |
+| --- | --- |
+| `??_7Rva003F498ACallback@@6B@` | `0x00C1C780`, `0x00C37080` |
+| `??_7Rva0056224F@@6B@` | `0x00BBB554`, `0x00C1D358` |
+
+Both exact pairs already appear in upstream's
+[2026-10-27 native control](particle-info-base-link-20261027/native-run-conflicts.txt).
+The outgoing batch changes neither Rva003F6A91Dtor.cpp nor Rva0056224FCtor.cpp,
+nor the callback's RvaSmallVtableCtors.cpp/VslotSmallBodiesL.cpp providers,
+`tools/build.py` or the DIR32 whitelist relative to `22ec257aa5`. The reported
+class symbols and their relevant lifetime rows/pins have no outgoing changes.
+The full control therefore confirms the previously recorded boundary; it is
+not a green full gate. The LivingWorld callback needs coherent two-slot
+visitor/provider identities (see the 0x003F6A91 and 0x005FED52 handoffs in
+re_attempts.log). The particle info family needs its complete Snapshot and
+secondary-table contracts, as documented in the
+[existing bounded attempt](particle-info-base-link-20261027/readme.md).
+No production-source or verifier change is made for either obstacle here.
