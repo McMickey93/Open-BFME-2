@@ -1,14 +1,23 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /Ireference/open-bfme-1/inputs/reference/shims/display /Ireference/open-bfme-1/inputs/reference/shims/mouselayout /Ireference/open-bfme-1/inputs/reference/shims/sweep /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main
 // stlport
 //
-// Bodies ported from Open-BFME-1's
-// GameEngineDevice/Source/Win32Device/GameClient/Win32DIMouse.cpp (donor
-// revision 6d9434269164392c5ba62aaa7c15a86b5b020d76, donor flags plus /O1).
-// Compiled that way each body below places uniquely on unclaimed game.dat
-// .text by masked whole-.text search, and ./build.sh reproduces it byte for
-// byte: DirectInputMouse::setPosition 0x00041AD4 (60B). Callee addresses are
-// read off retail's call sites (reverse/symbols.csv). Only the placed bodies
-// are carried; the donor's other definitions are omitted.
+// ?setPosition@Win32Mouse@@UAEXHH@Z, retail 0x00041AD4 (60B).
+// Target facts: 0x00041AD4 fills slot 17 (setPosition, between
+// createStreamMessages and setCursor) of two vftables: ??_7Win32Mouse@@6B@
+// 0x007C2478, whose other slots include Win32Mouse::update 0x00041A0B,
+// initCursorResources 0x00041BA6 and setCursor 0x00041A83, and ??_7W3DMouse@@6B@
+// 0x007C86D8, which inherits it beside W3DMouse::draw 0x000992B0 and setCursor
+// 0x00099DCC. No other absolute pointer in the image references it, and
+// the body sits in Win32Mouse.cpp's run between setCursor 0x00041A83 and
+// getMouseEvent 0x00041B10. It calls Mouse::setPosition 0x001EDE4C, then
+// ClientToScreen(ApplicationHWnd) and SetCursorPos.
+// Donor facts: Zero Hour's Win32Mouse has no setPosition; its
+// DirectInputMouse::setPosition (Win32DIMouse.cpp) is this body, and this file
+// was first ported from Open-BFME-1's Win32DIMouse.cpp (donor revision
+// 6d9434269164392c5ba62aaa7c15a86b5b020d76, donor flags plus /O1), placed by
+// masked whole-.text search under the DirectInputMouse name.
+// Inference: BFME 2 gave Win32Mouse that override; the retail body is
+// Win32Mouse::setPosition. The file keeps the donor port's compile environment.
 #define Matrix4x4 Matrix4  // BFME renamed it
 #define __PLACEMENT_VEC_NEW_INLINE  // always.h/GameMemory.h define array placement-new themselves
 /*
@@ -41,19 +50,10 @@
 #include "Common/Debug.h"
 #include "Common/GameType.h"	// TimeOfDay, for the BFME Display shim
 #include "GameClient/Display.h"
-// BFME's Mouse is 0x10 bytes longer than inputs/reference/shims/mouselayout models it.
-// DirectInputMouse derives from Mouse directly and never sees Win32Mouse, yet
-// openMouse @0x6BB6C9 reads m_pDirectInput at +0x4E14 and getMouseEvent
-// @0x6BBC28 reads m_pMouseDevice at +0x4E18 - so sizeof(Mouse) is 0x4E14 on its
-// own, and the 0x10 the shim parks at the front of Win32Mouse is really Mouse's
-// tail. Moving it there is the true fix and is byte-neutral for W3DMouse.cpp
-// (the total stays 0x368, so no Win32Mouse offset changes), but editing a shim
-// forces the full gate, which is currently red on eight pre-existing DIR32
-// inconsistencies that have nothing to do with this file. So the same 0x10 is
-// modelled here instead, ahead of DirectInputMouse's own members, which lands
-// them on the retail offsets. Nothing outside this translation unit names
-// DirectInputMouse.
 #define __WIN32DIMOUSE_H_
+// This unit declares the one Win32Mouse override it defines (below), so the
+// shim's Win32Mouse.h, which lacks setPosition, stays out (WinMain.h includes it).
+#define __WIN32MOUSE_H_
 #ifndef DIRECTINPUT_VERSION
 #	define DIRECTINPUT_VERSION	0x800
 #endif
@@ -85,46 +85,16 @@ extern "C" HRESULT WINAPI DirectInput8Create( HINSTANCE, DWORD, REFIID, void **,
 #undef DIDC_FORCEFEEDBACK
 #define DIDC_FORCEFEEDBACK           0x00000100
 
-// upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include/Win32Device/GameClient/Win32DIMouse.h
-class DirectInputMouse : public Mouse
+// Only the override this unit defines; the rest of BFME 2's Win32Mouse lives in
+// Win32Mouse.cpp.
+class Win32Mouse : public Mouse
 {
 
 public:
 
-	DirectInputMouse( void );
-	virtual ~DirectInputMouse( void );
-
-	// extended methods from base class
-	virtual void init( void );		///< initialize the direct input mouse, extending functionality
-	virtual void reset( void );		///< reset system
-	virtual void update( void );  ///< update the mouse data, extending functionality
 	virtual void setPosition( Int x, Int y );  ///< set position for mouse
 
-	virtual void setMouseLimits( void );  ///< update the limit extents the mouse can move in
-
-	virtual void setCursor( MouseCursor cursor );  ///< set mouse cursor
-
-	virtual void capture( void );  ///< capture the mouse
-	virtual void releaseCapture( void );  ///< release mouse capture
-
-protected:
-
-	/// device implementation to get mouse event
-	virtual UnsignedByte getMouseEvent( MouseIO *result, Bool flush );
-
-	// new internal methods for our direct input implemetation
-	void openMouse( void );  ///< create the direct input mouse
-	void closeMouse( void );  ///< close and release mouse resources
-	/// map direct input mouse data to our own format
-	void mapDirectInputMouse( MouseIO *mouse, DIDEVICEOBJECTDATA *mdat );
-
-	char _bfme_mouse_tail[ 0x10 ];  ///< Mouse's, not ours; see above
-
-	// internal data members for our direct input mouse
-	LPDIRECTINPUT8 m_pDirectInput;  ///< pointer to direct input interface
-	LPDIRECTINPUTDEVICE8 m_pMouseDevice;  ///< pointer to mouse device
-
-};  // end class DirectInputMouse
+};  // end class Win32Mouse
 
 #include "WinMain.h"
 
@@ -137,7 +107,7 @@ enum { MOUSE_BUFFER_SIZE = 256, };
 //-------------------------------------------------------------------------------------------------
 /** set the cursor position for windows OS */
 //-------------------------------------------------------------------------------------------------
-void DirectInputMouse::setPosition( Int x, Int y )
+void Win32Mouse::setPosition( Int x, Int y )
 {
 	POINT p;
 
