@@ -41495,45 +41495,45 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004E05F0,21,code,,,-,,Code/GameEngine/Source/Common/Rva004E05F0.cpp
 0x004E0605,7,code,,,-,,Code/GameEngine/Source/Common/Disp8ByteChaseGetters.cpp
 0x004E060C,25,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/Rva004E060CMethod.cpp
-0x004E0625,13,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E060C..0x004E0632 provisional,Code/GameEngine/Source/Common/Rva004E0625Getters.cpp
-0x004E0632,13,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E060C..0x004E063F provisional,Code/GameEngine/Source/Common/Rva004E0625Getters.cpp
+0x004E0625,13,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E060C..0x004E0632 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0632,13,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E060C..0x004E063F provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E063F,104,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/Rva004E063FFactory.cpp
-0x004E06A7,17,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E063F..0x004E06B8 provisional,Code/GameEngine/Source/Common/Rva004E06A7Call.cpp
+0x004E06A7,17,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E063F..0x004E06B8 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E06B8,67,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/VslotSmallBodiesAE.cpp
 0x004E06FB,10,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0705 provisional,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp
-0x004E0705,24,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E071D provisional,Code/GameEngine/Source/Common/Rva004E0705Find.cpp
-0x004E071D,36,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0741 provisional,Code/GameEngine/Source/Common/Rva004E071DSet.cpp
-0x004E0741,15,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0750 provisional,Code/GameEngine/Source/Common/Rva004E0741VCalls.cpp
-0x004E0750,15,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E075F provisional,Code/GameEngine/Source/Common/Rva004E0741VCalls.cpp
-0x004E075F,24,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0777 provisional,Code/GameEngine/Source/Common/Rva004E075FGet.cpp
+0x004E0705,24,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E071D provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E071D,36,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0741 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0741,15,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0750 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0750,15,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E075F provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E075F,24,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E06B8..0x004E0777 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E0777,6,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp W=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp
 0x004E077D,19,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E0790 provisional,Code/GameEngine/Source/Common/GapBodiesGE24.cpp
-0x004E0790,25,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E07A9 provisional,Code/GameEngine/Source/Common/Rva004E0790Release.cpp
+0x004E0790,25,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E07A9 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E07A9,26,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E07C3 provisional,Code/GameEngine/Source/Common/GapBodiesGE16.cpp
 0x004E07C3,33,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E07E4 provisional,Code/GameEngine/Source/Common/GapBodiesGE16.cpp
 0x004E07E4,17,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E07F5 provisional,Code/GameEngine/Source/Common/GapBodiesSeat1C.cpp
 0x004E07F5,20,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0777..0x004E0809 provisional,Code/GameEngine/Source/Common/GapBodiesSeat1C.cpp
-0x004E0809,60,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/Rva004E0809Scan.cpp
-0x004E0845,27,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/Rva004E0809Scan.cpp
-0x004E0860,73,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/Rva004E0809Scan.cpp
-0x004E08A9,77,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E08F6 provisional,Code/GameEngine/Source/Common/Rva004E08A9Gate.cpp
-0x004E08F6,34,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0918 provisional,Code/GameEngine/Source/Common/Rva004E08F6Set.cpp
-0x004E0918,112,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0988 provisional,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0988,115,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E09FB provisional,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
+0x004E0809,60,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0845,27,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0860,73,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E08A9,77,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E08F6 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E08F6,34,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0918 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0918,112,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0988 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0988,115,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E09FB provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E09FB,93,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0A58 provisional,Code/GameEngine/Source/Common/Rva004E09FBAssign.cpp
-0x004E0A58,62,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0A96 provisional,Code/GameEngine/Source/Common/Rva004E0A58Refresh.cpp
+0x004E0A58,62,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0860..0x004E0A96 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E0A96,69,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp W=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/Rva004E0A96Flush.cpp
-0x004E0ADB,39,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B02 provisional,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0B02,45,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B2F provisional,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
+0x004E0ADB,39,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B02 provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0B02,45,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B2F provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E0B2F,49,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B60 provisional,Code/GameEngine/Source/Common/GapBodiesGE05.cpp
-0x004E0B60,59,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B9B provisional,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0B9B,65,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0BDC provisional,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
+0x004E0B60,59,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0B9B provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0B9B,65,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,C,C=0x004E0A96..0x004E0BDC provisional,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E0BDC,109,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldBuilding.cpp provisional,Code/GameEngine/Source/Common/LivingWorldBuilding_updateArmySummaryEntryRepresentation.cpp
-0x004E0C49,90,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0CA3,19,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0CB6,21,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0CCB,78,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
-0x004E0D19,53,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
+0x004E0C49,90,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0CA3,19,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0CB6,21,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0CCB,78,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
+0x004E0D19,53,code,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp,proposed,K,K=Rva004E0B60,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x004E0D4E,25,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingTemplateStore.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingTemplateStore.cpp,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingTemplateCommandPointBonus.cpp
 0x004E0D67,245,code,,,-,,Code/GameEngine/Source/Common/Rva004E0D67Dtor.cpp
 0x004E0E5C,28,code,,,-,,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB11.cpp
@@ -82270,7 +82270,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007918A9,8,code,,,-,,Code/GameEngine/Source/Common/Rva004E0513Xfer.cpp
 0x007918B1,10,code,,,-,,Code/GameEngine/Source/Common/Rva004E0513Xfer.cpp
 0x007918BB,8,code,,,-,,Code/gen_small/uw_gen_001.cpp
-0x007918C3,10,code,,,-,,Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp
+0x007918C3,10,code,,,-,,Code/GameEngine/Source/Common/LivingWorldBuilding.cpp
 0x007918CD,10,code,,,-,,Code/GameEngine/Source/Common/LivingWorldBuilding_updateArmySummaryEntryRepresentation.cpp
 0x007918D7,10,code,,,-,,Code/GameEngine/Source/Common/LivingWorldBuilding_updateArmySummaryEntryRepresentation.cpp
 0x007918E1,8,code,,,-,,Code/GameEngine/Source/Common/Rva004E0D67Dtor.cpp
