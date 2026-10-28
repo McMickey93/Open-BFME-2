@@ -865,7 +865,6 @@ address_global	Code/GameEngine/Source/Common/Rva007EB310Destroy.cpp	g_Va0130A58D
 address_global	Code/GameEngine/Source/Common/Rva00898D60GlobalTail.cpp	g_Rva01337A20	3
 address_global	Code/GameEngine/Source/Common/RvaSingletonFwdMisc.cpp	g_Va00E032FC	2
 address_global	Code/GameEngine/Source/Common/RvaSingletonFwdMisc.cpp	g_pRva00437E9C	2
-address_global	Code/GameEngine/Source/Common/System/BuffInstance_DoXfer.cpp	g_Va00E01E74	3
 address_global	Code/GameEngine/Source/Common/System/FileSystemRestricted.cpp	g_Va00E06E60	2
 address_global	Code/GameEngine/Source/Common/System/FormationBuild.cpp	g_Va00E03174	2
 address_global	Code/GameEngine/Source/Common/System/GeometryInfoCtor.cpp	g_Va00BC2424	1
@@ -1075,7 +1074,6 @@ address_global	Code/GameEngine/Source/GameClient/GameClientXfer.cpp	g_Va00E00944
 address_global	Code/GameEngine/Source/GameClient/GameText.cpp	g_Va00DFF0C4	3
 address_global	Code/GameEngine/Source/GameClient/InGameUIObserverMessage.cpp	g_Va00A04450	3
 address_global	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIBuildQueueIconSelect.cpp	g_Va00E06724	4
-address_global	Code/GameEngine/Source/GameClient/Rva0040AD80ReferenceState_Rva00362c9f.cpp	g_Va00E01E7C	3
 address_global	Code/GameEngine/Source/GameClient/Rva004110DCGet.cpp	g_Va00E02FF8	2
 address_global	Code/GameEngine/Source/GameClient/Rva00411112Get.cpp	g_Va00E0300C	2
 address_global	Code/GameEngine/Source/GameClient/Rva00511F73.cpp	g_Va00E048C4	3
@@ -1118,6 +1116,8 @@ address_global	Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyConstructo
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHero.cpp	g_Va00DFE348	3
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHeroHero.cpp	g_Va00DFE348	2
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHero_FindBlingByUpgradeName.cpp	g_Va00DFE348	1
+address_global	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	g_Va00E01E74	3
+address_global	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	g_Va00E01E7C	3
 address_global	Code/GameEngine/Source/GameLogic/Object/LocomotorCtor.cpp	g_Va00DFDC64	2
 address_global	Code/GameEngine/Source/GameLogic/Object/Made002CCB04.cpp	g_Va00BBB8D8	3
 address_global	Code/GameEngine/Source/GameLogic/Object/Made002CCB04.cpp	g_Va00DFEFD8	2
@@ -12259,11 +12259,6 @@ present_unmatched	Code/GameEngine/Source/Common/AptUpgradeIconSetter.cpp	Rva0052
 present_unmatched	Code/GameEngine/Source/Common/AptUpgradeIconSetter.cpp	text)	1
 present_unmatched	Code/GameEngine/Source/Common/AptUpgradeIconSetter_ArmyUnitIconMovieClip.cpp	text)	1
 present_unmatched	Code/GameEngine/Source/Common/Audio/AudioEventRTSClassification.cpp	Rva002D9D7CRef::~Rva002D9D7CRef	1
-present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00409930SlotArray.cpp	Rva00409850SubObject::method	1
-present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00409930SlotArray.cpp	Rva00409850SubObject::rva_00409810	1
-present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00409930SlotArray.cpp	Rva00409930::dispatchSlot	1
-present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00409930SlotArray.cpp	Rva00409930::setPositions	1
-present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00409930SlotArray.cpp	Rva00409930::setTargetFlag	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00564B1AAssign.cpp	Rva00564B1A::rva00564B1A	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Owner00739C90::cleanup	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Rva00739C70::reset	1
@@ -13364,6 +13359,11 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerComple
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/FiringTracker.cpp	FiringTracker::getNumConsecutiveShotsAtVictim	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/FiringTracker.cpp	FiringTracker::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetAnimSetCopy.cpp	bfmeEmitGenericObjectCreationNuggetAnimSetCopy@@YAXPAUAnimSet@GenericObjectCreationNugget@@PBU12@@Z	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	Rva00409850SubObject::method	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	Rva00409850SubObject::rva_00409810	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	Rva00409930::dispatchSlot	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	Rva00409930::setPositions	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/GlowMaterial.cpp	Rva00409930::setTargetFlag	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Locomotor.cpp	Locomotor::Locomotor	2
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Locomotor.cpp	Locomotor::calcLiftToUseAtPt	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Locomotor.cpp	Locomotor::calcMinTurnRadius	1
