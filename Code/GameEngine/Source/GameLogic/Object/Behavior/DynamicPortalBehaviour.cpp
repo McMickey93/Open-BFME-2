@@ -28,6 +28,19 @@ class Thing;
 
 class ModuleData;
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
 class BehaviorModule
 {
 public:
@@ -89,6 +102,7 @@ class DynamicPortalBehaviour : public UpgradeModule,
 {
 public:
 	void rva0046094C();
+	virtual NameKeyType getModuleNameKey() const;
 protected:
 	virtual ~DynamicPortalBehaviour();
 
