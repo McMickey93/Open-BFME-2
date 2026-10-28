@@ -28,7 +28,9 @@ class Rva00236285 { char words[36]; public: Rva00236285() throw(); };
 class Rva002362B4 : public Rva00236285 { public: ~Rva002362B4(); };
 class Version { char words[48]; public: Version(); ~Version(); };
 struct Rva004216D3Coord { float x,y,z; Rva004216D3Coord() {} ~Rva004216D3Coord() {} };
-struct GlobalDataLightingView { Rva004216D3Coord ambient,diffuse,position; GlobalDataLightingView() {} };
+struct RvaGDNoCleanupCoord { float x,y,z; RvaGDNoCleanupCoord() {} };
+// ZH GlobalData::TerrainLighting: ambient, diffuse, lightPos.
+struct GlobalDataLightingView { RvaGDNoCleanupCoord ambient,diffuse; Rva004216D3Coord lightPos; GlobalDataLightingView() {} };
 // TheGameText's vslot 15 (0x3C) looks a label up by its text.
 class GameTextInterface
 {
@@ -43,7 +45,8 @@ public:
 	virtual UnicodeString fetch(const char *label, bool *exists = 0) = 0;
 };
 extern GameTextInterface *TheGameText;
-enum TimeOfDay { TIME_OF_DAY_INVALID=-1 };
+enum TimeOfDay { TIME_OF_DAY_INVALID=-1, TIME_OF_DAY_FIRST=1, TIME_OF_DAY_COUNT=6 };
+enum { MAX_GLOBAL_LIGHTS = 3 };
 // The logic frame rate (data ledger owner of VA 0x00DBA4E4).
 extern int BfmeLogicFramesPerSecond;
 #define LOGICFRAMES_PER_SECOND BfmeLogicFramesPerSecond
@@ -51,7 +54,6 @@ struct Rva00235A21 { char words[528]; Rva00235A21(); };
 class Rva00235A37 { public: char words[48]; Rva00235A37 &operator=(const Rva00235A37&); };
 extern Version *TheVersion;
 struct MultiPlayMults { char words[480]; MultiPlayMults() throw(); };
-struct RvaGDNoCleanupCoord { float x,y,z; RvaGDNoCleanupCoord() {} };
 struct RvaGDConst3 { float x,y,z; RvaGDConst3(float v):x(v),y(v),z(v){} };
 struct RvaGDConst2 { float x,y; RvaGDConst2(float v):x(v),y(v){} };
 #include "../../../Libraries/Include/Lib/RGBColor.h"
@@ -222,7 +224,7 @@ private: static GlobalData *m_theOriginal;
  bool m_0054;
  char unknown0055[3];
  int m_terrainLODTargetTimeMS;
- bool m_005C;
+ bool m_useAlternateMouse;
  bool m_rightMouseAlwaysScrolls;
  bool m_005E;
  bool m_useCloudPlane;
@@ -288,12 +290,12 @@ private: static GlobalData *m_theOriginal;
  bool m_hideGarrisonFlags;
  bool m_forceModelsToFollowTimeOfDay;
  bool m_forceModelsToFollowWeather;
- GlobalDataLightingView m_0140[18];
+ GlobalDataLightingView m_terrainLighting[TIME_OF_DAY_COUNT][MAX_GLOBAL_LIGHTS];
  GlobalDataLightingView m_03C8[18];
  GlobalDataLightingView m_0650[18];
- RvaGDNoCleanupCoord m_08D8[3];
- RvaGDNoCleanupCoord m_08FC[3];
- Rva004216D3Coord m_0920[3];
+ RvaGDNoCleanupCoord m_terrainAmbient[3];
+ RvaGDNoCleanupCoord m_terrainDiffuse[3];
+ Rva004216D3Coord m_terrainLightPos[3];
  RvaGDConst3 m_0944;
  float m_0950;
  float m_humanSoloPlayerHealthBonus_Easy[8];
@@ -379,9 +381,9 @@ private: static GlobalData *m_theOriginal;
  AsciiString m_autoAflameParticleSystem;
  int m_autoAflameParticleMax;
  int m_0A44;
- int m_0A48;
+ int m_defaultIP;
  int m_firewallBehavior;
- bool m_0A50;
+ bool m_firewallSendDelay;
  char unknown0A51[3];
  int m_firewallPortOverride;
  unsigned short m_firewallPortAllocationDelta;
@@ -459,7 +461,7 @@ private: static GlobalData *m_theOriginal;
  bool m_0B6D;
  bool m_0B6E;
  bool m_0B6F;
- bool m_0B70;
+ bool m_saveCameraInReplay;
  bool m_useCameraInReplay;
  char unknown0B72[2];
  float m_shakeSubtleIntensity;
@@ -484,7 +486,7 @@ private: static GlobalData *m_theOriginal;
  int m_powerBarBase;
  float m_powerBarIntervals;
  int m_powerBarYellowRange;
- float m_0BCC;
+ float m_displayGamma;
  int m_unlookPersistDuration;
  bool m_0BD4;
  char unknown0BD5[3];
@@ -1354,7 +1356,7 @@ m_drawEntireTerrain(0),
 m_terrainLOD(8),
 m_0054(1),
 m_terrainLODTargetTimeMS(0),
-m_005C(1),
+m_useAlternateMouse(1),
 m_rightMouseAlwaysScrolls(0),
 m_005E(0),
 m_useCloudPlane(0),
@@ -1476,9 +1478,9 @@ m_autoSmokeParticleMediumMax(0),
 m_autoSmokeParticleLargeMax(0),
 m_autoAflameParticleMax(0),
 m_0A44(1),
-m_0A48(0),
+m_defaultIP(0),
 m_firewallBehavior(0),
-m_0A50(0),
+m_firewallSendDelay(0),
 m_firewallPortOverride(0),
 m_firewallPortAllocationDelta(0),
 m_baseValuePerSupplyBox(0x64),
@@ -1544,7 +1546,7 @@ m_0B6C(0),
 m_0B6D(0),
 m_0B6E(0),
 m_0B6F(0),
-m_0B70(0),
+m_saveCameraInReplay(0),
 m_useCameraInReplay(0),
 m_shakeSubtleIntensity(0.5f),
 m_shakeNormalIntensity(1.0f),
@@ -1564,7 +1566,7 @@ m_0BBD(0),
 m_powerBarBase(7),
 m_powerBarIntervals(3.0f),
 m_powerBarYellowRange(5),
-m_0BCC(1.0f),
+m_displayGamma(1.0f),
 m_unlookPersistDuration(0x1e),
 m_0BD4(0),
 m_0BD8(GetDoubleClickTime()),
@@ -1755,43 +1757,43 @@ m_123D(0) {
  m_next=0;
  m_livingWorldCampaignOverrride.clear(); m_mapName.clear();m_moveHintName.clear();m_genericDamageFieldName.clear();m_genericDamageWarningName.clear();
  for(int i=0;i<3;++i) {
-  m_08D8[i].x=0.0f;
-  m_08D8[i].y=0.0f;
-  m_08D8[i].z=0.0f;
-  m_08FC[i].x=0.0f;
-  m_08FC[i].y=0.0f;
-  m_08FC[i].z=0.0f;
-  m_0920[i].x=0.0f;
-  m_0920[i].y=0.0f;
-  m_0920[i].z=-1.0f;
+  m_terrainAmbient[i].x=0.0f;
+  m_terrainAmbient[i].y=0.0f;
+  m_terrainAmbient[i].z=0.0f;
+  m_terrainDiffuse[i].x=0.0f;
+  m_terrainDiffuse[i].y=0.0f;
+  m_terrainDiffuse[i].z=0.0f;
+  m_terrainLightPos[i].x=0.0f;
+  m_terrainLightPos[i].y=0.0f;
+  m_terrainLightPos[i].z=-1.0f;
   for(int j=0;j<6;++j) {
-   m_0140[j*3+i].ambient.x=0.0f;
-   m_0140[j*3+i].ambient.y=0.0f;
-   m_0140[j*3+i].ambient.z=0.0f;
-   m_0140[j*3+i].diffuse.x=0.0f;
-   m_0140[j*3+i].diffuse.y=0.0f;
-   m_0140[j*3+i].diffuse.z=0.0f;
-   m_0140[j*3+i].position.x=0.0f;
-   m_0140[j*3+i].position.y=0.0f;
-   m_0140[j*3+i].position.z=-1.0f;
+   m_terrainLighting[j][i].ambient.x=0.0f;
+   m_terrainLighting[j][i].ambient.y=0.0f;
+   m_terrainLighting[j][i].ambient.z=0.0f;
+   m_terrainLighting[j][i].diffuse.x=0.0f;
+   m_terrainLighting[j][i].diffuse.y=0.0f;
+   m_terrainLighting[j][i].diffuse.z=0.0f;
+   m_terrainLighting[j][i].lightPos.x=0.0f;
+   m_terrainLighting[j][i].lightPos.y=0.0f;
+   m_terrainLighting[j][i].lightPos.z=-1.0f;
    m_03C8[j*3+i].ambient.x=0.0f;
    m_03C8[j*3+i].ambient.y=0.0f;
    m_03C8[j*3+i].ambient.z=0.0f;
    m_03C8[j*3+i].diffuse.x=0.0f;
    m_03C8[j*3+i].diffuse.y=0.0f;
    m_03C8[j*3+i].diffuse.z=0.0f;
-   m_03C8[j*3+i].position.x=0.0f;
-   m_03C8[j*3+i].position.y=0.0f;
-   m_03C8[j*3+i].position.z=-1.0f;
+   m_03C8[j*3+i].lightPos.x=0.0f;
+   m_03C8[j*3+i].lightPos.y=0.0f;
+   m_03C8[j*3+i].lightPos.z=-1.0f;
    m_0650[j*3+i].ambient.x=0.0f;
    m_0650[j*3+i].ambient.y=0.0f;
    m_0650[j*3+i].ambient.z=0.0f;
    m_0650[j*3+i].diffuse.x=0.0f;
    m_0650[j*3+i].diffuse.y=0.0f;
    m_0650[j*3+i].diffuse.z=0.0f;
-   m_0650[j*3+i].position.x=0.0f;
-   m_0650[j*3+i].position.y=0.0f;
-   m_0650[j*3+i].position.z=-1.0f;
+   m_0650[j*3+i].lightPos.x=0.0f;
+   m_0650[j*3+i].lightPos.y=0.0f;
+   m_0650[j*3+i].lightPos.z=-1.0f;
   }
  }
 m_autoFireParticleSmallPrefix.clear();
