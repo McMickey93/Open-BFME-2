@@ -85,15 +85,11 @@ public:
 class StateMachine;
 class Locomotor;
 
-// The waypoint queue element: Coord3D's storage with the empty out-of-line
-// ctor/dtor retail folds (0x0047A6A9, 0x000B3FD0).
-// class-gate: allow Coord3D the eh vector constructor iterator at +0x74 takes the rowed out-of-line ??0Coord3D/??1Coord3D the canonical header does not declare
-struct Coord3D
-{
-	Coord3D();
-	~Coord3D();
-	float x, y, z;
-};
+// The waypoint queue element: Coord3D with the empty out-of-line ctor/dtor
+// retail folds (0x0047A6A9, 0x000B3FD0).
+#define COORD3D_VIEW_EXTERN_CTOR
+#define COORD3D_VIEW_EXTERN_DTOR
+#include "../../../../../../Libraries/Include/Lib/Coord3DCtorView.h"
 
 struct AIUpdatePoint
 {
