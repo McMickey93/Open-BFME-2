@@ -16,6 +16,8 @@ public:
 	void *peekPing(unsigned short slot1, unsigned short slot2);		// 0x005DB98E
 	bool sentAPingPacket(unsigned short slot1, unsigned short slot2);	// 0x005DBF2D
 	int getActionID(unsigned short slot1, unsigned short slot2);		// 0x005DBCA6
+	void playerJoin(unsigned short idx);					// 0x005DC291
+	void playerLeave(unsigned short idx);
 	bool isRetryConnectingOverLimit(unsigned short i, unsigned short j);	// 0x005DBC2E
 	void reconnectPlayers(unsigned short slot1, unsigned short slot2, bool resetRetries);	// 0x005DC187
 	unsigned char m_bytes[0x8E4 - 0x28];
@@ -78,6 +80,8 @@ public:
 	void reconnectPlayers(int slot1, int slot2, int resetRetries);
 	void rva005A6CA5();
 	void rva005A6D47();
+	void processPlayerJoin(int idx);
+	void processPlayerLeave(int idx);
 private:
 	int m_0;
 	Transport *m_04;
@@ -109,5 +113,17 @@ private:
 	char m_pad954[0x970 - 0x954];
 	unsigned char m_970;			// +0x970
 };
+
+// The readiness gate 0x005A6709 is rowed as int Rva005A6709::rva005A6709()
+// const (Rva005A6709Predicate.cpp); its callers test al, so they keep the
+// bool call shape through a member-pointer cast (as Rva005A6903Box.cpp does).
+class Rva005A6709
+{
+public:
+	int rva005A6709() const;
+};
+
+typedef bool (Rva005A6709::*Rva005A6709BoolShape)() const;
+#define NAT_READY(p) ((((Rva005A6709 *)(p))->*reinterpret_cast<Rva005A6709BoolShape>(&Rva005A6709::rva005A6709))())
 
 #endif

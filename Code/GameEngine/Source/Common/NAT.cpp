@@ -8,32 +8,9 @@
 // is current, otherwise the byte/dword tables update with the pinned
 // counter. All three callees pop nothing (callee cleanup), hence bare
 // call sites; targets read from retail REL32.
-struct Rva005A6903Obj
-{
-	char pad[0x38];
-	int m_38;
-};
+#include "../GameNetwork/NATView.h"
 
-struct Rva005A6903Sub
-{
-};
-
-// LINK: the sub-object calls are rowed as PortNegotiationSchema::playerJoin / playerLeave(unsigned short) and the readiness
-// test as int Rva005A6709::rva005A6709() const; the old int-index / bool call shapes stay through member-pointer casts.
-class PortNegotiationSchema
-{
-public:
-	void playerJoin(unsigned short idx);
-	void playerLeave(unsigned short idx);
-};
 typedef void (PortNegotiationSchema::*PortNegotiationIntShape)(int);
-
-class Rva005A6709
-{
-public:
-	int rva005A6709() const;
-};
-typedef bool (Rva005A6709::*Rva005A6709BoolShape)() const;
 
 // Retail resets an eight-byte value with a dword and a ushort member;
 // the last two bytes are padding, copied with the member representation.
@@ -44,28 +21,6 @@ struct Rva005A695FValue
 	unsigned short value04;
 };
 
-struct NAT
-{
-	char pad0[8];
-	Rva005A6903Obj **m_8;
-	int m_C;
-	int m_10;
-	int m_14;
-	int m_18;
-	char pad1[0x28 - 0x1C];
-	Rva005A6903Sub m_28;
-	char pad2[0x8e4 - 0x29];
-	unsigned char m_8E4[8];
-	int m_8EC[8];
-	Rva005A695FValue *m_90C[8];
-	char pad3[0x94C - 0x92C];
-	int m_94C;
-	int m_950;
-
-	void processPlayerJoin(int idx);
-	void processPlayerLeave(int idx);
-};
-
 // 0x005A671D ignores incoming ecx (loads its context from the 0xE063FC
 // global first thing), so it is spelled as a free function: no ecx setup.
 int Rva005A671DNext();
@@ -74,20 +29,20 @@ void NAT::processPlayerJoin(int idx)
 {
 	if ((unsigned short)idx >= 8)
 		return;
-	(((PortNegotiationSchema *)&m_28)->*reinterpret_cast<PortNegotiationIntShape>(&PortNegotiationSchema::playerJoin))(idx);
+	(m_schema.*reinterpret_cast<PortNegotiationIntShape>(&PortNegotiationSchema::playerJoin))(idx);
 	idx = (unsigned short)idx;
-	Rva005A6903Obj *o = m_8[idx];
-	Rva005A695FValue *p = m_90C[idx];
-	p->value00 = o->m_38;
+	GameSlot *o = m_slotList[idx];
+	Rva005A6A4CAddress *p = m_addresses[idx];
+	p->ip = o->m_address.ip;
 	if (!(((Rva005A6709 *)this)->*reinterpret_cast<Rva005A6709BoolShape>(&Rva005A6709::rva005A6709))())
 		return;
-	if (idx == m_14) {
-		m_10 = 1;
+	if (idx == m_localSlot) {
+		m_mode = 1;
 		return;
 	}
-	m_10 = 1;
-	m_8E4[idx] = 0;
-	m_8EC[idx] = Rva005A671DNext();
+	m_mode = 1;
+	m_hostKnown[idx] = 0;
+	m_slotCookie[idx] = Rva005A671DNext();
 }
 
 // Native 0x005A695F..0x005A69C0 RET4 shares the NAT tables and +0x28
@@ -98,14 +53,14 @@ void NAT::processPlayerLeave(int idx)
 	if ((unsigned short)idx >= 8)
 		return;
 	int slot = (unsigned short)idx;
-	if (m_18 == slot)
+	if (m_targetSlot == slot)
 	{
-		m_18 = -1;
-		m_94C = 0;
+		m_targetSlot = -1;
+		m_state94c = 0;
 		m_950 = 0;
 	}
-	(((PortNegotiationSchema *)&m_28)->*reinterpret_cast<PortNegotiationIntShape>(&PortNegotiationSchema::playerLeave))(idx);
-	m_8E4[slot] = 0;
-	m_8EC[slot] = 0;
-	*m_90C[slot] = Rva005A695FValue();
+	(m_schema.*reinterpret_cast<PortNegotiationIntShape>(&PortNegotiationSchema::playerLeave))(idx);
+	m_hostKnown[slot] = 0;
+	m_slotCookie[slot] = 0;
+	*(Rva005A695FValue *)m_addresses[slot] = Rva005A695FValue();
 }

@@ -8,7 +8,6 @@
 #include <string.h>
 #include "unicode_string.h"
 #include "../../Include/GameNetwork/Transport.h"
-#define NAT_READY(p) ((((Rva005A6709 *)(p))->*reinterpret_cast<Rva005A6709BoolShape>(&Rva005A6709::rva005A6709))())
 
 typedef unsigned int UnsignedInt;
 
@@ -88,16 +87,7 @@ struct Elem005DB98E
 // reconnectPlayers keeps that int call shape through a member-pointer cast.
 typedef void (PortNegotiationSchema::*PortNegotiationReconnectShape)(int, int, int);
 
-// The readiness gate 0x005A6709 is rowed as int Rva005A6709::rva005A6709()
-// const (Rva005A6709Predicate.cpp); its callers test al, so they keep the
-// bool call shape through a member-pointer cast (as Rva005A6903Box.cpp does).
-class Rva005A6709
-{
-public:
-	int rva005A6709() const;
-};
 
-typedef bool (Rva005A6709::*Rva005A6709BoolShape)() const;
 
 // 0x009D35C8 (.data): the ping-age limit the pair scan compares against;
 // nothing else defines it, so it is defined here at its retail value.
