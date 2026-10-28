@@ -12817,3 +12817,9 @@ Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldManager.cpp|member|Army
 Code/GameEngine/Source/GameClient/Rva00224A3F.cpp|class||Rva00224A3F,dd8eaa9c5da1dfd44bf13c5c,claude-opus-5-5,claude3-20261028-131013-6,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/Common/Rva002E6F92Finish.cpp|param|Rva002E6F92Info::cellCallback|a,7df421fed2a1f6d9ec6db4cb,claude-opus-5-5,claude3-20261028-131013-8,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/Common/Rva002E6F92Finish.cpp|param|Rva002E6F92Info::cellCallback|b,bfe7ecdbc42bbb82787631b1,claude-opus-5-5,claude3-20261028-131013-8,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/Rva004C6F77Median.cpp|function|0x004C6FD0|Rva004C6FD0Insert,ced79dad8c408d4336d37555,claude-opus-5-5,claude3-20261028-135706-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/Rva004C6F77Median.cpp|function|0x004C73C5|Rva004C73C5Insert,46e18c4d43a94eadfb2f2a94,claude-opus-5-5,claude3-20261028-135706-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/Rva004C6F77Median.cpp|function|0x004C7449|Rva004C7449Sort,e73b3d2747bdceb5f5d2cc23,claude-opus-5-5,claude3-20261028-135706-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/Rva004C6F77Median.cpp|function|0x004C7009|Rva004C7009SiftUp,298a4b0745382a48d8baef33,claude-opus-5-5,claude3-20261028-135706-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/Rva004C6F77Median.cpp|param|Rva004C73C5Insert|v,be269c3e74c6d2fc744416e9,claude-opus-5-5,claude3-20261028-135706-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/PalantirCommandInterface.cpp|class||Rva0052991E,8128ccb0686e8f8168ad8f38,claude-opus-5-5,claude3-20261028-135706-6,w-29a6ae2a2f9f,2026-10-28
