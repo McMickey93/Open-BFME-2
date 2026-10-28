@@ -21,6 +21,9 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 #include "../../../../Include/Common/BfmeXfer.h"
+#pragma comment(linker, "/alternatename:?TheEmptyString@AsciiString@@2V1@A=?TheEmptyString@AsciiString@@2V1@B")
+#pragma comment(linker, "/alternatename:?slot@PB_Iface1@@UAEXXZ=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
+#pragma comment(linker, "/alternatename:?slot@PB_Iface2@@UAEXXZ=?update@Rva004958AE@@QAEHXZ")
 
 typedef bool Bool;
 
@@ -414,6 +417,8 @@ private:
 	AIUpdateInterface *m_ai;		// +0x258
 };
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateModuleDataCtor.cpp
 
   // folded nine-class vftable 0x00C4ED70, by its data-ledger name
@@ -432,10 +437,6 @@ void CommandButtonHuntUpdateModuleData::buildFieldParse(MultiIniFieldParse &pars
 {
 	parse.add(g_00C4ECC0, 0);
 }
-
-// tu-skeleton: 0x004952CF 111B ??0CommandButtonHuntUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x0049533E 6B ?Rva0049533EGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdatePoolKey.cpp
 
@@ -459,10 +460,6 @@ NameKeyType CommandButtonHuntUpdate::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("CommandButtonHuntUpdate");
 	return TheCommandButtonHuntUpdatePoolKey;
 }
-
-// tu-skeleton: 0x00495389 73B ??1CommandButtonHuntUpdate@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004953D2 28B ??_GCommandButtonHuntUpdate@@MAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateDtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateXfer.cpp
 
@@ -654,12 +651,45 @@ Object *CommandButtonHuntUpdate::scanClosestTarget()
 	return bestTarget;
 }
 
-// tu-skeleton: 0x0078CF47 8B Unwind@00b8cf47 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp
 
-// tu-skeleton: 0x0078CF4F 11B Unwind@00b8cf4f -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp (not merged yet)
+//
+// The classes spell CommandButtonHuntUpdate.cpp's views (the TU this ctor
+// joins): UpdateModule's vftable slots as read off retail, the module data
+// and the button pointer typed as that unit types them. AsciiString is
+// BFME2's shared class (the zh_ascii force-include gave the same one).
 
-// tu-skeleton: 0x0078CF5A 10B __ehhandler$??0CommandButtonHuntUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp (not merged yet)
+// ??0CommandButtonHuntUpdate@@QAE@PAVThing@@PBVModuleData@@@Z
+CommandButtonHuntUpdate::CommandButtonHuntUpdate(Thing *thing, const ModuleData *moduleData)
+    : UpdateModule(thing, moduleData), m_commandButton(0)
+{
+    setWakeFrame(getObject(), UPDATE_SLEEP_FOREVER);
+    m_commandButtonName = AsciiString::TheEmptyString;
+}
 
-// tu-skeleton: 0x0078CF7B 8B Unwind@00b8cf7b -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateDtor.cpp (not merged yet)
+// The global(s) below are defined elsewhere under another name at the same
+// address (the census owner of that DIR32 target); bind this unit's spelling.
 
-// tu-skeleton: 0x0078CF83 10B __ehhandler$??1CommandButtonHuntUpdate@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateDtor.cpp (not merged yet)
+// Placeholder virtuals this unit's vftables hold.  In retail each such slot
+// holds a rowed function; the vftable's address is proven by the vptr stores in
+// the matched destructors, so bind the placeholder to that row's name.
+
+// tu-skeleton: 0x0049533E 6B ?Rva0049533EGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateDtor.cpp
+
+// ??1CommandButtonHuntUpdate@@MAE@XZ, retail 0x00495389, 73 bytes.
+// Dtor lane: restores three vptrs (+0 0x0084ECFC plus +0x0C 0x007EFF90 plus
+// +0x10 0x0084ECF0) then destroys AsciiString at +0x20 via pinned 0x00036410
+// then calls pinned UpdateModule base dtor 0x0024A797. Layout from the rowed
+// ctor 0x004952CF (UpdateModule base 0x20 plus AsciiString plus raw pointer).
+// ZH donor CommandButtonHuntUpdate.cpp:94 has empty dtor. Recipe is the
+// InvisibilityUpdateDtor slot pattern with String member (ProductionModifier
+// AsciiString pin spelling).
+
+// The classes spell CommandButtonHuntUpdate.cpp's views (the TU this
+// dtor joins).
+
+CommandButtonHuntUpdate::~CommandButtonHuntUpdate()
+{
+}
