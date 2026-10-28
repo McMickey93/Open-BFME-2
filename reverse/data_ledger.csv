@@ -20401,8 +20401,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03E0C,4,.data,global,?key@?5??rva004B463C@ObjectCreationUpgrade@@QAEXXZ@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/ObjectCreationUpgrade.cpp,owned,,1,2
 0x00A03E10,4,.data,global,?$S1@?5??rva004B463C@ObjectCreationUpgrade@@QAEXXZ@4IA,Code/GameEngine/Source/GameLogic/Object/Upgrade/ObjectCreationUpgrade.cpp,owned,,1,2
 0x00A03E14,4,.data,global,_s_rva007B1FD0,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03E18,4,.data,global,?TheRadarUpgradePoolKey@?1??getModuleNameKey@RadarUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/Common/System/RadarUpgradePoolKey.cpp,owned,,1,2
-0x00A03E1C,4,.data,global,?$S1@?1??getModuleNameKey@RadarUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/Common/System/RadarUpgradePoolKey.cpp,owned,,1,4
+0x00A03E18,4,.data,global,?TheRadarUpgradePoolKey@?1??getModuleNameKey@RadarUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/RadarUpgrade.cpp,owned,,1,2
+0x00A03E1C,4,.data,global,?$S1@?1??getModuleNameKey@RadarUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Upgrade/RadarUpgrade.cpp,owned,,1,4
 0x00A03E20,4,.data,global,_s_rva007B1FFA,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03E24,4,.data,global,?TheStatusBitsUpgradePoolKey@?1??getModuleNameKey@StatusBitsUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgrade.cpp,owned,,1,2
 0x00A03E28,4,.data,global,?$S1@?1??getModuleNameKey@StatusBitsUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgrade.cpp,owned,,1,4
