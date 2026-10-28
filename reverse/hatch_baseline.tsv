@@ -3529,11 +3529,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/NetPacket.cpp	?j_0001bbd5@@YAXX
 alternatename	Code/GameEngine/Source/GameNetwork/NetPacket.cpp	?j_00046e89@@YAXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/NetworkUtilResolveIP.cpp	?ResolveIP@@YAIVAsciiString@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007E90C0Names.cpp	?bfmeCmpRE@BfmeOtherRE@@QAEDHH@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp	?init@ServiceHubImpl@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?bfmeDoECKa@BfmeHeldECKa@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?bfmeDoECKb@BfmeHeldECKb@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?prepare@Rva007EAD30Owner@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?prepare@Rva007EADC0Owner@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F0080DefaultPointers.cpp	?slot@Rva007F0080Owner@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1800FeslSearch.cpp	?bfmeSubVJE@BfmeThingVJE@@QAEXPAVBfmeMsgVJC@@HPAX@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?primary@Rva007F1DE0Object@@UAEXXZ	1
@@ -3589,8 +3584,13 @@ alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A280FeslHandler.cpp	??1B
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A3C0FeslDispatcher.cpp	??1BfmeC994@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A3C0FeslDispatcher.cpp	??1Rva007E8810Message@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080AA80LanTheater.cpp	??1BfmeC994@@UAE@XZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp	??1Gen007EB140@@UAE@XZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp	?bfmeDoECKa@BfmeHeldECKa@@QAEXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp	?bfmeDoECKb@BfmeHeldECKb@@QAEXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp	?init@ServiceHubImpl@@QAEXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp	?prepare@Rva007EAD30Owner@@QAEXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp	?prepare@Rva007EADC0Owner@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl_ctor.cpp	?v0@ServiceHubImpl@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl_dtor.cpp	??1Gen007EB140@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/SkirmishGameInfoXfer.cpp	?xfer@SkirmishGameInfo@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/V2FeslArrayBlocks.cpp	?bfmeDtorBTYA@BfmeSlotTYA@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/V2FeslArrayBlocks.cpp	?bfmeUse1251@BfmeSub2_1251@@QAEXPAX@Z	1

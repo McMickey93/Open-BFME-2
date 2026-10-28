@@ -356,10 +356,6 @@ Code/GameEngine/Source/GameNetwork/Rva007E90C0Names.cpp,,5,4,region default lose
 Code/GameEngine/Source/GameNetwork/Rva007E9D20CachedAccessor.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007E9D40TextFallback.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007E9FC0Begin.cpp,-O2,1,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/Rva007EA970TextFallback.cpp,-O2,1,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp,-O2,2,2,region default loses rows
-Code/GameEngine/Source/GameNetwork/Rva007EAC30Send.cpp,-O2,2,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/Rva007EAD30Send.cpp,-O2,4,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007EB8B0Log.cpp,-O2,2,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007EB920Assert.cpp,,2,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007EBAA0Create.cpp,-O2,1,1,region default loses rows
@@ -431,8 +427,8 @@ Code/GameEngine/Source/GameNetwork/Rva0080A3C0FeslDispatcher.cpp,-O2,2,1,region 
 Code/GameEngine/Source/GameNetwork/Rva0080A940OwnerFinish.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva0080AA80LanTheater.cpp,-O2,2,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva0080AB50Handle.cpp,-O2,1,1,region default loses rows
+Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp,-O2,10,7,region default loses rows
 Code/GameEngine/Source/GameNetwork/ServiceHubImpl_ctor.cpp,-O2,1,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/ServiceHubImpl_dtor.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslArrayBlocks.cpp,,11,4,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslBrowserLobbyCounts.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslBrowserRecords.cpp,,3,2,region default loses rows
