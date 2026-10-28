@@ -6625,6 +6625,17 @@ Remaining: the two slides still need canonical coordinate/private animation decl
 - **Clearance:** build verification only.
 - **Census confirmation:** pending.
 
+#### LOD-table debt retirement (2026-10-28)
+
+At base `2451819902`, the already-landed repair `ed75a92689` passes all 12
+related code rows and the 24-byte data row. The owner and two consumers retain
+LINKS in ordinary preview against index `41c28839bf` (486 authored bytes).
+The owning retirement tool removes the table owner's two stale data-debt keys,
+with zero remaining findings; no source or identity changes were needed.
+[Verification and scope](../reverse/attempt_support/lod-table-debt-retirement-20261028-codexb.md).
+Real-name evidence and census confirmation remain pending; no new linked-byte
+gain is claimed.
+
 ### LINK-120: W3DPropDraw's vftables disagree between units and with retail
 
 **Status: Open. Updated: 2026-10-28; inspected revision: `c64f680554`.**
