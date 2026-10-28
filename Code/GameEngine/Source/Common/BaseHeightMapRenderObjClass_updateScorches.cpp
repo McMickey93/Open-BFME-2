@@ -19,6 +19,9 @@ typedef bool Bool;
 typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 typedef unsigned int UnsignedInt;
+// Keep the CRT's inlined floorf local; its public body is owned by the
+// terrain-lightmap unit at 0x0004D649.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "wwmath.h"
 struct VertexFormatXYZDUV1

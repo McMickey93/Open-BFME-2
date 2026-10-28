@@ -354,6 +354,16 @@ and affected consumer Common/0CreateAHeroManager21FE49.cpp lacks a current
 receipt. Carry this removed-copy scope into the next normal census; full
 external consumer selection and new census-linked bytes remain unclaimed.
 
+#### Scorch update consumer subset (2026-10-28)
+
+At index `41c28839bf`, BaseHeightMapRenderObjClass_updateScorches.cpp failed
+only on the selected `_floorf`. Its object published math.h's inline `floorf`
+(via wwmath.h) but referenced it only from `.debug$F`; the body calls
+`__imp__floor` directly. The same local declaration ahead of `<math.h>`
+removes the public copy. `./build.sh`: 4/4 rows, 14 float literals, 4 named
+imports; EH graph EXACT. Ordinary preview: blocked to LINKS, 1,493 authored
+bytes. Preview only; carry into the next normal census.
+
 ### BannerCarrierUpdate string-header composition (2026-10-28)
 
 Status: destructor prerequisite repaired and merged into the approved TU;
