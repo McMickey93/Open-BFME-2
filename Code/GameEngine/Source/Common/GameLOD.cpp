@@ -96,34 +96,6 @@ static const char *StaticGameLODNames[]=
 	"Custom"
 };
 
-// ??0StaticGameLODInfo@@QAE@XZ present-unmatched
-StaticGameLODInfo::StaticGameLODInfo(void)
-{
-	m_minFPS=0;
-	m_minProcessorFPS=0;
-	m_sampleCount2D=6;
-	m_sampleCount3D=24;
-	m_streamCount=2;
-	m_maxParticleCount=2500;
-
-	m_useShadowVolumes=TRUE;
-	m_useShadowDecals=TRUE;
-	m_useCloudMap=TRUE;
-	m_useLightMap=TRUE;
-	m_showSoftWaterEdge=TRUE;
-	m_maxTankTrackEdges=100;
-	m_maxTankTrackOpaqueEdges=25;
-	m_maxTankTrackFadeDelay=300000;
-	m_useBuildupScaffolds=TRUE;
-	m_useTreeSway=TRUE;
-	m_useEmissiveNightMaterials=TRUE;
-	m_useHeatEffects=TRUE;
-	m_textureReduction = 0;	//none
-	m_useFpsLimit = TRUE;
-	m_enableDynamicLOD = TRUE;
-	m_useTrees = TRUE;
-}
-
 static const FieldParse TheDynamicGameLODFieldParseTable[] = 
 {
 	{ "MinimumFPS",						INI::parseInt,					NULL,	offsetof( DynamicGameLODInfo, m_minFPS)},
@@ -139,17 +111,6 @@ static const FieldParse TheDynamicGameLODFieldParseTable[] =
 // GameLODManagerGetStaticGameLODIndex.cpp, and the dynamic-level parser and
 // name getter read the same table.
 extern const char *bfmeStaticLODNames[5];
-
-// ??0DynamicGameLODInfo@@QAE@XZ present-unmatched
-DynamicGameLODInfo::DynamicGameLODInfo(void)
-{
-	m_minFPS=0;
-	m_dynamicParticleSkipMask=0;
-	m_dynamicDebrisSkipMask=0;
-	m_slowDeathScale=1.0f;
-	m_minDynamicParticlePriority = PARTICLE_PRIORITY_LOWEST;
-	m_minDynamicParticleSkipPriority = PARTICLE_PRIORITY_LOWEST;
-};
 
 //Keep this in sync with enum in GameLOD.h
 // ?CPUNames@@3PAPBDA, retail 0x009B96B8 (XX P3 P4 K7 then NULL). External
@@ -236,48 +197,8 @@ GameLODManager::~GameLODManager()
 
 }
 
-// ?newBenchProfile@GameLODManager@@QAEPAUBenchProfile@@XZ present-unmatched
-BenchProfile *GameLODManager::newBenchProfile(void)
-{
-	if (m_numBenchProfiles < MAX_BENCH_PROFILES)
-	{	
-		m_numBenchProfiles++;
-		return &m_benchProfiles[m_numBenchProfiles-1];
-	}
-
-	DEBUG_CRASH(( "GameLODManager::newBenchProfile - Too many profiles defined\n"));
-	return NULL;
-}
-
-// GameLODManager::newLODPreset: retail 0x0020202B, rowed in
-// Rva0020202BFinish.cpp (BFME2 indexes the slot after the increment).
-
-// ?init@GameLODManager@@QAEXXZ
-// Body in GameLOD_init.asm (exact 967B retail).
-
-// ?refreshCustomStaticLODLevel@GameLODManager@@IAEXXZ present-unmatched
-void GameLODManager::refreshCustomStaticLODLevel(void)
-{
-	StaticGameLODInfo *lodInfo=&m_staticGameLODInfo[STATIC_GAME_LOD_CUSTOM];
-
-	lodInfo->m_maxParticleCount=TheGlobalData->m_maxParticleCount;
-	lodInfo->m_useShadowVolumes=TheGlobalData->m_useShadowVolumes;
-	lodInfo->m_useShadowDecals=TheGlobalData->m_useShadowDecals;
-	lodInfo->m_useCloudMap=TheGlobalData->m_useCloudMap;
-	lodInfo->m_useLightMap=TheGlobalData->m_useLightMap;
-	lodInfo->m_showSoftWaterEdge=TheGlobalData->m_showSoftWaterEdge;
-	lodInfo->m_maxTankTrackEdges=TheGlobalData->m_maxTankTrackEdges;
-	lodInfo->m_maxTankTrackOpaqueEdges=TheGlobalData->m_maxTankTrackOpaqueEdges;
-	lodInfo->m_maxTankTrackFadeDelay=TheGlobalData->m_maxTankTrackFadeDelay;
-	lodInfo->m_useBuildupScaffolds=!TheGlobalData->m_useDrawModuleLOD;
-	lodInfo->m_useHeatEffects = TheGlobalData->m_useHeatEffects;
-	lodInfo->m_useTreeSway=lodInfo->m_useBuildupScaffolds;// Borrow same setting. //TheGlobalData->m_useTreeSway;
-	lodInfo->m_textureReduction=TheGlobalData->m_textureReductionFactor;
-	lodInfo->m_useFpsLimit = TheGlobalData->m_useFpsLimit;
-	lodInfo->m_enableDynamicLOD=TheGlobalData->m_enableDynamicLOD;
-	lodInfo->m_useTrees = TheGlobalData->m_useTrees;
-
-}
+// The native allocation and initialization bodies remain in
+// GameLODManager_newLODPreset.cpp and GameLODManagerInit.cpp.
 
 /**Convert LOD name to an index*/
 // byte-exact reconstruction: Code/GameEngine/Source/Common/GameLODManagerGetStaticGameLODIndex.cpp
@@ -351,177 +272,16 @@ void INI::parseStaticGameLODLevel( INI* ini, void * , void *store, const void*)
 	throw INI_INVALID_DATA;
 }
 
-// ?getStaticGameLODLevelName@GameLODManager@@QAEPBDW4StaticGameLODLevel@@@Z present-unmatched
-const char *GameLODManager::getStaticGameLODLevelName(StaticGameLODLevel level)
-{
-	return StaticGameLODNames[level];
-}
-
 /**Function which calculates the recommended LOD level for current hardware
 configuration.*/
 // The matched BFME 2 definition is in GameLODManagerFindStaticLODLevel.cpp.
 
-/**Set all game systems to match the desired LOD level.*/
-struct BfmeGameLODManagerState
-{
-	UnsignedByte m_pad[0x16c0];
-	Int m_currentStaticLOD;
-	volatile Int m_pendingStaticLOD;
-};
-
-struct BfmeGameLODGlobalData
-{
-	UnsignedByte m_pad59[0x59];
-	Bool m_enableStaticLOD;
-	UnsignedByte m_pad5a[0xbb4 - 0x5a];
-	Bool m_shellMapOn;
-	Bool m_shellMapOffByCommandArgument;
-};
-
-class Shell
-{
-public:
-	Bool showShellMap(Bool useShellMap, Bool restartShellGame);
-};
+// Preserve the shared pointer definition after retiring the obsolete setter.
+class Shell;
 
 extern Shell *TheShell;
 // TheShell: matched references place it at VA 0xe01e48 (zero-filled .bss).
 Shell * TheShell;
-
-// ?setStaticLODLevel@GameLODManager@@QAE_NW4StaticGameLODLevel@@@Z
-// ?setStaticLODLevel@GameLODManager@@QAE_NW4StaticGameLODLevel@@@Z present-unmatched
-Bool GameLODManager::setStaticLODLevel(StaticGameLODLevel level)
-{
-	BfmeGameLODManagerState *state = reinterpret_cast<BfmeGameLODManagerState *>(this);
-
-	if (!reinterpret_cast<BfmeGameLODGlobalData *>(TheWritableGlobalData)->m_enableStaticLOD)
-	{
-		state->m_currentStaticLOD = 5;
-		return FALSE;
-	}
-
-	if (level == STATIC_GAME_LOD_UNKNOWN || (level != 5 && state->m_currentStaticLOD == level))
-		return FALSE;
-
-	if (level != 5)
-	{
-		if (state->m_currentStaticLOD == level)
-			return FALSE;
-		state->m_pendingStaticLOD = level;
-	}
-
-	applyStaticLODLevel(level);
-	Int pendingStaticLOD = state->m_pendingStaticLOD;
-	state->m_currentStaticLOD = level;
-
-	if (pendingStaticLOD <= 1)
-	{
-		BfmeGameLODGlobalData *global = reinterpret_cast<BfmeGameLODGlobalData *>(TheWritableGlobalData);
-		if (global)
-			global->m_shellMapOn = FALSE;
-	}
-	else
-	{
-		BfmeGameLODGlobalData *global = reinterpret_cast<BfmeGameLODGlobalData *>(TheWritableGlobalData);
-		if (global->m_shellMapOffByCommandArgument)
-			goto return_true;
-		global->m_shellMapOn = TRUE;
-	}
-
-	if (TheShell)
-		TheShell->showShellMap(TRUE, TRUE);
-
-	return_true:
-	return TRUE;
-}
-
-// ?applyStaticLODLevel@GameLODManager@@IAEXW4StaticGameLODLevel@@@Z present-unmatched
-void GameLODManager::applyStaticLODLevel(StaticGameLODLevel level)
-{
-///@todo: Still need to implement these settings:
-//	m_sampleCount2D=6;
-//	m_sampleCount3D=24;
-//	m_streamCount=2;
-//	m_useEmissiveNightMaterials=TRUE;
-
-	//save previous info for this level since it may be overwritten by refreshCustomStaticLODLevel().
-	StaticGameLODInfo prevLodBackup;
-	if (m_currentStaticLOD != STATIC_GAME_LOD_UNKNOWN)
-		prevLodBackup=m_staticGameLODInfo[m_currentStaticLOD];
-
-	if (level == STATIC_GAME_LOD_CUSTOM)
-		refreshCustomStaticLODLevel();	//store current settings into custom preset
-
-	StaticGameLODInfo *lodInfo=&m_staticGameLODInfo[level];
-	StaticGameLODInfo *prevLodInfo=&prevLodBackup;
-
-	Int requestedTextureReduction = 0;
-	Bool requestedTrees = m_memPassed;	//only use trees if memory requirement passed.
-	if (level == STATIC_GAME_LOD_CUSTOM)
-	{	requestedTextureReduction = lodInfo->m_textureReduction;
-		requestedTrees = lodInfo->m_useTrees;
-	}
-	else
-	if (level >= STATIC_GAME_LOD_LOW)
-	{	//normal non-custom level gets texture reduction based on recommendation
-		requestedTextureReduction = getRecommendedTextureReduction();
-	}
-
-	if (TheGlobalData)
-	{
-		TheWritableGlobalData->m_maxParticleCount=lodInfo->m_maxParticleCount;
-		TheWritableGlobalData->m_useShadowVolumes=lodInfo->m_useShadowVolumes;
-		TheWritableGlobalData->m_useShadowDecals=lodInfo->m_useShadowDecals;
-
-		//Check if texture resolution changed.  No need to apply when current is unknown because display will do it
-		if (requestedTextureReduction != m_currentTextureReduction)
-		{
-				TheWritableGlobalData->m_textureReductionFactor = requestedTextureReduction;
-				if (TheGameClient)
-					TheGameClient->adjustLOD(0);	//apply the new setting stored in globaldata
-		}
-
-		//Check if shadow state changed
-		if (m_currentStaticLOD == STATIC_GAME_LOD_UNKNOWN	||
-			lodInfo->m_useShadowVolumes != prevLodInfo->m_useShadowVolumes ||
-			lodInfo->m_useShadowDecals != prevLodInfo->m_useShadowDecals)
-		{
-			if (TheGameClient)
-			{
-				TheGameClient->releaseShadows();	//free all shadows
-				TheGameClient->allocateShadows();	//allocate those shadows that are enabled.
-			}
-		}
-
-		TheWritableGlobalData->m_useCloudMap=lodInfo->m_useCloudMap;
-		TheWritableGlobalData->m_useLightMap=lodInfo->m_useLightMap;
-		TheWritableGlobalData->m_showSoftWaterEdge=lodInfo->m_showSoftWaterEdge;
-		//Check if shoreline blending mode has changed
-		if (m_currentStaticLOD == STATIC_GAME_LOD_UNKNOWN || lodInfo->m_showSoftWaterEdge != prevLodInfo->m_showSoftWaterEdge)
-		{
-			if (TheTerrainVisual)
-				TheTerrainVisual->setShoreLineDetail();
-		}
-
-		TheWritableGlobalData->m_maxTankTrackEdges=lodInfo->m_maxTankTrackEdges;
-		TheWritableGlobalData->m_maxTankTrackOpaqueEdges=lodInfo->m_maxTankTrackOpaqueEdges;
-		TheWritableGlobalData->m_maxTankTrackFadeDelay=lodInfo->m_maxTankTrackFadeDelay;
-		TheWritableGlobalData->m_useTreeSway=lodInfo->m_useTreeSway;
-		TheWritableGlobalData->m_useDrawModuleLOD=!lodInfo->m_useBuildupScaffolds;
-		TheWritableGlobalData->m_useHeatEffects=lodInfo->m_useHeatEffects;
-		TheWritableGlobalData->m_enableDynamicLOD = lodInfo->m_enableDynamicLOD;
-		TheWritableGlobalData->m_useFpsLimit = lodInfo->m_useFpsLimit;
-		TheWritableGlobalData->m_useTrees = requestedTrees;
-	}
-	// ZH's inline isReallyLowMHz(); the BFME 1 header shim declares it out of
-	// line, and no BFME 2 retail body of it is known.
-	if (!m_memPassed || m_cpuFreq < m_reallyLowMHz) {
-		TheWritableGlobalData->m_shellMapOn = false;
-	}
-	if (TheTerrainVisual)
-		TheTerrainVisual->setTerrainTracksDetail();
-
-}
 
 /**Parse an LOD level*/
 void INI::parseDynamicGameLODLevel( INI* ini, void * , void *store, const void*)
@@ -539,72 +299,6 @@ void INI::parseDynamicGameLODLevel( INI* ini, void * , void *store, const void*)
 const char *GameLODManager::getDynamicGameLODLevelName(DynamicGameLODLevel level)
 {
 	return bfmeStaticLODNames[level];
-}
-
-/**Given an average fps, return the optimal dynamic LOD level that matches this fps.*/
-// ?findDynamicLODLevel@GameLODManager@@QAE?AW4DynamicGameLODLevel@@M@Z present-unmatched here â€” matched copy lives in Common/GameLODManager_findDynamicLODLevel_Thunk.cpp with BFME's enum base and entry size
-DynamicGameLODLevel GameLODManager::findDynamicLODLevel(Real averageFPS)
-{
-	Int ifps=(Int)(averageFPS);	//convert to integer.
-
-	for (Int i=DYNAMIC_GAME_LOD_VERY_HIGH; i>=DYNAMIC_GAME_LOD_LOW; i--)
-	{	//check which of the LOD levels matches our fps
-		if (m_dynamicGameLODInfo[i].m_minFPS < ifps)
-			return (DynamicGameLODLevel)i;
-	}
-	return DYNAMIC_GAME_LOD_LOW;	//none of the low levels were slow enough so pick the lowest.
-}
-
-/**Set all game systems to match the desired LOD level.*/
-// ?setDynamicLODLevel@GameLODManager@@QAE_NW4DynamicGameLODLevel@@@Z present-unmatched
-Bool GameLODManager::setDynamicLODLevel(DynamicGameLODLevel level)
-{
-	if (level == DYNAMIC_GAME_LOD_UNKNOWN || m_currentDynamicLOD == level)
-		return FALSE;
-
-	m_currentDynamicLOD = level;
-
-	applyDynamicLODLevel(level);
-
-	return TRUE;
-}
-
-// ?applyDynamicLODLevel@GameLODManager@@IAEXW4DynamicGameLODLevel@@@Z present-unmatched
-void GameLODManager::applyDynamicLODLevel(DynamicGameLODLevel level)
-{
-	m_numParticleGenerations=0;
-	m_dynamicParticleSkipMask=m_dynamicGameLODInfo[level].m_dynamicParticleSkipMask;
-
-	m_numDebrisGenerations=0;
-	m_dynamicDebrisSkipMask=m_dynamicGameLODInfo[level].m_dynamicDebrisSkipMask;
-
-	m_slowDeathScale=m_dynamicGameLODInfo[level].m_slowDeathScale;
-	m_minDynamicParticlePriority=m_dynamicGameLODInfo[level].m_minDynamicParticlePriority;
-	m_minDynamicParticleSkipPriority=m_dynamicGameLODInfo[level].m_minDynamicParticleSkipPriority;
-}
-
-// ?getRecommendedTextureReduction@GameLODManager@@QAEHXZ present-unmatched
-Int GameLODManager::getRecommendedTextureReduction(void)
-{
-	if (m_idealDetailLevel == STATIC_GAME_LOD_UNKNOWN)
-		findStaticLODLevel();	//it was never tested, so test now.
-
-	if (!m_memPassed)	//if they have < 256 MB, force them to low res textures.
-		return m_staticGameLODInfo[STATIC_GAME_LOD_LOW].m_textureReduction;
-
-	return m_staticGameLODInfo[m_idealDetailLevel].m_textureReduction;
-}
-
-// ?getLevelTextureReduction@GameLODManager@@QAEHW4StaticGameLODLevel@@@Z present-unmatched
-Int GameLODManager::getLevelTextureReduction(StaticGameLODLevel level)
-{
-	return m_staticGameLODInfo[level].m_textureReduction;
-}
-
-// ?didMemPass@GameLODManager@@QAE_NXZ present-unmatched
-Bool GameLODManager::didMemPass( void )
-{ 
-	return m_memPassed;	
 }
 
 //-------------------------------------------------------------------------------------------------

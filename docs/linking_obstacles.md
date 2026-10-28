@@ -4361,6 +4361,20 @@ no new census result or missing retail body is claimed.
   incompatible string/class declarations, not missing rows. Constructor/destructor
   field/virtual names remain a separate reconciliation prerequisite; no linking
   gain or census confirmation is claimed.
+- **GameLOD port seed cleanup (2026-10-28, parent `3215f31ebe`):**
+  [the bounded provider audit](../reverse/attempt_support/gamelod-port-seed-cleanup-20261028.md)
+  removes thirteen unrowed port definitions and their existing unmatched
+  exemptions from `Common/GameLOD.cpp`. Seven rows remain exact (572 bytes),
+  all 95 retained COMDAT providers are identical, and data/identity checks
+  pass. The former OptionsMenu consumer has already removed its callbacks;
+  its rebuilt row is exact and references none of the removed names. Both
+  providers have strict current receipts. Ordinary preview preserves LINKS
+  572 -> 572 bytes against `73061d9452`; the previous Shell blocker is absent.
+  No linking gain or full merge is claimed. The index lacks consumer provenance
+  and `touches` (LINK-017), so wider removed-provider closure awaits census.
+  Hatch-register tightening is blocked by two pre-existing WWLib vector alias
+  keys; no aliases are admitted and no registered debt retirement is claimed.
+  The retained static parser/table and private declarations remain prerequisites.
 - **Remaining / next check:** other ZH-port units (header comment "Ported verbatim from the
   Generals Zero Hour reference") whose U blockers are ZH-only callees: list each defined body,
   check whether its BFME 2 counterpart is rowed under another name or absent, and drop the ZH copy
