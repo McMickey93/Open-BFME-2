@@ -20313,8 +20313,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03C94,4,.data,global,?$S1@?1??getModuleNameKey@DelayedLuaEventUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DelayedLuaEventUpdatePoolKey.cpp,owned,,1,4
 0x00A03C98,4,.data,global,?TheTransportAIUpdatePoolKey@?1??getModuleNameKey@TransportAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp,owned,,1,2
 0x00A03C9C,4,.data,global,?$S1@?1??getModuleNameKey@TransportAIUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp,owned,,1,4
-0x00A03CA0,4,.data,global,?TheWanderAIUpdatePoolKey@?1??getModuleNameKey@WanderAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdatePoolKey.cpp,owned,,1,2
-0x00A03CA4,4,.data,global,?$S1@?1??getModuleNameKey@WanderAIUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdatePoolKey.cpp,owned,,1,4
+0x00A03CA0,4,.data,global,?TheWanderAIUpdatePoolKey@?1??getModuleNameKey@WanderAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdate.cpp,owned,,1,2
+0x00A03CA4,4,.data,global,?$S1@?1??getModuleNameKey@WanderAIUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdate.cpp,owned,,1,4
 0x00A03CA8,4,.data,global,?g_bfmeDockingTraceActive@@3_NA,,unowned,?g_00E03CA8@@3EA;?g_bfmeDockingTraceActive@@3_NA,0,27
 0x00A03CAC,4,.data,global,_s_rva007B1C88,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03CB0,4,.data,global,?key_center@?3??getActionDelayForDock@Rva004A9660@@QAEIPAVObject@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/Common/Rva004A9660Delay.cpp,owned,,1,2
