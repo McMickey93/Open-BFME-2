@@ -3882,6 +3882,20 @@ Remaining / next check (each needs a decision, a row or a shared change; none is
   (0x9B5B88..0x9B5C18). This needs a data-ledger split.
 - `latest_texture` (U in `DebugStatisticsTextureShutdown.cpp`): a file-static in
   `DebugStatisticsRecordTexture.cpp`; the thunk belongs in that TU (consolidation).
+  Cleared in ordinary-preview scope, 2026-10-28: the recording unit now owns
+  the shared handle and vector, with reset/shutdown fragments declaring that
+  storage; the reporting consumer also shares the vector with its vptr restored.
+  All 941 rows, including both initializers and shutdown callbacks, remain exact;
+  the shutdown unit changes from unresolved to LINKS. Six data-debt keys and
+  five address-global hatch occurrences are retired. TU consolidation remains
+  separate. [Storage evidence and preview limits](../reverse/attempt_support/texture-statistics-storage-20261028-codexb.md).
+  Census confirmation is pending. The large thunk unit retains the same
+  unrelated unresolved freelist-clear reference in both previews; its current
+  FreelistPool.cpp provider is absent from this census index.
+  Publication reconciliation: upstream `fc5da7fbc2` independently landed the
+  shared storage with C++ linkage and the compiler-owned _$E5 shutdown row.
+  The replay keeps those definitions and retains the earlier investigation
+  as evidence only; its debt reductions are already upstream, not additional.
 - `@_RTC_CheckStackVars@8` (D in `RtcStack.cpp`): also defined by the vendored msvc71crt lib. This needs
   an owner decision.
   Rechecked 2026-10-28 at `51fa553a3c`, ordinary index `41c28839bf`: the
