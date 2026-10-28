@@ -707,11 +707,12 @@ class Identity:
         return out
 
 
-def load(sources=None, strict=False):
+def load(sources=None, strict=False, *, ledger_rows=None):
     """(Identity, rows to check). Definitions cover every object of the tree;
     the rows checked are all matched rows, or those in `sources`. `strict`:
-    an unparsable object raises Unreadable (definitions)."""
-    rows = census.ledger()
+    an unparsable object raises Unreadable (definitions). `ledger_rows` can
+    supply this invocation's complete ledger snapshot, never a source subset."""
+    rows = census.ledger() if ledger_rows is None else ledger_rows
     # link_census.objects() also extracts library members; a member not
     # extracted yet defines nothing here, as in the link that needs it
     objs = link_order(rows)

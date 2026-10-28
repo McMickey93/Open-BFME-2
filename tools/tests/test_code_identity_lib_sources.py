@@ -43,6 +43,7 @@ class LibSourceScope(unittest.TestCase):
             MEMBER_NAME: [(member_obj, "d2", 110, True), (cpp_obj, "d3", 110, True)],
             "?g@@YAXXZ": [("other.obj", "d4", 5, False)],
         })
+        ident.rows = rows
         seen = {}
         real_analyse = gate.dup_defs.analyse
 

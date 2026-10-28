@@ -196,6 +196,62 @@ class RegisterTests(unittest.TestCase):
         self.assertEqual(dup_defs.debt(found), {"duplicate\ta", "divergent\tc"})
 
 
+def test_load_reuses_complete_snapshot_without_scoping_definitions(monkeypatch):
+    selected = {"source": "Code/a.cpp"}
+    owner = {"source": "Code/b.cpp"}
+    snapshot = [selected, owner]
+    objects, defs = object(), object()
+    seen = {}
+
+    def identity(rows, objs, definitions):
+        seen.update(rows=rows, objs=objs, definitions=definitions)
+        return object()
+
+    def link_order(rows):
+        assert rows is snapshot or rows == []
+        return objects
+
+    def no_reload():
+        pytest.fail("supplied snapshot must not reload the ledger")
+
+    monkeypatch.setattr(allowed.census, "ledger", no_reload)
+    monkeypatch.setattr(allowed, "link_order", link_order)
+    monkeypatch.setattr(allowed, "definitions", lambda objs, strict=False: defs)
+    monkeypatch.setattr(allowed, "Identity", identity)
+    _, rows = allowed.load(["Code/a.cpp"], ledger_rows=snapshot)
+    assert rows == [selected]
+    assert seen == {"rows": snapshot, "objs": objects, "definitions": defs}
+    assert seen["rows"] is snapshot
+    _, rows = allowed.load(ledger_rows=[])
+    assert rows == []
+
+
+def test_duplicate_analysis_skips_owners_without_actionable_copies(monkeypatch):
+    def no_owners(rows):
+        pytest.fail("no actionable duplicates need an ownership map")
+
+    monkeypatch.setattr(dup_defs, "owners_by_name", no_owners)
+    defs = {"single": [("a.obj", "x", 1, False)],
+            "same_object": [("a.obj", "x", 1, True)] * 2,
+            "identical_comdat": [("a.obj", "x", 1, False), ("b.obj", "x", 1, False)],
+            "??_C@literal": [("a.obj", "x", 1, True), ("b.obj", "y", 1, True)]}
+    assert dup_defs.analyse([], defs, None) == []
+
+
+def test_duplicate_analysis_builds_full_owners_once(monkeypatch):
+    from unittest.mock import Mock
+
+    snapshot = [object()]
+    owners = Mock(return_value={"f": {"b.obj"}, "g": {"b.obj"}})
+    monkeypatch.setattr(dup_defs, "owners_by_name", owners)
+    monkeypatch.setattr(dup_defs, "kept_verdict", lambda *args: "wrong")
+    copies = [("a.obj", "x", 1, True), ("b.obj", "y", 1, True)]
+    found = dup_defs.analyse(snapshot, {"f": copies, "g": copies}, None)
+    owners.assert_called_once_with(snapshot)
+    assert all(d["owner"] == "b.obj" and not d["owner_kept"] for d in found)
+    assert dup_defs.debt(found) == {"duplicate\tf", "duplicate\tg"}
+
+
 class TierTests(unittest.TestCase):
     def tier(self, name, notes="", source="Code/x.cpp"):
         return allowed.name_tier({"name": name, "notes": notes, "source": source, "target_rva": "0x00001000"}, {})[0]
@@ -532,7 +588,12 @@ def registers(tmp_path, monkeypatch):
     monkeypatch.setattr(gate, "BASELINE", base)
     monkeypatch.setattr(dup_defs, "BASELINE", dup)
     state = {"found": [], "dup": {"duplicate\t?old@@3HA"}, "ledger": []}
-    monkeypatch.setattr(allowed, "load", lambda sources=None: (_Ident(), []))
+    def load(sources=None, *, ledger_rows=None):
+        ident = _Ident()
+        ident.rows = list(state["ledger"]) if ledger_rows is None else ledger_rows
+        return ident, []
+
+    monkeypatch.setattr(allowed, "load", load)
     monkeypatch.setattr(allowed, "scan", lambda ident, rows: list(state["found"]))
     monkeypatch.setattr(allowed.census, "ledger", lambda: list(state["ledger"]))
     monkeypatch.setattr(dup_defs, "analyse", lambda rows, defs, truth: [])
@@ -545,6 +606,25 @@ def registers(tmp_path, monkeypatch):
 
 def _finding(row):
     return (row, 0, allowed.REL32, "?x@@YAXXZ", 0x2000, "wrong", "")
+
+
+def test_staged_gate_shares_one_complete_ledger_with_compile_and_duplicates(registers, monkeypatch):
+    from unittest.mock import Mock
+
+    selected = {"source": "Code/a.cpp"}
+    owner = {"source": "Code/b.cpp"}
+    snapshot = [selected, owner]
+    ledger = Mock(return_value=snapshot)
+    compile_rows = Mock()
+    analyse = Mock(return_value=[])
+    monkeypatch.setattr(allowed.census, "ledger", ledger)
+    monkeypatch.setattr(allowed.build, "compile_rows", compile_rows)
+    monkeypatch.setattr(dup_defs, "analyse", analyse)
+    monkeypatch.setattr(gate, "staged_sources", lambda: (["Code/a.cpp"], []))
+    assert gate.main(["--staged"]) == 0
+    ledger.assert_called_once_with()
+    compile_rows.assert_called_once_with([selected], [registers["root"] / "Code/a.cpp"])
+    assert analyse.call_args.args[0] is snapshot
 
 
 def _set(path, mode, *keys):
@@ -700,9 +780,11 @@ def test_register_only_reseed_scans_every_source_and_requires_current_objects(re
     monkeypatch.setattr(allowed, "row_object", lambda row: obj)
     monkeypatch.setattr(allowed.build, "compile_is_current", lambda source, path: current)
     calls = []
-    def load(sources=None):
+    def load(sources=None, *, ledger_rows=None):
         calls.append(sources)
-        return _Ident(), [row] if sources is None else []
+        ident = _Ident()
+        ident.rows = [row] if ledger_rows is None else ledger_rows
+        return ident, [row] if sources is None else []
     monkeypatch.setattr(allowed, "load", load)
     _set(registers["base"], "enforce", allowed.key(registers["found"][0]))
     _git(registers["root"], "add", ".")

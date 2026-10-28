@@ -68,7 +68,7 @@ def owners_by_name(rows):
 def analyse(rows, defs, truth):
     """[{class, name, copies, variants, kept, kept_verdict, owner, owner_kept,
     identical_extras}] for every duplicate or divergent name."""
-    owners = owners_by_name(rows)
+    owners = None
     out = []
     for name, copies in defs.items():
         if len(copies) < 2 or name.startswith(IGNORE_PREFIX):
@@ -85,6 +85,8 @@ def analyse(rows, defs, truth):
         else:
             continue
         kept = (excl or copies)[0]
+        if owners is None:
+            owners = owners_by_name(rows)
         mine = owners.get(name, set()) & objs
         owner_copy = next((c for c in copies if c[0] in mine), None)
         verdict = kept_verdict(truth, name, kept)

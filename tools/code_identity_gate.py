@@ -123,13 +123,16 @@ def added_alternatenames():
     return out
 
 
-def check(sources, staged_names, *, full=False, staged=False, notes=None):
+def check(sources, staged_names, *, full=False, staged=False, notes=None, ledger_rows=None):
     """(problems, mode, seconds, rows, found) for the given sources (every matched row when
     full). The registers are the index's when STAGED; NOTES (a list) collects what is said
     but not refused."""
     t0 = time.time()
     notes = [] if notes is None else notes
-    ident, rows = allowed.load(None if full else sources or ["<none>"])
+    ident, rows = allowed.load(None if full else sources or ["<none>"], ledger_rows=ledger_rows)
+    # Identity retains the complete ledger even when `rows` scopes the scan.
+    # Reuse this invocation's snapshot for owners, aliases and tier generation.
+    ledger_rows = ident.rows
     found = allowed.scan(ident, rows)
     reg_text, dup_text, head_text = registers(staged)
     base, mode = read_register(reg_text)
@@ -157,15 +160,15 @@ def check(sources, staged_names, *, full=False, staged=False, notes=None):
         if not s.lower().endswith(allowed.build.LIB_SUFFIX)}
     names = {n for n, copies in ident.defs.items() if full or any(c[0] in objs for c in copies)}
     sub = {n: ident.defs[n] for n in names}
-    dkeys = dup_defs.debt(dup_defs.analyse(rows if full else allowed.census.ledger(), sub, ident.truth))
+    dkeys = dup_defs.debt(dup_defs.analyse(ledger_rows, sub, ident.truth))
     for k in sorted(dkeys - dup_keys(dup_text)):
         problems.append("definition: " + k.replace("\t", " | "))
     # 3) alternatename pragmas added by this commit
     alts = added_alternatenames() if not full else allowed.pragma_alternatenames(
-        sorted({r["source"] for r in allowed.census.ledger()}))
+        sorted({r["source"] for r in ledger_rows}))
     if alts:
         targets = {}
-        everything = allowed.census.ledger()
+        everything = ledger_rows
         if not full:                         # only the rows whose objects reference an alias
             objs = set().union(*(ident.defs.referrers.get(a, set()) for _, a, _ in alts))
             everything = [r for r in everything if str(allowed.row_object(r)) in objs]
@@ -177,7 +180,7 @@ def check(sources, staged_names, *, full=False, staged=False, notes=None):
                 problems.append(f"alternatename ({verdict}): {path}: /alternatename:{a}={b}")
     # 4) name tiers are tool output
     if "reverse/name_tiers.csv" in staged_names:
-        want = allowed.tiers_text(allowed.census.ledger())
+        want = allowed.tiers_text(ledger_rows)
         if (ROOT / "reverse" / "name_tiers.csv").read_text(encoding="utf-8") != want:
             problems.append("reverse/name_tiers.csv differs from tools/allowed_symbols.py --tiers")
     # 5) shrink-only registers. While HEAD's register is in shadow they may grow: that is the
@@ -350,6 +353,7 @@ def main(argv=None):
         write_registers(keys | kept, None, mode)
         print("code identity baseline:", len(keys | kept))
         return 0
+    ledger_rows = None
     if args.staged:
         sources, names = staged_sources()
         if not sources and not any(n in names for n in ("reverse/name_tiers.csv", "reverse/code_identity_baseline.tsv",
@@ -357,12 +361,15 @@ def main(argv=None):
             return 0
         # this hook line runs before the byte gate; compiling here leaves the
         # objects current, so the byte gate after it reuses them
-        claimed = [r for r in allowed.census.ledger() if r["source"] in set(sources)]
+        ledger_rows = allowed.census.ledger()
+        source_set = set(sources)
+        claimed = [r for r in ledger_rows if r["source"] in source_set]
         allowed.build.compile_rows(claimed, sorted({ROOT / r["source"] for r in claimed}))
     else:
         sources, names = [], []
     notes = []
-    problems, mode, secs, nrows, _ = check(sources, names, full=args.full, staged=args.staged, notes=notes)
+    problems, mode, secs, nrows, _ = check(sources, names, full=args.full, staged=args.staged,
+                                        notes=notes, ledger_rows=ledger_rows)
     for n in notes:
         print("  code identity: note: " + n, file=sys.stderr)
     for p in problems:
