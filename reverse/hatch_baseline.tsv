@@ -943,8 +943,8 @@ address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva00
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035B03E.cpp	g_Va012F4C38	1
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035b112.cpp	g_Rva005127A0InGameChat	2
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035b112.cpp	g_Rva012F340C	2
+address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp	g_Va00E0492C	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp	g_Va00E0492C	3
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCtor.cpp	g_Va00E0492C	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptFileTransferPopupCtor.cpp	g_Va00E06398	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptGuiFXCallbacks.cpp	g_Va00E022E0	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptInGameChat.cpp	g_Va00E04478	5
