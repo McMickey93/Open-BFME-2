@@ -6802,3 +6802,30 @@ Completed: the supported merge absorbed Rva001DA2D5Ctor.cpp into INIAudioEventIn
 Remaining / next check: the outgoing audit is INCONCLUSIVE because its index predates the base and MilesAudioManager.cpp and Rva00433390Ctor.cpp lack current receipts. Carry the constructor's moved provider and these affected consumers into the next scheduled census. Eleven whole-file donors still need private-view, template or codegen reconciliation; twenty-three mixed files remain outside the merge.
 
 Clearance: source consolidation and scoped byte/data/EH checks only. Full selected-consumer coverage and census confirmation remain open; no measured linked-byte or image-ownership gain is claimed.
+### LINK-133: ICF-twin rows moved objects ahead in link order, so their wrong COMDAT copies became the kept copy
+
+Status: Open (handoff; the two largest movers are claimed by other seats). Updated: 2026-10-28; inspected revision: `1e9d0f5a75`; index 73061d9452.
+
+Evidence / affected units: `link_census.link_order` places each object by the lowest RVA of any of its rows. The post-census ICF-twin row commits (760b73e4df, a0c3cb8b6a, 991302b1d0, 547b34bc57, 34fbfc03e0) gave several units a row at a low folded address (an 8-byte destructor fold such as 0x00001E13, 0x0006C94B or 0x0007FAB3), so those objects now link far earlier than at the census. Where such an object carries a non-retail COMDAT copy, that copy is now the first one in link order: link.exe keeps it, and `judge_selected` charges every unit touching the name. Ordinary `link_check` cannot see this (it keeps the census positions and only checks the units passed). A scratch whole-ledger simulation (all 21,940 current objects in current `link_order`, census `check_object`/`wrong_selected` rules, census `/MAP` exceptions remapped as `--current-ledger` does) finds 131 census-linked units, 279,690 B, failing only for this reason:
+
+| Mover (census → current position; fold row) | Copies now kept | Units / census bytes |
+| --- | --- | ---: |
+| `WW3D2/Render2DSentenceDrawBFME2.cpp` (4072 → 27; `??1RendererDataStruct@Render2DSentenceClass@@QAE@XZ` 0x00001E13) | `_floorf` (its /G7 `sub esp,8`/`add esp,8` form, 20 B; retail is the 18 B `push ecx`/`pop ecx` form), `??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z`, `??4W3DRadarResetSurface@@QAEAAV0@ABV0@@Z` (both /G7-scheduled), `Add_Quad` (unknown) | 81 / 202,107 (pathfinder.cpp 50,353, seglinerenderer.cpp 18,478, StreakRendererRenderStreak.cpp 14,007, gridcull.cpp 11,117, ...) |
+| `SkirmishAI/AIBuilder.cpp` (17176 → 1975; `??1RvaVector@@QAE@XZ` 0x0007FAB3) | `vector<Object *>` destructor, `push_back`, `_M_insert_overflow` | 28 / 55,572 (HordeContainIface11CSlots.cpp 23,871, GameEngineInit.cpp 9,424, ...) |
+| `assetmanager/Rva00622290CollectKeys.cpp` (20924 → 1509; `??1AssetSetGroup@@QAE@XZ` 0x0006C94B) | `set<Rva001408C0Target *>::insert`, `insert_unique`; its own `find<int>` | 15 / 15,338 |
+| `GUI/window_video_manager.cpp` (11910 → 3933; hashtable `find` 0x00148B27) | WindowVideo hashtable destructor | 2 / 2,250 |
+| `WW3D2/BfmeFVFDescriptorVertexDeclaration.cpp` (4465 → 3879; `vector<ICoord2D>` dtor 0x00142D70) | `vector<ICoord2D>::_M_insert_overflow` | 1 / 1,806 |
+| `RTS3DSceneVisibilityCheck.cpp` (1603 → 1576; `slist<int>` dtor 0x0006FB50) | `slist<int>` constructor | 2 / 986 |
+| `GUI/ChatWindowsLan.cpp` (20005 → 1618; `??1NativeSelectionSet` 0x00073116) | `??0Rva002EE9B7@@QAE@XZ` (unknown) | 1 / 877 |
+| `OpaqueScalarDeletingDtorsB13.cpp` (18901 → 1851; 0x0007FAB3) | `??_GBaseA@@UAEPAXI@Z` (unknown) | 1 / 754 |
+
+In every case the next definer in current link order holds the retail-proven copy, so removing (or correcting) the mover's copy is enough. Five more tiny units (atlbasemodule.cpp `___ImageBase`, four `__imp_` node-allocator users, 440 B) fail the same way in the ordinary preview too: model artifacts, not regressions.
+
+Completed: none landed. Trial: `Rva00622290CollectKeys.cpp` with decl-only `insert`/`insert_unique` specializations changes LoadAsset's frame and collectKeys' binding (6/14 fail); a decl-only `find<int>` member-template specialization crashes cl (C1001). Reverted and logged (re_attempts, 0x00622290).
+
+Remaining / next check:
+- `Render2DSentenceDrawBFME2.cpp` (claimed by another seat): `extern "C" { static float __cdecl floorf(float); }` beside `<math.h>`, the mapper.cpp precedent, gives math.h's inline floorf internal linkage so the unit stops publishing `_floorf` (its rowed WWMath::Floor inlines it); nothing in the object calls the COMDAT, only `.debug$F` names it. `W3DRadarResetSurface::operator=` has no out-of-line caller either, so the import-inline pattern (`__declspec(dllimport) __forceinline`) removes that copy. `??_EPendingSurfaceStruct` needs the unit's view or flags to stop emitting the compiler-generated vector deleting destructor. Recheck with the whole-ledger simulation: the next `_floorf` definer (CameraAnimationTrackLookAtCamera.cpp, position 846) is retail.
+- `AIBuilder.cpp` (claimed by another seat): its `vector<Object *>` copies must equal retail or not be emitted; the next definer (GenericObjectCreationNuggetReallyCreate.cpp, 2709) is retail.
+- Rule question for maintainers: 675 objects are positioned by an ICF-alias row (an address another object's row also claims), many already at the census. If `link_order` ignored such alias rows, objects would sit where their own code is; that is a census rule change (`tools/census_rebaseline.py`), not a seat edit. Until then, a commit that adds a low-address fold row to a unit should first check the unit's other COMDAT copies against the units it overtakes.
+
+Clearance: none. Census confirmation: the next census should show these losses unless the movers are repaired first.
