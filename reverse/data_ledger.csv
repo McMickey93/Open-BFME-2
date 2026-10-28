@@ -20002,8 +20002,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03750,4,.data,global,?TheCivilianSpawnUpdatePoolKey@?1??getModuleNameKey@CivilianSpawnUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdatePoolKey.cpp,owned,,1,2
 0x00A03754,4,.data,global,?$S1@?1??getModuleNameKey@CivilianSpawnUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdatePoolKey.cpp,owned,,1,4
 0x00A03758,4,.data,global,_s_rva007B0FB8,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A0375C,4,.data,global,?TheShareExperienceBehaviorPoolKey@?1??getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp,owned,,1,2
-0x00A03760,4,.data,global,?$S1@?1??getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp,owned,,1,4
+0x00A0375C,4,.data,global,?TheShareExperienceBehaviorPoolKey@?1??getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehavior.cpp,owned,,1,2
+0x00A03760,4,.data,global,?$S1@?1??getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehavior.cpp,owned,,1,4
 0x00A03764,4,.data,global,?TheSlaughterHordeContainPoolKey@?1??getModuleNameKey@SlaughterHordeContain@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/SlaughterHordeContainPoolKey.cpp,owned,,1,2
 0x00A03768,4,.data,global,?$S1@?1??getModuleNameKey@SlaughterHordeContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/SlaughterHordeContainPoolKey.cpp,owned,,1,4
 0x00A0376C,4,.data,global,?TheCitadelSlaughterHordeContainPoolKey@?1??getModuleNameKey@CitadelSlaughterHordeContain@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/CitadelSlaughterHordeContainPoolKey.cpp,owned,,1,2

@@ -232,6 +232,14 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
 class ShareExperienceBehavior : public Module, public BehaviorModuleInterface, public Rva00480093Base10,
 	public Rva00480093Iface20
 {
@@ -243,7 +251,15 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 };
 
-// tu-skeleton: 0x0047FE4B 69B ?getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp
+
+// ?getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ
+NameKeyType ShareExperienceBehavior::getModuleNameKey() const
+{
+	static NameKeyType TheShareExperienceBehaviorPoolKey =
+		TheNameKeyGenerator->nameToKey("ShareExperienceBehavior");
+	return TheShareExperienceBehaviorPoolKey;
+}
 
 // tu-skeleton: 0x0047FE90 76B ??0ShareExperienceBehaviorModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorModuleDataCtor.cpp (not merged yet)
 
@@ -252,6 +268,8 @@ public:
 // tu-skeleton: 0x0047FEED 98B ??0ShareExperienceBehavior@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorCtorThunk.cpp (not merged yet)
 
 // tu-skeleton: 0x0047FF4F 28B ??_GRva0047FE25@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehavior.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorUpdate.cpp
 
@@ -265,10 +283,6 @@ UpdateSleepTime ShareExperienceBehavior::update()
 	}
 	return UPDATE_SLEEP_FOREVER;
 }
-
-// tu-skeleton: 0x0047FFB2 28B ??_GShareExperienceBehaviorModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorModuleDataDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0047FFCE 48B ??1ShareExperienceBehaviorModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorModuleDataDtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorFalloff.cpp
 
@@ -327,9 +341,9 @@ void ShareExperienceBehavior::rva00480093(float amount)
 	}
 }
 
-// tu-skeleton: 0x0078B8FC 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp (not merged yet)
+// tu-skeleton: 0x0047FFB2 28B ??_GShareExperienceBehaviorModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078B909 10B __ehhandler$?getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp (not merged yet)
+// tu-skeleton: 0x0047FFCE 48B ??1ShareExperienceBehaviorModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078B913 8B Unwind@00b8b913 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorCtorThunk.cpp (not merged yet)
 
