@@ -51,14 +51,7 @@ struct AsciiString
 	void *m_data;
 };
 
-struct Coord3D
-{
-	float x;
-	float y;
-	float z;
-
-	Coord3D(const Coord3D &other) : x(other.x), y(other.y), z(other.z) {}
-};
+#include "../../../Include/Lib/Coord3DCtorView.h"
 
 struct GeometryShape
 {
