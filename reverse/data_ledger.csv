@@ -20624,8 +20624,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A0425C,4,.data,global,?TheDarknessSpecialPowerPoolKey@?1??getModuleNameKey@DarknessSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPower.cpp,owned,,1,2
 0x00A04260,4,.data,global,?$S7@?1??getModuleNameKey@DarknessSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPower.cpp,owned,,1,4
 0x00A04264,4,.data,global,_s_rva007B29C8,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A04268,4,.data,global,?TheGrabPassengerSpecialPowerPoolKey@?1??getModuleNameKey@GrabPassengerSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPowerPoolKey.cpp,owned,,1,2
-0x00A0426C,4,.data,global,?$S1@?1??getModuleNameKey@GrabPassengerSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPowerPoolKey.cpp,owned,,1,4
+0x00A04268,4,.data,global,?TheGrabPassengerSpecialPowerPoolKey@?1??getModuleNameKey@GrabPassengerSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPower.cpp,owned,,1,2
+0x00A0426C,4,.data,global,?$S1@?1??getModuleNameKey@GrabPassengerSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPower.cpp,owned,,1,4
 0x00A04270,4,.data,global,_s_rva007B29F2,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A04274,4,.data,global,?TheDeflectSpecialPowerPoolKey@?1??getModuleNameKey@DeflectSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/DeflectSpecialPower.cpp,owned,,1,2
 0x00A04278,4,.data,global,?$S1@?1??getModuleNameKey@DeflectSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/DeflectSpecialPower.cpp,owned,,1,4
