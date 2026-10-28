@@ -4116,6 +4116,7 @@ alternatename	Code/Libraries/Source/WWVegas/WWDebug/debug_stack.cpp	?StackWalk@D
 alternatename	Code/Libraries/Source/WWVegas/WWLib/BFMEPoolCriticalSectionLock.cpp	?spin@LockClass@FastCriticalSectionClass@@CIXPAI@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/DX8SkinFVFCategoryContainer_Add_Mesh.cpp	?Generate_Texture_Categories@DX8FVFCategoryContainer@@QAEXAAVVertex_Split_Table@@I@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/FamilyDeletingDtorsO2.cpp	??1Gen_008AC620@@QAE@XZ	1
+alternatename	Code/Libraries/Source/WWVegas/WWLib/HordeMeleeAmoeba.cpp	??1Rva00587752Record@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/LivingWorldRegionManager_SetRegionReinforcements.cpp	?rva003F1AB9@Rva003F1AB9@@QAEXHHHHHH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/LocomotorPairVectorOverflow.cpp	?Rva004C734DConstruct@@YAXPAURva004C77C4Pair@@ABU1@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/LocomotorPairVectorOverflow.cpp	?Rva004C737ACopy@@YAPAURva004C77C4Pair@@PAU1@00ABURva004C77C4Tag@@@Z	1
@@ -4251,7 +4252,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004D272E.cpp	?ins
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00502EA4.cpp	??$_Construct@URva00502EA4Record@@U1@@_STL@@YAXPAURva00502EA4Record@@ABU1@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00525951.cpp	??MRva00525951Record@@QBE_NABU0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0052BBD7.cpp	??1Rva0052BBD7Record@@QAE@XZ	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp	??1Rva00587752Record@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005CE7CE.cpp	??1Rva005CE7CERecord@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DA663.cpp	??1Rva005DA663Record@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E96DC.cpp	??1Rva005E96DCRecord@@QAE@XZ	1

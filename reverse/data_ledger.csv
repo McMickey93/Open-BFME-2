@@ -13184,7 +13184,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0086FD84,12,.rdata,string,??_C@_0L@EOAPHNND@std?3?3deque?$AA@,,literal,,0,1
 0x0086FD90,64,.rdata,vtable,??_7HordeMeleeFormation@@6B@,,literal,,0,1
 0x0086FDD0,344,.rdata,string,??_C@_0BE@OBKIABFK@HordeMeleeFormation?$AA@,,literal,,0,1
-0x0086FF28,12,.rdata,global,?g_00C6FF28@@3HA,Code/GameEngine/Source/Common/Rva005876D5Ctor.cpp,owned,,1,1
+0x0086FF28,12,.rdata,global,?g_00C6FF28@@3HA,Code/Libraries/Source/WWVegas/WWLib/HordeMeleeAmoeba.cpp,owned,,1,1
 0x0086FF34,4,.rdata,float,__real@be2e147b,,literal,,0,1
 0x0086FF38,196,.rdata,vtable,??_7HordeMeleeAmoeba@@6B@,,literal,,0,1
 0x0086FFFC,12,.rdata,vtable,??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@,,literal,??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$01@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$02@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$03@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$05@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$06@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$07@FXParticleSystem@@6B@;??_7?$CategoryModuleClass@$0A@@FXParticleSystem@@6B@;??_7Base00@@6B@;??_7DWSU_Iface3@@6B@;??_7Rva005AFE3FBase@@6B@;?g_0086FFFC@@3QBQBXB;_s_first0C@Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionAudioLoopClientBehaviorCtor.cpp;_s_firstFC@Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainCtor.cpp;_vtbl_00C6FFFC,2,56
