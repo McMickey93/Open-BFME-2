@@ -1827,6 +1827,19 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 **Assigned engine dependency check (2026-10-27, inspected `97c23353111e60304b56434c02d20bee3465d83f`, ordinary-preview index `5ce093a71a`, retail-truth-4):** current paired objects leave `MapUtil.cpp` U14/L6/S4, `ConnectionManager.cpp` U42/L4/S3, `SkirmishGameOptionsMenu.cpp` U49/L2/S2 and `WOLBuddyOverlay.cpp` U12/L2/S3. No source edit is retained in those units. ConnectionManager subscript 0x004D2941 directly calls 0x0046A9AB (39 B, rowed ushort/byte `_Rb_tree::_M_lower_bound` in `StlO1Instantiations.cpp`) and 0x004D272E (29 B, rowed int/opaque-record map insertion in `StlSweepR3Rva004D272E.cpp`). Its two private adapter names therefore need coherent tree/key/value and folded ownership reconciliation; casting the container to those different instantiations would not be a repair. The other unresolved names in these units have no direct relocation from their matched rows in the inspected objects; they are dependencies of emitted donor bodies/helpers, not evidence of missing native implementations. The shared UnicodeString, WindowLayout, BuddyInfo and map-family prerequisites remain. All assigned rows pass byte verification; the paired preview covers the named current providers. No whole-unit clearance or census confirmation is claimed.
 
+**MapUtil dimension-sharing boundary (2026-10-28, inspected `9bc910b28f`):**
+[The scoped handoff](../reverse/attempt_support/maputil-dimension-sharing-20261028-codexb.md)
+records four rejected source trials for getExtent (RVA `0x003000B5`, 65 B).
+External dimensions change its instruction scheduling; explicit store ordering
+changes XMM allocation, and local aggregate staging adds stack copies. All
+trials are reverted. The restored pair verifies 21/21 function rows and both
+data rows; the ordinary preview against `41c28839bf` retains MapUtil at 0
+linked bytes and the dimensions provider at 164. The current in-memory TU plan
+does not include either getExtent or that provider in the MapUtil destination,
+so the older merge suggestion still needs placement evidence and approval.
+Dimension ownership blocks data-register retirement; the shared interface and
+selected-copy prerequisites remain. No debt retirement or census gain.
+
 ### LINK-006: compiler emission and the selected copy still disagree with retail
 
 - **WindowVideo cleanup provider selection (2026-10-28, inspected `3aba05733d`):**
