@@ -23,7 +23,9 @@
 // RTTI-identified base at 0x1CDB0. The stream globals and class layouts
 // remain the STLport donor's.
 // Original stream context also emits the complete920B wide seekoff at149F0.
-// cl: /MD /D_STLP_USE_STATIC_LIB /Ireference/open-bfme-1/vendor/stlport/src /Ireference/open-bfme-1/vendor/stlport /Ireference/open-bfme-1/vendor/stlport/stl /Ireference/open-bfme-1/vendor/stlport/using /Ireference/open-bfme-1/Code/stlport
+// cl: /MD /D_STLP_USE_STATIC_LIB /Ivendor/stlport-4.6/src
+// stlport46
+// Header migration retains the BFME1-derived bodies and target adaptations below.
 #include "stlport_prefix.h"
 #include <istream>
 #include <stl/_fstream.h>

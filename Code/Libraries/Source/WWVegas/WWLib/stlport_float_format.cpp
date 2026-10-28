@@ -1,10 +1,10 @@
 // cl: /EHsc /MD /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC /DNDEBUG /D_STLP_NO_EXCEPTIONS /DWIN32 /D_WINDOWS
-// stlport
-// STLport 4.6.2 src/num_put_float.cpp with its two private headers embedded.
+// stlport46
+// STLport 4.6 src/num_put_float.cpp with its two private headers embedded.
 // Modified only to embed includes and declare the build options above.
-// Archive: https://sourceforge.net/projects/stlport/files/STLport%20archive/STLport%204/STLport-4.6.2.tar.gz
-// SHA256: b506f0e79adc60663a0dbef7192efa0936566c0d5bcf67637807df70541b9fe3
-// Retail uses the 4.6 string-buffer API; the held 4.5.3 headers preserve its ABI.
+// Archive: https://sourceforge.net/projects/stlport/files/STLport%20archive/STLport%204/STLport-4.6.tar.gz
+// SHA256: 744dd31ac34246bdba4ef50f79b4d936c842a3e4f13915a86cc06f7c7cf84f60
+// Retail uses the 4.6 string-buffer API; this unit compiles against vendor/stlport-4.6.
 /*
  * Copyright (c) 1999
  * Silicon Graphics Computer Systems, Inc.

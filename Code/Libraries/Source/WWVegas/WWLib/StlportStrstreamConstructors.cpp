@@ -1,5 +1,5 @@
 // cl: /EHsc /MD /D_STLP_USE_STATIC_LIB
-// stlport
+// stlport46
 // STLport strstream constructors over the existing _strstream.h/_streambuf.h
 // definitions. Header donor: Open-BFME-1 9cbfb551fe20dae985f91f2319d8997287b6a705.
 // The donor headers establish the stream classes, embedded buffers, and buffer
