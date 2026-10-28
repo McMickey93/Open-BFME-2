@@ -402,7 +402,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva000B67BC.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001DD339.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001DD356.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00215641.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00215641.cpp` | 29 | 3 (U=1, C=1, S=1) | 2026-10-28: unit removed; its row merged by `tu_skeleton.py --merge` into the approved TU `Code/GameEngine/Source/GameLogic/System/PlayerAITypeSet.cpp` (byte-verified). Census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002CF594.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0030B378.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0038151E.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
