@@ -890,7 +890,7 @@ void DX8Wrapper::Release_Device(void)
 // declaration omits this compiler annotation; restoring it also preserves
 // retail's EH transition when the temporary format vector is destroyed.
 // See docs/reconstruction/dx8wrapper-enumeration.md for the complete audit.
-__declspec(nothrow) void __cdecl operator delete[](void *);
+#include <new>
 
 // BFME2 keeps the reference's nine strings and resolution vector, with actual
 // 304-byte D3D9 caps and the 1100-byte adapter identifier between them.
