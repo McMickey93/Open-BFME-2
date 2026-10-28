@@ -97,6 +97,11 @@ struct BfmeStringNoCaseLess
 	bool operator()(const AsciiString &a, const AsciiString &b) const;
 };
 // Bind to the kept retail copy instead of emitting this unit's own.
+namespace _STL {
+template <> void _STLP_alloc_proxy<_Rb_tree_node<AsciiString>*, _Rb_tree_node<AsciiString>, allocator<_Rb_tree_node<AsciiString> > >::deallocate(_Rb_tree_node<AsciiString>*, size_t);
+template <> void allocator<_Rb_tree_node<AsciiString> >::deallocate(_Rb_tree_node<AsciiString>*, size_t) const;
+template <> _Rb_tree_base<AsciiString, allocator<AsciiString> >::~_Rb_tree_base();
+}
 namespace _STL { template <> _Rb_tree<AsciiString,AsciiString,_Identity<AsciiString>,BfmeStringNoCaseLess,allocator<AsciiString> >::~_Rb_tree(); }
 
 typedef std::set<AsciiString, BfmeStringNoCaseLess> FilenameList;
