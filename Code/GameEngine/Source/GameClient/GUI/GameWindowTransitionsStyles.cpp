@@ -551,6 +551,8 @@ struct Gen_00489270
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
 
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
+
 // ---- from Code/GameEngine/Source/Common/ScoreScaleUpTransition_draw.cpp
 
 void ScoreScaleUpTransition::draw()
@@ -1047,6 +1049,26 @@ void CountUpTransition::update(Int frame)
 	}
 }
 
+// ---- from Code/GameEngine/Source/Common/Rva0059B8F0NuggetParse.cpp
+
+// ?parse@Rva0059B8F0Nugget@@SAXPAVINI@@PAX1PBX@Z
+void Rva0059B8F0Nugget::parse(INI *ini, void *instance, void *store, const void *userData)
+{
+	Rva0035D74A *nugget = new Rva0035D74A;
+	ini->initFromINI(nugget, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
+	((Gen_00489270 *)instance)->m((int)nugget);
+}
+
+// ---- from Code/GameEngine/Source/Common/Rva0059EB90IniParse_Rva0035DBA2.cpp
+
+// ?rva0059EB90@@YAXPAVINI@@PAUGen_00489270@@@Z
+void rva0059EB90(INI *ini, Gen_00489270 *store)
+{
+	Rva0035DA01 *item = new Rva0035DA01;
+	ini->initFromINI(item, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
+	store->m((int)item);
+}
+
 // tu-skeleton: 0x0035D6B8 37B ??0ScoreScaleUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/Common/ScoreScaleUpTransition.cpp (not merged yet)
 
 // tu-skeleton: 0x0035D6F9 81B ?Rva0035D6F9Parse@@YAXPAVINI@@PAVRva0035D6F9Holder@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp (not merged yet)
@@ -1061,16 +1083,6 @@ void CountUpTransition::update(Int frame)
 
 // tu-skeleton: 0x0035D7D1 28B ??_GRva0035D74A@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
-// ---- from Code/GameEngine/Source/Common/Rva0059B8F0NuggetParse.cpp
-
-// ?parse@Rva0059B8F0Nugget@@SAXPAVINI@@PAX1PBX@Z
-void Rva0059B8F0Nugget::parse(INI *ini, void *instance, void *store, const void *userData)
-{
-	Rva0035D74A *nugget = new Rva0035D74A;
-	ini->initFromINI(nugget, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
-	((Gen_00489270 *)instance)->m((int)nugget);
-}
-
 // tu-skeleton: 0x0035D83E 230B ?init@ControlBarArrowTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
 
 // tu-skeleton: 0x0035DA01 15B ??1Rva0035DA01@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
@@ -1080,16 +1092,6 @@ void Rva0059B8F0Nugget::parse(INI *ini, void *instance, void *store, const void 
 // tu-skeleton: 0x0035DB3F 71B ??0Rva0035DA01@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/Rva0035DB3FTransitionCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0035DB86 28B ??_GRva0035DA01@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/Common/Rva0059EB90IniParse_Rva0035DBA2.cpp
-
-// ?rva0059EB90@@YAXPAVINI@@PAUGen_00489270@@@Z
-void rva0059EB90(INI *ini, Gen_00489270 *store)
-{
-	Rva0035DA01 *item = new Rva0035DA01;
-	ini->initFromINI(item, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
-	store->m((int)item);
-}
 
 // tu-skeleton: 0x0035DBF3 262B ?init@MainMenuSmallScaleDownTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuSmallScaleDownTransitionInit.cpp (not merged yet)
 
@@ -1123,7 +1125,15 @@ void rva0059EB90(INI *ini, Gen_00489270 *store)
 
 // tu-skeleton: 0x0035E2DE 8B ?rva0035E2DE@Rva0035E2DE@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesA.cpp (not merged yet)
 
-// tu-skeleton: 0x0035E2E6 37B ??0Rva0035E2E6@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E2E6Ctor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva0035E2E6Ctor.cpp
+
+Rva0035E2E6::Rva0035E2E6()
+{
+    m_win = 0;
+    m_20 = -1;
+    m_frameLength = 6;
+    m_isForward = true;
+}
 
 // tu-skeleton: 0x0035E30B 28B ??_GRva0035E2E6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
@@ -1133,7 +1143,16 @@ void rva0059EB90(INI *ini, Gen_00489270 *store)
 
 // tu-skeleton: 0x0035E603 8B ?rva0035E603@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
 
-// tu-skeleton: 0x0035E60B 41B ??0Rva0035E60B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E60BCtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva0035E60BCtor.cpp
+
+Rva0035E60B::Rva0035E60B()
+{
+    m_24 = 0;
+    m_win = 0;
+    m_20 = -1;
+    m_frameLength = 0x11;
+    m_isForward = true;
+}
 
 // tu-skeleton: 0x0035E634 28B ??_GRva0035E60B@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
@@ -1151,7 +1170,15 @@ void rva0059EB90(INI *ini, Gen_00489270 *store)
 
 // tu-skeleton: 0x0035EE5E 8B ?rva0035EE5E@Rva0035EE5E@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesA.cpp (not merged yet)
 
-// tu-skeleton: 0x0035EE66 37B ??0Rva0035EE66@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035EE66Ctor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva0035EE66Ctor.cpp
+
+Rva0035EE66::Rva0035EE66()
+{
+    m_win = 0;
+    m_20 = -1;
+    m_frameLength = 8;
+    m_isForward = true;
+}
 
 // tu-skeleton: 0x0035EE8B 28B ??_GRva0035EE66@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
@@ -1169,7 +1196,15 @@ void rva0059EB90(INI *ini, Gen_00489270 *store)
 
 // tu-skeleton: 0x0035F49E 8B ?rva0035F49E@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
 
-// tu-skeleton: 0x0035F4A6 37B ??0Rva0035F4A6@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035F4A6Ctor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva0035F4A6Ctor.cpp
+
+Rva0035F4A6::Rva0035F4A6()
+{
+    m_win = 0;
+    m_20 = -1;
+    m_frameLength = 0xA;
+    m_isForward = true;
+}
 
 // tu-skeleton: 0x0035F4CB 28B ??_GRva0035F4A6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
