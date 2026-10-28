@@ -20660,8 +20660,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A042F4,4,.data,global,?$S1@?1??getModuleNameKey@SplitHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SplitHordeSpecialPowerPoolKey.cpp,owned,,1,4
 0x00A042F8,4,.data,global,?TheRepairSpecialPowerPoolKey@?1??getModuleNameKey@RepairSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/RepairSpecialPowerPoolKey.cpp,owned,,1,2
 0x00A042FC,4,.data,global,?$S1@?1??getModuleNameKey@RepairSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/RepairSpecialPowerPoolKey.cpp,owned,,1,4
-0x00A04300,4,.data,global,?TheCombineHordeSpecialPowerPoolKey@?1??getModuleNameKey@CombineHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/CombineHordeSpecialPowerPoolKey.cpp,owned,,1,2
-0x00A04304,4,.data,global,?$S1@?1??getModuleNameKey@CombineHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/CombineHordeSpecialPowerPoolKey.cpp,owned,,1,4
+0x00A04300,4,.data,global,?TheCombineHordeSpecialPowerPoolKey@?1??getModuleNameKey@CombineHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/CombineHordeSpecialPower.cpp,owned,,1,2
+0x00A04304,4,.data,global,?$S1@?1??getModuleNameKey@CombineHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/CombineHordeSpecialPower.cpp,owned,,1,4
 0x00A04308,4,.data,global,_s_rva007B2B36,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A0430C,4,.data,global,?TheHordeDispatchSpecialPowerPoolKey@?1??getModuleNameKey@HordeDispatchSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/HordeDispatchSpecialPowerPoolKey.cpp,owned,,1,2
 0x00A04310,4,.data,global,?$S1@?1??getModuleNameKey@HordeDispatchSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/HordeDispatchSpecialPowerPoolKey.cpp,owned,,1,4
