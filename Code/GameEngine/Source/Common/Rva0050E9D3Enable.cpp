@@ -78,7 +78,7 @@ void __stdcall Rva004E40A6Enable(int unused)
 // 0x00BB8F26) via rowed _atexit, then return address of 0x00A0445C.
 // Callers at 0x004E41BF 0x004E4317 0x004E4321 0x004E432C plus jmp thunk
 // 0x004E4312; caller 0x004E432A uses +4 as flag byte.
-extern "C" int __cdecl atexit(void (__cdecl *routine)(void));
+#include <stdlib.h>
 namespace FXParticleSystem
 {
 	class OutwardEmissionVelocityInfo
