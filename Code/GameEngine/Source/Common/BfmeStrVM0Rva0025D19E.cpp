@@ -7,42 +7,7 @@
 // (0x009E0878, via the pinned operator=), and stamps -1 at +0xE0/+0xE4.
 // Evidence: sole caller at 0x0025D6A4 (unclaimed dtor, same this); rowed
 // StringBase<char>::isEmpty (AsciiString.cpp) and slot-7 BfmeVM0Timer virtual.
-#include "ascii_string.h"
-
-
-class BfmeVM0Timer
-{
-public:
-	virtual int v0();
-	virtual int v1();
-	virtual int v2();
-	virtual int v3();
-	virtual int v4();
-	virtual int v5();
-	virtual int v6();
-	virtual int v7();
-};
-
-class Display
-{
-public:
-	void rva0025D10F();
-	void rva0025D19E();
-private:
-	char m_pad00[0x38];
-	BfmeVM0Timer *m_timer;
-	char m_pad3C[0x28];
-	bool m_b64;
-	char m_pad65[0x63];
-	float m_fC8;
-	float m_fCC;
-	AsciiString m_name;
-	char m_padD4[0x0c];
-	int m_iE0;
-	int m_iE4;
-	char m_padE8[0x24];
-	bool m_b10C;
-};
+#include "../GameClient/DisplayStaticDebugView.h"
 
 void Display::rva0025D19E()
 {

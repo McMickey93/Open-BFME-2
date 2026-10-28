@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 
+#include "ascii_string.h"
+
 // Shared prefix for the rowed static-image and debug-callback methods.
 // Retail W3DDisplay vtable RVA 0x007C3C80, slot 74 (+0x128), contains
 // VA 0x0065C6BD: Display::setDebugDisplayCallback. Unknown slots retain pads.
@@ -10,6 +12,19 @@ class DebugDisplayInterface;
 typedef void DebugDisplayCallback(DebugDisplayInterface *, void *, FILE *);
 
 class W3DDisplay;
+
+class BfmeVM0Timer
+{
+public:
+	virtual int v0();
+	virtual int v1();
+	virtual int v2();
+	virtual int v3();
+	virtual int v4();
+	virtual int v5();
+	virtual int v6();
+	virtual int v7();
+};
 class Image;
 
 class Rva0025C6E2Elem
@@ -109,6 +124,8 @@ public:
 	void DrawStaticImage(int index, int arg);
 	void SetMovieImage(int image, int index, float x0, float y0, float x1, float y1);
 	void SetStaticImage(int image, int index, float x0, float y0, float x1, float y1);
+	void rva0025D10F();
+	void rva0025D19E();
 	void rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20);
 
 private:
@@ -118,9 +135,21 @@ private:
 	unsigned char m_pad14[0x30 - 0x14];
 	DebugDisplayCallback *m_debugDisplayCallback; // +0x30
 	void *m_debugDisplayUserData; // +0x34
-	unsigned char m_pad38[0x68 - 0x38];
+	BfmeVM0Timer *m_timer; // +0x38
+	unsigned char m_pad3C[0x64 - 0x3C];
+	bool m_b64; // +0x64
+	unsigned char m_pad65[0x68 - 0x65];
 	Rva0025C6E2Elem m_staticImages[MAX_STATIC_IMAGES]; // +0x68
-	unsigned char m_padB0[0x110 - 0xB0];
+	unsigned char m_padB0[0xC8 - 0xB0];
+	float m_fC8;
+	float m_fCC;
+	AsciiString m_name; // +0xD0
+	unsigned char m_padD4[0xE0 - 0xD4];
+	int m_iE0;
+	int m_iE4;
+	unsigned char m_padE8[0x10C - 0xE8];
+	bool m_b10C; // +0x10C
+	unsigned char m_pad10D[0x110 - 0x10D];
 	int m_110;
 	unsigned char m_pad114[4];
 	int m_118;
