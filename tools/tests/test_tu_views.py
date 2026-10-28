@@ -252,6 +252,12 @@ class Conflicts(unittest.TestCase):
         rep, _ = self.plan(SEED, used)
         self.assertEqual(rep["classes"]["Foo"]["status"], "conflict")
 
+    def test_a_before_field_block_is_padding(self):
+        donor = ("class Foo\n{\npublic:\n\tunsigned char m_beforeY[4];\n\tfloat m_y;\n};\n"
+                 "float g(Foo *f) { return f->m_y; }\n")
+        rep, _ = self.plan(SEED, donor)
+        self.assertEqual(rep["classes"]["Foo"]["status"], "plan")
+
     def test_one_offset_typed_as_different_things(self):
         donor = "class Foo\n{\npublic:\n\tint m_x;\n\tint m_count;\n};\nvoid g(Foo *f) { f->m_count = 0; }\n"
         rep, _ = self.plan(SEED, donor)

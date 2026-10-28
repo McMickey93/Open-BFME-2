@@ -25,7 +25,7 @@ public:
 	AsciiString resolveName(const AsciiString &s);
 };
 
-class ScriptEngine : public Rva002046C0Owner
+class ScriptEngine
 {
 public:
 	int rva00357B82(Parameter *p);
@@ -86,7 +86,7 @@ protected:
 bool ScriptConditions::evaluateHasCommandPointsToBuildTeam(Parameter *parameter, Parameter *p1)
 {
 	AsciiString s1 = p1->m_string;
-	AsciiString s2 = TheScriptEngine->resolveName(s1);
+	AsciiString s2 = ((Rva002046C0Owner *)TheScriptEngine)->resolveName(s1);
 	TeamPrototype *proto = TheTeamFactory->findTeamPrototype(s2, s1);
 	if (proto == 0)
 		return false;

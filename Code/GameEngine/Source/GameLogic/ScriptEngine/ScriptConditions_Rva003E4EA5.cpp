@@ -5,6 +5,8 @@
 // prev 0x003E4BFA evaluateSkirmishPlayerHasBeenAttackedByPlayer; next
 // 0x003E514F Rva003E514FCheck.
 class Parameter;
+class AsciiString;
+class Waypoint;
 class TerrainLogic
 {
 public:
@@ -13,7 +15,7 @@ public:
 	virtual void _d14(), _d15(), _d16(), _d17(), _d18(), _d19(), _d20();
 	virtual void _d21(), _d22(), _d23(), _d24(), _d25(), _d26(), _d27();
 	virtual void _d28(), _d29(), _d30(), _d31(), _d32(), _d33();
-	virtual void *slot88(void *arg);
+	virtual Waypoint *getWaypointByName(const AsciiString &name);
 };
 extern TerrainLogic *TheTerrainLogic;
 class TacticalView
@@ -29,7 +31,7 @@ extern class View *TheTacticalView;
 
 bool __stdcall Rva003E4EA5Get(Parameter *parameter)
 {
-	void *cell = TheTerrainLogic->slot88((void *)((char *)parameter + 0x10));
+	void *cell = TheTerrainLogic->getWaypointByName(*(const AsciiString *)((char *)parameter + 0x10));
 	if (cell) {
 		int val = *(int *)((char *)cell + 4);
 		return ((TacticalView *)TheTacticalView)->slot6C(val);

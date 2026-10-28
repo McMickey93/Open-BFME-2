@@ -91,10 +91,10 @@ import header_adopt_lane as hal  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = ROOT / "reverse" / "canonical_classes.csv"
 ACCESS = re.compile(r"^(public|protected|private)\s*:(?!:)\s*")
-PAD = re.compile(r"^(m_)?_?(pad|unk|gap|reserved|unused)", re.I)
+PAD = re.compile(r"^(m_)?_?(pad|unk|gap|reserved|unused|before)", re.I)
 # A padding member another class of the same file declares: `char m_pad[0x1C];`
 PAD_DECL = re.compile(r"(?<![\w.>])(?!(?:return|throw|delete|case|goto|sizeof)\b)[A-Za-z_]\w*[\s*]+"
-                      r"((?:m_)?_?(?:pad|unk|gap|reserved|unused)\w*)\s*(?:\[[^\];\n]*\]\s*)*;", re.I)
+                      r"((?:m_)?_?(?:pad|unk|gap|reserved|unused|before)\w*)\s*(?:\[[^\];\n]*\]\s*)*;", re.I)
 CALLCONV = ("__cdecl", "__stdcall", "__fastcall", "__thiscall")
 TYPE_WORDS = set("const volatile unsigned signed int char short long float double bool void wchar_t __int64 "
                  "__int32 __int16 __int8 struct class enum union".split())

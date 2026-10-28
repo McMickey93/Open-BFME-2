@@ -20,13 +20,13 @@ class PolygonTrigger;
 class ThingTemplate
 {
 public:
-    unsigned char m_pad[0x113];
-    unsigned char m_kindOf113; // KindOf bits; 0x02 here is the inert flag
+    unsigned char m_pad[0x108];
+    unsigned char m_kindOf[16]; // +0x108 KindOf bits; 0x02 of byte 11 is the inert flag
 };
 class Object
 {
 public:
-    Bool isKindOfInert() const { return (m_template->m_kindOf113 & 0x02) != 0; }
+    Bool isKindOfInert() const { return (m_template->m_kindOf[0x113 - 0x108] & 0x02) != 0; }
     Bool didEnter(PolygonTrigger *trigger);
     Bool didExit(PolygonTrigger *trigger);
 private:

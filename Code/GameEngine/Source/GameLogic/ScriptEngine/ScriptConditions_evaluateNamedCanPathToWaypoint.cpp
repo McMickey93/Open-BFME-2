@@ -32,44 +32,45 @@ public:
 	Coord3D m_0c; // +0x0C
 };
 
+class AsciiString;
 class TerrainLogic
 {
 public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void v07();
-	virtual void v08();
-	virtual void v09();
-	virtual void v10();
-	virtual void v11();
-	virtual void v12();
-	virtual void v13();
-	virtual void v14();
-	virtual void v15();
-	virtual void v16();
-	virtual void v17();
-	virtual void v18();
-	virtual void v19();
-	virtual void v20();
-	virtual void v21();
-	virtual void v22();
-	virtual void v23();
-	virtual void v24();
-	virtual void v25();
-	virtual void v26();
-	virtual void v27();
-	virtual void v28();
-	virtual void v29();
-	virtual void v30();
-	virtual void v31();
-	virtual void v32();
-	virtual void v33();
-	virtual Waypoint *getWaypointByName(const void *p);
+	virtual void _d00();
+	virtual void _d01();
+	virtual void _d02();
+	virtual void _d03();
+	virtual void _d04();
+	virtual void _d05();
+	virtual void _d06();
+	virtual void _d07();
+	virtual void _d08();
+	virtual void _d09();
+	virtual void _d10();
+	virtual void _d11();
+	virtual void _d12();
+	virtual void _d13();
+	virtual void _d14();
+	virtual void _d15();
+	virtual void _d16();
+	virtual void _d17();
+	virtual void _d18();
+	virtual void _d19();
+	virtual void _d20();
+	virtual void _d21();
+	virtual void _d22();
+	virtual void _d23();
+	virtual void _d24();
+	virtual void _d25();
+	virtual void _d26();
+	virtual void _d27();
+	virtual void _d28();
+	virtual void _d29();
+	virtual void _d30();
+	virtual void _d31();
+	virtual void _d32();
+	virtual void _d33();
+	virtual Waypoint *getWaypointByName(const AsciiString &name);
 };
 extern TerrainLogic *TheTerrainLogic;
 
@@ -99,7 +100,7 @@ bool ScriptConditions::evaluateNamedCanPathToWaypoint(Parameter *parameter, Para
 	Object *object = TheScriptEngine->getUnitNamed(parameter);
 	if (!object)
 		return false;
-	Waypoint *way = TheTerrainLogic->getWaypointByName((const void *)((const char *)b + 0x10));
+	Waypoint *way = TheTerrainLogic->getWaypointByName(*(const AsciiString *)((const char *)b + 0x10));
 	if (!way)
 		return false;
 	Pathfinder *pf = TheAI->m_10;

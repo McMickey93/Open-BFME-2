@@ -42,7 +42,7 @@ public:
 	virtual void _d14(), _d15(), _d16(), _d17(), _d18(), _d19(), _d20();
 	virtual void _d21(), _d22(), _d23(), _d24(), _d25(), _d26(), _d27();
 	virtual void _d28(), _d29(), _d30(), _d31(), _d32(), _d33();
-	virtual Waypoint *findWaypoint(const AsciiString &name);
+	virtual Waypoint *getWaypointByName(const AsciiString &name);
 };
 extern TerrainLogic *TheTerrainLogic;
 class Pathfinder
@@ -73,7 +73,7 @@ bool ScriptConditions::evaluateTeamCanPathToWaypoint(Parameter *parameter, Param
 	Object *teamObj = team->rva0039E8EB();
 	if (!teamObj)
 		return false;
-	Waypoint *way = TheTerrainLogic->findWaypoint(p1->m_string);
+	Waypoint *way = TheTerrainLogic->getWaypointByName(p1->m_string);
 	if (!way)
 		return false;
 	Pathfinder *pf = TheAI->m_10;

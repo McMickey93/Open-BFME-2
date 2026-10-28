@@ -9,26 +9,28 @@
 // The banked attempt named this void; the constructor signature is what the
 // bytes prove.
 
+#include "../../../Libraries/Include/Lib/Coord3D.h"
+
+typedef int Int;
+typedef float Real;
+
 class Rva003E5563
 {
 public:
 	Rva003E5563();
 
-private:
-	float m_00;
-	float m_04;
-	float m_08;
-	float m_0c;
-	int m_10;
-	int m_14;
+	Coord3D m_pos;				// +0x00
+	Real m_distSqr;				// +0x0C
+	Int m_count;				// +0x10
+	Int m_max;				// +0x14
 };
 
 Rva003E5563::Rva003E5563()
 {
-	m_10 = 0;
-	m_00 = 0.0f;
-	m_04 = 0.0f;
-	m_08 = 0.0f;
-	m_0c = 0.0f;
-	m_14 = 0x7ffffffe;
+	m_count = 0;
+	m_pos.x = 0.0f;
+	m_pos.y = 0.0f;
+	m_pos.z = 0.0f;
+	m_distSqr = 0.0f;
+	m_max = 0x7ffffffe;
 }

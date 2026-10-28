@@ -216,7 +216,7 @@ public:
 		return ((Rva00376A62 *)this)->rva00376A84(thingTemplate);
 	}
 private:
-	unsigned char m_typesState[0x14 - 4]; // 0x14-byte object (ctor 0x003769F9)
+	unsigned char m_padTypesState[0x14 - 4]; // 0x14-byte object (ctor 0x003769F9)
 };
 
 class ObjectTypesTemp

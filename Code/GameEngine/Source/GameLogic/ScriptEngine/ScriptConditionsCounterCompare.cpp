@@ -44,7 +44,7 @@ public:
 private:
 	char m_unknown[8];
 	int m_numParms;
-	Parameter *m_parameters[12];
+	Parameter *m_parameters[13];
 };
 
 struct ScriptCounter
