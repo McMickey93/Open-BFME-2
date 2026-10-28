@@ -1,5 +1,4 @@
-// cl: -DNDEBUG -DWIN32 -D_WINDOWS -MD -EHsc -Ireference/open-bfme-1/inputs/reference/shims/iniexception -Ireference/open-bfme-1/inputs/reference/shims/sweep -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/Drawable/Behavior
-// stlport
+// cl: -DNDEBUG -DWIN32 -D_WINDOWS -MD -EHsc
 //
 // The AnimationSoundClientBehaviorGlobalSetting block -- BFME-only, one global
 // tuning value for the AnimationSoundClientBehavior module, and a block that
@@ -7,30 +6,61 @@
 //
 // The refusal is the message-carrying throw BFME uses in place of Zero Hour's
 // bare INI_INVALID_DATA, and its text is verbatim from the image.
-#include "PreRTS.h"
-#include "Common/INI.h"
-#include "Common/INIException.h"
+
+class INI;
+
+typedef void (*INIFieldParseProc)( INI *ini, void *instance, void *store, const void *userData );
+
+struct FieldParse
+{
+	const char *token;
+	INIFieldParseProc parse;
+	const void *userData;
+	int offset;
+};
+
+enum INILoadType
+{
+	INI_LOAD_INVALID,
+	INI_LOAD_OVERWRITE,
+	INI_LOAD_CREATE_OVERRIDES,
+	INI_LOAD_MULTIFILE
+};
 
 // BFME keeps m_loadType at INI+0x08; Zero Hour's header puts it at +0x2010
 // because of the 8KB read buffer BFME does not have (docs/ini_loading.md).
-static INILoadType retailLoadType( const INI *ini )
+class INI
 {
-	struct RetailINI { char m_pad[ 0x08 ]; INILoadType m_loadType; };
-	return reinterpret_cast<const RetailINI *>( ini )->m_loadType;
-}
+public:
+	void initFromINI( void *what, const FieldParse *parseTable );
+	static void parseReal( INI *ini, void *instance, void *store, const void *userData );
+	INILoadType getLoadType() const { return m_loadType; }
+
+private:
+	char m_pad[ 0x08 ];
+	INILoadType m_loadType;	// +0x08
+};
+
+class INIException
+{
+public:
+	char *mFailureMessage;
+	int m_argCount;
+	INIException(int argCount, const char *errorMessage, ...);
+	INIException(const INIException &that);
+	~INIException();
+};
 
 struct AnimationSoundClientBehaviorGlobalSetting
 {
-	Real m_minMicrophoneDistanceToDirty;	// 0x00  MinMicrophoneDistanceToDirty
+	float m_minMicrophoneDistanceToDirty;	// 0x00  MinMicrophoneDistanceToDirty
 
 	static const FieldParse m_fieldParseTable[];
 };
-extern "C" {
-void __identifier("?parseReal@INI@@SAXPAV1@PAX1PBX@Z")();
-}
-// The retail table at 0x0083CA88: 1 entries and the null terminator; every parser is a rowed code owner.
+
+// The retail table at 0x0083CA88: 1 entry and the null terminator.
 const FieldParse AnimationSoundClientBehaviorGlobalSetting::m_fieldParseTable[2] = {
-	{ "MinMicrophoneDistanceToDirty", (INIFieldParseProc)&__identifier("?parseReal@INI@@SAXPAV1@PAX1PBX@Z"), 0, 0x0 },
+	{ "MinMicrophoneDistanceToDirty", &INI::parseReal, 0, 0x0 },
 	{ 0, 0, 0, 0 }
 };
 
@@ -40,7 +70,7 @@ extern AnimationSoundClientBehaviorGlobalSetting TheAnimationSoundClientBehavior
 
 void parseAnimationSoundClientBehaviorGlobalSetting( INI *ini )
 {
-	if( retailLoadType( ini ) == INI_LOAD_CREATE_OVERRIDES )
+	if( ini->getLoadType() == INI_LOAD_CREATE_OVERRIDES )
 		throw INIException( 3, "Cannot override AnimationSoundClientBehaviorGlobalSetting in map.ini" );
 
 	ini->initFromINI( &TheAnimationSoundClientBehaviorGlobalSetting,

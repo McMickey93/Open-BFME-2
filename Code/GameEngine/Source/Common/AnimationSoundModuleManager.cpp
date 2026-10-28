@@ -44,7 +44,14 @@ class AnimationSoundClientBehavior {public:
  void updateAnimationSounds();
 };
 
-struct AnimationSoundClientBehaviorGlobalSetting {float m_minMicrophoneDistanceToDirty;};
+struct FieldParse;
+
+struct AnimationSoundClientBehaviorGlobalSetting
+{
+	float m_minMicrophoneDistanceToDirty;	// 0x00  MinMicrophoneDistanceToDirty
+
+	static const FieldParse m_fieldParseTable[];
+};
 
 // Native complete4B setting atDC898C starts at50.0f; the manager reads
 // that one scalar for the squared-distance threshold.
