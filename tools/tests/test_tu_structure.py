@@ -908,6 +908,30 @@ def test_b1_private_copy_of_registered_class(repo):
     assert staged(repo) == set()
 
 
+@pytest.mark.parametrize("declaration", [
+    "class Reg::Version",
+    "struct Reg::Version",
+    "class __declspec(novtable) Reg::Version",
+    "class Reg::More::Version",
+])
+def test_b1_qualified_nested_class_is_not_its_registered_owner(repo, declaration):
+    # DetachableRiderUpdate defines Xfer::Version beside the canonical Xfer
+    # include. The scope qualifier must not be parsed as an inheritance colon.
+    (repo / "Code/X/Baz.cpp").write_text(
+        '#include "Shared.h"\n' + declaration + "\n{\npublic:\n"
+        "    unsigned char current;\n    unsigned char minimum;\n};\n")
+    assert staged(repo) == set()
+    name = declaration.rsplit(" ", 1)[-1]
+    assert name in tu_ownership.class_bodies(declaration + "\n{\n};\n")
+
+
+@pytest.mark.parametrize("bases", [": public Base", ":public Scope::Base"])
+def test_b1_inherited_private_copy_of_registered_class_is_refused(repo, bases):
+    (repo / "Code/X/Baz.cpp").write_text(
+        "class Reg" + bases + "\n{\npublic:\n    int a;\n    float b;\n};\n")
+    assert staged(repo) == {"B1"}
+
+
 def test_b2_fingerprint_is_diagnostic_only(repo):
     (repo / "Code/X/Qux.cpp").write_text("class Rva00001234\n{\npublic:\n    int x;\n    float y;\n};\n")
     git(repo, "add", "-A")

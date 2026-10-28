@@ -68,3 +68,21 @@ the qualified-class false reject with a regression test in a separate commit
 before retrying this unchanged composition. Full selected-provider/consumer
 closure still needs the next normal census/index (LINK-017); no new census,
 image-ownership or runtime result is claimed.
+
+## Separate verifier repair
+
+After publishing the false-reject record, the tooling scope was claimed.
+Four qualified-class regression variants fail with the original parser; two
+ordinary inheritance controls already refuse private registered classes.
+The separate repair retains the whole qualified class name and requires a
+single inheritance colon. It introduces no exemption or class allow marker.
+
+The combined TU-structure and gate-exploit run reports 129 passed and one
+skipped, with two pre-existing skeleton fixture failures excluded after
+reproducing both against the unmodified ownership module from HEAD. Those
+failures are `test_generated_placeholder_file_is_never_a_donor` (fixture's
+stale placement map yields no rows) and
+`test_repoint_moves_only_absorbed_donor_rows_and_keeps_terminators` (removed
+`tu_skeleton.repoint` API). Neither is changed here. All gate-exploit cases
+run with their existing refusal and positive controls. The qualified-class
+repair is committed separately from the restored trial and retry.

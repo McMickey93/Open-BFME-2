@@ -59,7 +59,8 @@ ROOT = Path(__file__).resolve().parents[1]
 LAYOUT = tu_map.Layout(ROOT)
 BLOCKING = {"A1", "A2", "A3", "A4", "B1"}
 DEF = re.compile(r"^(?!\s)(?!.*\binline\b)(?!template\b)(?!#)(?!//)[^;{}=()]*?\b([A-Za-z_]\w*)\s*::\s*(~?[A-Za-z_]\w*)\s*\([^;]*$")
-CLASS = re.compile(r"^\s*(?:class|struct)\s+(?:__declspec\([^)]*\)\s*)?([A-Za-z_]\w*)\s*(:[^{;]*)?\{?\s*$")
+# Preserve qualified names: Xfer::Version is not a private definition of Xfer.
+CLASS = re.compile(r"^\s*(?:class|struct)\s+(?:__declspec\([^)]*\)\s*)?([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*(:(?!:)[^{;]*)?\{?\s*$")
 ALLOW = re.compile(r"//\s*class-gate:\s*allow\s+(\w+)\s+\S")
 
 
