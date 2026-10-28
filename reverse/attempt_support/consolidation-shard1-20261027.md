@@ -75,3 +75,12 @@ After rebasing the inherited handoff commits on current `origin/master`, these a
 - `Mouse.cpp`: merge stopped before donor trials because the TU itself loses one row under the carried flag override. `adopt_first` reports `SubsystemInterface` for `Rva001EE3DEDtor.cpp`; LinkGuard lists 15 census-linked units.
 
 No destination or donor claims were taken, so there are no live claims to release. All remaining failures need source/header, flag, or provider work outside this mechanical seat. No TU was merged; net source-file reduction is zero and all matched rows remain untouched.
+
+Additional full-list allocated trials from the resumed seat, all with current scoped planner checks and no source or ledger writes:
+
+- `PlayerTemplate.cpp`: accepted none. Donors require `PlayerTemplateVector::operator[]`, `PlayerTemplateStore` methods/members, and `TheNameKeyGenerator`; other donors duplicate `_STL::_List_iterator::operator!=`, `_STL::_Rb_tree`, and `StringBase`, or fail bytes. LinkGuard lists 14 census-linked units.
+- `udp.cpp`: accepted none. Three donors require missing `UDP::rva00594976`, `UDP::rva00594A06`, or `UDP::rva00594B2E` and corresponding socket/error members. LinkGuard lists the seed and all three donors.
+- `frustum.cpp`: accepted none. `FrustumInitWrappers.cpp` requires absent `FrustumClass::rva00133400` and `Init`. LinkGuard lists both objects.
+- `AptValueGCAllocator.cpp`: accepted none. `Rva006D29E0Cluster.cpp` duplicates `Rva006D2A60::isAllocated(int)` and references undeclared `mValueBitfield`. LinkGuard lists both objects.
+
+Allocator `--limit 100000` was inspected after exhausting the first 20. Additional allocated TUs remain for a future mechanical seat; no claims are held. This session made no merge, split, source, ledger, map, register or identity changes. Net source-file reduction: 0; verified TUs merged: 0; matched rows touched or lost: 0. Remaining allocator candidates need their own scoped planner and guarded dry runs.
