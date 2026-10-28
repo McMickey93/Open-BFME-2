@@ -13,10 +13,7 @@ class AsciiString;
 // ParticleSys.h layout.
 #include "ascii_string.h"
 
-inline void *operator new(unsigned int, void *storage)
-{
-    return storage;
-}
+#include <new>
 
 
 struct ThreeDwords

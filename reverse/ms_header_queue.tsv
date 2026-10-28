@@ -222,7 +222,6 @@ Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIArmyUnit
 Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIBuildQueueIconSelect.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		free:unverified
 Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIResolveBattlesBehavior.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/MapUtilGetDefaultMap.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
-Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemInfoCopyCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/AI/AIMoveAndEvacuateStateUpdate.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<windows.h>	yes	yes	hand			FALSE:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudio.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioSoundKeyPair.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
