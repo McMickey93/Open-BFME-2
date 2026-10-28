@@ -9965,18 +9965,18 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0015306D,124,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp
 0x001530E9,224,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,W=Code/Libraries/Source/WWVegas/WW3D2/fxshaderparameterbinder.cpp C=0x0015306D..0x001531C9 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva001530E9PropertyPath.cpp
 0x001531C9,29,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x0015306D..0x001531E6 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva001532E1Erase.cpp
-0x001531E6,12,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderPopDynamicSetStack.cpp
-0x001531F2,49,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153223 provisional,Code/Libraries/Source/WWVegas/WWLib/FunctorRefInvoke001531F2.cpp
+0x001531E6,12,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
+0x001531F2,49,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153223 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153223,47,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153252 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva001532E1Erase.cpp
-0x00153252,27,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x0015326D provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153252Assign.cpp
+0x00153252,27,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x0015326D provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x0015326D,116,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x001532E1 provisional,Code/Libraries/Source/WWVegas/WW3D2/Rva001514B2ForwardAndApply.cpp
 0x001532E1,63,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153320 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva001532E1Erase.cpp
 0x00153320,47,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x0015334F provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153252Copy.cpp
-0x0015334F,25,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153368 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0015334FCtor.cpp
+0x0015334F,25,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153368 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153368,189,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153425 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_vector_bodies.cpp
-0x00153425,38,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x0015344B provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153425Copy.cpp
-0x0015344B,37,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153470 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0015344BFillN.cpp
-0x00153470,25,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153489 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005F8F96_destroy.cpp
+0x00153425,38,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x0015344B provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
+0x0015344B,37,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153470 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
+0x00153470,25,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x00153489 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153489,45,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x001534B6 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_bfmee8_allocate_copy.cpp
 0x001534B6,29,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x001534D3 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153252Copy.cpp
 0x001534D3,55,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x001531E6..0x0015350A provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_vector_bodies.cpp
@@ -9985,38 +9985,38 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00153565,154,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x0015354E..0x001535FF provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153565Register.cpp
 0x001535FF,101,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderPushDynamicSetStackName.cpp
 0x00153664,134,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterSourceNamespace_Struct.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterSourceNamespaceStruct.cpp
-0x001536EA,63,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153729 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005F8F96_dtor.cpp
+0x001536EA,63,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153729 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153729,19,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x0015373C provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153729Dtor.cpp
-0x0015373C,30,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x0015375A provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005F8F96_dtor.cpp
+0x0015373C,30,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x0015375A provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x0015375A,44,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153786 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153729Dtor.cpp
 0x00153786,45,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001537B3 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportConstructFamily.cpp
 0x001537B3,37,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001537D8 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorGrowthFootprints.cpp
 0x001537D8,180,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x0015388C provisional,Code/Libraries/Source/WWVegas/WWLib/URva005F8F96Rva001537D8.cpp
-0x0015388C,28,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001538A8 provisional,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-60d4.cpp
+0x0015388C,28,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001538A8 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x001538A8,33,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001538C9 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153729Dtor.cpp
 0x001538C9,178,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x0015397B provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp
 0x0015397B,38,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001539A1 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorGrowthFootprints.cpp
-0x001539A1,27,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001539BC provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00153729_clear.cpp
+0x001539A1,27,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001539BC provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x001539BC,48,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x001539EC provisional,Code/Libraries/Source/WWVegas/WWLib/Rva001539BCAssign.cpp
 0x001539EC,50,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A1E provisional,Code/Libraries/Source/WWVegas/WWLib/Rva001539ECCopyBackward.cpp
-0x00153A1E,9,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A27 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153D16Dtor.cpp
+0x00153A1E,9,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A27 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153A27,55,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A5E provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp
-0x00153A5E,29,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A7B provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153A5ERangeForward.cpp
+0x00153A5E,29,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A7B provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153A7B,29,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153A98 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153A7BFill.cpp
 0x00153A98,50,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153664..0x00153ACA provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153A98Copy.cpp
 0x00153ACA,207,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderAddBinding.cpp
 0x00153B99,29,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153BB6 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeDeferred.cpp
-0x00153BB6,25,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153BCF provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00153729_destroy.cpp
-0x00153BCF,30,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153BED provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00153729_clear.cpp
+0x00153BB6,25,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153BCF provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
+0x00153BCF,30,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153BED provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153BED,63,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153C2C provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00153729_dtor.cpp
 0x00153C2C,51,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153C5F provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeDeferred.cpp
 0x00153C5F,183,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153D16 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorGrowthFootprints.cpp
-0x00153D16,61,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153D53 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153D16Dtor.cpp
-0x00153D53,11,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153D5E provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00153729_clear.cpp
+0x00153D16,61,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153D53 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
+0x00153D53,11,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153D5E provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153D5E,268,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153E6A provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153E6FArrayVectorResize.cpp
 0x00153E6A,5,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153E6F provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153E6FArrayVectorResize.cpp
 0x00153E6F,118,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153EE5 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153E6FArrayVectorResize.cpp
-0x00153EE5,35,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153F08 provisional,Code/GameEngine/Source/Common/Rva00153EE5Adapter.cpp
+0x00153EE5,35,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,C,C=0x00153ACA..0x00153F08 provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00153F08,336,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp
 0x00154058,73,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderCtor.cpp
 0x001540B0,20,code,Code/Libraries/Source/WWVegas/WW3D2/WWMath.cpp,proposed,N,N=Code/Libraries/Source/WWVegas/WW3D2/WWMath.cpp noncontiguous,Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDrawBFME2.cpp
@@ -65387,14 +65387,14 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00766DBF,8,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderSetup.cpp,approved,P,P=0x00152E4D@FuncInfo0x0090B5E4 provisional,Code/Libraries/Source/WWVegas/WW3D2/fxshadersetup.cpp
 0x00766DC7,10,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderSetup.cpp,approved,P,P=0x00152E4D@FuncInfo0x0090B5E4 provisional,Code/Libraries/Source/WWVegas/WW3D2/fxshadersetup.cpp
 0x00766DD1,8,code,,,-,,Code/gen_small/uw_gen_010.cpp
-0x00766DD9,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005F8F96_dtor.cpp
+0x00766DD9,10,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00766DE3,14,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153786@FuncInfo0x0090B680 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportConstructFamily.cpp
 0x00766DF1,10,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153786@FuncInfo0x0090B680 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportConstructFamily.cpp
 0x00766DFB,8,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153ACA@FuncInfo0x0090B6AC provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderAddBinding.cpp
 0x00766E03,8,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153ACA@FuncInfo0x0090B6AC provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderAddBinding.cpp
 0x00766E0B,10,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153ACA@FuncInfo0x0090B6AC provisional,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderAddBinding.cpp
 0x00766E15,11,code,,,-,,Code/gen_small/uw_gen_011.cpp
-0x00766E20,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/Rva00153D16Dtor.cpp
+0x00766E20,10,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp
 0x00766E2A,8,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153D5E@FuncInfo0x0090B6F4 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153E6FArrayVectorResize.cpp
 0x00766E32,10,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153D5E@FuncInfo0x0090B6F4 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153E6FArrayVectorResize.cpp
 0x00766E3C,8,code,Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp,approved,P,P=0x00153E6F@FuncInfo0x0090B718 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00153E6FArrayVectorResize.cpp

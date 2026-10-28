@@ -2129,8 +2129,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00150B8DFamily.cpp	?rva00150C4B@R
 alternatename	Code/GameEngine/Source/Common/Rva001514B2Chain.cpp	?rva0015326D@Rva0015326D@@QAEPAXHH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00152DC6Adapter.cpp	?rva00151597@Rva00151597@@QAEPAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00152DC6Adapter.cpp	?rva00152BDB@Rva00152BDB@@QAEXHURva00152DC6Tmp@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00153EE5Adapter.cpp	?rva001538A8@Rva001538A8@@QAEPAXXZ	1
-alternatename	Code/GameEngine/Source/Common/Rva00153EE5Adapter.cpp	?rva00153E6F@Rva00153E6F@@QAEXHURva00153EE5Tmp@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00170BFFInsertFinish.cpp	?rva00170B4E@Rva00170BFF@@QAEPAXABVRva00170999@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00170D0FTextureEntryErase.cpp	?rva00170AA9@Rva00170D0FTree@@QAEXURva00170D0FIterator@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00170D0FTextureEntryErase.cpp	?rva00357180@Rva00170D0FTree@@QBEPAURva00170D0FNode@@ABI@Z	1
@@ -3973,6 +3971,9 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8RendererAddMesh.cpp	?Peek_T
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DynamicIBAccessWriteLock.cpp	??0WriteLock@BfmeSortingIBAccess@@QAE@PAU1@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DynamicIBAccessWriteLock.cpp	??1WriteLock@BfmeSortingIBAccess@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DynamicVectorBfmeHandleCtor.cpp	_vtbl_00BD4688	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp	?Rva00153A5ERangeCallee@@YAPAURva00153A5EOutput@@PAURva00153A5EInput@@0PAU1@ABURva00153A5EIteratorTag@@PAH@Z	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp	?rva001538A8@Rva001538A8@@QAEPAXXZ	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinder.cpp	?rva00153E6F@Rva00153E6F@@QAEXHURva00153EE5Tmp@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassGetCharData.cpp	?Get_Char_Data@FontCharsClass@@AAEPBUFontCharsClassCharDataStruct@@G@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/FramGrab.cpp	?bfmeReleaseATXA@@YGXPAX@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/FramGrab.cpp	?bfmeReleaseBTXA@@YGXPAX@Z	1
@@ -4153,7 +4154,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00152BDBValueVectorResize.c
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00152BDBValueVectorResize.cpp	??1Rva00152BDBEntry@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00152BDBValueVectorResize.cpp	?erase@?$vector@URva00152BDBEntry@@V?$allocator@URva00152BDBEntry@@@_STL@@@_STL@@QAEPAURva00152BDBEntry@@PAU3@0@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00153729Dtor.cpp	??0?$vector@URva005F8F96@@V?$allocator@URva005F8F96@@@_STL@@@_STL@@QAE@ABV01@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00153A5ERangeForward.cpp	?Rva00153A5ERangeCallee@@YAPAURva00153A5EOutput@@PAURva00153A5EInput@@0PAU1@ABURva00153A5EIteratorTag@@PAH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00174A8ADefaultResize.cpp	??0Rva0017480CRecord@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva001DEE3CRangeForward.cpp	?Rva001DEE3CRangeCallee@@YAPAURva001DEE3COutput@@PAURva001DEE3CInput@@0PAU1@ABURva001DEE3CIteratorTag@@PAH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva001DEF6BDtorFinish.cpp	?__destroy_aux@_STL@@YAXPAURva00414BDBElement@@0@Z	1
