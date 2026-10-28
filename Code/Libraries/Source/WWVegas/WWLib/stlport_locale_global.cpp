@@ -31,7 +31,7 @@
  *
  */
 extern "C" void __cdecl free(void *block);
-extern "C" __declspec(dllimport) char *__cdecl setlocale(int category, const char *locale);
+#include <locale.h>
 
 typedef long __stl_atomic_t;
 
