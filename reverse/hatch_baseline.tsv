@@ -13576,7 +13576,7 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorS
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorSpecialPower.cpp	DefectorSpecialPower::xfer	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorSpecialPower.cpp	DefectorSpecialPower::~DefectorSpecialPower	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DevastateSpecialPower.cpp	1DevastateSpecialPower@@MAE@XZ	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPowerCtor.cpp	DominateEnemySpecialPower::~DominateEnemySpecialPower	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPower.cpp	DominateEnemySpecialPower::~DominateEnemySpecialPower	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPower.cpp	1ElvenWoodSpecialPower@@MAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/FreezingRainSpecialPower.cpp	1FreezingRainSpecialPower@@MAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPower.cpp	1GrabPassengerSpecialPower@@MAE@XZ	1
