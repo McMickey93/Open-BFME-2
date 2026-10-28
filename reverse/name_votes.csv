@@ -12859,3 +12859,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdate_update.cpp|local
 Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp|class||Rva0025E5F4Command,abf86b0b43f410ad29d20624,claude-opus-5-5,claude3-20261028-172353-6,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp|class||Rva0025E5F4Node,c67b857ce6b2b122806637fc,claude-opus-5-5,claude3-20261028-172353-6,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp|member|Rva0025E5F4Command|type14,179368d5bfb815d0351e4d3e,claude-opus-5-5,claude3-20261028-172353-6,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/Rva0032E83ADtor.cpp|function|0x0032EAA1|rva0032EAA1,ccb226c9b378fced6f26f64a,claude-opus-5-5,claude3-20261028-172353-10,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/Rva0032E83ADtor.cpp|function|0x0032EB5E|rva0032EB5E,c0dbc19321162545f43713d2,claude-opus-5-5,claude3-20261028-172353-10,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/INI/INIAllocListParsers.cpp|function|0x0041F524|Rva0041F524_ParseArmyMember,7f4081a130fd7753d6d941cd,claude-opus-5-5,claude3-20261028-172353-10,w-29a6ae2a2f9f,2026-10-28
