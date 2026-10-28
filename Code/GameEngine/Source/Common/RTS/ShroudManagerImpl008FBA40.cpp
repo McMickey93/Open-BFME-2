@@ -86,65 +86,34 @@ bool processShroudRevealCircle008F9A70(Int cellX, Int cellY, Int cellRadius,
 bool processShroudRevealCircle008F9B10(Int cellX, Int cellY, Int cellRadius,
 	ShroudManagerImpl *manager, Int playerMask);
 
-// Method-only view of the retail Xfer vtable (0x00BBB910): the slots this
-// unit calls, named as in Rva0073EBB0Cluster.cpp; Version1 is retail's
-// 0x000053EE (System/Xfer.cpp), inlined here as in the native body.
-class Xfer
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+class ICoord3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+
+#include "../../../Include/Common/BfmeXfer.h"
+
+// Retail's Version1 (0x000053EE, System/Xfer.cpp) is inlined in this unit's
+// transfer: the version record is built on the stack and passed to slot 10.
+class Xfer::Version
 {
 public:
-	struct Version
-	{
-		__declspec(dllimport) __declspec(nothrow) __forceinline
-		Version(unsigned char current, unsigned char minimum)
-			: m_current(current), m_minimum(minimum) {}
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
 
-		unsigned char m_current;
-		unsigned char m_minimum;
-	};
-
-	__declspec(dllimport) __declspec(nothrow) __forceinline void Version1()
-	{
-		Version version(1, 1);
-		xferVersion(&version);
-	}
-
-	virtual ~Xfer();
-	virtual bool isLoading();
-	virtual bool isSaving();
-	virtual bool isCRC();
-	virtual bool isLightCRC();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(Version *version);
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual Xfer &xferRegion3D(Region3D *value);
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual Xfer &xferReal(Real *value);
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value);
-	virtual Xfer &xferInt(Int *value);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferBool(bool *value);
+	unsigned char m_current;
+	unsigned char m_minimum;
 };
 
 class ShroudManagerCell;
@@ -505,7 +474,7 @@ static UnsignedInt shroudCalcCRC(const void *buffer, UnsignedInt length,
 // WB 0x017E6FC0 call for call.
 void ShroudManagerImpl::rva0073D8B0(Xfer *xfer)
 {
-	if (!xfer->isLightCRC())
+	if (!xfer->IsLightCRC())
 	{
 		drainPending();
 
@@ -519,19 +488,22 @@ void ShroudManagerImpl::rva0073D8B0(Xfer *xfer)
 
 		processPending(false);
 
-		xfer->Version1();
-		xfer->xferUnsignedInt((UnsignedInt *)&mode);
-		xfer->xferRegion3D(&region);
-		xfer->xferReal(&defaultCellSize);
-		xfer->xferReal(&inverseCellSize);
-		xfer->xferInt((Int *)&width);
-		xfer->xferInt((Int *)&height);
-		xfer->xferUnsignedInt((UnsignedInt *)&unknown38);
-		if (!xfer->isCRC())
-			xfer->xferInt(&unknown64);
-		xfer->xferBool(&enabled);
+		{
+			Xfer::Version version(1, 1);
+			*xfer == version;
+		}
+		*xfer == *(UnsignedInt *)&mode;
+		*xfer == region;
+		*xfer == defaultCellSize;
+		*xfer == inverseCellSize;
+		*xfer == *(Int *)&width;
+		*xfer == *(Int *)&height;
+		*xfer == *(UnsignedInt *)&unknown38;
+		if (!xfer->IsCRC())
+			*xfer == unknown64;
+		*xfer == enabled;
 
-		if (xfer->isLoading())
+		if (xfer->IsLoading())
 		{
 			delete[] elements;
 			elements = new ShroudManagerCell[width * height];
@@ -544,7 +516,7 @@ void ShroudManagerImpl::rva0073D8B0(Xfer *xfer)
 				cell->xfer(xfer);
 		}
 
-		if (xfer->isLoading())
+		if (xfer->IsLoading())
 			notify();
 		else
 			drainPending();
@@ -564,7 +536,7 @@ void ShroudManagerImpl::rva0073D8B0(Xfer *xfer)
 				}
 			}
 		}
-		xfer->xferUnsignedInt(&crc);
+		*xfer == crc;
 	}
 }
 
