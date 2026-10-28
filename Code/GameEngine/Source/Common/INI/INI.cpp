@@ -641,11 +641,59 @@ namespace _STL
 template <> void vector<AsciiString, allocator<AsciiString> >::push_back(const AsciiString &value);
 }
 
+// _Rb_tree_iterator comparisons otherwise instantiate the base-class
+// operator!= COMDAT (one byte shape per TU flags); exact-match free
+// overloads take those calls instead so this TU emits no external copy.
+namespace _STL {
+template <class _RbVal, class _RbLeft, class _RbRight>
+static inline bool operator!=(const _Rb_tree_iterator<_RbVal, _RbLeft> &a,
+                              const _Rb_tree_iterator<_RbVal, _RbRight> &b)
+{ return a._M_node != b._M_node; }
+}
+
+// Bind to the kept retail copy instead of emitting this unit's own.
+namespace _STL {
+template <> void _STLP_alloc_proxy<_Rb_tree_node<AsciiString>*, _Rb_tree_node<AsciiString>, allocator<_Rb_tree_node<AsciiString> > >::deallocate(_Rb_tree_node<AsciiString>*, size_t);
+template <> void allocator<_Rb_tree_node<AsciiString> >::deallocate(_Rb_tree_node<AsciiString>*, size_t) const;
+template <> _Rb_tree_node<AsciiString>* allocator<_Rb_tree_node<AsciiString> >::allocate(size_t, const void*) const;
+template <> _Rb_tree_base<AsciiString, allocator<AsciiString> >::_Rb_tree_base(const allocator<AsciiString>&);
+template <> _Rb_tree_base<AsciiString, allocator<AsciiString> >::~_Rb_tree_base();
+}
+
+namespace _STL { template <> _Rb_tree<AsciiString,AsciiString,_Identity<AsciiString>,BfmeStringNoCaseLess,allocator<AsciiString> >::~_Rb_tree(); }
+
+typedef std::set<AsciiString, BfmeStringNoCaseLess> FilenameList;
+
+class FileSystem
+{
+public:
+// The donor API is FileSystem::getFileListInDirectory. The third argument
+// is passed by address at retail. BFME1's FilenameList uses
+// rts::less_than_nocase; BFME2's call to the set constructor at 0x000D3A71 and
+// cleanup through the rowed no-case tree dtor at 0x0002CC38 support this local
+// BFME2 FilenameList comparator view.
+	void getFileListInDirectory(const AsciiString &directory,
+		const AsciiString &searchName, FilenameList &filenameList, bool searchSubdirectories) const;
+};
+
+extern FileSystem *TheFileSystem;
+
+// Address-derived target helper. Retail's caller passes the current list item
+// and the opaque argument on the stack; the 59-byte callee walks +0/+4 as a
+// four-byte element range, compares each element through 0x0002C42F, and
+// returns whether it found a match. Its original name and filter semantics are
+// not established.
+struct Rva0002C5E6Range { const StringBase<char>*first,*last; };
+
+extern bool __cdecl Rva0002C5E6(const StringBase<char>&candidate,const Rva0002C5E6Range*filter);
+
 // tu-skeleton: 0x0002BABA 10B ?getNthFieldParse@MultiIniFieldParse@@QBEPBUFieldParse@@H@Z -- matched in Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp (not merged yet)
 
 // tu-skeleton: 0x0002BAC4 11B ?getNthExtraOffset@MultiIniFieldParse@@QBEIH@Z -- matched in Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp (not merged yet)
 
 // tu-skeleton: 0x0002BACF 6B ?Rva0002BACFGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/GlobalGetterSingles.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/INI/INI.cpp
 
 // ---- from Code/GameEngine/Source/Common/INI/INI.cpp
 
@@ -1521,32 +1569,6 @@ int INI::scanLookupList(const char *token, const LookupListRec *lookupList)
 	throw INIException(3, "Token '%s' is not a valid member of the lookup list", token);
 }
 
-// tu-skeleton: 0x0002BAF1 7B ?get@Rva0002BAF1ByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/DispByteFieldGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BAF8 36B ??0SaveDate@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/SaveGame/GameState.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BB71 14B ?rva0002BB71@Rva0002BB71@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE19.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BB7F 68B ?isValidINIFilename@INI@@KA_NPBD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BD39 76B ?scanIndexList@INI@@QAEHPBDPBQBD@Z -- matched in Code/GameEngine/Source/Common/System/INI_scanIndexList.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BDF2 170B ?isEndOfBlock@INI@@SA_NPAD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BE9C 37B ?startsWith@?$StringBase@D@@QBE_NPBD@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/string_base.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BEC1 37B ?endsWith@?$StringBase@D@@QBE_NPBD@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/string_base.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BEE6 21B ??$swapRange@M@@YAXAAM0@Z -- matched in Code/GameEngine/Source/Common/INI/INIAudioEventInfoRangeParsers.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BEFB 19B ?rva0002BEFB@@YAXPAH0@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE19.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BF0E 19B ??Rvalue_compare@?$map@IPAXU?$less@I@_STL@@V?$allocator@U?$pair@$$CBIPAX@_STL@@@2@@_STL@@QBE_NABU?$pair@$$CBIPAX@2@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_lower.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BF21 14B ?rva0002BF21@Rva0002BF21@@QAEHPAD@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE19.cpp (not merged yet)
-
-// tu-skeleton: 0x0002BF2F 27B ??H@YA?AUAsciiStringRefWithChar@@ABVAsciiString@@D@Z -- matched in Code/GameEngine/Source/Common/System/RegistryAsciiPath.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/System/INI_unPrepFile.cpp
 
 // ?unPrepFile@INI@@IAEXXZ @0x0002BF4A 66B: thiscall clear with None plus empty.
@@ -1627,12 +1649,6 @@ void INI::parseLine(AsciiString &filename)
 	}
 }
 
-// tu-skeleton: 0x0002C18D 59B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0002C1C8 53B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0002C230 6B (unledgered) -- unmatched, no code, never credited
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva0002C237Get.cpp
 
 // platformsdk
@@ -1645,10 +1661,6 @@ void __cdecl Rva0002C237Get(INI *ini)
 	AsciiString dest;
 	dest.format(g_00BBDC80, curdir, ini->rva0002BFE5().str(), ini->rva0002BBDE());
 }
-
-// tu-skeleton: 0x0002C2C7 360B ?isDeclarationOfType@INI@@SA_NVAsciiString@@0PAD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x0002C7FD 214B ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/System/INI_mixerFieldEdit.cpp
 
@@ -1755,14 +1767,6 @@ done:
 	CloseHandle(mapping);
 }
 
-// tu-skeleton: 0x0002CF5E 6B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0002D1B0 11B ?rva0002D1B0Clear@Rva0002D1B0Range@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Thing/VectorAsciiStringErase.cpp (not merged yet)
-
-// tu-skeleton: 0x0002D1CF 178B ?_M_insert_overflow@?$vector@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@IAEXPAVAsciiString@@ABV3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/Common/System/XferAsciiStringVector.cpp (not merged yet)
-
-// tu-skeleton: 0x0002D2C1 936B ?prepFile@INI@@IAE_NABVAsciiString@@W4INILoadType@@@Z -- matched in Code/GameEngine/Source/Common/System/INI_loadFile.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/System/INI_readLine.cpp
 
 //
@@ -1816,14 +1820,6 @@ void INI::readLine()
 		((BfmeIniTransferSlot09 *)g_00DDF57C)->slot09(m_buffer, (int)len);
 	}
 }
-
-// tu-skeleton: 0x0002D7A8 675B ?initFromINIMulti@INI@@QAEXPAXABVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp (not merged yet)
-
-// tu-skeleton: 0x0002D8FE 6B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0002D904 104B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0002D96C 90B (unledgered) -- unmatched, no code, never credited
 
 // ---- from Code/GameEngine/Source/Common/System/INI_loadWithParse.cpp
 
@@ -1937,12 +1933,6 @@ const char *INI::getNextTokenOrNull(const char *seps)
 	return strtok(0, seps);
 }
 
-// tu-skeleton: 0x0002DF97 75B ?getNextToken@INI@@QAEPBDPBD@Z -- matched in Code/GameEngine/Source/Common/System/INI_getNextToken.cpp (not merged yet)
-
-// tu-skeleton: 0x0002E63B 533B ?loadDirectory@INI@@QAE_NVAsciiString@@_NW4INILoadType@@PAVXfer@@H@Z -- matched in Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp (not merged yet)
-
-// tu-skeleton: 0x0002E846 9B (unledgered) -- unmatched, no code, never credited
-
 // ---- from Code/GameEngine/Source/Common/System/INI_parseAsciiStringVectorAppend.cpp
 
 // ?parseAsciiStringVectorAppend@INI@@SAXPAV1@PAX1PBX@Z
@@ -1986,6 +1976,135 @@ void INI::parseAsciiString(INI *ini, void *instance, void *store, const void *us
 	*(AsciiString *)store = ini->getNextAsciiString();
 }
 
+// tu-skeleton: 0x0002BAF1 7B ?get@Rva0002BAF1ByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/DispByteFieldGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BAF8 36B ??0SaveDate@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/SaveGame/GameState.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BB71 14B ?rva0002BB71@Rva0002BB71@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE19.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BB7F 68B ?isValidINIFilename@INI@@KA_NPBD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BD39 76B ?scanIndexList@INI@@QAEHPBDPBQBD@Z -- matched in Code/GameEngine/Source/Common/System/INI_scanIndexList.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BDF2 170B ?isEndOfBlock@INI@@SA_NPAD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BE9C 37B ?startsWith@?$StringBase@D@@QBE_NPBD@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/string_base.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BEC1 37B ?endsWith@?$StringBase@D@@QBE_NPBD@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/string_base.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BEE6 21B ??$swapRange@M@@YAXAAM0@Z -- matched in Code/GameEngine/Source/Common/INI/INIAudioEventInfoRangeParsers.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BEFB 19B ?rva0002BEFB@@YAXPAH0@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE19.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BF0E 19B ??Rvalue_compare@?$map@IPAXU?$less@I@_STL@@V?$allocator@U?$pair@$$CBIPAX@_STL@@@2@@_STL@@QBE_NABU?$pair@$$CBIPAX@2@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_lower.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BF21 14B ?rva0002BF21@Rva0002BF21@@QAEHPAD@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE19.cpp (not merged yet)
+
+// tu-skeleton: 0x0002BF2F 27B ??H@YA?AUAsciiStringRefWithChar@@ABVAsciiString@@D@Z -- matched in Code/GameEngine/Source/Common/System/RegistryAsciiPath.cpp (not merged yet)
+
+// tu-skeleton: 0x0002C18D 59B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002C1C8 53B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002C230 6B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002C2C7 360B ?isDeclarationOfType@INI@@SA_NVAsciiString@@0PAD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x0002C7FD 214B ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
+
+// tu-skeleton: 0x0002CF5E 6B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002D1B0 11B ?rva0002D1B0Clear@Rva0002D1B0Range@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Thing/VectorAsciiStringErase.cpp (not merged yet)
+
+// tu-skeleton: 0x0002D1CF 178B ?_M_insert_overflow@?$vector@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@IAEXPAVAsciiString@@ABV3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/Common/System/XferAsciiStringVector.cpp (not merged yet)
+
+// tu-skeleton: 0x0002D2C1 936B ?prepFile@INI@@IAE_NABVAsciiString@@W4INILoadType@@@Z -- matched in Code/GameEngine/Source/Common/System/INI_loadFile.cpp (not merged yet)
+
+// tu-skeleton: 0x0002D7A8 675B ?initFromINIMulti@INI@@QAEXPAXABVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp (not merged yet)
+
+// tu-skeleton: 0x0002D8FE 6B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002D904 104B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002D96C 90B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0002DF97 75B ?getNextToken@INI@@QAEPBDPBD@Z -- matched in Code/GameEngine/Source/Common/System/INI_getNextToken.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp
+
+// ?loadDirectory@INI@@QAE_NVAsciiString@@_NW4INILoadType@@PAVXfer@@H@Z
+// Native2E63B..2E850 includes the shared throw block after RET20.
+// The matched find44B implementation is a byte-identical select-any copy;
+// keeping its definition visible supplies MSVC call-result information and
+// reproduces four TEST EAX,EAX sites that a declaration alone changes to CMP.
+//
+// BFME1 9cbfb551 GeneralsMD INI.cpp supplies the two-pass load algorithm.
+// Native2E63B..2E850 establishes the byte result, filter and complete extent.
+// The main return ends2E846; the following shared throw block is part of
+// this compiled body and matches through2E850. The adjacent parser begins2E850.
+
+template<> inline void StringBase<char>::concat(char c) { concat(&c, 1); }
+
+// ?StringBase<char>::find present-unmatched
+template<> __declspec(noinline) inline const char*StringBase<char>::find(char c)const{
+ const char*p=m_data?&m_data->data[0]:""; const char*end=p+(m_data?m_data->length:0);
+ while(p!=end){if(*p==c)return p;++p;}return 0;
+}
+
+bool INI::loadDirectory(AsciiString dirName, bool subdirs, INILoadType loadType,
+	Xfer *pXfer, int fileFilter)
+{
+	if (dirName.isEmpty())
+		throw INIException(0, 0);
+
+	bool didLoad = false;
+	try
+	{
+		FilenameList filenameList;
+		if (!dirName.endsWith("\\"))
+			dirName.concat('\\');
+		TheFileSystem->getFileListInDirectory(dirName, AsciiString("*.ini"),
+			filenameList, true);
+
+		AsciiString tempname;
+		FilenameList::const_iterator it = filenameList.begin();
+		while (it != filenameList.end())
+		{
+			tempname = (*it).str() + dirName.getLength();
+			if (!((const StringBase<char> &)(tempname)).find('\\') && !((const StringBase<char> &)(tempname)).find('/'))
+			{
+				if (loadFile(*it, loadType, pXfer))
+					didLoad = true;
+			}
+			++it;
+		}
+
+		if (subdirs)
+		{
+			it = filenameList.begin();
+			while (it != filenameList.end())
+			{
+				tempname = (*it).str() + dirName.getLength();
+				if (((const StringBase<char> &)(tempname)).find('\\') || ((const StringBase<char> &)(tempname)).find('/'))
+				{
+					if (!Rva0002C5E6(*(const StringBase<char>*)&*it,(const Rva0002C5E6Range*)fileFilter)
+						&& loadFile(*it, loadType, pXfer))
+						didLoad = true;
+				}
+				++it;
+			}
+		}
+	}
+	catch (...)
+	{
+		throw;
+	}
+
+	return didLoad;
+}
+
+// tu-skeleton: 0x0002E846 9B (unledgered) -- unmatched, no code, never credited
+
 // tu-skeleton: 0x0075C972 8B Unwind@00b5c972 -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
 
 // tu-skeleton: 0x0075C97A 8B Unwind@00b5c97a -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
@@ -2019,13 +2138,3 @@ void INI::parseAsciiString(INI *ini, void *instance, void *store, const void *us
 // tu-skeleton: 0x0075CB03 8B Unwind@00b5cb03 -- matched in Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp (not merged yet)
 
 // tu-skeleton: 0x0075CB0B 10B __ehhandler$?initFromINIMulti@INI@@QAEXPAXABVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp (not merged yet)
-
-// tu-skeleton: 0x0075CB75 8B Unwind@00b5cb75 -- matched in Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp (not merged yet)
-
-// tu-skeleton: 0x0075CB7D 8B Unwind@00b5cb7d -- matched in Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp (not merged yet)
-
-// tu-skeleton: 0x0075CB85 8B Unwind@00b5cb85 -- matched in Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp (not merged yet)
-
-// tu-skeleton: 0x0075CB8D 8B Unwind@00b5cb8d -- matched in Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp (not merged yet)
-
-// tu-skeleton: 0x0075CB95 10B __ehhandler$?loadDirectory@INI@@QAE_NVAsciiString@@_NW4INILoadType@@PAVXfer@@H@Z -- matched in Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp (not merged yet)
