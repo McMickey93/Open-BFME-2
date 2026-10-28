@@ -21,6 +21,7 @@
 #include "../../../../../reference/shims/bfme_matrix3d_full_link/matrix3d_full_link.h"
 #include "../../../../../reference/shims/bfme2htree/htree.h"
 #include <memory>
+#include <vector>
 
 struct BfmeCapturedBoneRotation
 {
@@ -45,7 +46,6 @@ struct Elem36{int Index;CapturedTransform Transform;bool WorldSpace;};
 namespace _STL {
 template<> void _Construct<Elem36, Elem36>(Elem36 *, const Elem36 &);
 }
-#include <vector>
 namespace _STL {
 // STLport's normal append algorithm, with an uninitialized empty dispatch
 // tag: retail does not zero the tag byte, and the tag carries no value.
