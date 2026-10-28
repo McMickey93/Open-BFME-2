@@ -1430,13 +1430,15 @@ def merge(tu, dry_run=False, log=print, claim=True):
 
 
 def view_hint(report, tu, don):
-    """A donor rejected for a compile error, in a TU whose files declare their own
-    views of one class, is pointed at tools/tu_views.py: it gives every file the
-    same verified view, so the merge emits the class once."""
-    if not any(str(why).startswith("compile") for why in report.get("rejected", {}).values()):
+    """A donor rejected for a compile error naming a class the TU's files each
+    declare their own view of is pointed at tools/tu_views.py: it gives every
+    file the same verified view, so the merge emits the class once."""
+    errors = [str(why) for why in report.get("rejected", {}).values() if str(why).startswith("compile")]
+    if not errors:
         return report
     import tu_views
-    shared = tu_views.shared_private(sorted(don), ROOT)
+    shared = [c for c in tu_views.shared_private(sorted(don), ROOT)
+              if any(re.search(r"\b" + re.escape(c) + r"\b", e) for e in errors)]
     if shared:
         report["reconcile"] = (f"python3 tools/tu_views.py {tu} --dry-run, then without --dry-run: the donors "
                                f"declare their own views of {', '.join(shared[:4])}{', ...' if len(shared) > 4 else ''}"

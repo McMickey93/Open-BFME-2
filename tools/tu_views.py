@@ -21,7 +21,10 @@ the TU's files, exactly as tu_skeleton's donors() selects them:
      field claims no sizeof and takes the largest; a file whose compiler lays
      no layout of the class out (nothing there uses it) is no evidence and only
      receives the block. A CONFLICT, reported with its evidence and skipped:
-     fields that partition bytes differently, two views spelling out different
+     fields that partition bytes differently or that views type as different
+     things (a class by value against an int, float against int; pointers,
+     same-size integers and enums, and a pointer held as an int agree), two
+     views spelling out different
      sizes (padding past their last real field), different bases or class
      declspecs, a virtual slot two views fill differently, a real field under
      a vfptr, a member attribute that changes mangling (access, virtual,
@@ -612,6 +615,10 @@ def reconcile(cls, views, seed, ledger=()):
             raise Refused(f"{m.name} names +0x{named[m.name]:X} and +0x{off:X} in different views")
         named[m.name] = off
         types = sorted({c for _, _, c in owners})
+        clash = next(((a, b) for a in types for b in types if not cv_compatible(a, b)), None)
+        if clash:
+            raise Refused(f"+0x{off:X}: views disagree on what the field is ({clash[0]} vs {clash[1]}: "
+                          + ", ".join(f"{ov.path} {om.name}" for ov, om, _ in owners) + ")")
         if len(types) > 1:
             plan.notes.append(f"+0x{off:X} {m.name}: CodeView types differ ({', '.join(types)}); "
                               f"{v.path}'s spelling kept, the byte check decides")
@@ -667,9 +674,36 @@ def reconcile(cls, views, seed, ledger=()):
     return plan
 
 
+INTEGRAL = {"char", "uchar", "int8", "uint8", "short", "ushort", "long", "ulong", "int", "uint", "int64", "uint64",
+            "bool", "bool16", "bool32", "wchar", "enum"}
+
+
+def cv_compatible(a, b):
+    """True when two CodeView field types of one offset and size can be one field:
+    equal, both pointers, integers of one size (an enum is an integer), or a pointer
+    and a 4-byte integer (views often hold a pointer as an int). A class by value
+    against anything else, or floating point against an integer, is a disagreement
+    about what the field is."""
+    if a == b:
+        return True
+    arr = re.compile(r"^(.*)\[(\d+)\]$")
+    ma, mb = arr.match(a), arr.match(b)
+    if ma or mb:
+        return bool(ma and mb) and cv_compatible(ma.group(1), mb.group(1))
+    pa, pb = a.endswith("*"), b.endswith("*")
+    if pa and pb:
+        return True
+    if pa or pb:
+        return (b if pa else a) in ("int", "uint", "long", "ulong")
+    return a in INTEGRAL and b in INTEGRAL
+
+
 def claims_size(view, start):
     """True when the view spells its sizeof out: bytes past its last real field (a
     trailing pad), beyond what the alignment of its fields explains."""
+    lay = view.layout
+    if lay["size"] == 1 and not (lay.get("fields") or lay.get("bases") or lay.get("vfptr")):
+        return False                   # an empty view: sizeof 1 is the language's, not a claim
     real = [f for f in view.layout.get("fields", [])
             if not (PAD.match(f[1]) and not view.used.get(f[1]))]
     end = max([start] + [f[0] + f[3] for f in real])
@@ -1010,7 +1044,7 @@ class Tool:
         if spelled_as:
             plan.notes.append("typedefs a file lacks, spelled out: " +
                               ", ".join(f"{a} -> {b}" for a, b in sorted(spelled_as.items())))
-        keys = self.class_keys(files)
+        keys = self.class_keys(files, texts, needed_names(plan))
         enums = namespace_enums(texts[f] for f in files)
         plan.forward = {v.path: enum_copies(plan, v, enums) + forward_declarations(plan, v, keys) for v in views}
         for f, lines in plan.forward.items():
@@ -1018,14 +1052,30 @@ class Tool:
                 plan.notes.append(f"{f} gets " + " ".join(ws(ln.split("{")[0]) + ("{...};" if "{" in ln else "") for ln in lines))
         return plan
 
-    def class_keys(self, files):
-        """{class: 'class'|'struct'} the compiler recorded for these files, where it agrees."""
+    def class_keys(self, files, texts=None, wanted=()):
+        """{class: 'class'|'struct'} as the compiler recorded it for these files, else as
+        the files spell it (`class X;`, a definition head), else as the ledger's mangled
+        names spell it (`V`/`U`); a name these disagree on is left out."""
         seen = collections.defaultdict(set)
         for f in files:
             for name, lay in self.layouts(f).items():
                 if isinstance(lay, dict) and lay.get("key") and "::" not in name and "<" not in name:
                     seen[name].add(lay["key"])
-        return {n: k.pop() for n, k in seen.items() if len(k) == 1}
+        spelled = collections.defaultdict(set)
+        for text in (texts or {}).values():
+            code = hal.masked(text)
+            for m in re.finditer(r"\b(class|struct)\s+(?:__declspec\([^)]*\)\s*)*([A-Za-z_]\w*)\s*(?:;|\{|:(?!:))",
+                                 code):
+                spelled[m.group(2)].add(m.group(1))
+        for name, keys in spelled.items():
+            if name not in seen:
+                seen[name] = keys
+        for name in wanted:
+            if name not in seen:
+                lk = ledger_class_key(name, self.ledger)
+                if lk in ("class", "struct"):
+                    seen[name] = {lk}
+        return {n: next(iter(k)) for n, k in seen.items() if len(k) == 1}
 
     def describe(self, cls, files, texts, seed):
         try:

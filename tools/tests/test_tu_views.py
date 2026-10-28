@@ -46,7 +46,8 @@ def fake_layouts(root):
                 count = int(arr.group(1), 0) if arr else 1
                 align = 4 if "*" in m.decl else min(size, 4)
                 at = (at + align - 1) // align * align
-                cv = m.base.replace("unsigned ", "u") + (f"[{count}]" if arr else "") + ("*" if "*" in m.decl else "")
+                base = "enum" if re.search(r"\benum\s+" + re.escape(m.base) + r"\b", text) else m.base
+                cv = base.replace("unsigned ", "u") + (f"[{count}]" if arr else "") + ("*" if "*" in m.decl else "")
                 fields.append([at, m.name, cv, size * count])
                 at += size * count
             size = (at + 3) // 4 * 4 if fields and any(f[3] >= 4 for f in fields) else max(at, 1)
@@ -219,6 +220,13 @@ class Conflicts(unittest.TestCase):
         self.assertEqual(rep["classes"]["Foo"]["status"], "conflict")
         self.assertIn("fields overlap", rep["classes"]["Foo"]["evidence"])
 
+    def test_one_offset_typed_as_different_things(self):
+        donor = "class Foo\n{\npublic:\n\tint m_x;\n\tint m_count;\n};\nvoid g(Foo *f) { f->m_count = 0; }\n"
+        rep, _ = self.plan(SEED, donor)
+        self.assertIn("disagree on what the field is (float vs int", rep["classes"]["Foo"]["evidence"])
+        self.assertTrue(V.cv_compatible("Thing*", "int") and V.cv_compatible("enum", "int"))
+        self.assertFalse(V.cv_compatible("EAStringC", "int") or V.cv_compatible("uchar[4]", "int"))
+
     def test_two_views_spelling_out_different_sizes(self):
         seed = "class Foo\n{\npublic:\n\tint m_x;\n\tchar m_pad04[0xC];\n};\n"
         donor = "class Foo\n{\npublic:\n\tint m_x;\n\tchar m_pad04[0x8];\n};\n"
@@ -232,6 +240,11 @@ class Conflicts(unittest.TestCase):
         self.assertEqual(entry["status"], "plan")
         self.assertIn("int m_z; // +0x08", entry["block"])
         self.assertTrue(any("stop at their last field" in n for n in entry["notes"]))
+
+    def test_an_empty_view_claims_no_size(self):
+        donor = "class Foo\n{\npublic:\n\tint b();\n};\nint Foo::b() { return 1; }\n"
+        rep, _ = self.plan(SEED, donor)
+        self.assertEqual(rep["classes"]["Foo"]["status"], "plan")
 
     def test_a_view_nothing_uses_takes_the_block_without_voting(self):
         unused = "class Foo\n{\npublic:\n\tshort m_lo, m_hi;\n};\n"
@@ -355,6 +368,8 @@ class Wiring(unittest.TestCase):
             self.assertIn("python3 tools/tu_views.py Code/T.cpp", out["reconcile"])
             self.assertIn("Foo", out["reconcile"])
             self.assertNotIn("reconcile", T.view_hint({"rejected": {"Code/D.cpp": "bytes"}}, "Code/T.cpp", self.don))
+            unrelated = {"rejected": {"Code/D.cpp": "compile: error C3861: 'ResumeThread': identifier not found"}}
+            self.assertNotIn("reconcile", T.view_hint(unrelated, "Code/T.cpp", self.don))
 
     def test_the_consolidate_queue_serves_tu_views_first(self):
         import repair_queue as rq
