@@ -16627,7 +16627,6 @@ uw_00769b93,,0x00769B93,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;obj
 uw_00769ba8,,0x00769BA8,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7800
 uw_00769bbd,,0x00769BBD,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9975
 uw_00769c99,,0x00769C99,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9975
-uw_00769d46,,0x00769D46,11,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2883
 uw_0076a0cf,,0x0076A0CF,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
 uw_0076a334,,0x0076A334,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10025
 $L1861,,0x0076A52B,8,Code/GameEngine/Source/GameLogic/System/LinearCampaign/LinearCampaignMissionStart.cpp,matched,gen-funclet;parent=?rva001EB456@Rva001EB456@@QAEXHH@Z; Matched parent 0x001EB456's EH graph is EXACT (eh_verify) and binds compiler label $L1861 to retail Unwind@00b6a52b 0x76A52B; replaces generated uw_0076a52b
@@ -16691,7 +16690,6 @@ uw_0076e211,,0x0076E211,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;obje
 uw_0076e2a4,,0x0076E2A4,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6777
 uw_0076e406,,0x0076E406,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4720
 uw_0076e46e,,0x0076E46E,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6882
-uw_0076e49d,,0x0076E49D,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9857
 uw_0076e4df,,0x0076E4DF,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L320
 uw_0076ea26,,0x0076EA26,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10555
 uw_0076eec5,,0x0076EEC5,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10565
@@ -16743,7 +16741,6 @@ uw_00771800,,0x00771800,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;obj
 uw_00771850,,0x00771850,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10155
 uw_007719e1,,0x007719E1,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7175
 uw_00771c82,,0x00771C82,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11111
-uw_00771e44,,0x00771E44,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10938
 uw_00771e99,,0x00771E99,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_00771ec1,,0x00771EC1,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_00771fa8,,0x00771FA8,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10948
@@ -16759,7 +16756,6 @@ uw_00772f8f,,0x00772F8F,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;obje
 uw_00772fb4,,0x00772FB4,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11101
 uw_00773146,,0x00773146,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3421
 uw_007731d4,,0x007731D4,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2602
-uw_00773478,,0x00773478,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L3498
 uw_00773677,,0x00773677,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11141
 uw_0077371c,,0x0077371C,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11151
 uw_00773830,,0x00773830,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1455
@@ -16781,7 +16777,6 @@ $L1690,,0x00774492,8,Code/GameEngine/Source/GameLogic/Object/WeaponSetXfer.cpp,m
 uw_0077473a,,0x0077473A,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3624
 uw_007747e3,,0x007747E3,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11234
 uw_00774a73,,0x00774A73,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2789
-uw_00774eaf,,0x00774EAF,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2880
 uw_0077501e,,0x0077501E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6424
 uw_0077508b,,0x0077508B,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L320
 uw_00775835,,0x00775835,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11254
@@ -16839,7 +16834,6 @@ uw_00777124,,0x00777124,14,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;obj
 uw_00777132,,0x00777132,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12015
 uw_00777140,,0x00777140,14,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2970
 uw_0077723a,,0x0077723A,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
-uw_0077724c,,0x0077724C,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9857
 $L7522,,0x00777269,8,Code/GameEngine/Source/Common/Thing/ThingFactoryReset.cpp,matched,gen-funclet;parent=?reset@ThingFactory@@UAEXXZ; Matched parent 0x002D05CF's EH graph is EXACT (eh_verify) and binds compiler label $L7522 to retail Unwind@00b77269 0x777269; replaces generated uw_00777269
 uw_0077727b,,0x0077727B,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11560
 uw_007773ad,,0x007773AD,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5425
@@ -16882,8 +16876,6 @@ uw_0077ae84,,0x0077AE84,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obj
 uw_0077ae92,,0x0077AE92,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2777
 uw_0077b06d,,0x0077B06D,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2910
 uw_0077b0c1,,0x0077B0C1,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2911
-uw_0077b102,,0x0077B102,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2910
-uw_0077b19a,,0x0077B19A,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L2851
 uw_0077b31d,,0x0077B31D,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12395
 uw_0077b423,,0x0077B423,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L8503
 uw_0077b466,,0x0077B466,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12395
@@ -16915,7 +16907,6 @@ uw_0077c5fc,,0x0077C5FC,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obje
 uw_0077c66a,,0x0077C66A,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L329
 uw_0077c68c,,0x0077C68C,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L8603
 uw_0077c694,,0x0077C694,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7220
-uw_0077cb74,,0x0077CB74,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L2757
 uw_0077cc0d,,0x0077CC0D,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1419
 uw_0077cd4d,,0x0077CD4D,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4998
 uw_0077cd87,,0x0077CD87,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4998
@@ -17088,7 +17079,6 @@ uw_00786e12,,0x00786E12,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;obje
 uw_00786fa4,,0x00786FA4,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2598
 uw_00787107,,0x00787107,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L5005
 uw_0078717f,,0x0078717F,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5707
-uw_00787236,,0x00787236,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9857
 uw_0078732a,,0x0078732A,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L320
 uw_0078733c,,0x0078733C,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L305
 uw_00787385,,0x00787385,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L957
@@ -17319,7 +17309,6 @@ uw_00794b24,,0x00794B24,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;obj
 $L1438,,0x00794D46,8,Code/GameEngine/Source/GameClient/Rva00511F73.cpp,matched,gen-funclet;parent=?Rva00511F73Run@@YAXXZ; Matched parent 0x00511F73's EH graph is EXACT (eh_verify) and binds compiler label $L1438 to retail Unwind@00b94d46 0x794D46; replaces generated uw_00794d46
 uw_00794e18,,0x00794E18,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11823
 uw_007952e0,,0x007952E0,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3552
-uw_00795334,,0x00795334,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6940
 uw_007954ee,,0x007954EE,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5048
 uw_0079571c,,0x0079571C,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2774
 uw_00795a75,,0x00795A75,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2880
@@ -17328,7 +17317,6 @@ $L1254,,0x00795D05,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptS
 uw_00795d75,,0x00795D75,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2836
 uw_00796462,,0x00796462,14,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L5928
 uw_00796654,,0x00796654,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3361
-uw_007966a7,,0x007966A7,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2949
 uw_007967b1,,0x007967B1,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7312
 uw_007969ef,,0x007969EF,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3425
 uw_00796cd3,,0x00796CD3,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5505
@@ -17371,7 +17359,6 @@ uw_007989d9,,0x007989D9,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;obje
 uw_00798a9c,,0x00798A9C,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L3005
 uw_00798be0,,0x00798BE0,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5777
 uw_00798e15,,0x00798E15,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12122
-uw_00798f07,,0x00798F07,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4920
 uw_00798f7c,,0x00798F7C,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12172
 uw_007990d8,,0x007990D8,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L3690
 uw_0079913e,,0x0079913E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L3690
@@ -17416,8 +17403,6 @@ uw_0079a2c8,,0x0079A2C8,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obj
 uw_0079a2e9,,0x0079A2E9,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5848
 uw_0079a550,,0x0079A550,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3363
 uw_0079a58a,,0x0079A58A,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6088
-uw_0079a958,,0x0079A958,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L3488
-uw_0079a960,,0x0079A960,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L3498
 uw_0079aeb5,,0x0079AEB5,8,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetChooser/AITargetHeuristics/AITargetHeuristicEnemyStructure.cpp,matched,gen-funclet;parent=?findBestTarget@AITargetHeuristicEnemyStructure@@QAEXPAVAITarget@@PAVPlayer@@1@Z;object-symbol=$L6186
 uw_0079aec7,,0x0079AEC7,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5906
 uw_0079b125,,0x0079B125,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5919
@@ -17444,7 +17429,6 @@ uw_0079c014,,0x0079C014,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;obj
 uw_0079c110,,0x0079C110,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6885
 uw_0079c1e5,,0x0079C1E5,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5929
 uw_0079c1ed,,0x0079C1ED,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L5744
-uw_0079c65f,,0x0079C65F,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2911
 uw_0079c723,,0x0079C723,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6895
 $L1217,,0x0079C790,8,Code/GameEngine/Source/GameClient/GUI/OnlineCustomMatchPrefs.cpp,matched,gen-funclet;parent=?rva00580316@Rva00580316@@QAEXPAX@Z; Matched parent 0x00580316's EH graph is EXACT (eh_verify) and binds compiler label $L1217 to retail Unwind@00b9c790 0x79C790; replaces generated uw_0079c790
 uw_0079c8c4,,0x0079C8C4,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2910
@@ -17466,12 +17450,9 @@ uw_0079d8fe,,0x0079D8FE,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;obj
 $L8286,,0x0079D925,8,Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva0059DA34.cpp,matched,gen-funclet;parent=?rva0059DB48@Rva0059DA34@@QAE_NPAV?$vector@UBfmeE8@@V?$allocator@UBfmeE8@@@_STL@@@_STL@@PBURva0059D90CSource@@PAVRva004FF8DA@@PAVRva004FF5B7@@HHPAH@Z; Matched parent 0x0059DB48's EH graph is EXACT (eh_verify) and binds compiler label $L8286 to retail Unwind@00b9d925 0x79D925; replaces generated uw_0079d925
 uw_0079d970,,0x0079D970,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5587
 uw_0079d978,,0x0079D978,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2606
-uw_0079deef,,0x0079DEEF,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6044
 uw_0079eab6,,0x0079EAB6,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5933
 uw_0079eabe,,0x0079EABE,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L3479
-uw_0079ec3a,,0x0079EC3A,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5861
 uw_0079edb2,,0x0079EDB2,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L5713
-uw_0079fbbb,,0x0079FBBB,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6035
 uw_007a0252,,0x007A0252,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
 uw_007a0a3b,,0x007A0A3B,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6088
 uw_007a0b67,,0x007A0B67,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2287
@@ -17509,7 +17490,6 @@ uw_007a1f7d,,0x007A1F7D,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;obj
 uw_007a2ac9,,0x007A2AC9,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12265
 uw_007a2b12,,0x007A2B12,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6088
 uw_007a2bec,,0x007A2BEC,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
-uw_007a2c2f,,0x007A2C2F,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5852
 uw_007a2e27,,0x007A2E27,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_007a2e53,,0x007A2E53,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_007a2f09,,0x007A2F09,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
@@ -98944,3 +98924,23 @@ $L4244,,0x0078546A,8,Code/GameEngine/Source/Common/System/SaveGame/CommandSet.cp
 $L11538,,0x0076B561,8,Code/GameEngine/Source/Common/System/SaveGame/CreateAHeroDataDtor.cpp,matched,gen-funclet;parent=??1?$_Rb_tree@VAsciiString@@U?$pair@$$CBVAsciiString@@UTreeHintPayload001F8ACB@@@_STL@@U?$_Select1st@U?$pair@$$CBVAsciiString@@UTreeHintPayload001F8ACB@@@_STL@@@3@U?$less@VAsciiString@@@3@V?$allocator@U?$pair@$$CBVAsciiString@@UTreeHintPayload001F8ACB@@@_STL@@@3@@_STL@@QAE@XZ; Matched parent 0x001F8C23's EH graph is EXACT (eh_verify) and binds compiler label $L11538 to retail 0x0076B561; replaces generated uw_0076b561; retail FuncInfo 0x00910BD8 is shared by 3 parent frames; parent is the one the section's existing __ehhandler$ row names
 $L4205,,0x0076F8AF,8,Code/GameEngine/Source/Common/System/SaveGame/Rva0022C9F6Dtor.cpp,matched,gen-funclet;parent=??1AerialPathfinder@@UAE@XZ; Matched parent 0x0022C9F6's EH graph is EXACT (eh_verify) and binds compiler label $L4205 to retail 0x0076F8AF; replaces generated uw_0076f8af; retail FuncInfo 0x00915D80 is shared by 9 parent frames; parent is the one the section's existing __ehhandler$ row names
 $L1519,,0x0077F618,8,Code/GameEngine/Source/Common/System/SaveGame/Rva00382398Dtor.cpp,matched,gen-funclet;parent=??1Rva00382398@@UAE@XZ; Matched parent 0x00382398's EH graph is EXACT (eh_verify) and binds compiler label $L1519 to retail 0x0077F618; replaces generated uw_0077f618; retail FuncInfo 0x00929C74 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L360,,0x00798F07,8,Code/GameEngine/Source/Common/System/StlportStringByValueSetter555EB4.cpp,matched,gen-funclet;parent=?set@Rva00555EB4Setter@@QAEXV?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@@Z; Matched parent 0x00555EB4's EH graph is EXACT (eh_verify) and binds compiler label $L360 to retail 0x00798F07; replaces generated uw_00798f07; retail FuncInfo 0x0094D518 is shared by 3 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L103800,,0x00771E44,8,Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp,matched,gen-funclet;parent=??1GrantScienceUpgradeModuleData@@UAE@XZ; Matched parent 0x0025637D's EH graph is EXACT (eh_verify) and binds compiler label $L103800 to retail 0x00771E44; replaces generated uw_00771e44; retail FuncInfo 0x009187B4 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L1215,,0x0077724C,8,Code/GameEngine/Source/Common/Thing/ThingFactoryDtor.cpp,matched,gen-funclet;parent=??1ThingFactory@@UAE@XZ; Matched parent 0x002D0588's EH graph is EXACT (eh_verify) and binds compiler label $L1215 to retail 0x0077724C; replaces generated uw_0077724c; retail FuncInfo 0x0091EE54 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L74359,,0x00774EAF,8,Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp,matched,gen-funclet;parent=??1?$pair@VAsciiString@@VAudioEventRTS@@@_STL@@QAE@XZ; Matched parent 0x002A12E1's EH graph is EXACT (eh_verify) and binds compiler label $L74359 to retail 0x00774EAF; replaces generated uw_00774eaf; retail FuncInfo 0x0091C040 is shared by 5 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L372,,0x0077CB74,8,Code/GameEngine/Source/Common/Thing/ThingTemplateParsePrerequisiteScience.cpp,matched,gen-funclet;parent=?parsePrerequisiteScience@@YAXPAVINI@@PAX1PBX@Z; Matched parent 0x0033EABD's EH graph is EXACT (eh_verify) and binds compiler label $L372 to retail 0x0077CB74; replaces generated uw_0077cb74; retail FuncInfo 0x00926324 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L1468,,0x00773478,8,Code/GameEngine/Source/GameClient/Drawable_rva002765D4.cpp,matched,gen-funclet;parent=?rva002765D4@Drawable@@QAE_NPAVUnicodeString@@@Z; Matched parent 0x002765D4's EH graph is EXACT (eh_verify) and binds compiler label $L1468 to retail 0x00773478; replaces generated uw_00773478; retail FuncInfo 0x0091A298 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L4715,,0x00769D46,11,Code/GameEngine/Source/GameClient/FXListRva001E2747Ctor.cpp,matched,gen-funclet;parent=??0Rva001E2747@@QAE@ABVAsciiString@@@Z; Matched parent 0x001E2747's EH graph is EXACT (eh_verify) and binds compiler label $L4715 to retail 0x00769D46; replaces generated uw_00769d46; retail FuncInfo 0x0090F084 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L2463,,0x007966A7,8,Code/GameEngine/Source/GameClient/GUI/AptCallbackAdders.cpp,matched,gen-funclet;parent=?AddCommandMap@AptCommandMapAdder@@QAEXABVAsciiString@@V?$AptRef@VAptCommandMap@@@@@Z; Matched parent 0x0052458E's EH graph is EXACT (eh_verify) and binds compiler label $L2463 to retail 0x007966A7; replaces generated uw_007966a7; retail FuncInfo 0x0094A114 is shared by 4 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L1251,,0x0076E49D,8,Code/GameEngine/Source/GameClient/GUI/FontLibraryCtor.cpp,matched,gen-funclet;parent=??0FontLibrary@@QAE@XZ; Matched parent 0x00218942's EH graph is EXACT (eh_verify) and binds compiler label $L1251 to retail 0x0076E49D; replaces generated uw_0076e49d; retail FuncInfo 0x009141CC is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L5187,,0x00787236,8,Code/GameEngine/Source/GameClient/GUI/FontLibraryInit.cpp,matched,gen-funclet;parent=??1Rva00425F10@@UAE@XZ; Matched parent 0x004260A3's EH graph is EXACT (eh_verify) and binds compiler label $L5187 to retail 0x00787236; replaces generated uw_00787236; retail FuncInfo 0x0093479C is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L1351,,0x00795334,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMainMenuFirewallPrompts.cpp,matched,gen-funclet;parent=?OnlineButtonPressed@AptMainMenu@@QAEXPBD@Z; Matched parent 0x005160DE's EH graph is EXACT (eh_verify) and binds compiler label $L1351 to retail 0x00795334; replaces generated uw_00795334; retail FuncInfo 0x00948960 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L5337,,0x0079EC3A,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessenger_Rva005AE90F.cpp,matched,gen-funclet;parent=?rva005AE90F@AptMessenger@@QAEXXZ; Matched parent 0x005AE90F's EH graph is EXACT (eh_verify) and binds compiler label $L5337 to retail 0x0079EC3A; replaces generated uw_0079ec3a; retail FuncInfo 0x00955538 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L1457,,0x0079C65F,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansRva0057FA1C.cpp,matched,gen-funclet;parent=?rva0057FA1C@AptMpClans@@QAEXVUnicodeString@@@Z; Matched parent 0x0057FA1C's EH graph is EXACT (eh_verify) and binds compiler label $L1457 to retail 0x0079C65F; replaces generated uw_0079c65f; retail FuncInfo 0x00951FA0 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L65143,,0x0079DEEF,11,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineCustomMatchMessageHandler.cpp,matched,gen-funclet;parent=?DoRefresh@Rva005A5B38Box@@QAEXHPAX@Z; Matched parent 0x005A51B9's EH graph is EXACT (eh_verify) and binds compiler label $L65143 to retail 0x0079DEEF; replaces generated uw_0079deef; retail FuncInfo 0x00954610 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L14626,,0x0079FBBB,11,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineQuickMatch.cpp,matched,gen-funclet;parent=?Cancel@OnlineQuickMatch@AptOnline@@QAEXPBD@Z; Matched parent 0x005BAAA3's EH graph is EXACT (eh_verify) and binds compiler label $L14626 to retail 0x0079FBBB; replaces generated uw_0079fbbb; retail FuncInfo 0x009569D8 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L7090,,0x007A2C2F,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptStats.cpp,matched,gen-funclet;parent=?rva005DD0EB@AptStats@@QAEXH@Z; Matched parent 0x005DD0EB's EH graph is EXACT (eh_verify) and binds compiler label $L7090 to retail 0x007A2C2F; replaces generated uw_007a2c2f; retail FuncInfo 0x0095AB18 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L55364,,0x0077B102,8,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetComboBoxAddEntry.cpp,matched,gen-funclet;parent=?GadgetComboBoxAddEntry@@YAHPAVGameWindow@@VUnicodeString@@H@Z; Matched parent 0x00322DC5's EH graph is EXACT (eh_verify) and binds compiler label $L55364 to retail 0x0077B102; replaces generated uw_0077b102; retail FuncInfo 0x00923EC4 is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L55407,,0x0079A958,8,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetComboBoxRva0056EBA1.cpp,matched,gen-funclet;parent=?rva0056EA91@Rva0056EA91@@QAE?AVUnicodeString@@XZ; Matched parent 0x0056EA91's EH graph is EXACT (eh_verify) and binds compiler label $L55407 to retail 0x0079A958; replaces generated uw_0079a958; retail FuncInfo 0x0094FA28 is shared by 3 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L55408,,0x0079A960,8,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetComboBoxRva0056EBA1.cpp,matched,gen-funclet;parent=?rva0056EA91@Rva0056EA91@@QAE?AVUnicodeString@@XZ; Matched parent 0x0056EA91's EH graph is EXACT (eh_verify) and binds compiler label $L55408 to retail 0x0079A960; replaces generated uw_0079a960; retail FuncInfo 0x0094FA28 is shared by 3 parent frames; parent is the one the section's existing __ehhandler$ row names
+$L1828,,0x0077B19A,8,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetListBoxMultiInput.cpp,matched,gen-funclet;parent=?GadgetListBoxInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z; Matched parent 0x00325635's EH graph is EXACT (eh_verify) and binds compiler label $L1828 to retail 0x0077B19A; replaces generated uw_0077b19a; retail FuncInfo 0x00923FBC is shared by 2 parent frames; parent is the one the section's existing __ehhandler$ row names
