@@ -209,6 +209,8 @@ extern float g_Va00BBB8D8;
 
 // ---- from Code/GameEngine/Source/GameClient/Display.cpp
 
+// ---- from Code/GameEngine/Source/GameClient/Display.cpp
+
 // ---- from Code/GameEngine/Source/GameClient/DisplaySetDisplayMode.cpp
 
 Bool Display::setDisplayMode(UnsignedInt xres, UnsignedInt yres, UnsignedInt bitdepth, Bool windowed)
@@ -412,24 +414,6 @@ void Display::rva0025C776(int a8, float fc, float f10, float f14, float f18, int
 	m_120 = one;
 }
 
-// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C97E 764B ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp (not merged yet)
-
-// tu-skeleton: 0x0025CC7A 629B ?rva0025CC7A@Display@@QAE_N_N@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
-// tu-skeleton: 0x0025CF2A 485B ?rva0025CF2A@Display@@UAEIH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieFrameRva0025CF2A.cpp (not merged yet)
-
-// tu-skeleton: 0x0025D10F 25B ?rva0025D10F@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
-// tu-skeleton: 0x0025D128 118B ?bfmeVM0WorkerThread@@YAKPAX@Z -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/BfmeStrVM0Rva0025D19E.cpp
 
 // ?rva0025D19E@Display@@QAEXXZ, retail 0x0025D19E, 103 bytes.
@@ -459,9 +443,67 @@ void Display::rva0025D19E()
 	m_iE0 = -1;
 }
 
-// tu-skeleton: 0x0025D358 112B ?rva0025D358@Display@@QAEXVUnicodeString@@MMHHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp (not merged yet)
+// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
 
-// tu-skeleton: 0x0025D3C8 193B ?rva0025D3C8@Display@@QAEPAVDisplayString@@XZ -- matched in Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp (not merged yet)
+// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C97E 764B ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp (not merged yet)
+
+// tu-skeleton: 0x0025CC7A 629B ?rva0025CC7A@Display@@QAE_N_N@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
+
+// tu-skeleton: 0x0025CF2A 485B ?rva0025CF2A@Display@@UAEIH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieFrameRva0025CF2A.cpp (not merged yet)
+
+// tu-skeleton: 0x0025D10F 25B ?rva0025D10F@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
+// tu-skeleton: 0x0025D128 118B ?bfmeVM0WorkerThread@@YAKPAX@Z -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp
+
+// ?rva0025D358@Display@@QAEXVUnicodeString@@MMHHH@Z, retail 0x0025D358, 112 bytes.
+// Sets the +0xB0 display block: Unicode string via set plus ints at +0xB4/+0xB8/+0xBC
+// and floats at +0xC0/+0xC4; the by-value string is released at the end.
+// Evidence: same +0xB0/+0xD0/+0xF0 layout as the dtor 0x0025D686 (BfmeStrVM0Dtor.cpp)
+// and ctor 0x0025D489; callees rowed StringBase<G>::set 0x00037150 and
+// releaseBuffer 0x00036E70. The parameter is a UnicodeString: the only caller,
+// 0x00356AC1 (Rva003560EDEngineRefresh.cpp), passes a UnicodeString copy of the
+// fetched "GUI:Loading" text. Moved out of BfmeStrVM0Dtor.cpp, whose private
+// StringBase view cannot spell UnicodeString (the canonical header owns it).
+
+void Display::rva0025D358(UnicodeString s, float fC0, float fC4, int iB4, int iB8, int iBC)
+{
+	StringBase<unsigned short> &dst = m_sB0;
+	dst.set(s);
+	m_iB4 = iB4;
+	m_iB8 = iB8;
+	m_iBC = iBC;
+	m_fC0 = fC0;
+	m_fC4 = fC4;
+}
+
+// Retail 0x0025D3C8 (193B): NULL for an empty +0xB0 text; otherwise a new
+// display string from TheDisplayStringManager given the +0xB4 font, the text
+// and the +0xB8/+0xBC pair, after which +0xC8 holds half the unsigned width
+// left over beside it (this slot 0x40 minus the string's width) and +0xCC the
+// unsigned slot 0x44 value scaled by +0xC4. Returns the display string.
+DisplayString *Display::rva0025D3C8()
+{
+	if (m_sB0.isEmpty())
+		return 0;
+	DisplayString *ds = TheDisplayStringManager->newDisplayString();
+	if (ds) {
+		ds->setFont((GameFont *)m_iB4);
+		ds->setText(m_sB0);
+		ds->setWordWrap(m_iB8, m_iBC);
+		unsigned int width = ds->getWidth(-1);
+		m_fC8 = (float)((getWidth() - width) >> 1);
+		m_fCC = (float)getHeight() * m_fC4;
+	}
+	return ds;
+}
 
 // tu-skeleton: 0x0025D489 509B ??0Display@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0025D489Ctor.cpp (not merged yet)
 
@@ -502,7 +544,3 @@ void Display::rva0025D19E()
 // tu-skeleton: 0x00772B64 8B Unwind@00b72b64 -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
 
 // tu-skeleton: 0x00772B6C 10B __ehhandler$?rva0025CC7A@Display@@QAE_N_N@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
-// tu-skeleton: 0x00772B76 8B Unwind@00b72b76 -- matched in Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp (not merged yet)
-
-// tu-skeleton: 0x00772B7E 10B __ehhandler$?rva0025D358@Display@@QAEXVUnicodeString@@MMHHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp (not merged yet)

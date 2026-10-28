@@ -18209,8 +18209,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0025D205,241,code,,displaced,-,S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplay.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplay.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva0025D205.cpp
 0x0025D2F6,69,code,,displaced,-,S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplay.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplay.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva0025D2F6.cpp
 0x0025D33B,29,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/GameClient/Display.cpp,Code/GameEngine/Source/GameClient/Display.cpp
-0x0025D358,112,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/Common/Display.cpp,Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp
-0x0025D3C8,193,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/Common/Display.cpp,Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp
+0x0025D358,112,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/Common/Display.cpp,Code/GameEngine/Source/GameClient/Display.cpp
+0x0025D3C8,193,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/Common/Display.cpp,Code/GameEngine/Source/GameClient/Display.cpp
 0x0025D489,509,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Display.cpp S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/Common/Display.cpp,Code/GameEngine/Source/Common/Rva0025D489Ctor.cpp
 0x0025D686,111,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Display.cpp S=Code/GameEngine/Source/GameClient/Display.cpp N=Code/GameEngine/Source/Common/Display.cpp,Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp
 0x0025D6F5,527,code,,displaced,-,S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplay.cpp N=Code/GameEngine/Source/GameClient/W3DDisplay.cpp,Code/GameEngine/Source/GameClient/MovieBlockingPlayback.cpp
@@ -69872,8 +69872,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00772B5C,8,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025CC7A@FuncInfo0x009195E4,Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp
 0x00772B64,8,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025CC7A@FuncInfo0x009195E4,Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp
 0x00772B6C,10,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025CC7A@FuncInfo0x009195E4,Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp
-0x00772B76,8,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025D358@FuncInfo0x00919608,Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp
-0x00772B7E,10,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025D358@FuncInfo0x00919608,Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp
+0x00772B76,8,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025D358@FuncInfo0x00919608,Code/GameEngine/Source/GameClient/Display.cpp
+0x00772B7E,10,code,Code/GameEngine/Source/GameClient/Display.cpp,approved,P,P=0x0025D358@FuncInfo0x00919608,Code/GameEngine/Source/GameClient/Display.cpp
 0x00772B88,8,code,,,-,,Code/gen_small/uw_gen_011.cpp
 0x00772B90,14,code,,,-,,Code/gen_small/uw_gen_014.cpp
 0x00772B9E,14,code,,,-,,Code/gen_small/uw_gen_012.cpp
