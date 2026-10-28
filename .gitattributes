@@ -67,3 +67,7 @@ reverse/data_converged.csv text eol=lf
 # image_ownership_history.csv (tools/image_ownership.py): append-only signed rows, checked
 # against the committed bytes; LF from birth like the other ledgers, never union-merged.
 reverse/image_ownership_history.csv text eol=lf
+
+# Preserve the pristine STLport archive bytes, including mixed release EOLs.
+vendor/stlport-4.6/** -text
+vendor/stlport-4.6-bfme/** -text
