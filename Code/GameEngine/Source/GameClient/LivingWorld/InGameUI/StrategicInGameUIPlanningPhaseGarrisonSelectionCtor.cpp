@@ -13,13 +13,7 @@
 // skip entries with nonzero B8, then add entry ID through the second interface.
 // Remaining opaque field and interface names are layout observations rather
 // than recovered declarations from the original source.
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07() { m_04 = 0; }
-    virtual ~Rva0007DF07() {}
-};
+#include "../../../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07
 {
 public:

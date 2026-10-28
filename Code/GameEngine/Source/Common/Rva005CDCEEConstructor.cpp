@@ -10,13 +10,7 @@
 // which calls rowed50B Rva005CDCEE destructor5CDCEE. This independently
 // establishes the existing owner; do not introduce a second panel class.
 // Keep providers out of this TU: retail calls the8B wrapper out of line.
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07() { m_04 = 0; }
-    virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07
 {
 public:

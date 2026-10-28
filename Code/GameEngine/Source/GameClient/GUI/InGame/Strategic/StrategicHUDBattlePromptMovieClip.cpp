@@ -411,15 +411,8 @@ int __cdecl Rva0052519DFire(void *target, void *owner, const char *prefix, const
 class BfmeAptWindowManager;
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
-// Reference-counted base: vtable 0x007C6F20 and its destructor 0x004E84A4.
-class Rva0007DF07
-{
-public:
-	Rva0007DF07() : m_refs(0) {}
-	virtual ~Rva0007DF07() {}
-
-	int m_refs;
-};
+// Reference-counted base Rva0007DF07: vtable 0x007C6F20 and its destructor 0x004E84A4.
+#include "../../../../../Include/Common/Rva0007DF07.h"
 
 namespace StrategicHUD {
 class PlayerPageFrame : public Rva0007DF07

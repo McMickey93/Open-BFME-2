@@ -7,13 +7,7 @@
 // The destructor lives in Rva005E3AE1Dtor.cpp: with it out of sight the
 // vftable C77C70 scalar deleting destructor 5E3E60 emitted here keeps
 // retail's esi/edi save set across the call, as its twin 5CC90C does.
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07() { m_04 = 0; }
-    virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005E3AE1 : public virtual Rva0007DF07
 {
 public:

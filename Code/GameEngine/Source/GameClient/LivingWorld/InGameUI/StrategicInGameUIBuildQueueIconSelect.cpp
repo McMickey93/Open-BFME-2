@@ -493,13 +493,7 @@ int Rva005E735DAnchor(Rva005E72B4Queue *queue,int id)
 class Rva005F6B12 { public: int rva005F6B12(int) const; };
 // Native reference-count writes occur at base+4 (queued object+28).
 // Its own direct member initializer preserves the ctor EH-state/store order.
-class Rva0007DF07 {
-public:
- inline Rva0007DF07() : m_refCount(0) {}
- void AddRef() { ++m_refCount; }
- virtual ~Rva0007DF07() {}
-private: int m_refCount;
-};
+#include "../../../../Include/Common/Rva0007DF07.h"
 class Rva005E7ED7 : public StrategicInGameUI::BuildQueueDetailsPanel::Impl::Icon, public Rva0007DF07 {
 public:
  typedef StrategicInGameUI::BuildQueueDetailsPanel::Impl Owner;
@@ -557,8 +551,8 @@ class Rva005E87E0;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 struct Rva005E71C6Ref {
  Rva005E7ED7 *m_object;
- Rva005E71C6Ref(Rva005E7ED7 *p) : m_object(p) { if(p) p->AddRef(); }
- Rva005E71C6Ref(const Rva005E71C6Ref &r) : m_object(r.m_object) { if(m_object) m_object->AddRef(); }
+ Rva005E71C6Ref(Rva005E7ED7 *p) : m_object(p) { if(p) ++static_cast<Rva0007DF07 *>(p)->m_04; }
+ Rva005E71C6Ref(const Rva005E71C6Ref &r) : m_object(r.m_object) { if(m_object) ++static_cast<Rva0007DF07 *>(m_object)->m_04; }
  ~Rva005E71C6Ref() { if(m_object) ReleaseTreeHintRef00217D4C((TargetRef00217D4C *)(Rva0007DF07 *)m_object); }
 };
 // Reuse the existing native range loop; the caller's local tag is part of

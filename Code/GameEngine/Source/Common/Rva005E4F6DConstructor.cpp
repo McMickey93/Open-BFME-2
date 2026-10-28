@@ -2,13 +2,7 @@
 // Native destructor 5E5018..5E508F has two interfaces at 0 and 8,
 // shared virtual counted base at 14 and owned child at 10. The hidden
 // native teardown adjusts the virtual-base this bias and clears the child.
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07() { m_04 = 0; }
-    virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07
 {
 public:

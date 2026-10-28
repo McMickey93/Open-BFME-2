@@ -5,16 +5,7 @@
 // The native84B base destructor confirms the nonvirtual Rva005CC5E5
 // parent whose57B constructor establishes the same vbptr/count layout.
 // The derived pointer is the third explicit argument's +14 field.
-class Rva0007DF07
-{
-public:
-	Rva0007DF07() : count(0) {}
-	virtual ~Rva0007DF07() {}
-private:
-	unsigned int count;
-	friend struct Rva005CE93EHandle;
-	void addRef() { ++count; }
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 struct Rva005CE93EContext
 {
@@ -61,7 +52,7 @@ struct Rva005CE93EHandle
 	__forceinline Rva005CE93EHandle(Rva005CC5E5 *p) : m_p(p)
 	{
 		if (p)
-			p->addRef();
+			++static_cast<Rva0007DF07 *>(p)->m_04;
 	}
 	~Rva005CE93EHandle();
 };

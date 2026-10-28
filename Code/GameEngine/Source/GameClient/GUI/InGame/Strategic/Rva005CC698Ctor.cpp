@@ -18,14 +18,7 @@
 // context. The unwind map destroys the holder (+8) and the base.
 #include "ascii_string.h"
 
-class Rva0007DF07
-{
-public:
-	Rva0007DF07() : count(0) {}
-	virtual ~Rva0007DF07() {}
-private:
-	unsigned int count;
-};
+#include "../../../../../Include/Common/Rva0007DF07.h"
 
 class Rva005CC5E5 : public virtual Rva0007DF07
 {

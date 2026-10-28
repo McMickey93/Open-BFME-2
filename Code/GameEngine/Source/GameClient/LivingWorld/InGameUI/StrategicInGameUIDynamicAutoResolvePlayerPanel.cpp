@@ -51,7 +51,7 @@ template <> __declspec(dllimport) __forceinline
 bool less<int>::operator()(const int &a, const int &b) const
 { return a < b; }
 }
-class Rva0007DF07 {public:__forceinline Rva0007DF07():zero(0){} virtual ~Rva0007DF07(){} private:void *zero;};
+#include "../../../../Include/Common/Rva0007DF07.h"
 class Rva005FBBEE {public:Rva005FBBEE(unsigned,const AsciiString&);virtual ~Rva005FBBEE();private:void *impl;};
 class Rva005FBBFC {public:void rva005FBBFC(const UnicodeString&);};
 class Rva005FBB68 {public:void rva005FBB4D(int);void rva005FBB55(float);};

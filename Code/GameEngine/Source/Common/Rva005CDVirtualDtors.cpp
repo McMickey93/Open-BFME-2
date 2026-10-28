@@ -13,14 +13,7 @@
 // the three incorrect nonvirtual dtor pins are retired. No new pins.
 // Only destructor-visible ABI is recovered; original class names and
 // unobserved virtual interface surfaces remain unresolved.
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07() { m_04 = 0; }
-    virtual ~Rva0007DF07() {}
-    void addRef() { ++*reinterpret_cast<int *>(&m_04); }
-};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07
 {
 public:
@@ -133,7 +126,7 @@ struct Rva005FABC1Handle
     __forceinline Rva005FABC1Handle(Rva005E4F6D *p) : m_p(p)
     {
         if (p)
-            p->addRef();
+            ++static_cast<Rva0007DF07 *>(p)->m_04;
     }
     ~Rva005FABC1Handle();
 };

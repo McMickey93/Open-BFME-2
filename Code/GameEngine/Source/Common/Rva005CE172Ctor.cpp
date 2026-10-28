@@ -6,16 +6,7 @@
 // base constructor146 and destructor84; adding it preserves this full121B.
 // The third explicit argument supplies the +8 object whose +20 field
 // receives this instance. The base call receives all three arguments.
-class Rva0007DF07
-{
-public:
-	Rva0007DF07() : count(0) {}
-	virtual ~Rva0007DF07() {}
-private:
-	unsigned int count;
-	friend struct Rva005CE172Handle;
-	void addRef() { ++count; }
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 struct Rva005CE172Link
 {
@@ -73,7 +64,7 @@ struct Rva005CE172Handle
 	__forceinline Rva005CE172Handle(Rva005CC5E5 *p) : m_p(p)
 	{
 		if (p)
-			p->addRef();
+			++static_cast<Rva0007DF07 *>(p)->m_04;
 	}
 	~Rva005CE172Handle();
 };
