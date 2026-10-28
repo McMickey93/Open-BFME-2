@@ -126,7 +126,8 @@ class ExperienceTracker
 public:
 	unsigned char m_pad00[0xc];
 	Int m_currentLevel;			// +0x0C
-	unsigned char m_pad10[0x30 - 0x10];
+	float m_experience;			// +0x10
+	unsigned char m_pad14[0x30 - 0x14];
 	Int m_levelListKey;			// +0x30
 };
 // The NameKeyType -> level-list hash_map at the store's +0x0C. Its STLport
@@ -197,7 +198,12 @@ public:
     _STL::vector<void *> upgrades4C;
     char pad58[0xb0];
 };
-class Rva0028951F { public: const Overridable *rva0028951F(int); };
+class Rva0028951F
+{
+public:
+	const Overridable *rva0028951F(int);
+	const Overridable *rva002897A8(void *list, int level);
+};
 class Rva0028881C { public: void rva002889BB(); };
 extern NameKeyGenerator *TheNameKeyGenerator;
 Int SplitUpgrades(void *, const AsciiString &);
@@ -220,6 +226,7 @@ public:
 	ExperienceLevelHandle FindCurrentLevel(const ExperienceTracker *tracker) const;
 	Int rva00288CA6(const ExperienceTracker *tracker, Int rank, Int *pastEnd) const;
 	ExperienceLevelList *rva00288C68(int object);
+	int rva00289BE0(const ExperienceTracker *tracker, int *out);
 
 private:
 	unsigned char m_pad00[0xc];
@@ -869,10 +876,8 @@ void Rva00288A5CAssign(CameraMarker *first, CameraMarker *last, CameraMarker *de
 // The allocation member is a structural lifetime view to preserve cleanup on exceptions,
 // not evidence for an original member type or application name.
 
-// ?Rva00288BF9Record::~Rva00288BF9Record present-unmatched
 Rva00288BF9Record::~Rva00288BF9Record() {}
 
-// ?Rva00288BF9Record::destroy present-unmatched
 void *Rva00288BF9Record::destroy(unsigned flags)
 {
     this->~Rva00288BF9Record();

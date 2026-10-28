@@ -14098,8 +14098,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITac
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummary.h	ArmySummary::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummaryCopyBFME2.cpp	ArmySummary::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9AllocationLifetime::~Rva00288BF9AllocationLifetime	1
-present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9Record::destroy	1
-present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9Record::~Rva00288BF9Record	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp	dummy@Rva003A6F70@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogic.cpp	LivingWorldLogic::rva002B4B83	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	LivingWorldRegion::rva003F0588	1

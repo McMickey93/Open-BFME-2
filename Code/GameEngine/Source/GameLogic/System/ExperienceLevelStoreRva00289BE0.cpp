@@ -15,7 +15,7 @@ class ExperienceTracker
 {
 public:
 	unsigned char m_pad0[0xC];
-	int m_level;		// +0x0C
+	int m_currentLevel;	// +0x0C
 	float m_experience;	// +0x10
 };
 
@@ -30,6 +30,7 @@ struct Rva00289BE0Level
 class Rva0028951F
 {
 public:
+	const Overridable *rva0028951F(int);
 	const Overridable *rva002897A8(void *list, int level);	// 0x002897A8
 };
 
@@ -45,7 +46,7 @@ int ExperienceLevelStore::rva00289BE0(const ExperienceTracker *tracker, int *out
 	ExperienceLevelList *list = FindExperienceLevelList(tracker);
 	if (list == 0)
 		return 0;
-	const Rva00289BE0Level *level = (const Rva00289BE0Level *)((Rva0028951F *)this)->rva002897A8(list, tracker->m_level);
+	const Rva00289BE0Level *level = (const Rva00289BE0Level *)((Rva0028951F *)this)->rva002897A8(list, tracker->m_currentLevel);
 	if (level == 0)
 		return 0;
 	int current = (int)tracker->m_experience;

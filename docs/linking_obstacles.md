@@ -7160,3 +7160,19 @@ sources remain outside this merge. No rejected donor was edited.
 Clearance: source consolidation and scoped byte/data/EH checks only. Full
 selected-consumer coverage and census confirmation remain open; no measured
 linked-byte or image-ownership gain is claimed.
+
+### ExperienceLevelSystem declaration reconciliation (2026-10-28)
+
+Base adc86f51cb; preview index 41c28839bf. The seed and its 0x00289BE0
+store helper now agree on existing method declarations and the tracker's
++0x0C/+0x10 fields. All 32 rows, two data rows and four EH graphs remain
+exact, and external COMDAT digests and symbol sets are unchanged. Two stale
+present-unmatched markers are removed. Both units retain LINKS in the scoped
+ordinary preview (2110 authored bytes); no census gain is claimed.
+
+The wider merge still needs STL allocator and private class/base/container
+reconciliation. Code identity shadow retains two unchanged hashtable-find
+bindings at 0x00148B27. Both providers have strict reusable receipts. The batch audit remains
+INCONCLUSIVE (older index and missing current receipt for affected consumer
+Common/0CreateAHeroManager21FE49.cpp); carry the composition/provider scope
+into the next normal census. [Evidence and remaining prerequisites](../reverse/attempt_support/experience-level-consolidation-20261028-codexb.md).
