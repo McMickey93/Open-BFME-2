@@ -3307,6 +3307,19 @@ ledger. Evidence and remaining prerequisites:
 Clearance: original ctor preview diagnostic absent at the newer index;
 post-merge getter preview and census clearance pending. No census increase claimed.
 
+**2026-10-28 declaration prerequisite:** at inspected revision `f8b430a969`,
+the ordinary preview against measured index `14dc3d2467` (2026-10-28 02:44)
+reports LINKS for the current destination (2,455 -> 2,534 B) and its standalone
+payload parser (133 -> 133 B). Neither earlier duplicate diagnostic reproduces
+in this scope; census clearance is not claimed. Replacing the parser's private
+STL list declaration with the real STLport header and the destination's node
+allocator declaration preserves its two matched rows and exact EH graph.
+Its five original COMDATs are unchanged; five additional list/iterator copies
+are identical to the destination's providers. This addresses one remaining consolidation
+prerequisites without claiming native element-type recovery. The destination's
+unreferenced `Object::clearCondition` shadow diagnostic remains unchanged.
+Evidence: `reverse/attempt_support/transportcontain-payload-consolidation-20261028.md`.
+
 ### LINK-035: `StlSweepR3` vector-destructor units instantiated the whole `vector<RecordN>`
 Status: Open (6 of 7 repaired). Updated: 2026-10-26; inspected revision: 018ace6021; index d1f046749a.
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva<rva>.cpp` units holding one

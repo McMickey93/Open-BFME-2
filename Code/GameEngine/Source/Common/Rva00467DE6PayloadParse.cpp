@@ -10,6 +10,7 @@
 // spelling is for a list of pointers; the record is passed by reference
 // through it. Names are address-derived.
 #include "ascii_string.h"
+#include <list>
 
 class INI
 {
@@ -21,15 +22,9 @@ public:
 
 class Rva00467DB3Obj;
 
-namespace _STL
-{
-template <class T> class allocator;
-template <class T, class A> class list
-{
-public:
-	void push_back(const T &);
-};
-}
+// Retail's node allocator is separately rowed; keep this instantiation bound
+// to that provider, as in the owning TransportContain TU.
+template <> _STL::_List_node<Rva00467DB3Obj *> *_STL::list<Rva00467DB3Obj *>::_M_create_node(Rva00467DB3Obj *const &);
 
 struct Rva00467DE6Payload
 {
