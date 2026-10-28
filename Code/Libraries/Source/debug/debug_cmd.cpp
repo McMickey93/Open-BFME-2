@@ -95,7 +95,7 @@ extern "C" void __cdecl _heap_abort(void)
 	(theDebug->CrashBegin(0, 0, 0) << "Fatal heap error.").CrashDone(1);
 }
 
-extern "C" __declspec(dllimport) int __cdecl _vsnprintf(char *, unsigned int, const char *, va_list);
+#include <stdio.h>
 
 // ---- from Code/GameEngine/Source/Common/BfmeConv2122.cpp
 
