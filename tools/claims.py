@@ -999,10 +999,26 @@ def claim(rvas, who=None, ttl_hours=TTL_HOURS, note="", root=None, locks=(), ato
                 f"{sha}:{ref_of(rva)}" if not old else f"+{sha}:{ref_of(rva)}")
 
     def push(batch, deletions=((), ())):
-        leases = [s[0] for s in map(spec, batch) if s[0]] + list(deletions[0])
-        refspecs = [spec(r)[1] for r in batch] + list(deletions[1])
-        return _git("push", "-q", "--atomic", *leases, REMOTE, *refspecs,
-                    cwd=root, timeout=120).returncode == 0
+        """One atomic push per command-line-sized chunk: a merge scope of ~200 files
+        and their rows overflowed Windows' command line in a single push (2026-10-28).
+        The queued deletions ride in the first chunk. When a later chunk fails, an
+        all-or-nothing claim takes back the fresh refs earlier chunks created."""
+        extra = list(deletions[0]) + list(deletions[1])
+        reserve = len(subprocess.list2cmdline(extra)) + 2 if extra else 0
+        pushed = []
+        for i, chunk in enumerate(list(_arg_batches(batch, lambda r: [a for a in spec(r) if a], reserve)) or [[]]):
+            leases = [s[0] for s in map(spec, chunk) if s[0]] + (list(deletions[0]) if i == 0 else [])
+            refspecs = [spec(r)[1] for r in chunk] + (list(deletions[1]) if i == 0 else [])
+            if _git("push", "-q", "--atomic", *leases, REMOTE, *refspecs, cwd=root, timeout=120).returncode:
+                fresh_refs = {r: token(r) for r in pushed if r not in current}
+                if atomic_only and fresh_refs:
+                    _drop(fresh_refs, who, root)
+                return False
+            pushed += chunk
+            if len(batch) > len(chunk):     # mirrored now, so a rollback's fenced _drop sees them
+                for r in chunk:
+                    _mirror(r, token(r), root)
+        return True
 
     # The releases settle(defer=True) queued ride in this push: one transaction
     # instead of one more push. A key this push writes is needed again, so its
@@ -1324,6 +1340,9 @@ def _drop(pairs, who=None, root=None, entries=()):
     left alone and the rest retried together. Returns the
     deleted keys."""
     pairs = dict(pairs)
+    chunks = list(_arg_batches(list(pairs), lambda k: [f"--force-with-lease={ref_of(k)}:{pairs[k]}", f":{ref_of(k)}"]))
+    if len(chunks) > 1:     # one atomic push per command-line-sized chunk (see claim's push)
+        return sorted((k for c in chunks for k in _drop({k: pairs[k] for k in c}, who, root, entries)), key=_order)
     done = []
     for attempt in range(5):
         if not pairs:
@@ -1453,6 +1472,24 @@ def gc_candidates(root=None, grace_minutes=GC_GRACE_MINUTES, now=None):
             continue                    # a hand-made spelling ref_of would not delete
         found[key] = sha
     return found
+
+
+ARG_BUDGET = 24000      # characters of push arguments per git call (Windows caps a command line at 32,767)
+
+
+def _arg_batches(items, args_of, reserve=0):
+    """`items` in order, cut into lists whose push arguments (`args_of(item)`) fit
+    ARG_BUDGET; the first list also leaves room for `reserve` characters."""
+    chunk, units, budget = [], 0, ARG_BUDGET - reserve
+    for item in items:
+        cost = len(subprocess.list2cmdline(args_of(item)).encode("utf-16-le")) // 2 + 2
+        if chunk and units + cost > budget:
+            yield chunk
+            chunk, units, budget = [], 0, ARG_BUDGET
+        chunk.append(item)
+        units += cost
+    if chunk:
+        yield chunk
 
 
 def _gc_batches(keys, found, batch):

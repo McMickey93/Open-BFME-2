@@ -1554,3 +1554,52 @@ def test_post_push_foreign_namespace_lock_rolls_back_without_foreign_writes(host
     refs = _git(hosts.origin, "for-each-ref", "--format=%(refname) %(contents:subject)")
     assert foreign_ns + "class/C" in refs
     assert not claims.live(claims._read_local())
+
+
+def test_a_claim_too_big_for_one_command_line_is_pushed_in_chunks(hosts, monkeypatch):
+    """A merge scope of ~200 files and their rows overflowed Windows' command line in
+    one push (2026-10-28): claims and releases go in budget-sized atomic chunks."""
+    hosts("a")
+    monkeypatch.setattr(claims, "ARG_BUDGET", 400)
+    real, pushes = claims._git, []
+
+    def git(*args, **kwargs):
+        if args[:1] == ("push",):
+            pushes.append(args)
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(claims, "_git", git)
+    keys = list(range(0x1000, 0x1000 + 40))
+    assert claims.claim(keys).claimed == keys
+    assert len(pushes) > 1
+    assert all(len(" ".join(p)) < 1000 for p in pushes)
+    pushes.clear()
+    assert claims.release(keys) == keys
+    assert len(pushes) > 1
+    claims.fetch(claims.ROOT)
+    assert not set(keys) & set(claims._read_local(claims.ROOT))
+
+
+def test_an_all_or_nothing_claim_takes_back_its_earlier_chunks(hosts, monkeypatch):
+    """A later chunk refused (a peer's push in between): the fresh refs the earlier
+    chunks created are deleted again, so nothing of the scope stays claimed."""
+    hosts("a")
+    monkeypatch.setattr(claims, "ARG_BUDGET", 400)
+    real, claim_pushes = claims._git, []
+    contested = ":" + claims.ref_of(0x2027)          # in the last chunk; never accepted
+
+    def git(*args, **kwargs):
+        if args[:1] == ("push",) and any(a.endswith(contested) and not a.startswith(":") for a in args):
+            claim_pushes.append(args)
+            return subprocess.CompletedProcess(args, 1, "", "rejected")
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(claims, "_git", git)
+    keys = list(range(0x2000, 0x2028))
+    result = claims.claim(keys, atomic_only=True)
+    assert claim_pushes and result.claimed == []
+    claims._invalidate_snapshot(claims.ROOT)
+    claims.fetch(claims.ROOT)
+    left = claims._read_local(claims.ROOT)
+    assert not [k for k in keys if k in left and left[k][1].get("expires", 0) > 0
+                and left[k][1].get("owner") == "a" and left[k][1].get("note") != "released"]
