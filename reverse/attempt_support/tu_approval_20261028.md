@@ -186,8 +186,8 @@ LANAPI/LANGameInfo) are unchanged and unclaimed.
 
 All counts are approved code rows from `tools/tu_map.py` `build()` run in
 memory over the previous commit's ledger and over the working tree (never
-written), cross-checked with `tu_skeleton.py --plan`. Total 42,810 -> 43,260
-(+450) over five commits; link_check kept every touched unit's verdict.
+written), cross-checked with `tu_skeleton.py --plan`. Total 42,810 -> 43,290
+(+480) over six commits; link_check kept every touched unit's verdict.
 
 | Commit | Rows | Approved | Notes |
 |---|---|---:|---|
@@ -196,6 +196,7 @@ written), cross-checked with `tu_skeleton.py --plan`. Total 42,810 -> 43,260
 | `18aa80d3fd` | 0x0011E670 `DX8Wrapper::AdjustTextureSize` (owner), `TextureLoader::Validate_Texture_Size` fold alias | +218 | dx8wrapper.cpp 0 -> 219. Name from BFME 1 EA evidence for the same body at 0x009056F0 (file dxwrapper.cpp route wb1, name DXWrapper::AdjustTextureSize route chain/aligned). W3DShroud.cpp (claimed by halilkkaya-tu-s11b's merge) still calls the alias; repoint it and retire the alias row later. |
 | `1711fdad14` | 0x00041AD4 `Win32Mouse::setPosition` (was DirectInputMouse; retract + readmit) | +16 | Slot 17 of ??_7Win32Mouse@@6B@ 0x007C2478 and ??_7W3DMouse@@6B@ 0x007C86D8; no DirectInputMouse vftable. Win32Mouse.cpp 0 -> 17. |
 | `8f5546775f` | 0x004B901D `GrantUpgradeCreate::onCreate`, 0x004B9093 `GrantUpgradeCreate::onBuildComplete` (retract + readmit) | +25 | Slots 0/1 of the CreateModuleInterface vftable 0x00859428 that GrantUpgradeCreate's ctor stores at +0x10 (the old notes read SupplyWarehouseCreate's primary vftable past its end). GrantUpgradeCreate.cpp 0 -> 17, SupplyWarehouseCreate.cpp 0 -> 8; present_unmatched -3 (the duplicate ZH bodies in GrantUpgradeCreate.cpp). |
+| `ea64f4542f` | 0x004BD2F9 `SalvageCrateCollide::xfer` (owner), `HealCrateCollide::xfer` fold alias | +30 | Slot 3 of six CrateCollide vtables (one identical-code fold); the kept copy lies in SalvageCrateCollide.cpp's run after the Salvage vtable's destructor 0x004BD207. SalvageCrateCollide.cpp 0 -> 20, HealCrateCollide.cpp 0 -> 10. |
 
 Method notes for the next seat:
 
@@ -246,8 +247,9 @@ Remaining single-intruder leads (in-memory map at `8f5546775f`): W3DTankDraw.cpp
 +28 (`??1W3DModuleFactory` 0x00042100), Anim2D.cpp +46
 (`?parseAnim2DDefinition@INI` 0x002D7554), W3DDynamicLight.cpp +23
 (`?Peek_Inner_Scale_Channel@RingRenderObjClass` 0x0006E12F),
-SalvageCrateCollide.cpp +19 (`?xfer@HealCrateCollide` 0x004BD2F9),
 RubbleRiseUpdate.cpp +17 (`?doCollapseDoneStuff@StructureCollapseUpdate`
-0x004A4DBE), W3DStatusCircle.cpp +15 / W3DTerrainTracks.cpp +10 (each other's
+0x004A4DBE: only caller RubbleRiseUpdate::update 0x004A4F72; BFME 1's ILT-confirmed
+name for the same role is `?doRubbleDoneStuff@RubbleRiseUpdate@@IAEXXZ`; its EH
+handler and funclet rows must be renamed with it), W3DStatusCircle.cpp +15 / W3DTerrainTracks.cpp +10 (each other's
 rows), StreamingArchiveFile.cpp +9 (`?close@LocalFile` 0x00605A7D), aabox.cpp
 +7 (`??1GridLinkClass` 0x00719CC0).
