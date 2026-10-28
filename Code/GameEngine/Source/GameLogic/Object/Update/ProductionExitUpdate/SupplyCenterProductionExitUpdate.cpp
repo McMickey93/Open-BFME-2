@@ -190,6 +190,14 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
 class SupplyCenterProductionExitUpdate : public UpdateModule, public ExitInterface
 {
 public:
@@ -207,11 +215,21 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 };
 
-// tu-skeleton: 0x004A6569 69B ?getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp
+
+// ?getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType SupplyCenterProductionExitUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheSupplyCenterProductionExitUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("SupplyCenterProductionExitUpdate");
+	return TheSupplyCenterProductionExitUpdatePoolKey;
+}
 
 // tu-skeleton: 0x004A65AE 120B ??0SupplyCenterProductionExitUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdateBehaviorCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004A6626 28B ??_GRva004A653D@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdate/SupplyCenterProductionExitUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdate/SupplyCenterProductionExitUpdate.cpp
 
@@ -390,3 +408,7 @@ void SupplyCenterProductionExitUpdate::exitObjectViaDoor( Object *newObj, ExitDo
 		}
 	}
 }
+
+// tu-skeleton: 0x0078DE56 8B uw_0078de56 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+
+// tu-skeleton: 0x0078DE5E 10B __ehhandler$??0SupplyCenterProductionExitUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdateBehaviorCtor.cpp (not merged yet)

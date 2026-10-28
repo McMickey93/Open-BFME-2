@@ -20290,8 +20290,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03C38,4,.data,global,?key_BoneFXUpdate@?1??doToppleDoneStuff@StructureToppleUpdate@@IAEXXZ@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdateCrushing.cpp,owned,,1,2
 0x00A03C3C,4,.data,global,?$S2@?1??doToppleDoneStuff@StructureToppleUpdate@@IAEXXZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdateCrushing.cpp,owned,,1,2
 0x00A03C40,4,.data,global,_s_rva007B1B4E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03C44,4,.data,global,?TheSupplyCenterProductionExitUpdatePoolKey@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp,owned,,1,2
-0x00A03C48,4,.data,global,?$S1@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp,owned,,1,4
+0x00A03C44,4,.data,global,?TheSupplyCenterProductionExitUpdatePoolKey@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdate/SupplyCenterProductionExitUpdate.cpp,owned,,1,2
+0x00A03C48,4,.data,global,?$S1@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdate/SupplyCenterProductionExitUpdate.cpp,owned,,1,4
 0x00A03C4C,4,.data,global,?TheSupplyTruckAIUpdatePoolKey@?1??getModuleNameKey@SupplyTruckAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp,owned,,1,2
 0x00A03C50,4,.data,global,?$S1@?1??getModuleNameKey@SupplyTruckAIUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp,owned,,1,2
 0x00A03C54,4,.data,global,?keyCenter@?3??getActionDelayForDock@Rva004A6F0A@@QAEHPAVObject@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp,owned,,1,2
