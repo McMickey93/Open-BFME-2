@@ -8615,3 +8615,5 @@ Code/GameEngine/Source/Common/Rva00262045Unlink.cpp|param|Rva00262045::rva002620
 Code/GameEngine/Source/Common/Rva00090360Ctor.cpp|function|0x00090381|rva00090381,2e048f04429b288b6da56ecd,claude-opus-5-5,claude2-20261027-dsm3,w-85ac5a290b20,2026-10-27
 Code/GameEngine/Source/Common/Rva00090360Ctor.cpp|param|W3DDisplayStringManager::rva00090381|n,b946e3db67dbb8dd90fac072,claude-opus-5-5,claude2-20261027-dsm3,w-85ac5a290b20,2026-10-27
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroConstructor.cpp|member|GlobalData2|m_D45,d0d43a5c87da24e082d54feb,claude-opus-5-5,b1s19a,w-7c16e3a18092,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawGetCurrentBonePositions.cpp|param|same|b,d2087894098b519b1af3f950,timing-a,timing-second-a,w-1b77bf5c14f0,2026-10-27
+Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawGetCurrentBonePositions.cpp|param|same|b,d2087894098b519b1af3f950,timing-b,timing-second-b,w-27710a9b7723,2026-10-27

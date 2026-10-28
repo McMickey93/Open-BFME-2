@@ -163,13 +163,13 @@ public:
 	unsigned int m_word8;
 	unsigned int m_wordC;
 	Rva00078AE3 &rva00078AE3(const Rva00078AE3 *other);
-	__forceinline bool same(const Rva00078AE3 &b) const
+	__forceinline bool same(const Rva00078AE3 &other) const
 	{
-		if (m_count != b.m_count)
+		if (m_count != other.m_count)
 			return false;
-		if (((Rva000B4653 *)this)->rva000B4653(0) != ((Rva000B4653 *)&b)->rva000B4653(0))
+		if (((Rva000B4653 *)this)->rva000B4653(0) != ((Rva000B4653 *)&other)->rva000B4653(0))
 			return false;
-		if (bool(m_flag30) != bool(b.m_flag30))
+		if (bool(m_flag30) != bool(other.m_flag30))
 			return false;
 		return true;
 	}
