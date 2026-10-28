@@ -16,77 +16,82 @@ extern const void *const g_00C03E24[];
 // array element's native cleanup ABI by using the same genuine ownership.
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiElem
+typedef bool Bool;
+typedef int Int;
+
+enum BodyDamageType
 {
-public:
-	AsciiElem() {}
-	~AsciiElem() {}
-private:
-	AsciiString m_text;
+	BODY_PRISTINE,
+	BODY_DAMAGED,
+	BODY_REALLYDAMAGED,
+	BODY_RUBBLE,
+
+	BODYDAMAGETYPE_COUNT
 };
-class OpaqueRefCounted
+
+enum { MAX_BRIDGE_BODY_FX = 3 };
+
+// The +0x64/+0xD4 sound slots: 4-byte reference records whose default
+// constructor is the folded null initializer 0x00326BE6 and whose destructor
+// is the null-checked release 0x0010F149.
+struct OpaqueRefElement4
 {
-public:
-	void Release_Ref();
+	struct OpaqueRefCounted *referent;
+	OpaqueRefElement4() : referent(0) {}
+	~OpaqueRefElement4();
+	OpaqueRefElement4 &operator=(const OpaqueRefElement4 &other);
 };
-class BfmeStringTailRecord156
-{
-public:
-  BfmeStringTailRecord156() : m_ptr(0) {}
-	~BfmeStringTailRecord156();
-private:
-	OpaqueRefCounted *m_ptr;
-};
+
+// TerrainRoads.cpp's TerrainRoadType members (ZH TerrainRoads.h order).
 class TerrainRoadType
 {
 public:
 	TerrainRoadType();
 	virtual ~TerrainRoadType();
-	AsciiString m_04;
-	unsigned char m_08;
-	char m_pad09[3];
-	int m_0C;
-	int m_10;
-	float m_14;
-	float m_18;
-	float m_1C;
-	AsciiString m_20;
-	AsciiString m_24;
-	float m_28;
-	float m_2C;
-	float m_30;
-	AsciiString m_34;
-	AsciiString m_38;
-	AsciiString m_3C;
-	AsciiString m_40;
-	AsciiString m_44;
-	AsciiString m_48;
-	AsciiString m_4C;
-	AsciiString m_50;
-	AsciiElem m_54[4];
-	BfmeStringTailRecord156 m_64[4];
-	AsciiElem m_74[12];
-	AsciiElem m_A4[12];
-	BfmeStringTailRecord156 m_D4[4];
-	AsciiElem m_E4[12];
-	AsciiElem m_114[12];
-	float m_144;
-	int m_148;
+
+protected:
+	AsciiString m_name;                         ///< 0x04
+	Bool m_isBridge;                            ///< 0x08
+	unsigned int m_id;                          ///< 0x0C
+	TerrainRoadType *m_next;                     ///< 0x10
+	float m_roadWidth;                           ///< 0x14
+	float m_roadWidthInTexture;                  ///< 0x18
+	float m_bridgeScale;                        ///< 0x1C
+	AsciiString m_scaffoldObjectName;           ///< 0x20
+	AsciiString m_scaffoldSupportObjectName;    ///< 0x24
+	float m_radarColor[3];                      ///< 0x28
+	AsciiString m_bridgeModelName;              ///< 0x34
+	AsciiString m_texture;                      ///< 0x38
+	AsciiString m_bridgeModelNameDamaged;       ///< 0x3C
+	AsciiString m_textureDamaged;               ///< 0x40
+	AsciiString m_bridgeModelNameReallyDamaged; ///< 0x44
+	AsciiString m_textureReallyDamaged;         ///< 0x48
+	AsciiString m_bridgeModelNameBroken;        ///< 0x4C
+	AsciiString m_textureBroken;                ///< 0x50
+	AsciiString m_towerObjectName[4];           ///< 0x54
+	OpaqueRefElement4 m_damageToSoundString[ BODYDAMAGETYPE_COUNT ];								///< 0x64
+	AsciiString m_damageToOCLString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];		///< 0x74
+	AsciiString m_damageToFXString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];		///< 0xA4
+	OpaqueRefElement4 m_repairedToSoundString[ BODYDAMAGETYPE_COUNT ];							///< 0xD4
+	AsciiString m_repairedToOCLString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];	///< 0xE4
+	AsciiString m_repairedToFXString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];	///< 0x114
+	float m_transitionEffectsHeight;            ///< 0x144
+	Int m_numFXPerType;                         ///< 0x148
 };
 // TerrainRoadType::~TerrainRoadType: defined in GameClient/Terrain/TerrainRoads.cpp (its row's unit).
 TerrainRoadType::TerrainRoadType()
 {
 	float v0 = 0.0f;
 	float v1C = 1.0f;
-	m_08 = 0;
-	m_0C = 0;
-	m_10 = 0;
-	m_148 = 0;
-	m_14 = v0;
-	m_18 = v0;
-	m_1C = v1C;
-	m_28 = v0;
-	m_2C = v0;
-	m_30 = v0;
-	m_144 = v0;
+	m_isBridge = false;
+	m_id = 0;
+	m_next = 0;
+	m_numFXPerType = 0;
+	m_roadWidth = v0;
+	m_roadWidthInTexture = v0;
+	m_bridgeScale = v1C;
+	m_radarColor[0] = v0;
+	m_radarColor[1] = v0;
+	m_radarColor[2] = v0;
+	m_transitionEffectsHeight = v0;
 }

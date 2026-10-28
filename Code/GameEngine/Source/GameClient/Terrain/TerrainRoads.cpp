@@ -84,6 +84,7 @@ public:
 struct OpaqueRefElement4
 {
 	struct OpaqueRefCounted *referent;
+	OpaqueRefElement4() : referent(0) {}
 	~OpaqueRefElement4();
 	OpaqueRefElement4 &operator=(const OpaqueRefElement4 &other);
 };
