@@ -105,7 +105,7 @@ public:
 extern NameKeyGenerator *TheNameKeyGenerator;
 // BFME2's loader uppercases the qualified name with the imported toupper
 // (0x00BBA5B4) before keying it, as HRawAnimClass::Load_W3D does.
-extern "C" __declspec(dllimport) int __cdecl toupper(int);
+#include <ctype.h>
 // The Debug manager (theDebug, 0x00DE0880) that BFME2's missing-bone report
 // streams through. The reference Debug class is not virtual, so this view
 // carries the retail slots; only the slots called here are named.
