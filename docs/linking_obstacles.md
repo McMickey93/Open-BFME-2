@@ -237,6 +237,22 @@ Common/0CreateAHeroManager21FE49.cpp lacks a current consumer receipt.
 Carry the removed-helper scope into the next normal census; full external
 consumer selection remains unverified.
 
+#### Pathfinder footprint consumer subset (2026-10-28)
+
+At `72a0f2d577`, index `41c28839bf`, PathfinderClassifyObjectFootprint.cpp
+exposed an unused math-header `_floorf` copy. Giving the inline wrapper local
+linkage preserves the full 3,381-byte classifier, all 19 retained external
+COMDAT fingerprints and all external dependencies. Ordinary preview changes
+from blocked to LINKS for 3,378 authored bytes. The earlier missing
+ClassifyWall provider has landed; the global selected-copy issue in
+LINK-132/LINK-133 and census confirmation remain open.
+
+[Verification and object comparison](../reverse/attempt_support/pathfinder-footprint-floor-link-20261028-codex.md).
+The outgoing batch audit is INCONCLUSIVE because the index predates the base
+and affected consumer Common/0CreateAHeroManager21FE49.cpp lacks a current
+receipt. Carry this removed-copy scope into the next normal census; full
+external consumer selection and new census-linked bytes remain unclaimed.
+
 ### BannerCarrierUpdate string-header composition (2026-10-28)
 
 Status: destructor prerequisite repaired and merged into the approved TU;

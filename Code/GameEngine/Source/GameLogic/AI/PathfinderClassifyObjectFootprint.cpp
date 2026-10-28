@@ -12,6 +12,8 @@
 // sphere loops (ZH style) sets retail's base/index order in the box gate path;
 // the post-switch passes declare their own loop counters.
 #include "Code/Libraries/Include/Lib/Coord3D.h"
+// All floor operations inline here; keep the unused wrapper local.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "Code/Libraries/Include/Lib/ICoord2D.h"
 #include "Code/Libraries/Include/Lib/Region2D.h"

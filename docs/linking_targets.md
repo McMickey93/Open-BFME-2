@@ -17,6 +17,15 @@ update its follow-up with the date, revision, result, evidence link and remainin
 dependency. Record cleared scope and census confirmation separately; retain the
 snapshot bytes and history. Add newly encountered causes to the obstacle register.
 
+Additional current target (2026-10-28, base `72a0f2d577`, preview index
+`41c28839bf`): `GameLogic/AI/PathfinderClassifyObjectFootprint.cpp` now
+previews LINKS for 3,378 authored bytes after keeping its unused inline
+`floorf` wrapper local. The complete 3,381-byte row and all retained object
+bindings are unchanged. The earlier missing ClassifyWall provider has landed.
+The global selected-copy issue and full consumer/census confirmation remain
+open; the outgoing audit is inconclusive.
+[Evidence](../reverse/attempt_support/pathfinder-footprint-floor-link-20261028-codex.md).
+
 ## One blocker: fresh candidates
 
 The handoff found no earlier served-queue entry for these 16 units. Follow-up:

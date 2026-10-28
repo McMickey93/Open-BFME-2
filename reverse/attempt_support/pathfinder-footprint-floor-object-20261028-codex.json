@@ -1,0 +1,108 @@
+{
+  "source": "Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyObjectFootprint.cpp",
+  "base_revision": "72a0f2d577e1ac578136a03405aa962a14369f30",
+  "index_meta": {
+    "date": "2026-10-28 11:08",
+    "commit": "41c28839bf",
+    "clean_tree": true,
+    "census_date": "2026-10-28 10:03",
+    "census_commit": "c8734bec0c"
+  },
+  "before_obj_sha256": "8f6531bc8b08d44cdb417de3a67a50ca9a2427708f40584edfaacec126d3c018",
+  "after_obj_sha256": "d12e6fe3351768672bc9b0b3efb74b4cda70d9fb327380a30dc5551927a0ddbf",
+  "removed": [
+    "_floorf"
+  ],
+  "added": [],
+  "changed": {},
+  "retained_comdats": 19,
+  "floorf_referenced_before": false,
+  "roots_unchanged": true,
+  "retained_edges_unchanged": true,
+  "strong_before": [
+    "?rva00530212@Pathfinder@@QAEXPAVObject@@_N11@Z"
+  ],
+  "strong_after": [
+    "?rva00530212@Pathfinder@@QAEXPAVObject@@_N11@Z"
+  ],
+  "undefined_before": [
+    "??0Rva0027C36A@@QAE@XZ",
+    "?ClassifyWall@Pathfinder@@QAEXPAVObject@@_N@Z",
+    "?Cos@@YAMM@Z",
+    "?MarkDirty@PathfindZoneManager@@QAEXHH@Z",
+    "?SetType_Dirty@PathfindCell@@QAE_NH@Z",
+    "?Sin@@YAMM@Z",
+    "?bfmeApplyVNB@BfmeXformVNB@@QAEXPAUBfmeVecVNB@@M@Z",
+    "?createEmbeddedPortals@Drawable@@QAEXXZ",
+    "?getCell@Pathfinder@@QAEPAVPathfindCell@@W4PathfindLayerEnum@@HH@Z",
+    "?getDrawable@Object@@QBEPAVDrawable@@XZ",
+    "?getGeometryShape@BfmeObjE15@@QAEPAUBfmeShapeE15@@H@Z",
+    "?getHeightAboveTerrain@Thing@@QBEMXZ",
+    "?isKindOf@Object@@QBE_NW4KindOfType@@@Z",
+    "?isMobile@Object@@QBE_NXZ",
+    "?method@Rva0087E370@@QBEXABUCoord3D@@MAAURegion2D@@@Z",
+    "?rva0027257B@Drawable@@QAEHH@Z",
+    "?rva0027267D@Drawable@@QAE_NHHHH@Z",
+    "?rva002726C3@Drawable@@QAE_NHHHH@Z",
+    "?rva00272C1E@Drawable@@QAE_NXZ",
+    "?rva00279677@Rva00279677@@QAEXXZ",
+    "?rva0028AD32@Object@@QAEXXZ",
+    "?rva0028AD7C@Object@@QAEXXZ",
+    "?rva0028AD8C@Object@@QAEXXZ",
+    "?rva0052DEEF@PathfindCell@@QAE_NPBURva0052DEEFArg@@_NPAUIn002E6BA1@@@Z",
+    "?rva0052DFB1@PathfindCell@@QAE_NPBURva0052DFB1Arg@@@Z",
+    "?rva0052E001@Rva0052E001@@QAE_N_N@Z",
+    "?rva0052E02F@Rva0052E02F@@QAE_N_N@Z",
+    "?rva0052E4C9@Pathfinder@@QAEXPAVObject@@_N@Z",
+    "?testStatus@Object@@QBE_NW4ObjectStatusTypes@@@Z",
+    "__fltused",
+    "__imp__ceil",
+    "__imp__floor"
+  ],
+  "undefined_after": [
+    "??0Rva0027C36A@@QAE@XZ",
+    "?ClassifyWall@Pathfinder@@QAEXPAVObject@@_N@Z",
+    "?Cos@@YAMM@Z",
+    "?MarkDirty@PathfindZoneManager@@QAEXHH@Z",
+    "?SetType_Dirty@PathfindCell@@QAE_NH@Z",
+    "?Sin@@YAMM@Z",
+    "?bfmeApplyVNB@BfmeXformVNB@@QAEXPAUBfmeVecVNB@@M@Z",
+    "?createEmbeddedPortals@Drawable@@QAEXXZ",
+    "?getCell@Pathfinder@@QAEPAVPathfindCell@@W4PathfindLayerEnum@@HH@Z",
+    "?getDrawable@Object@@QBEPAVDrawable@@XZ",
+    "?getGeometryShape@BfmeObjE15@@QAEPAUBfmeShapeE15@@H@Z",
+    "?getHeightAboveTerrain@Thing@@QBEMXZ",
+    "?isKindOf@Object@@QBE_NW4KindOfType@@@Z",
+    "?isMobile@Object@@QBE_NXZ",
+    "?method@Rva0087E370@@QBEXABUCoord3D@@MAAURegion2D@@@Z",
+    "?rva0027257B@Drawable@@QAEHH@Z",
+    "?rva0027267D@Drawable@@QAE_NHHHH@Z",
+    "?rva002726C3@Drawable@@QAE_NHHHH@Z",
+    "?rva00272C1E@Drawable@@QAE_NXZ",
+    "?rva00279677@Rva00279677@@QAEXXZ",
+    "?rva0028AD32@Object@@QAEXXZ",
+    "?rva0028AD7C@Object@@QAEXXZ",
+    "?rva0028AD8C@Object@@QAEXXZ",
+    "?rva0052DEEF@PathfindCell@@QAE_NPBURva0052DEEFArg@@_NPAUIn002E6BA1@@@Z",
+    "?rva0052DFB1@PathfindCell@@QAE_NPBURva0052DFB1Arg@@@Z",
+    "?rva0052E001@Rva0052E001@@QAE_N_N@Z",
+    "?rva0052E02F@Rva0052E02F@@QAE_N_N@Z",
+    "?rva0052E4C9@Pathfinder@@QAEXPAVObject@@_N@Z",
+    "?testStatus@Object@@QBE_NW4ObjectStatusTypes@@@Z",
+    "__fltused",
+    "__imp__ceil",
+    "__imp__floor"
+  ],
+  "weak_before": [],
+  "weak_after": [],
+  "current_floorf_owner": {
+    "source": "Code/GameEngine/Source/GameLogic/Map/TerrainLogicAmbientColorRva0027DA6A.cpp",
+    "copies": [
+      [
+        "_floorf",
+        "d9d07276ff39",
+        18
+      ]
+    ]
+  }
+}
