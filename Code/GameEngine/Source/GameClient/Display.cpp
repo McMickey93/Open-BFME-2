@@ -207,6 +207,8 @@ extern float g_Va00BBB8D8;
 
 // ---- from Code/GameEngine/Source/GameClient/Display.cpp
 
+// ---- from Code/GameEngine/Source/GameClient/Display.cpp
+
 // ---- from Code/GameEngine/Source/GameClient/DisplaySetDisplayMode.cpp
 
 Bool Display::setDisplayMode(UnsignedInt xres, UnsignedInt yres, UnsignedInt bitdepth, Bool windowed)
@@ -347,12 +349,6 @@ void Rva0025C6E2Elem::rva0025C829(W3DDisplay *disp, int id)
 		-1, 2);
 }
 
-// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Display.cpp
 
 // ?SetMovieImage@Display@@QAEXHHMMMM@Z @0x0025C6E2 74B evidence: same TU class Display as neighbours rva0025C46E rva0025D10F in BfmeConv1435.cpp; array at +0x68 element 24B bounds 3; 6 stack args ret 0x18; unblocks 0x00356724 0x00356889
@@ -416,6 +412,12 @@ void Display::rva0025C776(int a8, float fc, float f10, float f14, float f18, int
 	m_120 = one;
 }
 
+// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
+
 // tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
 
 // tu-skeleton: 0x0025C97E 764B ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp (not merged yet)
@@ -428,7 +430,34 @@ void Display::rva0025C776(int a8, float fc, float f10, float f14, float f18, int
 
 // tu-skeleton: 0x0025D128 118B ?bfmeVM0WorkerThread@@YAKPAX@Z -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
 
-// tu-skeleton: 0x0025D19E 103B ?rva0025D19E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025D19E.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/BfmeStrVM0Rva0025D19E.cpp
+
+// ?rva0025D19E@Display@@QAEXXZ, retail 0x0025D19E, 103 bytes.
+// Field reset of Display: clears flags at +0x64/+0x10C, and when a timer is
+// present runs the predicate-guarded release (rowed rva0025D10F), polls the
+// timer slot-7 virtual and drops it; zeroes the +0xC8/+0xCC floats, resets a
+// non-empty name at +0xD0 to the exported AsciiString::TheEmptyString
+// (0x009E0878, via the pinned operator=), and stamps -1 at +0xE0/+0xE4.
+// Evidence: sole caller at 0x0025D6A4 (unclaimed dtor, same this); rowed
+// StringBase<char>::isEmpty (AsciiString.cpp) and slot-7 BfmeVM0Timer virtual.
+
+void Display::rva0025D19E()
+{
+	m_b10C = false;
+	m_b64 = false;
+	if (m_timer != 0)
+	{
+		rva0025D10F();
+		m_timer->v7();
+		m_timer = 0;
+	}
+	m_fC8 = 0.0f;
+	m_fCC = 0.0f;
+	if (!m_name.isEmpty())
+		m_name = AsciiString::TheEmptyString;
+	m_iE4 = -1;
+	m_iE0 = -1;
+}
 
 // tu-skeleton: 0x0025D358 112B ?rva0025D358@Display@@QAEXVUnicodeString@@MMHHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp (not merged yet)
 
