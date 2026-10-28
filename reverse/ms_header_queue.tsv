@@ -249,7 +249,6 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListRva003B7167Dtor.cpp	unve
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListRva003B766BDtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/SkirmishAI/AIBaseBuilder/AIBaseTemplate.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		free:unverified
 Code/GameEngine/Source/GameLogic/SkirmishAI/AIDozerManager.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
-Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIRoamingDefenseTacticRoam.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAISupport/LivingWorldAIProcessRetreats.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionManager.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
@@ -971,3 +970,4 @@ Code/Libraries/Source/WWVegas/WW3D2/htree.cpp	conflicting	abi	3	3	0	0	0	0	0	0	0	
 Code/GameEngine/Source/Common/AptOnlineHome.cpp	conflicting	mangle	3	2	0	0	0	1	0	0	0	0	0	<windows.h>	yes	yes	hand			SYSTEMTIME:mangle,WORD:same,GetLocalTime:same
 Code/Libraries/Source/WWVegas/WW3D2/hcanim.cpp	conflicting	abi	1	1	0	0	0	0	0	0	0	0	1	<new>,<ctype.h>	no	yes	hand	34: Code/Libraries/Source/WWVegas/WW3D2/hcanim.cpp:13 hash.h(unknown); Code/Libraries/Source/WWVegas/WW3D2/hcanim.cpp:16 refcount.h(unknown); reference/shims/sweep/winbase_shim.h:15 _LARGE_INTEGER(abi)		toupper:same
 Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
+Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	1	<crtdbg.h>,<excpt.h>	no	yes	hand			free:unverified

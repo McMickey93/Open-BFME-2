@@ -21025,11 +21025,11 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A06420,4,.data,global,?g_00E06420@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIStructureCreepTactic.cpp,owned,,1,1
 0x00A06424,4,.data,global,?g_00E06424@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIStructureCreepTactic.cpp,owned,,1,1
 0x00A06428,4,.data,global,?g_00E06428@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIStructureCreepTactic.cpp,owned,,1,2
-0x00A0642C,4,.data,global,?AIFarmKillSquad_IsRunning@@3VAsciiString@@A,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/Rva005ACE15Finish.cpp,provisional,,2,5
-0x00A06430,4,.data,global,?AIFarmKillSquad_FrameNextRun@@3VAsciiString@@A,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/Rva005ACE15Finish.cpp,provisional,,2,4
-0x00A06434,4,.data,global,?g_00E06434@@3MA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/Rva005ACE15Finish.cpp,provisional,,2,1
-0x00A06438,4,.data,global,?g_00E06438@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/Rva005ACE15Finish.cpp,provisional,,2,2
-0x00A0643C,4,.data,global,?g_00E0643C@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/Rva005ACE15Finish.cpp,provisional,,2,2
+0x00A0642C,4,.data,global,?AIFarmKillSquad_IsRunning@@3VAsciiString@@A,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp,provisional,,2,5
+0x00A06430,4,.data,global,?AIFarmKillSquad_FrameNextRun@@3VAsciiString@@A,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp,provisional,,2,4
+0x00A06434,4,.data,global,?g_00E06434@@3MA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp,provisional,,2,1
+0x00A06438,4,.data,global,?g_00E06438@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp,provisional,,2,2
+0x00A0643C,4,.data,global,?g_00E0643C@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp,provisional,,2,2
 0x00A06440,4,.data,global,_s_rva007B4698,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A06444,4,.data,global,?g_00E06444@@3IA,,unowned,?g_00E06444@@3IA;?g_Va00E06444@@3IA,0,2
 0x00A06448,4,.data,global,?g_00E06448@@3IA,,unowned,?g_00E06448@@3IA;?g_00E06448@@3VAsciiString@@B;?g_Va00E06448@@3IA,0,3
