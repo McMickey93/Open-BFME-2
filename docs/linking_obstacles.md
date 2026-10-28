@@ -2599,6 +2599,18 @@ separate strict receipt limitation encountered there.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 377ffd1724.**
 
+- **DetachableRiderUpdate transfer trial (2026-10-28, input `253cb497cc`):**
+  The separately published getter declaration prerequisite makes the transfer
+  donor compose into its approved TU. The trial preserves all seven matched
+  rows, one EXACT EH graph, all 26 external COMDAT digests and definitions,
+  24 dependencies and six data bindings; the merge guard and ordinary preview
+  pass against `14dc3d2467`. The merge was restored because tu_ownership's B1
+  parser misreads `class Xfer::Version` as a private Xfer definition. The false
+  reject is recorded; fix the parser with a regression test separately before
+  retrying. No file reduction or census gain is claimed for the restored trial.
+  [The handoff](../reverse/attempt_support/detachable-rider-consolidation-20261028-codex.md)
+  retains the bounded proof, queue/debt audit and remaining donor prerequisites.
+
 - **Projectile-stream bounded composition (2026-10-27, input `e7da23e761`):**
   [The scoped audit](../reverse/attempt_support/projectile-stream-snapshot-20261027.md)
   records the Snapshot-view prerequisite and absorption of the module-data
