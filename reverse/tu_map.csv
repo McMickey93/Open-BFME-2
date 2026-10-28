@@ -16729,15 +16729,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002382FD,27,code,Code/GameEngine/Source/Common/version.cpp,approved,Z,Z=Code/GameEngine/Source/Common/version.cpp S=Code/GameEngine/Source/Common/version.cpp N=Code/GameEngine/Source/Common/Version.cpp,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x00238318,216,code,Code/GameEngine/Source/Common/version.cpp,approved,Z,Z=Code/GameEngine/Source/Common/version.cpp S=Code/GameEngine/Source/Common/version.cpp N=Code/GameEngine/Source/Common/Version.cpp,Code/GameEngine/Source/Common/version.cpp
 0x002383F0,216,code,Code/GameEngine/Source/Common/version.cpp,approved,Z,Z=Code/GameEngine/Source/Common/version.cpp S=Code/GameEngine/Source/Common/version.cpp N=Code/GameEngine/Source/Common/Version.cpp,Code/GameEngine/Source/Common/version.cpp
-0x002384C8,84,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002383F0..0x0023851C,Code/GameEngine/Source/Common/Rva002384C8.cpp
-0x0023851C,100,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002383F0..0x00238580,Code/GameEngine/Source/Common/Rva0023851CFormat.cpp
+0x002384C8,84,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002383F0..0x0023851C,Code/GameEngine/Source/Common/version.cpp
+0x0023851C,100,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002383F0..0x00238580,Code/GameEngine/Source/Common/version.cpp
 0x00238580,65,code,Code/GameEngine/Source/Common/version.cpp,approved,U,N=Code/GameEngine/Source/Common/VersionBlockEntry.cpp,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x002385C1,28,code,Code/GameEngine/Source/Common/version.cpp,approved,U,N=Code/GameEngine/Source/Common/VersionBlockEntry.cpp,Code/GameEngine/Source/Common/Rva0042818FSwap.cpp
 0x002385DD,9,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002385C1..0x002385E6,Code/GameEngine/Source/Common/DestroyInstances.cpp
 0x002385E6,25,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002385C1..0x002385FF,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x002385FF,63,code,Code/GameEngine/Source/Common/version.cpp,approved,U,N=Code/GameEngine/Source/Common/VersionBlockParserInner.cpp,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x0023863E,8,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002385FF..0x00238646,Code/GameEngine/Source/Common/RvaMemberDtorForwarders.cpp
-0x00238646,200,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002385FF..0x0023870E,Code/GameEngine/Source/Common/VersionInitGlobals.cpp
+0x00238646,200,code,Code/GameEngine/Source/Common/version.cpp,approved,C,C=0x002385FF..0x0023870E,Code/GameEngine/Source/Common/version.cpp
 0x0023870E,324,code,Code/GameEngine/Source/Common/version.cpp,approved,S,S=Code/GameEngine/Source/Common/version.cpp N=Code/GameEngine/Source/Common/Version.cpp,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x00238852,67,code,Code/GameEngine/Source/Common/version.cpp,approved,Z,Z=Code/GameEngine/Source/Common/version.cpp S=Code/GameEngine/Source/Common/version.cpp N=Code/GameEngine/Source/Common/Version.cpp,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x00238895,191,code,,,-,,Code/GameEngine/Source/Common/FrameRateConfiguration.cpp
@@ -68936,9 +68936,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007708E3,8,code,,,-,,Code/GameEngine/Source/Common/version.cpp
 0x007708EB,25,code,,,-,,Code/GameEngine/Source/Common/version.cpp
 0x00770904,10,code,,,-,,Code/GameEngine/Source/Common/version.cpp
-0x0077090E,8,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002384C8@FuncInfo0x00916D80,Code/GameEngine/Source/Common/Rva002384C8.cpp
-0x00770916,25,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002384C8@FuncInfo0x00916D80,Code/GameEngine/Source/Common/Rva002384C8.cpp
-0x0077092F,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002384C8@FuncInfo0x00916D80,Code/GameEngine/Source/Common/Rva002384C8.cpp
+0x0077090E,8,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002384C8@FuncInfo0x00916D80,Code/GameEngine/Source/Common/version.cpp
+0x00770916,25,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002384C8@FuncInfo0x00916D80,Code/GameEngine/Source/Common/version.cpp
+0x0077092F,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002384C8@FuncInfo0x00916D80,Code/GameEngine/Source/Common/version.cpp
 0x00770939,8,code,,,-,,Code/gen_small/uw_gen_002.cpp
 0x00770941,25,code,,,-,,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x0077095A,10,code,,,-,,Code/GameEngine/Source/Common/VersionDestructor.cpp
@@ -68946,8 +68946,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077096C,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x00238580@FuncInfo0x00916DA4,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x00770976,8,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002385FF@FuncInfo0x00916DC8,Code/gen_small/uw_gen_010.cpp
 0x0077097E,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x002385FF@FuncInfo0x00916DC8,Code/GameEngine/Source/Common/VersionDestructor.cpp
-0x00770988,8,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x00238646@FuncInfo0x00916DEC,Code/GameEngine/Source/Common/VersionInitGlobals.cpp
-0x00770990,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x00238646@FuncInfo0x00916DEC,Code/GameEngine/Source/Common/VersionInitGlobals.cpp
+0x00770988,8,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x00238646@FuncInfo0x00916DEC,Code/GameEngine/Source/Common/version.cpp
+0x00770990,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x00238646@FuncInfo0x00916DEC,Code/GameEngine/Source/Common/version.cpp
 0x0077099A,13,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x0023870E@FuncInfo0x00916E18,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x007709A7,8,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x0023870E@FuncInfo0x00916E18,Code/GameEngine/Source/Common/VersionDestructor.cpp
 0x007709AF,10,code,Code/GameEngine/Source/Common/version.cpp,approved,P,P=0x0023870E@FuncInfo0x00916E18,Code/GameEngine/Source/Common/VersionDestructor.cpp
