@@ -25,9 +25,8 @@ public:
 // preserving retail's unwind states.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
-
-void __cdecl operator delete(void *);
 
 class Rva005D4C01List
 {
