@@ -986,10 +986,10 @@ address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreSc
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSkirmishCallbacks.cpp	g_Va00E0333C	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSkirmishCallbacks_OnUpdateData.cpp	g_Va00E0333C	1
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptStrategicPlayerStatus.cpp	g_Va00A04934	3
+address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLine.cpp	g_Va00E04920	5
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLineCallbacks.cpp	g_Va00E048DC	1
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLineCallbacks.cpp	g_Va00E04920	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLineCallbacks_CaHAwardNumber.cpp	g_Va00E048DC	3
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLineCtor.cpp	g_Va00E04920	4
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLineRva0051E766.cpp	g_Va00E04920	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTributeScreenDestructor.cpp	g_Va00A046B4	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/BfmeAptScreenLanLobby.cpp	g_Va00E032FC	3
@@ -1597,7 +1597,6 @@ address_global	Code/Libraries/Source/WWVegas/WWLib/Rva0030E7D0Ctor.cpp	g_Va00BBB
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva004119F3.cpp	g_Va00E0300C	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00418573Lookup.cpp	g_Va00BBB8D8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00422D1CFind.cpp	g_Va00E0319C	2
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva005200C5.cpp	g_Va00E04920	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva0055C0E1.cpp	g_Va007C26F0	4
 address_global	Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0036ADF9.cpp	g_Va00E0362C	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/simpledynvec_vector3_clip.cpp	g_Va00BCF628	3
@@ -2825,6 +2824,7 @@ alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsC
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp	?g_00BBFDE0@@3QBDB	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp	?writeFirewallBehavior@FirewallHelperClass@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp	_strcpy	1
+alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLine.cpp	?Rva0051EC31RangeCallee@@YAPAURva0051EC31Output@@PAURva0051EC31Input@@0PAU1@ABURva0051EC31IteratorTag@@PAH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/ControlBarCallback.cpp	?DebugGetDefaultCommands@@YAPBDXZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionPreferences_mapFind.cpp	?find@CustomPreferenceMapShim@@QAEPAUCustomMapNodeShim@@PAUCustomAsciiStringShim@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionPreferences_mapFind.cpp	?find@SkirmishFindMap@@QBEPAUSkirmishFindNode@@ABVAsciiString@@@Z	1
@@ -4165,7 +4165,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00425CBEForEach.cpp	??RRva0
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0043B35DErase.cpp	?rva0043B30F@Rva0043B2E2@@QAEPAXPBX@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0043B35DErase.cpp	?rva0043B3A1Hidden@Rva0043B2E2@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHPAX@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@PAURva0043B2E2Node@@0PBH0@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0051C0E7Ctor.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0051EC31RangeForward.cpp	?Rva0051EC31RangeCallee@@YAPAURva0051EC31Output@@PAURva0051EC31Input@@0PAU1@ABURva0051EC31IteratorTag@@PAH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00523DB7Ctor.cpp	?Rva0023FC23@@YAHPAUOut00524477@@PAHH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0054103ECopy.cpp	??4Rva0054103E@@QAEAAV0@ABV0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0054152DErase.cpp	??4Rva0054107FRecord@@QAEAAU0@ABU0@@Z	1
