@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Oy- /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc /ICode/Libraries/Include/Lib
+// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc /ICode/Libraries/Include/Lib
 // stlport
 //
 // ?Visibility_Check@RTS3DScene@@UAEXPAVCameraClass@@@Z, retail 0x00071245..0x00071606
@@ -32,6 +32,9 @@
 // slist<int> (ICF-folded rowed _Slist_base<int> ctor 0x0006FA99 and
 // _M_erase_after 0x0006FABF) built with _STLP_NO_EXCEPTIONS so the compiler
 // treats the end-of-function erase as nothrow like retail.
+// Frame pointers stay omitted (no /Oy-): retail's slist<int>(const allocator &)
+// at 0x00071233, the COMDAT this TU emits just ahead of Visibility_Check, is the
+// 18-byte frameless body, which /Oy- turned into a 21-byte ebp-framed copy.
 #include <slist>
 
 class Vector3
