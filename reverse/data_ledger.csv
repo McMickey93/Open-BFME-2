@@ -19029,7 +19029,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FF09C,4,.data,global,?TheLivingWorldBuildingTemplateStore@@3PAVRva0022C0CDSubsystem@@A,Code/GameEngine/Source/Common/Rva002E0427Dtor.cpp,provisional,?TheLivingWorldBuildingTemplateStore@@3PAVRva0022C0CDSubsystem@@A;?g_00DFF09C@@3HA;?g_rva0059E647Factory@@3PAURva0059E647Factory@@A,1,16
 0x009FF0A0,4,.data,global,?g_Va00DFF0A0@@3IA,,unowned,,0,1
 0x009FF0A4,4,.data,global,?g_Va00DFF0A4@@3IA,,unowned,,0,1
-0x009FF0A8,8,.data,global,?$S1@?1??getConstructButtonHelp@LivingWorldBuildingTemplate@@QBE?AVUnicodeString@@PAVRva003F1C22@@@Z@4IA,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingTemplateGetConstructButtonHelp.cpp,owned,,1,8
+0x009FF0A8,8,.data,global,?$S1@?1??getConstructButtonHelp@LivingWorldBuildingTemplate@@QBE?AVUnicodeString@@PAVRva003F1C22@@@Z@4IA,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingTemplate.cpp,owned,,1,8
 0x009FF0B0,4,.data,global,?TheLivingWorldPlayerTemplateStore@@3PAVRva002E18C3Lookup@@A,Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva002BA8F1AddPlayer.cpp,owned,,1,8
 0x009FF0B4,4,.data,global,_s_rva007AE49E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009FF0B8,4,.data,global,?g_00DFF0B8@@3PAURva002E36D5Node@@A,Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp,provisional,?g_00DFF0B8@@3HA;?g_00DFF0B8@@3PAURva002E36D5Node@@A,1,4
