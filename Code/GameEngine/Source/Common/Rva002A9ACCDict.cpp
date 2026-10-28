@@ -57,11 +57,11 @@ void Rva002A9ACC::rva002A9ACC(const Dict *dict)
 		m_color1 = color;
 		m_color2 = color;
 	}
-	int m_nightColor = dict->getInt(((Rva00148F5ECache &)TheKey_playerNightColor).get(), &exists);
+	int nightColor = dict->getInt(((Rva00148F5ECache &)TheKey_playerNightColor).get(), &exists);
 	if (exists)
 	{
-		m_nightColor |= 0xFF000000;
-		m_color2 = m_nightColor;
+		nightColor |= 0xFF000000;
+		m_color2 = nightColor;
 	}
 }
 
