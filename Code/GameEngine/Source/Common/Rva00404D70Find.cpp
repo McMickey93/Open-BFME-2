@@ -22,13 +22,13 @@ struct BfmeStringRecord00404BF3
 class Rva00404D70
 {
 public:
-	int rva00404D70(const AsciiString &s);
+	int rva00404D70(const AsciiString &s) throw();
 private:
 	char m_pad[0x120];
 	_STL::vector<BfmeStringRecord00404BF3> m_vec;
 };
 
-int Rva00404D70::rva00404D70(const AsciiString &asciiString)
+int Rva00404D70::rva00404D70(const AsciiString &asciiString) throw()
 {
 	bool found = false;
 	int result = 0x7fffffff;
