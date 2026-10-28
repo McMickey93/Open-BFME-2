@@ -1,0 +1,40 @@
+{
+  "project": 2,
+  "tag": "round5-bfme2-20261028-native-2",
+  "base": "e7abc6a62c786c16dc79a9ee86df40894be49ff0",
+  "agents_blob": "a2358475408be34cc5d0c16e28565982f494e8a6",
+  "source": "Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp",
+  "source_before": "726cce5515fe083f6eba666a1cfdca39b7f9f799",
+  "variants": [
+    {
+      "name": "static-floor",
+      "file": "candidate-static-floor.cpp.txt",
+      "blob": "96273266f195416e6bd5be7fdc4e273022f37eda"
+    }
+  ],
+  "fork": "McMickey93/Open-BFME-2",
+  "official": "Open-BFME/Open-BFME-2",
+  "owner": "github:McMickey93:bfme2:round5-20261028",
+  "control_branch": "codex/round5-bfme2-20261028-native-2-control",
+  "native_branch": "codex/round5-bfme2-20261028-native-2-native",
+  "status_branch": "codex/round5-bfme2-20261028-native-2-status",
+  "result_branch": "codex/round5-bfme2-20261028-native-2-verified",
+  "decision_branch": "codex/round5-bfme2-20261028-native-2-decision",
+  "verify_sources": [
+    "Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp",
+    "Code/GameEngine/Source/GameLogic/Map/TerrainLogicAmbientColorRva0027DA6A.cpp"
+  ],
+  "ledger": "reverse/functions.csv",
+  "attempt_log": "reverse/re_attempts.log",
+  "evidence": "reverse/attempt_support/round5-bfme2-20261028-native-2.md",
+  "reference_path": "reference/open-bfme-1",
+  "task": "RadioButton unused floorf emitter cleanup",
+  "removed_symbol": "_floorf",
+  "function": "?drawRadioButtonText@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+  "rva": "0x000A3E4F",
+  "size": 274,
+  "commit_title": "Keep the radio-button math wrapper internal",
+  "reference_proof": "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3",
+  "reference_stamp": "2026-10-28T11:20:47Z",
+  "evidence_intro": "# Radio-button unused floorf emitter cleanup, 2026-10-28\n\nSelected by the normal linking picker: W3DRadioButton.cpp, three existing rows (274/472/495 bytes). Apply the already recorded LINK-132/LINK-133 math-header pattern only if native object evidence confirms an unused external _floorf copy. The retail owner is the 18-byte row at 0x0004D649 in TerrainLogicAmbientColorRva0027DA6A.cpp. Keep every complete existing function body; compare retained external COMDAT bytes, relocation fingerprints, definitions, weak bindings and runtime incoming references. No current whole-game or census-link result is implied by the scoped preview."
+}
