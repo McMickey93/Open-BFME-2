@@ -159,3 +159,26 @@ re_attempts.log). The particle info family needs its complete Snapshot and
 secondary-table contracts, as documented in the
 [existing bounded attempt](particle-info-base-link-20261027/readme.md).
 No production-source or verifier change is made for either obstacle here.
+
+## Final publication rebase onto 13dcfaad91
+
+The second publication rebase retained the upstream INI obstacle entry and
+AnimatedParticleSysBoneClientUpdate's current data identities. The initial
+conflict-resolution script accidentally consumed the 1,230 rows after its
+closing data-index marker. The final diff review caught the loss before
+handover. A new fix commit restores every lost row from current upstream;
+no published commit is amended. The complete final data-index difference
+from `13dcfaad91` consists only of CritterEmitter's two source-path repoints.
+
+All 22 outgoing source-path blobs equal the completed `b0238684f4` control.
+Upstream's Snapshot header adds only an Xfer friendship declaration. The
+normal rebuild of the outgoing sources, six E036 accessors and four Snapshot
+cleanup parents passes 390/390 rows across 30 sources, 147 literals plus
+31 empty-string references, 39 float literals and 30 named imports. The
+seven-source data checks again report zero findings and zero converged
+collisions; eight EH graphs are EXACT, and TU ownership for `ff5e33a8a2`
+passes. The final path-consumer audit has fourteen mentions, all provenance
+comments or historical evidence/census records; there is no active tooling,
+include or build-list consumer of either deleted donor. The same two-source
+move is the batch's only source-path change. The full-gate red and the strict
+link-audit/census prerequisites recorded above remain open.

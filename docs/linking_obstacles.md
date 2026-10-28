@@ -1284,9 +1284,10 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   function rows, six EXACT EH graphs, zero data findings and paired LINKS
   previews (472 authored bytes, index `14dc3d2467`). Publication found that
   upstream `22ec257aa5` already retired all six keys; no additional six-key
-  reduction is claimed. The remaining generated-row change tightens the
-  HealContain guard index bound from twelve to four bytes. Broader storage
-  closure and census confirmation remain open; no runtime gain is claimed.
+  reduction is claimed. A further rebase picked up `978df9538b`'s HealContain
+  guard-bound correction too, leaving no additional E036 index or retirement
+  delta in this batch. Broader storage closure and census confirmation remain
+  open; no runtime gain is claimed.
 
 - **E038 update guard-index follow-up (2026-10-28, control `bd82c0156d2e`):**
   [The scoped current-owner check](../reverse/attempt_support/update-e038-guard-data-index-20261028-codex.md)

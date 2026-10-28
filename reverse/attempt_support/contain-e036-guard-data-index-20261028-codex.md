@@ -59,8 +59,11 @@ At the inspected control, the six owning-tool retirements above removed six
 stale data-debt keys. During publication, upstream `22ec257aa5` supplied all
 six retirements and eleven of the twelve identical generated index rows.
 The rebase preserves those upstream retirements and claims no additional
-six-key debt reduction. The remaining generated-row change tightens
-HealContain's guard index upper bound at `0x00A03658` from twelve to four bytes;
-it changes no symbol, source or explicit data extent. Broader storage closure
+six-key debt reduction. At that first rebase, the remaining generated-row
+change tightened HealContain's guard index upper bound at `0x00A03658` from
+twelve to four bytes. The next publication rebase onto `13dcfaad91` also picked
+up upstream `978df9538b`, which already supplied that bound correction.
+The final batch therefore retains the independent evidence but contributes
+no additional E036 index delta or debt retirement. Broader storage closure
 and census confirmation remain open. No new census-linked bytes or
 image-ownership gain is claimed.
