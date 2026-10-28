@@ -28067,8 +28067,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00375A6C,7,code,,,-,,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp
 0x00375A73,116,code,Code/GameEngine/Source/Common/System/AerialPathfinder.cpp,proposed,N,N=Code/GameEngine/Source/Common/System/AerialPathfinder.cpp,Code/GameEngine/Source/Common/System/Rva00375A73SplineQuery.cpp
 0x00375AE7,16,code,,,-,,Code/GameEngine/Source/Common/GapBodiesSeat1C.cpp
-0x00375AF7,131,code,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp provisional,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder_getNoFlyZoneHeight.cpp
-0x00375B7A,133,code,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp provisional,Code/GameEngine/Source/GameLogic/Map/Rva00375B7AHeightQuery.cpp
+0x00375AF7,131,code,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp provisional,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp
+0x00375B7A,133,code,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp provisional,Code/GameEngine/Source/GameLogic/Map/AerialPathfinder.cpp
 0x00375BFF,41,code,,,-,,Code/GameEngine/Source/Common/System/Rva00375BFFTimerPush.cpp
 0x00375C28,471,code,Code/GameEngine/Source/GameLogic/AI/AerialPathfinder.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/AI/AerialPathfinder.cpp provisional,Code/GameEngine/Source/GameLogic/AI/AerialPathfinder.cpp
 0x00375DFF,216,code,Code/GameEngine/Source/GameLogic/AI/AerialPathfinder.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/AI/AerialPathfinder.cpp provisional,Code/GameEngine/Source/GameLogic/AI/AerialPathfinderSeparationPush.cpp
