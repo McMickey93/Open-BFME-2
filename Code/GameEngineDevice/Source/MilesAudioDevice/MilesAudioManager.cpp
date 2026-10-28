@@ -67,6 +67,10 @@ static inline bool operator!=(const _List_iterator<T, LeftTraits>& a,
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../../../Libraries/Include/Lib/Coord3D.h"
+// Retail's Coord2D has user constructors and a destructor (exported), so a
+// by-value Coord2D returns through a hidden pointer (0x53854).
+#define COORD2D_VIEW_DTOR
+#include "../../../Libraries/Include/Lib/Coord2DCtorView.h"
 #include "Common/Snapshot.h"
 
 // Version pair xfer (slot 10) reads and rewrites; xfer (0x0005E3E5) seeds
@@ -678,19 +682,9 @@ class Object { public: bool isInside(PolygonTrigger *trigger); };
 extern GameLogic *TheGameLogic;
 inline float sqr(float value) { return value * value; }
 
-// class-gate: allow Coord2D retail 0x53854 receives ClosestPointOnLineSegment's Coord2D through a hidden return pointer (exported user ctors and dtor make BFME 2's Coord2D non-POD); the canonical plain Coord2D returns in edx:eax
-class Coord2D
-{
-public:
-    Coord2D() {}
-    Coord2D(const Coord3D &that) : x(that.x), y(that.y) {}
-    Coord2D(const Coord2D &that) : x(that.x), y(that.y) {}
-    ~Coord2D() {}
-    Coord2D &Sub(const Coord3D &that) { x -= that.x; y -= that.y; return *this; }
-    float GetLengthSqrd() const { return x * x + sqr(y); }
-    float x;
-    float y;
-};
+// 0x53854's 2D distance steps, inlined as retail inlined them.
+inline Coord2D &subtractXY(Coord2D &v, const Coord3D &that) { v.x -= that.x; v.y -= that.y; return v; }
+inline float lengthSqrdXY(const Coord2D &v) { return v.x * v.x + sqr(v.y); }
 
 // Exported 0x00004C06 (folded with Region2D's ctor) and 0x006B3100.
 struct LineSegment2D {
@@ -3420,8 +3414,8 @@ float MilesAudioManager::rva00053854(const Coord3D *pos)
     float best = _STL::_LimG<bool>::_F_inf.val;
     for (int i = 1; i < 5; ++i) {
         if (m_corners[i].m_valid) {
-            Coord2D delta(*pos);
-            float dist = delta.Sub(m_corners[i].m_pos).GetLengthSqrd();
+            Coord2D delta(pos->x, pos->y);
+            float dist = lengthSqrdXY(subtractXY(delta, m_corners[i].m_pos));
             if (dist < best) {
                 nearest = i;
                 best = dist;
@@ -3435,9 +3429,11 @@ float MilesAudioManager::rva00053854(const Coord3D *pos)
     if (next == 5)
         next = 1;
     {
-        LineSegment2D edge(Coord2D(m_corners[nearest].m_pos), Coord2D(m_corners[next].m_pos));
-        Coord2D closest = ClosestPointOnLineSegment(edge, Coord2D(*pos));
-        float dist = closest.Sub(*pos).GetLengthSqrd();
+        const Coord3D &start = m_corners[nearest].m_pos;
+        const Coord3D &end = m_corners[next].m_pos;
+        LineSegment2D edge(Coord2D(start.x, start.y), Coord2D(end.x, end.y));
+        Coord2D closest = ClosestPointOnLineSegment(edge, Coord2D(pos->x, pos->y));
+        float dist = lengthSqrdXY(subtractXY(closest, *pos));
         if (dist < best)
             best = dist;
     }
@@ -3446,9 +3442,11 @@ float MilesAudioManager::rva00053854(const Coord3D *pos)
     if (prev < 1)
         prev = 4;
     {
-        LineSegment2D edge(Coord2D(m_corners[nearest].m_pos), Coord2D(m_corners[prev].m_pos));
-        Coord2D closest = ClosestPointOnLineSegment(edge, Coord2D(*pos));
-        float dist = closest.Sub(*pos).GetLengthSqrd();
+        const Coord3D &start = m_corners[nearest].m_pos;
+        const Coord3D &end = m_corners[prev].m_pos;
+        LineSegment2D edge(Coord2D(start.x, start.y), Coord2D(end.x, end.y));
+        Coord2D closest = ClosestPointOnLineSegment(edge, Coord2D(pos->x, pos->y));
+        float dist = lengthSqrdXY(subtractXY(closest, *pos));
         if (dist < best)
             best = dist;
     }
