@@ -1,6 +1,6 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs-c-
 //
-// ?Rva0058C80FWrite@@YAXPADPAVNetCommandRef@@@Z @0x0058C80F (213B).
+// ?FillBufferWithFrameCommand@@YAXPADPAVNetCommandRef@@@Z @0x0058C80F (213B).
 // Tagged serializer: T<type>R<relay>P<player>S<timestamp>F<frame>C<id>D<w0><w1><w2>.
 // Evidence: sibling Rva0058CEC5Write layout (timestamp +4 frame +8 player +0xc
 // id +0x10 type +0x14, NetCommandRef msg +0 relay +0xc) plus import 0x006291A8;
@@ -32,7 +32,7 @@ public:
 	unsigned char m_relay;
 };
 
-void __cdecl Rva0058C80FWrite(char *dst, NetCommandRef *ref)
+void __cdecl FillBufferWithFrameCommand(char *dst, NetCommandRef *ref)
 {
 	NetWrapperCommandMsg *msg = ref->m_msg;
 	dst[0] = 'T';

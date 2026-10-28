@@ -213,12 +213,12 @@ void W3DScriptedModelDraw::rva000BD6C2()
      _STL::list<Rva000BC0DBElement> events(reinterpret_cast<EventCollection*>(event.events)->list);
      for(ListNode*n=events.node->next;n!=events.node;n=n->next){
       if(reinterpret_cast<EventNugget*>(n->value)->type==9){
-       EventNugget*e=reinterpret_cast<EventNugget*>(n->value);
-       BfmeParticleSystemHandle system=TheParticleSystemManager->findParticleSystemByID((ParticleSystemID)e->particle);
+       EventNugget*nugget=reinterpret_cast<EventNugget*>(n->value);
+       BfmeParticleSystemHandle system=TheParticleSystemManager->findParticleSystemByID((ParticleSystemID)nugget->particle);
        if(system){reinterpret_cast<Rva001F3852ByteOneSetter*>(system.operator->())->enable();// Equivalent paths merge after allocation, retaining the native node/nugget roles.
         if(n==n->next){system->destroy();}else{system->destroy();}}
        ListNode *id=particleIDs.node->next;
-       for(;id!=particleIDs.node;id=id->next){if((unsigned)id->value==e->particle){particleIDs.erase(_STL::_List_iterator<BfmeStringRecord000B757D,_STL::_Nonconst_traits<BfmeStringRecord000B757D> >(id));break;}}
+       for(;id!=particleIDs.node;id=id->next){if((unsigned)id->value==nugget->particle){particleIDs.erase(_STL::_List_iterator<BfmeStringRecord000B757D,_STL::_Nonconst_traits<BfmeStringRecord000B757D> >(id));break;}}
       }
      }
     }

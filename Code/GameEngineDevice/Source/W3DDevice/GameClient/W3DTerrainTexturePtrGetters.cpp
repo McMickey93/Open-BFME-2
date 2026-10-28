@@ -7,11 +7,11 @@
 // Target facts: thiscall, ret 4, hidden return pointer, member offsets below.
 // The handle template and method names are inferred/address-derived.
 //
-// ?rva000E234E@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E234E 31B (+0x3828)
-// ?rva000E2983@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2983 31B (+0x3838)
-// ?rva000E2A62@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2A62 31B (+0x3844)
-// ?rva000E2BCF@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2BCF 31B (+0x381C)
-// ?rva000E28A7@Rva000E28A7@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ               @0x000E28A7 28B (+0x1C)
+// ?getMacroTexture@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E234E 31B (+0x3828)
+// ?getLowTexture@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2983 31B (+0x3838)
+// ?getHighTexture@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2A62 31B (+0x3844)
+// ?getCloudTexture@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2BCF 31B (+0x381C)
+// ?getMaskTexture@Rva000E28A7@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ               @0x000E28A7 28B (+0x1C)
 
 #include <string.h>
 
@@ -67,10 +67,10 @@ private:
 class BaseHeightMapRenderObjClass
 {
 public:
-	RefCountPtr<TextureClass> rva000E234E();
-	RefCountPtr<TextureClass> rva000E2983();
-	RefCountPtr<TextureClass> rva000E2A62();
-	RefCountPtr<TextureClass> rva000E2BCF();
+	RefCountPtr<TextureClass> getMacroTexture();
+	RefCountPtr<TextureClass> getLowTexture();
+	RefCountPtr<TextureClass> getHighTexture();
+	RefCountPtr<TextureClass> getCloudTexture();
 
 private:
 	char m_pad0000[0x381c];
@@ -91,22 +91,22 @@ public:
 	class Rva000E28A7 *m_387c;
 };
 
-RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::rva000E234E()
+RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::getMacroTexture()
 {
 	return RefCountPtr<TextureClass>(m_3828, RefCountPtr<TextureClass>::InlineCopyTag());
 }
 
-RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::rva000E2983()
+RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::getLowTexture()
 {
 	return RefCountPtr<TextureClass>(m_3838, RefCountPtr<TextureClass>::InlineCopyTag());
 }
 
-RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::rva000E2A62()
+RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::getHighTexture()
 {
 	return RefCountPtr<TextureClass>(m_3844, RefCountPtr<TextureClass>::InlineCopyTag());
 }
 
-RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::rva000E2BCF()
+RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::getCloudTexture()
 {
 	return RefCountPtr<TextureClass>(m_381c, RefCountPtr<TextureClass>::InlineCopyTag());
 }
@@ -114,16 +114,16 @@ RefCountPtr<TextureClass> BaseHeightMapRenderObjClass::rva000E2BCF()
 class Rva000E28A7
 {
 public:
-	RefCountPtr<TextureClass> rva000E28A7();
+	RefCountPtr<TextureClass> getMaskTexture();
 
 private:
 	char m_pad00[0x1c];
-	RefCountPtr<TextureClass> m_1c;
+	RefCountPtr<TextureClass> m_maskTexture;
 };
 
-RefCountPtr<TextureClass> Rva000E28A7::rva000E28A7()
+RefCountPtr<TextureClass> Rva000E28A7::getMaskTexture()
 {
-	return RefCountPtr<TextureClass>(m_1c, RefCountPtr<TextureClass>::InlineCopyTag());
+	return RefCountPtr<TextureClass>(m_maskTexture, RefCountPtr<TextureClass>::InlineCopyTag());
 }
 
 // Effect-parameter texture callbacks of the BFME 2 terrain FX binding (the
@@ -199,8 +199,8 @@ void Rva000E222FResourceTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 
 void Rva000E227FMacroTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 {
-	if (TheTerrainRenderObject && TheTerrainRenderObject->rva000E234E() && TheWritableGlobalData && TheWritableGlobalData->m_useLightMap)
-		effect->SetTexture(handle, TheTerrainRenderObject->rva000E234E().Peek_D3D_Base_Texture());
+	if (TheTerrainRenderObject && TheTerrainRenderObject->getMacroTexture() && TheWritableGlobalData && TheWritableGlobalData->m_useLightMap)
+		effect->SetTexture(handle, TheTerrainRenderObject->getMacroTexture().Peek_D3D_Base_Texture());
 	else
 		effect->SetTexture(handle, Rva00132E76WhiteTexture().Peek_D3D_Base_Texture());
 }
@@ -217,32 +217,32 @@ void Rva000E24C5ShroudTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 
 void Rva000E27D9MaskTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 {
-	if (TheTerrainRenderObject && TheTerrainRenderObject->m_387c && TheTerrainRenderObject->m_387c->rva000E28A7())
-		effect->SetTexture(handle, TheTerrainRenderObject->get387c()->rva000E28A7().Peek_D3D_Base_Texture());
+	if (TheTerrainRenderObject && TheTerrainRenderObject->m_387c && TheTerrainRenderObject->m_387c->getMaskTexture())
+		effect->SetTexture(handle, TheTerrainRenderObject->get387c()->getMaskTexture().Peek_D3D_Base_Texture());
 	else
 		effect->SetTexture(handle, Rva00132E76WhiteTexture().Peek_D3D_Base_Texture());
 }
 
 void Rva000E28C3LowTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 {
-	if (TheTerrainRenderObject && TheTerrainRenderObject->rva000E2983())
-		effect->SetTexture(handle, TheTerrainRenderObject->rva000E2983().Peek_D3D_Base_Texture());
+	if (TheTerrainRenderObject && TheTerrainRenderObject->getLowTexture())
+		effect->SetTexture(handle, TheTerrainRenderObject->getLowTexture().Peek_D3D_Base_Texture());
 	else
 		effect->SetTexture(handle, Rva00132E76WhiteTexture().Peek_D3D_Base_Texture());
 }
 
 void Rva000E29A2HighTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 {
-	if (TheTerrainRenderObject && TheTerrainRenderObject->rva000E2A62())
-		effect->SetTexture(handle, TheTerrainRenderObject->rva000E2A62().Peek_D3D_Base_Texture());
+	if (TheTerrainRenderObject && TheTerrainRenderObject->getHighTexture())
+		effect->SetTexture(handle, TheTerrainRenderObject->getHighTexture().Peek_D3D_Base_Texture());
 	else
 		effect->SetTexture(handle, Rva00132E76WhiteTexture().Peek_D3D_Base_Texture());
 }
 
 void Rva000E2B00CloudTexture(ID3DXEffect *effect, D3DXHANDLE handle)
 {
-	if (TheTerrainRenderObject && TheTerrainRenderObject->rva000E2BCF() && TheWritableGlobalData && TheWritableGlobalData->m_useCloudMap)
-		effect->SetTexture(handle, TheTerrainRenderObject->rva000E2BCF().Peek_D3D_Base_Texture());
+	if (TheTerrainRenderObject && TheTerrainRenderObject->getCloudTexture() && TheWritableGlobalData && TheWritableGlobalData->m_useCloudMap)
+		effect->SetTexture(handle, TheTerrainRenderObject->getCloudTexture().Peek_D3D_Base_Texture());
 	else
 		effect->SetTexture(handle, Rva00132E76WhiteTexture().Peek_D3D_Base_Texture());
 }

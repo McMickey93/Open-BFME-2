@@ -71,8 +71,8 @@ public:
 private:
 	Rva002215F4 *m_ptr;
 };
-Rva00221635::Rva00221635(int arg)
+Rva00221635::Rva00221635(int name)
 {
 	*(const void **)this = g_00BE6BA8;
-	m_ptr = new Rva002215F4(this, *(const AsciiString *)arg);
+	m_ptr = new Rva002215F4(this, *(const AsciiString *)name);
 }

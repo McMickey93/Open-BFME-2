@@ -16,7 +16,7 @@ namespace _STL { template <> __declspec(dllimport) __forceinline void * * vector
 
 class Rva0053FA0A {
 public:
-	void rva0053FA32();
+	void release();
 };
 
 class CreateAHeroData : public Rva0053FA0A {
@@ -57,5 +57,5 @@ void Rva003306B0::rva003306B0(CreateAHeroData *key)
 	m_list.forEach(&Rva0033068BListener::dummy1, this, (int)key);
 	m_vec.erase((void **)it);
 	m_list.forEach(&Rva0033068BListener::dummy2, this, (int)key);
-	key->rva0053FA32();
+	key->release();
 }

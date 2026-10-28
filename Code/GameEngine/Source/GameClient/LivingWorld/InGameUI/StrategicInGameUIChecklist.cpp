@@ -296,11 +296,11 @@ void Rva005CD010::rva005CD010()
 class Rva005CCFF3
 {
 public:
- StrategicInGameUI::ChecklistItemRef rva005CCFF3(StrategicInGameUI::ChecklistItem *item);
+ StrategicInGameUI::ChecklistItemRef RemoveItem(StrategicInGameUI::ChecklistItem *item);
  void *unknown00;
  StrategicInGameUI::Checklist::Impl *implementation;
 };
-StrategicInGameUI::ChecklistItemRef Rva005CCFF3::rva005CCFF3(StrategicInGameUI::ChecklistItem *item)
+StrategicInGameUI::ChecklistItemRef Rva005CCFF3::RemoveItem(StrategicInGameUI::ChecklistItem *item)
 {
  return implementation->rva005CCF47(item);
 }

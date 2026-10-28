@@ -22,19 +22,19 @@ public:
 class ObjectCreationList
 {
 public:
-	bool rva001F0434(void *a1, void *a2);
+	bool rva001F0434(void *primaryObj, void *primary);
 
 private:
 	_STL::vector<ObjectCreationNugget *> m_nuggets;
 };
 
-bool ObjectCreationList::rva001F0434(void *a1, void *a2)
+bool ObjectCreationList::rva001F0434(void *primaryObj, void *primary)
 {
 	bool ok = true;
 	for (ObjectCreationNugget **i = m_nuggets.begin(); i != m_nuggets.end(); ++i)
 	{
 		ObjectCreationNugget *objectCreationNugget = *i;
-		ok = ok && (objectCreationNugget->v5(a1, a2) != 0);
+		ok = ok && (objectCreationNugget->v5(primaryObj, primary) != 0);
 	}
 	return ok;
 }
@@ -44,9 +44,9 @@ bool ObjectCreationList::rva001F0434(void *a1, void *a2)
 // the explicit list pointer, then forwards the two stack arguments to the
 // rowed ObjectCreationList member at 0x001F0434. The movzx after the byte
 // result supports an int return; the address identity is unknown.
-int __cdecl Rva004C30BC(ObjectCreationList *list, void *a1, void *a2)
+int __cdecl Rva004C30BC(ObjectCreationList *list, void *primaryObj, void *primary)
 {
 	if (list != 0)
-		return list->rva001F0434(a1, a2);
+		return list->rva001F0434(primaryObj, primary);
 	return 0;
 }

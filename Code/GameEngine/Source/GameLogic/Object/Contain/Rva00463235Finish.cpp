@@ -32,9 +32,9 @@ public:
 };
 extern BitFlags<116> KINDOFMASK_NONE;
 
-struct Rva00463235Node
+struct PassengerBoneNode
 {
-	Rva00463235Node *m_next;
+	PassengerBoneNode *m_next;
 	char m_pad04[4];
 	BitFlags<116> m_flags08;
 	char m_pad18[12];
@@ -44,7 +44,7 @@ struct Rva00463235Node
 struct Rva00463235List
 {
 	char m_pad00[0x48];
-	Rva00463235Node *m_head;
+	PassengerBoneNode *m_head;
 };
 
 class Rva00463235
@@ -58,7 +58,7 @@ public:
 AsciiString Rva00463235::rva00463235(Thing *filter)
 {
 	Rva00463235List *list = m_list;
-	Rva00463235Node *cur = list->m_head->m_next;
+	PassengerBoneNode *cur = list->m_head->m_next;
 	if (cur == list->m_head)
 		return AsciiString("ARROW_");
 	for (; cur != list->m_head; cur = cur->m_next) {

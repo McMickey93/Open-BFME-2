@@ -81,8 +81,8 @@ public:
 	int m_bfme0c4;
 	int m_bfme0c8;
 	char m_padcc[4];
-	BfmeSlotVNC m_bfme0d0[8];
-	int m_bfme1f0;
+	BfmeSlotVNC m_probes[8];
+	int m_numProbes;
 };
 
 void Rva00800F40PendingProbeUpdate::update(unsigned int now)
@@ -101,10 +101,10 @@ void Rva00800F40PendingProbeUpdate::update(unsigned int now)
 		}
 	}
 
-	if (m_bfme1f0 != zero)
+	if (m_numProbes != zero)
 	{
 		BfmeSlotCursorVNC *slot =
-			(BfmeSlotCursorVNC *)((char *)m_bfme0d0 + 4);
+			(BfmeSlotCursorVNC *)((char *)m_probes + 4);
 		int n = 8;
 
 		do
@@ -124,8 +124,8 @@ void Rva00800F40PendingProbeUpdate::update(unsigned int now)
 					slot->m_bfme0c = 0;
 					slot->m_bfme20 = zero;
 					slot->m_bfme08 = (char)zero;
-					--m_bfme1f0;
-					if (m_bfme1f0 < zero)
+					--m_numProbes;
+					if (m_numProbes < zero)
 						Rva007EB810Get()->fail(
 							"mNumProbes >= 0",
 							"\\views\\feslbuild_main\\jabba\\fesl\\source\\gamebrowser\\gamebrowserdemangler.cpp",

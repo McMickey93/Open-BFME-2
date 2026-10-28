@@ -41,9 +41,9 @@ public:
 class GameTextInterface;
 extern GameTextInterface *TheGameText;
 
-class Rva0059F9FB { public: void rva0059F9FB(int playerID, int state, bool first, bool second); };
+class Rva0059F9FB { public: void setPlayerStatus(int playerID, int state, bool first, bool second); };
 
-void Rva0059F9FB::rva0059F9FB(int playerID, int state, bool first, bool second)
+void Rva0059F9FB::setPlayerStatus(int playerID, int state, bool first, bool second)
 {
 	UnicodeString text;
 	if (state == 2) {

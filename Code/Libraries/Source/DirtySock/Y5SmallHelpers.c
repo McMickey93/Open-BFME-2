@@ -210,7 +210,7 @@ struct Rva0080E6C0Slot
 };
 
 void *Rva00816BF0(int maxPacket, int recvCount, int sendCount);
-void *Rva00815300(int maxPacket, int recvCount, int sendCount);
+void *CommSRPConstruct(int maxPacket, int recvCount, int sendCount);
 void *Rva008140D0(int maxPacket, int recvCount, int sendCount);
 void *CommTAPIConstruct(int maxPacket, int recvCount, int sendCount);
 int Rva007FE780(const char *format, ...);
@@ -270,7 +270,7 @@ int Rva0080E6C0(unsigned char *object, int flags, const char *value)
 	if ((flags & 0x400) != 0)
 	{
 		((struct Rva0080E6C0Slot *)(object + 0x9C))->transport =
-			Rva00815300(*(int *)(object + 0x80), *(int *)(object + 0x88),
+			CommSRPConstruct(*(int *)(object + 0x80), *(int *)(object + 0x88),
 				*(int *)(object + 0x84));
 		((struct Rva0080E6C0Slot *)(object + 0x9C))->field8 = 0;
 	}

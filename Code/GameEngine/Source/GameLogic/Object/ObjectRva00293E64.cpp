@@ -27,7 +27,7 @@ public:
 // with key 0 and a pointer to the text "objectUpgradesList" at VA 0x00C09528.
 // The local literal reproduces pointed-to text only; string-pointer identity
 // is not asserted. The next named cache global begins at VA 0x00DBDE24.
-extern Rva00148F5ECache g_00DBDE14 = { NAMEKEY_INVALID, "objectUpgradesList" };
+extern Rva00148F5ECache TheKey_objectUpgradesList = { NAMEKEY_INVALID, "objectUpgradesList" };
 
 class Dict
 {
@@ -81,16 +81,16 @@ private:
 
 void Object::rva00293E64(Dict *dict)
 {
-	for (Elem244 **p = m_244; *p != 0; p++) {
-		(*p)->m_obj.v45((int)dict);
+	for (Elem244 **module = m_244; *module != 0; module++) {
+		(*module)->m_obj.v45((int)dict);
 	}
 	if (m_84 != 0)
 		m_84->rva00271AEA();
 	if (dict == 0)
 		return;
 	Bool exists;
-	AsciiString s = dict->getAsciiString((int)g_00DBDE14.get(), &exists);
+	AsciiString upgrades = dict->getAsciiString((int)TheKey_objectUpgradesList.get(), &exists);
 	if (!exists)
 		return;
-	rva00293275(s);
+	rva00293275(upgrades);
 }

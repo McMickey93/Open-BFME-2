@@ -52,19 +52,19 @@ struct OpaqueRefElement4
 struct Payload0049797F
 {
 	char m_pad00[8];
-	void *m_08; // +0x08
+	void *m_specialPowerTemplate; // +0x08
 	char m_pad0C[0x1c - 0x0c];
-	OpaqueRefElement4 m_1c; // +0x1c
-	OpaqueRefElement4 m_20; // +0x20
+	OpaqueRefElement4 m_bombardmentUnpackName; // +0x1c
+	OpaqueRefElement4 m_bombardmentPackName; // +0x20
 	char m_pad24[4];
-	OpaqueRefElement4 m_28; // +0x28
-	OpaqueRefElement4 m_2c; // +0x2c
-	OpaqueRefElement4 m_30; // +0x30
-	OpaqueRefElement4 m_34; // +0x34
+	OpaqueRefElement4 m_bombardmentAnnouncementName; // +0x28
+	OpaqueRefElement4 m_searchAndDestroyUnpackName; // +0x2c
+	OpaqueRefElement4 m_searchAndDestroyIdleName; // +0x30
+	OpaqueRefElement4 m_searchAndDestroyPackName; // +0x34
 	char m_pad38[4];
 	OpaqueRefElement4 m_3c; // +0x3c
-	OpaqueRefElement4 m_40; // +0x40
-	OpaqueRefElement4 m_44; // +0x44
+	OpaqueRefElement4 m_holdTheLineUnpackName; // +0x40
+	OpaqueRefElement4 m_holdTheLinePackName; // +0x44
 	char m_pad48[4];
 	OpaqueRefElement4 m_4c; // +0x4c
 };
@@ -103,7 +103,7 @@ void BattlePlanUpdate::onObjectCreated()
 {
 	Payload0049797F *payload = m_payload;
 	Object *obj = m_object;
-	void *key = payload->m_08;
+	void *key = payload->m_specialPowerTemplate;
 	if (key == 0)
 	{
 		m_3c = true;
@@ -111,15 +111,15 @@ void BattlePlanUpdate::onObjectCreated()
 	else
 	{
 		m_38 = obj->getSpecialPowerModule(reinterpret_cast<const SpecialPowerTemplate *>(key));
-		m_48 = payload->m_1c;
-		m_58 = payload->m_20;
-		m_68 = payload->m_28;
-		m_50 = payload->m_2c;
-		m_60 = payload->m_34;
-		m_80 = payload->m_30;
+		m_48 = payload->m_bombardmentUnpackName;
+		m_58 = payload->m_bombardmentPackName;
+		m_68 = payload->m_bombardmentAnnouncementName;
+		m_50 = payload->m_searchAndDestroyUnpackName;
+		m_60 = payload->m_searchAndDestroyPackName;
+		m_80 = payload->m_searchAndDestroyIdleName;
 		m_70 = payload->m_3c;
-		m_4c = payload->m_40;
-		m_5c = payload->m_44;
+		m_4c = payload->m_holdTheLineUnpackName;
+		m_5c = payload->m_holdTheLinePackName;
 		m_6c = payload->m_4c;
 		m_object->setWeaponSetFlag(WST_0);
 		if (Object::getAI(obj) != 0)

@@ -8,10 +8,10 @@
 // body uses those two literals directly rather than extern globals.
 // Neighbours 0x00101CDA W3DRopeDraw and 0x00101FD8 place this body in the
 // W3DDevice GameClient unit.
-void __cdecl W3DLogicalScreenToPixelScreen(float a, float b, int *out1, int *out2, int s1, int s2)
+void __cdecl W3DLogicalScreenToPixelScreen(float logX, float logY, int *out1, int *out2, int screenWidth, int screenHeight)
 {
-	float t1 = (a + 1.0f) * (float)s1 * 0.5f;
-	float t0 = (1.0f - b) * (float)s2 * 0.5f;
+	float t1 = (logX + 1.0f) * (float)screenWidth * 0.5f;
+	float t0 = (1.0f - logY) * (float)screenHeight * 0.5f;
 	*out1 = (int)t1;
 	*out2 = (int)t0;
 }

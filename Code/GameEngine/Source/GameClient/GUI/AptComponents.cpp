@@ -37,37 +37,37 @@ public:
 struct Rva004102C8Arg
 {
 	char m_00[0xC];AsciiString path;
-	GameWindow *m_10;
-	float m_14;
-	float m_18;
-	float m_1C;
-	float m_20;bool drawn;AsciiString initName;
+	GameWindow *m_window;
+	float m_x;
+	float m_y;
+	float m_width;
+	float m_height;bool drawn;AsciiString initName;
 };
 
 struct ComponentPosition{float x,y;ComponentPosition(float a,float b):x(a),y(b){}};
-void Rva004102C8Update(Rva004102C8Arg *a1, float *a2, float *a3)
+void Rva004102C8Update(Rva004102C8Arg *a1, float *a2, float *size)
 {
 	int ix;
 	int iy;
 	GameWindow* gameWindow;
 	ComponentPosition pos(a2[0],a2[1]);
-	gameWindow = a1->m_10->winGetParent();
+	gameWindow = a1->m_window->winGetParent();
 	if (gameWindow != 0) {
 		((GameWindow *)gameWindow)->winGetPosition(&ix, &iy);
 		pos.x -= (float)ix;
 		pos.y -= (float)iy;
 	}
-	if (pos.x != a1->m_14 || pos.y != a1->m_18) {
-		a1->m_14 = pos.x;
-		a1->m_18 = pos.y;
-		if (a1->m_10 != 0)
-			((GameWindow *)a1->m_10)->winSetPosition((int)pos.x, (int)pos.y);
+	if (pos.x != a1->m_x || pos.y != a1->m_y) {
+		a1->m_x = pos.x;
+		a1->m_y = pos.y;
+		if (a1->m_window != 0)
+			((GameWindow *)a1->m_window)->winSetPosition((int)pos.x, (int)pos.y);
 	}
-	if (a3[0] != a1->m_1C || a3[1] != a1->m_20) {
-		a1->m_1C = a3[0];
-		a1->m_20 = a3[1];
-		if (a1->m_10 != 0)
-			((GameWindow *)a1->m_10)->winSetSize((int)a3[0], (int)a3[1]);
+	if (size[0] != a1->m_width || size[1] != a1->m_height) {
+		a1->m_width = size[0];
+		a1->m_height = size[1];
+		if (a1->m_window != 0)
+			((GameWindow *)a1->m_window)->winSetSize((int)size[0], (int)size[1]);
 	}
 }
 
@@ -135,7 +135,7 @@ Rva004102C8Arg*Rva004115A9Create(const Coord2D*origin,const Coord2D*size,const c
  }
  if(!window)return 0;
  Rva004102C8Arg*info=(Rva004102C8Arg*)&((ComponentMap*)AptComponentWindowDataTableStorage)->operator[](*name);
- info->m_10=window;*(int*)((char*)info+4)=level;
+ info->m_window=window;*(int*)((char*)info+4)=level;
  ((StringBase<char>*)((char*)info+8))->set(path);
  window->winHide(false);*(int*)((char*)window+0x1F4)=0;
  window->winSetWindowId((int)TheNameKeyGenerator->nameToKey(name->str()));
@@ -162,7 +162,7 @@ const AsciiString*foundName; AsciiString windowId;
  bool created=false;
  Rva004102C8Arg*info=(Rva004102C8Arg*)Rva004110C3Get(&windowId);
  if(!info){info=Rva004115A9Create(origin,size,path,params,&windowId);if(!info)return;created=true;}
- GameWindow*window=info->m_10;if(!window)return;
+ GameWindow*window=info->m_window;if(!window)return;
  if(strcmp(info->path.str(),path)!=0)info->path=path;
  if(info->initName.isEmpty()){
   AsciiString init;Rva004128F0GetParam(params,"_Init",init);

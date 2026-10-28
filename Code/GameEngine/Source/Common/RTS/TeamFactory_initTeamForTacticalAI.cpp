@@ -30,9 +30,9 @@ extern PlayerList *ThePlayerList;
 struct TeamTemplateTacticView
 {
 	char m_pad000[0x198];
-	int m_unknown198; // prototype +0x2C4, the target id
+	int m_targetID; // prototype +0x2C4, the target id
 	char m_pad19C[0x1AC - 0x19C];
-	int m_unknown1AC; // prototype +0x2D8, the tactic id
+	int m_tacticID; // prototype +0x2D8, the tactic id
 };
 
 class TeamPrototype
@@ -71,8 +71,8 @@ Rva003A2FD4Proto *TeamFactory::initTeamForTacticalAI(const AsciiString &asciiStr
 		if (cur->m_byte31E == 0)
 		{
 			cur->rva003A2C0D(player, asciiString, false, 0);
-			cur->m_teamTemplate.m_unknown198 = targetID;
-			cur->m_teamTemplate.m_unknown1AC = (int)tacticID;
+			cur->m_teamTemplate.m_targetID = targetID;
+			cur->m_teamTemplate.m_tacticID = (int)tacticID;
 			cur->m_byte31E = 1;
 			cur->m_byte31C = 1;
 			return (Rva003A2FD4Proto *)cur;

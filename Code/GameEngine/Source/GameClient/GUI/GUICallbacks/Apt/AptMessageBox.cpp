@@ -40,7 +40,7 @@ class AptMessageBox
 public:
 	static void Show(void *a, void *b, void *c);
  static void Show(int,const UnicodeString &,const UnicodeString &,TreeHintRef00217D4C,TreeHintRef00217D4C);
-	static void Change(void *a, void *b, void *c);
+	static void Change(void *type, void *text, void *title);
 
 
 private:
@@ -52,9 +52,9 @@ void AptMessageBox::Show(void *a, void *b, void *c)
 	((Rva0054D2DDTarget *)Instance())->method((int)a, *(const UnicodeString *)b, *(const UnicodeString *)c);
 }
 
-void AptMessageBox::Change(void *a, void *b, void *c)
+void AptMessageBox::Change(void *type, void *text, void *title)
 {
-	((Rva0054D3E1Prompt *)Instance())->configure((int)a, *(const UnicodeString *)b, *(const UnicodeString *)c);
+	((Rva0054D3E1Prompt *)Instance())->configure((int)type, *(const UnicodeString *)text, *(const UnicodeString *)title);
 }
 
 // WB12B4240 names this five-argument static Show overload. Retail

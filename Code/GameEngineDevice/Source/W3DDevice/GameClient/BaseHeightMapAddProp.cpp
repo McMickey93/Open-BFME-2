@@ -55,7 +55,7 @@ public:
 class BaseHeightMapRenderObjClass
 {
 public:
-	void addProp( Int id, Coord3D location, Real angle, Real scale, const AsciiString &modelName, Bool bfmeFlag );
+	void addProp( Int id, Coord3D location, Real angle, Real scale, const AsciiString &modelName, Bool distanceFog );
 	Bool rva000683AC( Int id, Coord3D location, Real angle, Real scale );
 	void rva00068494( DataChunkOutput *chunk );
 private:
@@ -77,10 +77,10 @@ private:
 //-----------------------------------------------------------------------------
 /** Adds a prop to the prop buffer.  jba */
 void BaseHeightMapRenderObjClass::addProp(Int id, Coord3D location, Real angle, Real scale, 
-																					const AsciiString &modelName, Bool bfmeFlag)
+																					const AsciiString &modelName, Bool distanceFog)
 {
 	if (m_propBuffer) {
-		m_propBuffer->addProp(id, location, angle, scale, modelName, bfmeFlag);
+		m_propBuffer->addProp(id, location, angle, scale, modelName, distanceFog);
 	}
 }
 

@@ -62,19 +62,19 @@ struct Rva0029A436Data
 class Rva0029A436
 {
 public:
-	void rva0029A436(float angle);
-	void rva0029A452(const Coord3D *pos);
+	void setAngle(float angle);
+	void setPosition(const Coord3D *pos);
 private:
 	Rva0029A436Data *m_00;
 };
 
-void Rva0029A436::rva0029A436(float angle)
+void Rva0029A436::setAngle(float angle)
 {
 	if (m_00)
 		m_00->m_20 = angle - 1.5707963705062866f;
 }
 
-void Rva0029A436::rva0029A452(const Coord3D *pos)
+void Rva0029A436::setPosition(const Coord3D *pos)
 {
 	if (m_00)
 		m_00->m_08 = *pos;
@@ -162,7 +162,7 @@ class Rva002E7F1E
 {
 public:
 	Rva002E7F1E();
-	void rva002E7F2F();
+	void clear();
 	bool rva002E7F3E() const;
 private:
 	char m_buffer[0x800];
@@ -174,7 +174,7 @@ Rva002E7F1E::Rva002E7F1E() : m_head(0), m_tail(0)
 {
 }
 
-void Rva002E7F1E::rva002E7F2F()
+void Rva002E7F1E::clear()
 {
 	m_tail = 0;
 	m_head = 0;

@@ -64,8 +64,8 @@ AsciiString LuaScriptEngine::rva00334133( const char *buffer, unsigned long size
 	try
 	{
 		lua_settop( m_L, 0 );
-		const Rva00334133Template *templ = context->m_source->m_template;
-		const char *name = templ->m_nameText;
+		const Rva00334133Template *thingTemplate = context->m_source->m_template;
+		const char *name = thingTemplate->m_nameText;
 		int status = lua_dobuffer( m_L, buffer, size, name ? name + 8 : "" );
 		if( status == 0 && lua_gettop( m_L ) > 0 )
 		{

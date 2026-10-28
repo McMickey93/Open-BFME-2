@@ -228,7 +228,7 @@ static inline const AsciiString &teamProtoX14(const Team *team)
 // Zero Hour Object::setOrRestoreTeam plus BFME2's skirmish-AI registry updates around the switch.
 // Retail fetches the new team's player first and keeps it in ebx across the
 // current team's call.
-static inline Bool playersDiffer(Team *n, Team *o) { Player *p = n->getControllingPlayer(); return o->getControllingPlayer() != p; }
+static inline Bool playersDiffer(Team *newTeam, Team *oldTeam) { Player *newPlayer = newTeam->getControllingPlayer(); return oldTeam->getControllingPlayer() != newPlayer; }
 void Object::setOrRestoreTeam(Team *team, Bool restoring)
 {
 	if (m_team == team)

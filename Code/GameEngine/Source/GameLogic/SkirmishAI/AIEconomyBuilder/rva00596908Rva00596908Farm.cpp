@@ -34,9 +34,9 @@ struct Template004721F0 { char field00[16]; unsigned short field10;
  unsigned short getNumFrames() const { return field10; } };
 class Anim2DCallView { public:
  void draw(int,int,int,int);
- char field00[12]; Template004721F0* field0c; char field10[12]; float field1c;
- const Template004721F0* getAnimTemplate() const { return field0c; }
- void setAlpha(float a) { field1c = a; }
+ char field00[12]; Template004721F0* m_template; char field10[12]; float m_alpha;
+ const Template004721F0* getAnimTemplate() const { return m_template; }
+ void setAlpha(float a) { m_alpha = a; }
 };
 
 class Display;extern Display *TheDisplay;

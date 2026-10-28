@@ -90,17 +90,17 @@ struct Size00787710 { float a,b; Size00787710(float x,float y) : a(x),b(y) {} };
 class Rva00788290Allocation : public Rva00788290Base {
 public:
  Rva00788290Allocation(Rva00788290Object *source);
- void setSize00787710(float w,float h);
+ void setSize(float w,float h);
  void setRect00787710(float x,float y,float r,float b);
  virtual ~Rva00788290Allocation();
  AsciiString m_name;
  DisplayString *m_displayString;
  Rect00787710 m_rect00787710;
- Size00787710 m_size00787710;
+ Size00787710 m_size;
  unsigned m_at24,m_at28;
  bool m_at2c,m_dropShadow,m_at2e;
 };
 // Only the target body is emitted here; the donor's 0x00787710 constructor is
 // omitted. setSize00787710 is declared in-class and defined out-of-line so it
 // is emitted without the caller.
-void Rva00788290Allocation::setSize00787710(float w,float h) { m_size00787710.a=w; m_size00787710.b=h; }
+void Rva00788290Allocation::setSize(float w,float h) { m_size.a=w; m_size.b=h; }

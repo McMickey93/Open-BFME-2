@@ -119,7 +119,7 @@ public:
 
 void iniParseObjectFilter(INI *ini, void *instance, void *store, const void *userData);
 void Rva001DEE74Parse(INI *ini, void *instance, void *store, const void *userData);
-void Rva0048E022Parse(INI *ini, void *instance, void *store, const void *userData);
+void parseFloodMember(INI *ini, void *instance, void *store, const void *userData);
 void iniParseFXListVec(INI *ini, void *instance, void *store, const void *userData);
 
 // Retail FieldParse tables of four procs below; tokens, callbacks and offsets
@@ -162,7 +162,7 @@ extern const FieldParse BfmeAttachUpdateFields[] = {
 
 // Retail VA 0x00C4C9A8: 3 fields and the zero sentinel.
 extern const FieldParse BfmeFloodUpdateFields[] = {
-	{ "FloodMember", &Rva0048E022Parse, 0, 0x0 },
+	{ "FloodMember", &parseFloodMember, 0, 0x0 },
 	{ "AngleOfFlow", &INI::parseAngleReal, 0, 0xC },
 	{ "DirectionIsRelative", &INI::parseBool, 0, 0x10 },
 	{ 0, 0, 0, 0 }

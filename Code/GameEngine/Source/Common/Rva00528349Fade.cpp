@@ -1,5 +1,5 @@
 // cl: /MD
-// ?rva00528349@Rva00528349@@QAEXXZ @0x00528349 64B: FadeIn Apt setter with state at +0x14 plus prefix at +0x18 plus level at +0x4.
+// ?fadeIn@Rva00528349@@QAEXXZ @0x00528349 64B: FadeIn Apt setter with state at +0x14 plus prefix at +0x18 plus level at +0x4.
 // Evidence: rowed AptCall 0x00524EF4 plus strings FadeIn plus empty plus TheRva plus caller 0x00528868; neighbours Rva00528309Clear.
 class Rva00222A8BTarget;
 extern class BfmeAptWindowManager *g_bfmeAptWindowManager;
@@ -15,8 +15,8 @@ class __declspec(novtable) Rva00528349
 {
 public:
 	virtual ~Rva00528349();
-	void rva00528349();
-	void rva00528389();
+	void fadeIn();
+	void fadeOut();
 private:
 	int m_04;
 	char m_pad08[0x14 - 0x08];
@@ -24,7 +24,7 @@ private:
 	Rva00528349Inner *m_18;
 };
 
-void Rva00528349::rva00528349()
+void Rva00528349::fadeIn()
 {
 	int state = m_14;
 	if (state == 0)
@@ -36,7 +36,7 @@ void Rva00528349::rva00528349()
 	m_14 = 2;
 }
 
-void Rva00528349::rva00528389()
+void Rva00528349::fadeOut()
 {
 	int state = m_14;
 	if (state == 0)

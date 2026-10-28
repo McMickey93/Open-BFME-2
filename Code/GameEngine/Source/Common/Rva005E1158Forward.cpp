@@ -39,8 +39,8 @@ void Rva005E1158::rva005E1158(const Image *image)
 class Rva005E1008
 {
 public:
-	void rva005E1008(float v);
-	void rva005E105E();
+	void showTimerOverlay(float v);
+	void hideTimerOverlay();
 };
 
 class Rva005E1178
@@ -54,7 +54,7 @@ private:
 
 void Rva005E1178::rva005E1178(float v)
 {
-	m_ptr08->rva005E1008(v);
+	m_ptr08->showTimerOverlay(v);
 }
 
 // ?rva005E1170@@YIXPAVRva005F8A7ESub@@@Z @0x005E1170 8B
@@ -102,5 +102,5 @@ void Rva005E1168::rva005E1168(int v)
 // Existing fastcall pin uses only ECX; original outer name remains unknown.
 void __fastcall rva005E118B(Rva005F8A7ESub *p)
 {
-    reinterpret_cast<Rva005E1008 *>(p->m_ptr08)->rva005E105E();
+    reinterpret_cast<Rva005E1008 *>(p->m_ptr08)->hideTimerOverlay();
 }

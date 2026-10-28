@@ -71,7 +71,7 @@ class Script
 	friend class ScriptEngine; // Retail reads this view's +0x30 field inline.
 public:
 	Int getDelayEvalSeconds() const { return m_delay; }
-	void setFrameToEvaluate(UnsignedInt f) { m_frame = f; }
+	void setFrameToEvaluate(UnsignedInt frame) { m_frame = frame; }
 private:
 	char m_pad0[0x20];
 	Int m_delay;

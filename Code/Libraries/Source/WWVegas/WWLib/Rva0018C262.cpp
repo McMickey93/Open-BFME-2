@@ -26,7 +26,7 @@ struct Rva0018C262HeaderOwner {
 class Rva0018C262 : public Rva0018C262HeaderOwner {
 public:
 	__declspec(noinline) ~Rva0018C262();
-	void rva0018C262(Rva0018C262Node *p);
+	void rva0018C262(Rva0018C262Node *node);
 	void rva0018C316();
 	Rva0018C262Node *rva0018C28F(const unsigned short *key);
 	Rva0018C262Node *&rva0018C33F(Rva0018C262Node *&out, Rva0018C262Node *a, Rva0018C262Node *b, const unsigned short *v, Rva0018C262Node *c);
@@ -44,16 +44,16 @@ public:
 	static _Rb_tree_node_base *_M_decrement(_Rb_tree_node_base *x);
 };
 }
-void Rva0018C262::rva0018C262(Rva0018C262Node *p)
+void Rva0018C262::rva0018C262(Rva0018C262Node *node)
 {
-	if (!p)
+	if (!node)
 		return;
 	do {
-		rva0018C262(p->m_0C);
-		Rva0018C262Node *next = p->m_08;
-		free(p);
-		p = next;
-	} while (p);
+		rva0018C262(node->m_0C);
+		Rva0018C262Node *next = node->m_08;
+		free(node);
+		node = next;
+	} while (node);
 }
 void Rva0018C262::rva0018C316()
 {

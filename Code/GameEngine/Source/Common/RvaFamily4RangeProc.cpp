@@ -33,32 +33,32 @@ typedef int (*RangeHelper)(void *a, void * volatile b, volatile int c);
 #define Copy003C6437 SORT_HELPER(__insertion_sort, Rva003C3AB0Item **, Rva003C3AB0Cmp)
 #define Copy003C3AB0 SORT_HELPER(__unguarded_insertion_sort, Rva003C3AB0Item **, Rva003C3AB0Cmp)
 
-int Proc0021D905(void *a, void * volatile b, volatile int c)
+int Proc0021D905(void *first, void * volatile last, volatile int comp)
 {
-	if ((((char *)b - (char *)a) & ~3) > 0x40)
+	if ((((char *)last - (char *)first) & ~3) > 0x40)
 	{
-		Copy0021D289(a, (char *)a + 0x40, c);
-		return Copy0021D2B6((char *)a + 0x40, b, c);
+		Copy0021D289(first, (char *)first + 0x40, comp);
+		return Copy0021D2B6((char *)first + 0x40, last, comp);
 	}
-	return Copy0021D289(a, b, c);
+	return Copy0021D289(first, last, comp);
 }
 
-int Proc002B9177(void *a, void * volatile b, volatile int c)
+int Proc002B9177(void *first, void * volatile last, volatile int comp)
 {
-	if ((((char *)b - (char *)a) & ~3) > 0x40)
+	if ((((char *)last - (char *)first) & ~3) > 0x40)
 	{
-		Copy002B833C(a, (char *)a + 0x40, c);
-		return Copy002B6351((char *)a + 0x40, b, c);
+		Copy002B833C(first, (char *)first + 0x40, comp);
+		return Copy002B6351((char *)first + 0x40, last, comp);
 	}
-	return Copy002B833C(a, b, c);
+	return Copy002B833C(first, last, comp);
 }
 
-int Proc003C6973(void *a, void * volatile b, volatile int c)
+int Proc003C6973(void *first, void * volatile last, volatile int comp)
 {
-	if ((((char *)b - (char *)a) & ~3) > 0x40)
+	if ((((char *)last - (char *)first) & ~3) > 0x40)
 	{
-		Copy003C6437(a, (char *)a + 0x40, c);
-		return Copy003C3AB0((char *)a + 0x40, b, c);
+		Copy003C6437(first, (char *)first + 0x40, comp);
+		return Copy003C3AB0((char *)first + 0x40, last, comp);
 	}
-	return Copy003C6437(a, b, c);
+	return Copy003C6437(first, last, comp);
 }

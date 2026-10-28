@@ -22,13 +22,13 @@ struct Base003F86F9
 class Rva003F8728 : public Base003F86F9
 {
 public:
-	Rva003F8728(int a, int b);
+	Rva003F8728(int a, int phase);
 	virtual ~Rva003F8728();
 	_STL::vector<BfmeE16, _STL::allocator<BfmeE16> > m_0C;
 	int m_18;
 };
 
-Rva003F8728::Rva003F8728(int a, int b) : Base003F86F9(a, b), m_0C(), m_18(-1)
+Rva003F8728::Rva003F8728(int a, int phase) : Base003F86F9(a, phase), m_0C(), m_18(-1)
 {
 }
 

@@ -179,7 +179,7 @@ struct Rva007F27C0UserData
  __forceinline const char * GetText(int index)const{return stats[index].text;}
 };
 
-struct Rva007F27C0User
+struct RankUser
 {
 	Rva007F27C0UserHeader header;
 	Rva007F27C0UserData data;
@@ -196,7 +196,7 @@ struct Rva007B55E0TxnName
 extern Rva007B55E0TxnName TheRankUpdateStatsTransaction;
 
 void __stdcall buildRva007F27C0( Rva007E8810Message *msg, const char *gsid,
-	const Rva007F27C0User *users, int userCount )
+	const RankUser *users, int userCount )
 {
 	register Rva007E8810Message *message;
 	register const char *txn;

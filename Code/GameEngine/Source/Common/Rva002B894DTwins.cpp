@@ -32,9 +32,9 @@ void Rva002B894DHost::rva002B894D(int arg)
 	int n = (int)(m_end90 - m_begin8C);
 	for (int i = n - 1; i >= 0; --i)
 	{
-		Rva002B894DElem *e = m_begin8C[i];
-		if (e->m34 == arg)
-			((LivingWorldLogic *)this)->RemovePlayer((LivingWorldPlayer *)e);
+		Rva002B894DElem *player = m_begin8C[i];
+		if (player->m34 == arg)
+			((LivingWorldLogic *)this)->RemovePlayer((LivingWorldPlayer *)player);
 	}
 }
 void Rva002B894DHost::rva002B8984(int arg)
@@ -42,8 +42,8 @@ void Rva002B894DHost::rva002B8984(int arg)
 	int n = (int)(m_end90 - m_begin8C);
 	for (int i = n - 1; i >= 0; --i)
 	{
-		Rva002B894DElem *e = m_begin8C[i];
-		if (e->m34 != arg)
-			((LivingWorldLogic *)this)->RemovePlayer((LivingWorldPlayer *)e);
+		Rva002B894DElem *player = m_begin8C[i];
+		if (player->m34 != arg)
+			((LivingWorldLogic *)this)->RemovePlayer((LivingWorldPlayer *)player);
 	}
 }

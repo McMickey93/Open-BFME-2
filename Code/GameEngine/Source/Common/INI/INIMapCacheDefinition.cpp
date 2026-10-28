@@ -72,7 +72,7 @@ class INI {public:const char*getNextToken(const char*);void initFromINI(void*,co
 // read from target data rather than inferred from the reference table.
 void Rva00534BAFParse(INI*,void*,void*,const void*);
 void Rva00534BDCParse(INI*,void*,void*,const void*);
-void Rva00535087Parse(INI*,void*,void*,const void*);
+void parsePlayerPosition(INI*,void*,void*,const void*);
 const FieldParse Rva00534E13::fieldTable[]={
  {"isOfficial",INI::parseBool,0,0x28},
  {"isMultiplayer",INI::parseBool,0,0x1C},
@@ -97,7 +97,7 @@ const FieldParse Rva00534E13::fieldTable[]={
  {"Player_7_Start",INI::parseCoord3D,0,0x84},
  {"Player_8_Start",INI::parseCoord3D,0,0x90},
  {"InitialCameraPosition",INI::parseCoord3D,0,0x9C},
- {"PlayerPosition",Rva00535087Parse,0,0},
+ {"PlayerPosition",parsePlayerPosition,0,0},
  {0,0,0,0}
 };
 struct StringDataView {int refs;unsigned short length,capacity;};

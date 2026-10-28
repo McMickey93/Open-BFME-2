@@ -37,7 +37,7 @@ class Payload002006B0 : public StringBase<char>
 {
 public:
 	char m_pad[0x10];
-	int m_14;
+	int m_image;
 };
 
 class ShellMenuScheme : public StringBase<char>
@@ -53,20 +53,20 @@ ShellMenuScheme::~ShellMenuScheme()
 {
 	for (_STL::list<int>::iterator it = m_4.begin(); it._M_node != m_4.end()._M_node; )
 	{
-		Payload002006B0 *p = (Payload002006B0 *)(int)*it;
+		Payload002006B0 *image = (Payload002006B0 *)(int)*it;
 		it = m_4.erase(it);
-		if (p != 0)
+		if (image != 0)
 		{
-			p->m_14 = 0;
-			delete p;
+			image->m_image = 0;
+			delete image;
 		}
 	}
 	for (_STL::list<int>::iterator it = m_8.begin(); it._M_node != m_8.end()._M_node; )
 	{
-		void *p = (void *)(int)*it;
+		void *image = (void *)(int)*it;
 		it = m_8.erase(it);
-		if (p != 0)
-			delete p;
+		if (image != 0)
+			delete image;
 	}
 }
 

@@ -68,35 +68,35 @@ int CreateAHeroClass::GetAttributeDefaultValue(UnsignedInt attribute, UnsignedIn
 // The if/else-return form (not early return, not ternary) reproduces
 // retail's jne-forward layout with the or-eax,-1 fall-through, and the
 // (index, pointer) argument order reproduces the add-then-push sequence.
-int CreateAHeroSubClass::GetAttributeMinValue(UnsignedInt o) const
+int CreateAHeroSubClass::GetAttributeMinValue(UnsignedInt attribute) const
 {
 	int r;
-	void *p = rva0021BD22(o);
+	void *p = rva0021BD22(attribute);
 	if (!p)
 		r = -1;
 	else
-		r = const_cast<CreateAHeroSubClass *>(this)->GetBlingIndex(o, *(const AsciiString *)((char *)p + 4));
+		r = const_cast<CreateAHeroSubClass *>(this)->GetBlingIndex(attribute, *(const AsciiString *)((char *)p + 4));
 	return r;
 }
 
-int CreateAHeroSubClass::GetAttributeMaxValue(UnsignedInt o) const
+int CreateAHeroSubClass::GetAttributeMaxValue(UnsignedInt attribute) const
 {
 	int r;
-	void *p = rva0021BD22(o);
+	void *p = rva0021BD22(attribute);
 	if (!p)
 		r = -1;
 	else
-		r = const_cast<CreateAHeroSubClass *>(this)->GetBlingIndex(o, *(const AsciiString *)((char *)p + 8));
+		r = const_cast<CreateAHeroSubClass *>(this)->GetBlingIndex(attribute, *(const AsciiString *)((char *)p + 8));
 	return r;
 }
 
-int CreateAHeroSubClass::GetAttributeDefaultValue(UnsignedInt o) const
+int CreateAHeroSubClass::GetAttributeDefaultValue(UnsignedInt attribute) const
 {
 	int r;
-	void *p = rva0021BD22(o);
+	void *p = rva0021BD22(attribute);
 	if (!p)
 		r = -1;
 	else
-		r = const_cast<CreateAHeroSubClass *>(this)->GetBlingIndex(o, *(const AsciiString *)((char *)p + 0xC));
+		r = const_cast<CreateAHeroSubClass *>(this)->GetBlingIndex(attribute, *(const AsciiString *)((char *)p + 0xC));
 	return r;
 }

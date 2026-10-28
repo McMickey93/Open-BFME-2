@@ -66,14 +66,14 @@ template <class It1, class It2>
 It2 copy_backward(It1 first, It1 last, It2 dest);
 }
 
-void Rva004C73C5Insert(void *a, void *b, Rva004C6FD0Val v, Rva004C6F77Pred pred)
+void Rva004C73C5Insert(void *a, void *last, Rva004C6FD0Val v, Rva004C6F77Pred pred)
 {
 	if (pred(&v, a)) {
-		_STL::copy_backward((_STL::pair<ObjectID, unsigned int> *)a, (_STL::pair<ObjectID, unsigned int> *)b, (_STL::pair<ObjectID, unsigned int> *)((char *)b + 8));
+		_STL::copy_backward((_STL::pair<ObjectID, unsigned int> *)a, (_STL::pair<ObjectID, unsigned int> *)last, (_STL::pair<ObjectID, unsigned int> *)((char *)last + 8));
 		((Rva004C6FD0Val *)a)->m0 = v.m0;
 		((Rva004C6FD0Val *)a)->m4 = v.m4;
 	} else {
-		Rva004C6FD0Insert(b, v, pred);
+		Rva004C6FD0Insert(last, v, pred);
 	}
 }
 

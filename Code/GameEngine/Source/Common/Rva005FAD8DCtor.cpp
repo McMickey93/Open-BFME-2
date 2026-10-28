@@ -63,7 +63,7 @@ class Rva005FFED5 { public: void rva005FFED5(int value); };
 class Rva005FFEDD { public: void rva005FFEDD(const TreeHintRef00217D4C &prompt); };
 class Rva005FFEE5 { public: int rva005FFEE5(const TreeHintRef00217D4C &prompt); };
 class Rva00600052VisibilityForward { public: void forward(int index, bool visible); };
-class Rva0060005A { public: void rva0060005A(int index, bool enabled); };
+class Rva0060005A { public: void SetSwapButtonState(int index, bool enabled); };
 
 // The owner (the Rva006003FC layout of Rva005FB204Ctor.cpp): the +8 list and
 // the battle side/army it shows.
@@ -178,7 +178,7 @@ Rva005FAD8D::Rva005FAD8D(void *owner, void *source)
 	for (int j = 0; j < 2; ++j)
 	{
 		((Rva00600052VisibilityForward *)list)->forward(j, m_recordCount >= j + 2);
-		((Rva0060005A *)list)->rva0060005A(j, m_recordCount >= j + 2);
+		((Rva0060005A *)list)->SetSwapButtonState(j, m_recordCount >= j + 2);
 	}
 	((Rva005A0B4CList *)((char *)battle + 8))->append((Rva002BA8F1Listener *)this);
 }

@@ -370,8 +370,8 @@ bool Locomotor::rva001E7ECA(Object*object,const Coord3D*goal)
    Object*entry;
    while((entry=result.next())!=0)
    {
-    float h=((GeometryInfo*)((char*)entry+0xa8))->getMaxHeightAbovePosition();
-    if(h>highest)highest=h;
+    float height=((GeometryInfo*)((char*)entry+0xa8))->getMaxHeightAbovePosition();
+    if(height>highest)highest=height;
     
    }
    pos.z=height48+highest;

@@ -25,9 +25,9 @@ struct Rva004BFD83Entry
 };
 
 // The retail table at RVA 0x009CD7EC: 4 string pointers.
-extern const char *g_00DCD7EC[4] = { "NONE", "CATAPULT_ROCK", "TREBUCHET_ROCK", 0 };
+extern const char *theRockNames[4] = { "NONE", "CATAPULT_ROCK", "TREBUCHET_ROCK", 0 };
 // The retail table at RVA 0x009CD7FC: 6 string pointers.
-extern const char *g_00DCD7FC[6] = { "NONE", "FRONT_DESTROYED", "RIGHT_DESTROYED", "BACK_DESTROYED", "LEFT_DESTROYED", 0 };
+extern const char *theDamageSideNames[6] = { "NONE", "FRONT_DESTROYED", "RIGHT_DESTROYED", "BACK_DESTROYED", "LEFT_DESTROYED", 0 };
 
 struct PrereqUnitRec;
 
@@ -68,13 +68,13 @@ void Rva004BFD83Parse(INI *ini, void *instance, void *, const void *)
 
 	const char *token = ini->getNextTokenOrNull();
 	if (token)
-		entry.m_damageType = ini->scanIndexList(token, g_00DCD7EC);
+		entry.m_damageType = ini->scanIndexList(token, theRockNames);
 	else
 		entry.m_damageType = 0;
 
 	token = ini->getNextTokenOrNull();
 	if (token)
-		entry.m_deathType = ini->scanIndexList(token, g_00DCD7FC);
+		entry.m_deathType = ini->scanIndexList(token, theDamageSideNames);
 	else
 		entry.m_deathType = 0;
 

@@ -15,7 +15,7 @@ void *Rva007F0000Alloc(int size);
 
 extern "C" {
 	struct CommSRPRef;
-	struct CommSRPRef *Rva00815300(int maxPacket, int recvCount,
+	struct CommSRPRef *CommSRPConstruct(int maxPacket, int recvCount,
 		int sendCount);
 	void Rva007FEA20(void *lock);
 	void Rva00815510(void *ref);
@@ -40,8 +40,8 @@ extern "C" {
 	void Rva007FD3F0(void *socket);
 	unsigned int Rva007FEA00(void);
 	int Rva007FE780(const char *format, ...);
-	void Rva00815780(void);
-	void Rva00815890(void);
+	void CommSRPUnresolve(void);
+	void CommSRPTick(void);
 	/* The socket callback the factory stores in the op-table and Listen /
 	 * Connect hand to Rva007FDE80: BFME1 spells its own VA 0x00C15B50 here,
 	 * BFME2 retail stores 0x00A81A50, i.e. this same function. Declared with
@@ -76,7 +76,7 @@ struct CommSRPRef
 	char m_tail[ 0x2C ];
 };
 
-struct CommSRPRef *Rva00815300( int maxPacket, int recvCount,
+struct CommSRPRef *CommSRPConstruct( int maxPacket, int recvCount,
 	int sendCount )
 {
 	struct CommSRPRef *comm;
@@ -86,17 +86,17 @@ struct CommSRPRef *Rva00815300( int maxPacket, int recvCount,
 		return 0;
 
 	memset( comm, 0, 0x21C );
-	comm->m_op[  0 ] = (void *)Rva00815300;
+	comm->m_op[  0 ] = (void *)CommSRPConstruct;
 	comm->m_op[  1 ] = (void *)Rva00815510;
 	comm->m_op[  2 ] = (void *)CommSRPResolve;
-	comm->m_op[  3 ] = (void *)Rva00815780;
+	comm->m_op[  3 ] = (void *)CommSRPUnresolve;
 	comm->m_op[  4 ] = (void *)CommSRPListen;
 	comm->m_op[  5 ] = (void *)Rva00815790;
 	comm->m_op[  6 ] = (void *)CommSRPConnect;
 	comm->m_op[  7 ] = (void *)Rva008157E0;
 	comm->m_op[  8 ] = (void *)Rva00815730;
 	comm->m_op[  9 ] = (void *)Rva00815830;
-	comm->m_op[ 10 ] = (void *)Rva00815890;
+	comm->m_op[ 10 ] = (void *)CommSRPTick;
 	comm->m_op[ 11 ] = (void *)CommSRPSend;
 	comm->m_op[ 12 ] = (void *)Rva00816520;
 	comm->m_op[ 13 ] = (void *)Rva008165F0;
@@ -297,11 +297,11 @@ int CommSRPConnect(void *ref, const char *text)
  * 0x00681790 (17B, tick read). BFME1 names both as op callees without
  * giving bodies; the shapes are forced (an empty void and a bare tick
  * read in a /GZ TU emit exactly these bytes). */
-void Rva00815780(void)
+void CommSRPUnresolve(void)
 {
 }
 
-void Rva00815890(void)
+void CommSRPTick(void)
 {
 	Rva007FEA00();
 }

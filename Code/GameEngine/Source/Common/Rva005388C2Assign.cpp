@@ -124,11 +124,11 @@ void QuadStrip2D::rva00538383(float scale)
 		*(_STL::vector<BfmeFloat4Record00469C61, _STL::allocator<BfmeFloat4Record00469C61> > *)&m_vec;
 	BfmeFloat4Record00469C61 *start = floats.begin();
 	BfmeFloat4Record00469C61 *finish = floats.end();
-	for (BfmeFloat4Record00469C61 *p = start; p != finish; ++p) {
-		p->x *= scale;
-		p->y *= scale;
-		p->z *= scale;
-		p->w *= scale;
+	for (BfmeFloat4Record00469C61 *strip = start; strip != finish; ++strip) {
+		strip->x *= scale;
+		strip->y *= scale;
+		strip->z *= scale;
+		strip->w *= scale;
 	}
 	if (m_20 != 0)
 		return;
@@ -150,11 +150,11 @@ void QuadStrip2D::rva005382F4(const BfmeE8 &delta)
 		*(_STL::vector<BfmeFloat4Record00469C61, _STL::allocator<BfmeFloat4Record00469C61> > *)&m_vec;
 	BfmeFloat4Record00469C61 *start = floats.begin();
 	BfmeFloat4Record00469C61 *finish = floats.end();
-	for (BfmeFloat4Record00469C61 *p = start; p != finish; ++p) {
-		p->x += delta.x;
-		p->y += delta.y;
-		p->z += delta.x;
-		p->w += delta.y;
+	for (BfmeFloat4Record00469C61 *strip = start; strip != finish; ++strip) {
+		strip->x += delta.x;
+		strip->y += delta.y;
+		strip->z += delta.x;
+		strip->w += delta.y;
 	}
 	if (m_20 != 0)
 		return;

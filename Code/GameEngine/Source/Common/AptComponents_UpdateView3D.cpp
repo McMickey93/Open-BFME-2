@@ -45,12 +45,12 @@ void __cdecl AptComponents::UpdateView3D(AptView3D *obj, const char *params)
 		if (_strnicmp(s, "_light", 6) == 0 && isdigit(s[6])) {
 			const char *p = s + 6;
 			s = p;
-			int n = 0;
+			int lightIndex = 0;
 			float x = 1.0f;
 			float y = 1.0f;
 			float z = 1.0f;
-			sscanf(s, "%d=%f,%f,%f", &n, &x, &y, &z);
-			obj->SetLight(n, x, y, z);
+			sscanf(s, "%d=%f,%f,%f", &lightIndex, &x, &y, &z);
+			obj->SetLight(lightIndex, x, y, z);
 		} else if (_strnicmp(s, "_frame=", 7) == 0) {
 			AsciiString mode;
 			Rva004128F0GetParam(params, "_AnimMode", mode);

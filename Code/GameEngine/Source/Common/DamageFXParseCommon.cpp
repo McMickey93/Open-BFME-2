@@ -92,7 +92,7 @@ public:
 	static void parseMinorFXList(INI *ini, void *instance, void *store, const void *userData);
 	static void parseTime(INI *ini, void *instance, void *store, const void *userData);
 	void *rva003605E3(int damageType, float amount, const Object *unused);
-	bool rva003608DF(int damageType, float amount, const Object *a, const Object *b);
+	bool rva003608DF(int damageType, float amount, const Object *a, const Object *victim);
 	DamageDFX m_dfx[DAMAGE_NUM_TYPES][4];
 };
 class FXList
@@ -208,11 +208,11 @@ void *DamageFX::rva003605E3(int damageType, float amount, const Object *unused)
 
 // ?rva003608DF@DamageFX@@QAE_NHMPBVObject@@0@Z @0x003608DF 50B: DamageFX doFX wrapper
 // calls rva003605E3 for FXList then FXList::doFXObj; false on null else true; caller 0x004BED62.
-bool DamageFX::rva003608DF(int damageType, float amount, const Object *object, const Object *b)
+bool DamageFX::rva003608DF(int damageType, float amount, const Object *object, const Object *victim)
 {
 	void *fx = rva003605E3(damageType, amount, object);
 	if (!fx)
 		return false;
-	FXList::doFXObj((const FXList *)fx, b, object);
+	FXList::doFXObj((const FXList *)fx, victim, object);
 	return true;
 }

@@ -7,8 +7,8 @@
 class Rva003F2A11;
 Rva003F2A11 *Rva003F2A3E(Rva003F2A11 *, Rva003F2A11 *, Rva003F2A11 *);
 typedef Rva003F2A11 *(__cdecl *Rva003F2A3E5Fn)(Rva003F2A11 *, Rva003F2A11 *, Rva003F2A11 *, void *, int);
-Rva003F2A11 *Rva003F325ACopy(Rva003F2A11 *a, Rva003F2A11 *b, Rva003F2A11 *c)
+Rva003F2A11 *Rva003F325ACopy(Rva003F2A11 *first, Rva003F2A11 *last, Rva003F2A11 *c)
 {
 	int dummy;
-	return ((Rva003F2A3E5Fn)&Rva003F2A3E)(a, b, c, (void *)((char *)&dummy + 3), 0);
+	return ((Rva003F2A3E5Fn)&Rva003F2A3E)(first, last, c, (void *)((char *)&dummy + 3), 0);
 }

@@ -92,36 +92,36 @@ public:
 	virtual void unused63();
 	virtual void endImageDraw();
 
-	void rva0004D6B3(Image *image, float x0, float y0, float x1, float y1, int color, int mode);
-	void rva0004D664(float x0, float y0, float x1, float y1, float w, int color);
-	void rva0008EEF0(float x0, float y0, float x1, float y1, float w, int color);
-	void rva0008EE9E(float x0, float y0, float x1, float y1, float w, int color0, int color1);
+	void rva0004D6B3(Image *image, float startX, float startY, float endX, float endY, int color, int mode);
+	void rva0004D664(float startX, float startY, float endX, float endY, float lineWidth, int color);
+	void rva0008EEF0(float startX, float startY, float width, float height, float lineWidth, int color);
+	void rva0008EE9E(float startX, float startY, float endX, float endY, float lineWidth, int color0, int color1);
 };
 
-void W3DDisplay::rva0004D6B3(Image *image, float x0, float y0, float x1, float y1, int color, int mode)
+void W3DDisplay::rva0004D6B3(Image *image, float startX, float startY, float endX, float endY, int color, int mode)
 {
 	beginImageDraw();
-	drawImageCore(image, x0, y0, x1, y1, color, mode);
+	drawImageCore(image, startX, startY, endX, endY, color, mode);
 	endImageDraw();
 }
 
-void W3DDisplay::rva0004D664(float x0, float y0, float x1, float y1, float w, int color)
+void W3DDisplay::rva0004D664(float startX, float startY, float endX, float endY, float lineWidth, int color)
 {
 	beginImageDraw();
-	slotDC(x0, y0, x1, y1, w, color);
+	slotDC(startX, startY, endX, endY, lineWidth, color);
 	endImageDraw();
 }
 
-void W3DDisplay::rva0008EEF0(float x0, float y0, float x1, float y1, float w, int color)
+void W3DDisplay::rva0008EEF0(float startX, float startY, float width, float height, float lineWidth, int color)
 {
 	beginImageDraw();
-	slotE0(x0, y0, x1, y1, w, color);
+	slotE0(startX, startY, width, height, lineWidth, color);
 	endImageDraw();
 }
 
-void W3DDisplay::rva0008EE9E(float x0, float y0, float x1, float y1, float w, int color0, int color1)
+void W3DDisplay::rva0008EE9E(float startX, float startY, float endX, float endY, float lineWidth, int color0, int color1)
 {
 	beginImageDraw();
-	slotD8(x0, y0, x1, y1, w, color0, color1);
+	slotD8(startX, startY, endX, endY, lineWidth, color0, color1);
 	endImageDraw();
 }

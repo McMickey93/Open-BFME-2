@@ -28,7 +28,7 @@ public:
 struct Rva00DFF0F8Obj
 {
 	char m_pad[0x10];
-	Pathfinder *m_p10;
+	Pathfinder *m_pathfinder;
 };
 extern class AI *TheAI;
 
@@ -37,7 +37,7 @@ void ScriptActions::Rva003C35AADo(const AsciiString *teamName, bool x, bool flag
 	PolygonTrigger *trigger = TheScriptEngine->getQualifiedTriggerAreaByName(*teamName);
 	if (trigger == 0)
 		return;
-	((Rva00DFF0F8Obj *)TheAI)->m_p10->rva0052E3E6(trigger, x);
+	((Rva00DFF0F8Obj *)TheAI)->m_pathfinder->rva0052E3E6(trigger, x);
 	if (flag != 0)
 		return;
 	TheScriptEngine->rva00209811(*teamName, x);

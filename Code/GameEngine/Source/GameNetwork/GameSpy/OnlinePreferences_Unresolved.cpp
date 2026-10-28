@@ -158,10 +158,10 @@ public:
 	Int getColor(void);
 	void setSide(Int val);
 	Int getSide(void);
-	void rva005DF336(Int val);
-	Int rva005DF37E(void);
-	void rva005DF3C7(Int val);
-	Int rva005DF40F(void);
+	void setHighest1vs1Rank(Int val);
+	Int getHighest1vs1Rank(void);
+	void setHighest2vs2Rank(Int val);
+	Int getHighest2vs2Rank(void);
 };
 
 class GameSpyMiscPreferences : public UserPreferences

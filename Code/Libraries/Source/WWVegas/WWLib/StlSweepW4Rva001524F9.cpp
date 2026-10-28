@@ -24,10 +24,10 @@ template void _STL::vector<Rva001524F9Element, _STL::allocator<Rva001524F9Elemen
 class Rva00152659 : public _STL::vector<Rva001524F9Element, _STL::allocator<Rva001524F9Element> >
 {
 public:
-	void rva00152659(Rva001524F9Element *position, unsigned int count, const Rva001524F9Element &value);
+	void insert(Rva001524F9Element *position, unsigned int count, const Rva001524F9Element &value);
 };
 
-void Rva00152659::rva00152659(Rva001524F9Element *position, unsigned int count, const Rva001524F9Element &value)
+void Rva00152659::insert(Rva001524F9Element *position, unsigned int count, const Rva001524F9Element &value)
 {
 	_M_fill_insert(position, count, value);
 }

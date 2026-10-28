@@ -45,12 +45,12 @@ void __cdecl Rva00153565Register(const char *name, void *obj)
 		return;
 	if (!g_Rva00153565Vec)
 		g_Rva00153565Vec = new _STL::vector<BfmePod68>;
-	BfmePod68 tmp;
-	_mbscpy((char *)&tmp, name);
-	tmp.a[16] = (int)obj;
+	BfmePod68 entry;
+	_mbscpy((char *)&entry, name);
+	entry.a[16] = (int)obj;
 	for (BfmePod68 *it = g_Rva00153565Vec->begin(); it != g_Rva00153565Vec->end(); ++it) {
 		if (!_strcmpi((char *)it, name))
 			return;
 	}
-	g_Rva00153565Vec->push_back(tmp);
+	g_Rva00153565Vec->push_back(entry);
 }

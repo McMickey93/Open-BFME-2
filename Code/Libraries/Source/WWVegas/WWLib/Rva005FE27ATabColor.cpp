@@ -68,7 +68,7 @@ class Rva005FE750
 {
 public:
 	virtual ~Rva005FE750();
-	void rva005FE27A(int idx, int w0, int w1, const UnicodeString &text);
+	void rva005FE27A(int idx, int image, int w1, const UnicodeString &text);
 private:
 	int m_04;
 	AsciiString m_08;
@@ -85,19 +85,19 @@ __forceinline BfmeContainerRecord005FDEC7 *Start005FE27A(
 	return *(BfmeContainerRecord005FDEC7 *const *)&v;
 }
 
-void Rva005FE750::rva005FE27A(int idx, int w0, int w1, const UnicodeString &text)
+void Rva005FE750::rva005FE27A(int idx, int image, int w1, const UnicodeString &text)
 {
 	BfmeContainerRecord005FDEC7 &rec = *(Start005FE27A(m_28) + idx);
-	if (w0 != rec.word0)
+	if (image != rec.word0)
 	{
 		AsciiString key;
 		const char *mid = GetStr005FE27A(m_08);
 		key.format("_level%u.%s_Image%d", m_04, mid, idx);
-		if (w0)
-			((Rva00524306 *)&m_18)->rva00524725(key, (const Image *)w0);
+		if (image)
+			((Rva00524306 *)&m_18)->rva00524725(key, (const Image *)image);
 		else
 			((Rva00524306 *)&m_18)->rva00524306(*(const StringBase<char> *)&key);
-		rec.word0 = (unsigned int)w0;
+		rec.word0 = (unsigned int)image;
 	}
 	if (w1 != rec.word1)
 	{

@@ -142,13 +142,13 @@ void InGameUI::rva0029FD1B(int id, MaterialPassClass *mp, Overridable *ov, int a
 		Object *obj = 0;
 		if (m_238)
 		{
-			int t = *(int *)((char *)m_238 + 0x14);
-			if (t == 0x20)
+			int commandType = *(int *)((char *)m_238 + 0x14);
+			if (commandType == 0x20)
 			{
 				if (ThePlayerList && ThePlayerList->m_localPlayer)
 					obj = ThePlayerList->m_localPlayer->findNaturalCommandCenter();
 			}
-			else if (t == 0x26)
+			else if (commandType == 0x26)
 			{
 				if (ThePlayerList && ThePlayerList->m_localPlayer)
 					obj = ThePlayerList->m_localPlayer->rva002AC629();

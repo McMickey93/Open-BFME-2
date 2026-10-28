@@ -28,13 +28,13 @@ struct RasterEdge
 	int remaining;
 	int index;
 
-	__forceinline void set(int x0, int x1, int dy)
+	__forceinline void set(int startX, int endX, int dy)
 	{
 		remaining = dy;
 		if (remaining > 0)
 		{
-			step = ((x1 - x0) << 8) / dy;
-			value = (x0 << 8) + step / 2;
+			step = ((endX - startX) << 8) / dy;
+			value = (startX << 8) + step / 2;
 		}
 	}
 	__forceinline bool advance()
@@ -45,8 +45,8 @@ struct RasterEdge
 	__forceinline int x() const { return (value + 128) / 256; }
 };
 
-__forceinline int prevIndex(int i, int n) { return i ? i - 1 : n - 1; }
-__forceinline int nextIndex(int i, int n) { return i + 1 == n ? 0 : i + 1; }
+__forceinline int prevIndex(int i, int count) { return i ? i - 1 : count - 1; }
+__forceinline int nextIndex(int i, int count) { return i + 1 == count ? 0 : i + 1; }
 
 char __cdecl Rva0073C450Raster(int *xs, int *ys, int n, Rva0073BAA0Base updater)
 {

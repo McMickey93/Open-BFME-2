@@ -51,10 +51,10 @@ extern "C" int   Rva0080E330( void *crypto, int length );              // 0x0080
 // Accept at 0x0080B0A0, connect at 0x0080B1B0, the comm pump at 0x0080B4B0,
 // send/recv/info through the comm object, and the three crypto helpers the
 // packet path uses after a complete header has arrived.
-extern "C" void *Rva0080B0A0( void *comm, int unsupported, void *address,
+extern "C" void *ProtoSSLAccept( void *comm, int unsupported, void *address,
 		int *addressLength );
 extern "C" void  Rva0080B4B0( Rva0080B1B0Comm *comm );
-extern "C" int   Rva0080D980( void *comm, const char *data, int length );
+extern "C" int   ProtoSSLSend( void *comm, const char *data, int length );
 extern "C" int   Rva0080DA50( void *comm, char *output, int length );
 extern "C" int   Rva0080DBF0( void *comm, int selector, void *buffer,
 		int bufferSize );
@@ -1212,7 +1212,7 @@ void Rva00806B10( Rva00806580Record *record )
 	if( record->m_field5C == 1 )
 	{
 		len = 0x10;
-		ref = Rva0080B0A0( record->m_field00, 0, addr, &len );
+		ref = ProtoSSLAccept( record->m_field00, 0, addr, &len );
 		if( ref == 0 )
 			return;
 
@@ -1312,7 +1312,7 @@ void Rva00806B10( Rva00806580Record *record )
 
 	if( record->m_outBuffer != 0 && record->m_outSent != record->m_outUsed )
 	{
-		len = Rva0080D980( record->m_field00,
+		len = ProtoSSLSend( record->m_field00,
 				(char *)record->m_outBuffer + record->m_outSent,
 				record->m_outUsed - record->m_outSent );
 		if( len < 0 )

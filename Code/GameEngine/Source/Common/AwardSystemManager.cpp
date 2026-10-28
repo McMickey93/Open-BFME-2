@@ -25,11 +25,11 @@ template<> __declspec(dllimport) __forceinline void _STLP_alloc_proxy<NameKeyTyp
 template<> __declspec(noinline) _Vector_base<NameKeyType,allocator<NameKeyType> >::_Vector_base(const allocator<NameKeyType> &a)
  : _M_start(0),_M_finish(0),_M_end_of_storage(a,0) {}
 }
-class Rva0040AECC {
-public:__declspec(noinline) Rva0040AECC();
+class AwardTrigger {
+public:__declspec(noinline) AwardTrigger();
 public:_STL::vector<NameKeyType> keys;unsigned threshold;
 };
-Rva0040AECC::Rva0040AECC() : threshold(0) {}
+AwardTrigger::AwardTrigger() : threshold(0) {}
 
 class Rva0040AEE3;
 namespace _STL {
@@ -128,7 +128,7 @@ private:
 };
 void AwardSystemManager::parseTrigger(INI *ini,void *instance,void *,const void *)
 {
- Rva0040AECC trigger;
+ AwardTrigger trigger;
  ini->initFromINI(&trigger,BfmeAwardTriggerFields);
  _STL::sort(reinterpret_cast<int *>(trigger.keys.begin()),reinterpret_cast<int *>(trigger.keys.end()));
  Rva0040ADDD *award=static_cast<Rva0040ADDD *>(instance);
@@ -156,7 +156,7 @@ public:
  NameKeyType name;
  _STL::vector<NameKeyType> upgradeAwards;
  AsciiString nameTag,descriptionTag,imageName;
- _STL::vector<Rva0040AECC> triggers;
+ _STL::vector<AwardTrigger> triggers;
 };
 class Rva0040B6D4 : public Rva0040B77E {public:Rva0040B6D4();};
 struct BfmePod40 {int words[10];};

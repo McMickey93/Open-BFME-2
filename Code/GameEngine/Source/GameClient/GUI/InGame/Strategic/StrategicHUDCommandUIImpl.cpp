@@ -133,7 +133,7 @@ public:
 		ButtonSubMenu(CommandUIImpl *owner, int slot, int level, const AsciiString &name);
 		virtual ~ButtonSubMenu();
 		virtual void OnShown();
-		virtual void rva005D2449();
+		virtual void OnHidden();
 
 	private:
 		CommandUIImpl *m_owner; // +0x08
@@ -186,7 +186,7 @@ void StrategicHUD::CommandUIImpl::ButtonSubMenu::OnShown()
 	}
 }
 
-void StrategicHUD::CommandUIImpl::ButtonSubMenu::rva005D2449()
+void StrategicHUD::CommandUIImpl::ButtonSubMenu::OnHidden()
 {
 	((Rva000B3FD0 *)this)->rva000B3FD0();
 	if (m_owner->m_currentSubMenu == m_slot)

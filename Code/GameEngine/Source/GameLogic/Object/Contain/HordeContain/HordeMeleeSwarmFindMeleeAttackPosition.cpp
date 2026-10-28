@@ -149,11 +149,11 @@ private:
 	Rva00583D54Held *m_held;			// +0x04
 };
 
-static __forceinline void copyCoord(Coord3D &c, const Coord3D *a)
+static __forceinline void copyCoord(Coord3D &dest, const Coord3D *src)
 {
-	c.x = a->x;
-	c.y = a->y;
-	c.z = a->z;
+	dest.x = src->x;
+	dest.y = src->y;
+	dest.z = src->z;
 }
 
 static __forceinline void subCoord(Coord3D &c, const Coord3D *a)
@@ -209,13 +209,13 @@ Bool HordeMeleeSwarm::findMeleeAttackPosition(Object *obj, Coord3D *result, Obje
 	copyCoord(lastGood, &pos);
 	if (blocked)
 	{
-		for (Int r = 1; r <= 2 && blocked; r++)
+		for (Int ring = 1; ring <= 2 && blocked; ring++)
 		{
-			for (i = -r; i <= r && blocked; i++)
+			for (i = -ring; i <= ring && blocked; i++)
 			{
-				for (j = -r; j <= r && blocked; j++)
+				for (j = -ring; j <= ring && blocked; j++)
 				{
-					if (i == r || j == r || i == -r || j == -r)
+					if (i == ring || j == ring || i == -ring || j == -ring)
 					{
 						Coord3D cand;
 						copyCoord(cand, &pos);
@@ -233,13 +233,13 @@ Bool HordeMeleeSwarm::findMeleeAttackPosition(Object *obj, Coord3D *result, Obje
 	}
 
 	PathfindLayerEnum objLayer = (PathfindLayerEnum)obj->rva0028B511();
-	for (Int r = 1; r <= rings; r++)
+	for (Int ring = 1; ring <= rings; ring++)
 	{
-		for (i = -r; i <= r; i++)
+		for (i = -ring; i <= ring; i++)
 		{
-			for (j = -r; j <= r; j++)
+			for (j = -ring; j <= ring; j++)
 			{
-				if (i == r || j == r || i == -r || j == -r)
+				if (i == ring || j == ring || i == -ring || j == -ring)
 				{
 					Real ox = (Real)i * 10.0f;
 					Real oy = (Real)j * 10.0f;

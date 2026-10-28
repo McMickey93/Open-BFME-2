@@ -38,7 +38,7 @@ struct Rva001EC311
 	int m_08;
 	int m_0C;
 	int m_10;
-	int m_id14;
+	int m_id;
 	_STL::_Vector_base<BfmeE16, _STL::allocator<BfmeE16> > m_base18;
 	Rva001EC311(const StringBase<char> &k);
 };
@@ -49,7 +49,7 @@ Rva001EC311::Rva001EC311(const StringBase<char> &k)
 	, m_08(0)
 	, m_0C(0)
 	, m_10(0)
-	, m_id14(g_007ED97C + 1)
+	, m_id(g_007ED97C + 1)
 	, m_base18(_STL::allocator<BfmeE16>())
 {
 }

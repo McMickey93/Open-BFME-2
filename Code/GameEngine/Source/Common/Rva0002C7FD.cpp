@@ -1,15 +1,15 @@
-// ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z
+// ?resize@Rva0002C7FD@@QAEXI@Z
 // partial score=0.99 date=2026-10-13
-// ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z
+// ?resize@Rva0002C7FD@@QAEXI@Z
 // partial score=0.99 date=2026-10-10
-// ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z
+// ?resize@Rva0002C7FD@@QAEXI@Z
 // partial score=0.99
 // 214B; no volatile hacks (plain tmp[newBucket]). Only difference: retail loads newBucket ([ebp-0x1c]) into ECX before tmp.start ([ebp-0x28]) into EAX; cl loads the base first (2 lines). 14 operand-order forms of the address (k+p, p[k], k[p], char* arithmetic, begin()+k) are canonicalized to the same code.
-// ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z
+// ?resize@Rva0002C7FD@@QAEXI@Z
 // partial score=0.985981308411215 date=2026-10-10
-// ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z
+// ?resize@Rva0002C7FD@@QAEXI@Z
 // partial score=0.9813 date=2026-10-09
-// ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z
+// ?resize@Rva0002C7FD@@QAEXI@Z
 // partial score=0.92 date=2026-10-09
 // cl: /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /O1 /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /D_STLP_USE_MALLOC /G7
 // R1 template_visibility closure (W8-T4LEAD): dropping the three explicit vector<void*> specialization declarations removes a mov-swap wall; exact 214B. Dedicated TU.
@@ -69,14 +69,14 @@ typedef _STL::hashtable<RvaRehashPrimePair,NameKeyType,rts::hash<NameKeyType>,
 // computes its full size, or reads the unnamed payload following the key.
 struct Rva0002C7FDNodePrefix { Rva0002C7FDNodePrefix *next; AsciiString key; };
 class Rva0002C7FD {
-public: void rva0002C7FD(unsigned int hint);
+public: void resize(unsigned int hint);
 private:
  rts::hash<AsciiString> hash;
  _STL::vector<void*> buckets;
  unsigned int count;
  unsigned int bucketForKey(const AsciiString &key,unsigned int n) const { return hash(key)%n; }
 };
-void Rva0002C7FD::rva0002C7FD(unsigned int hint) {
+void Rva0002C7FD::resize(unsigned int hint) {
  const unsigned int oldCount=buckets.size();
  if(hint>oldCount) {
   // Reuse the existing receiver-independent prime chooser. Its48B target

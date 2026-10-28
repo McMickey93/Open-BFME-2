@@ -46,6 +46,6 @@ void Rva004D839A::rva004D839A()
 	Rva004D839AC *c = m_a->m_b->m_c;
 	int hi = c->m_hi;
 	int lo = c->m_lo;
-	int r = GetGameLogicRandomValue(lo, hi, (char *)"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\AI\\TurretAI.cpp", 0x524);
-	m_20 = r + frame;
+	int delay = GetGameLogicRandomValue(lo, hi, (char *)"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\AI\\TurretAI.cpp", 0x524);
+	m_20 = delay + frame;
 }

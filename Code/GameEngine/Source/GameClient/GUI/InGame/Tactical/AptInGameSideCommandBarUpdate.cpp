@@ -45,8 +45,8 @@ struct SideBarPlayerView
 class Rva00528349
 {
 public:
-    void rva00528349();
-    void rva00528389();
+    void fadeIn();
+    void fadeOut();
 };
 
 class SideBarButtonUpdater
@@ -102,10 +102,10 @@ void AptInGameSideCommandBar::Impl::Update()
 
     if (visible) {
         if (m_state != 2 && m_state != 3)
-            ((Rva00528349 *)this)->rva00528349();
+            ((Rva00528349 *)this)->fadeIn();
     } else {
         if (m_state == 2 || m_state == 3)
-            ((Rva00528349 *)this)->rva00528389();
+            ((Rva00528349 *)this)->fadeOut();
     }
 
     if (m_state != 1 && m_state != 4) {

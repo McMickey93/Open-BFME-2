@@ -38,8 +38,8 @@ public:
   virtual void v5();
   virtual void *v6(int);
   void rva0053FA0A();
-  void rva0053FA32();
-  void rva0053FA41(const AsciiString &name);
+  void release();
+  void setName(const AsciiString &name);
   void rva0053FA74(int value);
   void rva0053FA96(int value);
 private:
@@ -65,7 +65,7 @@ void Rva0053FA0A::rva0053FA0A()
   }
   ::operator delete(p);
 }
-void Rva0053FA0A::rva0053FA32()
+void Rva0053FA0A::release()
 {
   --m_ref14;
   if (m_ref14 > 0) {
@@ -73,7 +73,7 @@ void Rva0053FA0A::rva0053FA32()
   }
   rva0053FA0A();
 }
-void Rva0053FA0A::rva0053FA41(const AsciiString &name)
+void Rva0053FA0A::setName(const AsciiString &name)
 {
   if (((const StringBase<char> &)name).compare((const StringBase<char> &)m_name18) != 0) {
     ((StringBase<char> &)m_name18).set((const StringBase<char> &)name);

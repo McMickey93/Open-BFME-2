@@ -62,15 +62,15 @@ void ScriptActions::Rva003C5825Do(Parameter *p, const AsciiString &name, const A
 		return;
 	for (int i = 0; i < 32; ++i)
 	{
-		const CommandButton *b = cmdSet->getCommandButton(i);
-		if (b == 0)
+		const CommandButton *commandButton = cmdSet->getCommandButton(i);
+		if (commandButton == 0)
 			continue;
-		const StringBase<char> &bs = (const StringBase<char> &)b->m_str10;
+		const StringBase<char> &bs = (const StringBase<char> &)commandButton->m_str10;
 		if (bs.isEmpty())
 			continue;
 		int cmp = bs.compare((const StringBase<char> &)name);
 		if (cmp != 0)
 			continue;
-		obj->rva00297000(b, obj2, 1, cmp);
+		obj->rva00297000(commandButton, obj2, 1, cmp);
 	}
 }

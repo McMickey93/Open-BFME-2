@@ -42,35 +42,35 @@ class Rva00222A8BTarget; extern class BfmeAptWindowManager *g_bfmeAptWindowManag
 int __cdecl Rva005252CDInvoke(Rva00222A8BTarget* target, void* level, const char* prefix, const char* name, const int& a, const char* const& b);
 struct Rva005FFF62 {
   void* m_00;
-  void* m_04;
-  AsciiString m_08;
+  void* m_level;
+  AsciiString m_prefix;
   // ... pad to 0x4C? array at +0x4C?
   unsigned char m_pad[0x4C - 0x08 - sizeof(AsciiString)];
-  struct Elem { unsigned char _0; unsigned char _1; } m_4C[1]; // idx*2 +0x4C, uses [esi+1]
+  struct Elem { unsigned char _0; unsigned char _1; } m_swapButtonStates[1]; // idx*2 +0x4C, uses [esi+1]
   void Set(int idx, bool flag);
   void SetSwapButtonVisibility(int idx, bool visible);
 };
 void Rva005FFF62::Set(int idx, bool flag) {
-  Elem* elem = &m_4C[idx];
+  Elem* elem = &m_swapButtonStates[idx];
   if (flag == elem->_1) return;
   const char* b = flag ? "_up" : "_disabled";
-  const char* prefix = m_08.str();
+  const char* prefix = m_prefix.str();
   const char* name = "SetSwapButtonState";
-  Rva005252CDInvoke(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_04, prefix, name, idx, b);
+  Rva005252CDInvoke(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level, prefix, name, idx, b);
   elem->_1 = flag;
 }
-// ?rva0060005A@Rva0060005A@@QAEXH_N@Z @0x0060005A 8B member forwarder to rowed
+// ?SetSwapButtonState@Rva0060005A@@QAEXH_N@Z @0x0060005A 8B member forwarder to rowed
 // ?Set@Rva005FFF62@@QAEXH_N@Z (0x005FFF62; int bool args pass through shared
 // stack slots). Caller 0x005FB121. Honest address name.
 class Rva0060005A
 {
 public:
-  void rva0060005A(int idx, bool flag);
+  void SetSwapButtonState(int idx, bool flag);
 private:
   char m_pad[4];
   Rva005FFF62 *m_member;
 };
-void Rva0060005A::rva0060005A(int idx, bool flag)
+void Rva0060005A::SetSwapButtonState(int idx, bool flag)
 {
   return m_member->Set(idx, flag);
 }
@@ -115,9 +115,9 @@ void Rva00600062SwapForward::forward(int first, int second) {
 // The containing class remains an address view; only these accesses are proven.
 void Rva005FFF62::SetSwapButtonVisibility(int idx, bool visible) {
   const bool saved=visible;
-  Elem *state=&m_4C[idx];
+  Elem *state=&m_swapButtonStates[idx];
   if(saved==state->_0) return;
-  Rva00577C23AptCall((Rva00222A8BTarget *)g_bfmeAptWindowManager,m_04,m_08.str(),"SetSwapButtonVisibility",&idx,&visible);
+  Rva00577C23AptCall((Rva00222A8BTarget *)g_bfmeAptWindowManager,m_level,m_prefix.str(),"SetSwapButtonVisibility",&idx,&visible);
   state->_0=saved;
 }
 

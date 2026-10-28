@@ -98,13 +98,13 @@ void MeshModelClass::get_deformed_vertices(Vector3 *dst_vert,const HTreeClass *h
   int bone0=bonelinks[0];
   int bone1=bonelinks[vi];
   if(streams==2 && bone1) {
-   float w0=bonelinks[vi*2]/100.0f;
-   float w1=(bonelinks[vi*3]/100.0f);
+   float weight0=bonelinks[vi*2]/100.0f;
+   float weight1=(bonelinks[vi*3]/100.0f);
    SkinMatrix3D transform0;
    htree->Get_Transform(bone0).Get_Matrix3D(transform0);
    SkinMatrix3D transform1;
    htree->Get_Transform(bone1).Get_Matrix3D(transform1);
-   for(int j=0;j<3;j++) {transform0[j]*=w0;transform1[j]*=w1;}
+   for(int j=0;j<3;j++) {transform0[j]*=weight0;transform1[j]*=weight1;}
    transform0.Blend(src[0],transform1,src[1],dst_vert,cnt);
   } else {
    const BoneTransform &tm=htree->Get_Transform(bone0);

@@ -81,8 +81,8 @@ class Rva005E6B3E {public:void rva005E6B3E();char unknown0[4];void*clip;char unk
 void Rva005E6B3E::rva005E6B3E(){
  ((Rva005E549E*)((char*)clip+0xC))->Rva005E549E::rva005E549E();
  if(((Rva005F6022ByteChaseField*)clip)->get()){
-  Rva005E3967Template*t=StrategicInGameUI::Rva005E3967(entry);
-  int kind=t->archetype;
+  Rva005E3967Template*thingTemplate=StrategicInGameUI::Rva005E3967(entry);
+  int kind=thingTemplate->archetype;
   TheMouse->rva001EEA6D(StrategicInGameUI::GetTooltipText(kind),-1,0,1.0f);
  }
 }

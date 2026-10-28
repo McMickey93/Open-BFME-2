@@ -33,7 +33,7 @@ struct Node00525E07
 {
 	Node00525E07 *m_next;
 	char m_pad[4];
-	int m_8;
+	int m_objectID;
 	char m_padC[4];
 	int m_10;
 };
@@ -60,7 +60,7 @@ void Holder00525E07::Rva00525E07(const AsciiString *name, int value)
 		int b = value;
 		do
 		{
-			Object00525E07 *o = (Object00525E07 *)TheGameLogic->findObjectByID((ObjectID)node->m_8);
+			Object00525E07 *o = (Object00525E07 *)TheGameLogic->findObjectByID((ObjectID)node->m_objectID);
 			if (o != 0)
 			{
 				NameHolder00525E07 *h = o->getHolder();

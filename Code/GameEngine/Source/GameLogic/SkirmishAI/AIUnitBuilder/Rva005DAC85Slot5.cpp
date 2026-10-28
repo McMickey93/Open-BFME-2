@@ -141,12 +141,12 @@ void Rva005DAC85::updatePriority()
 	float v = rec->m_160->arrA[rec->m_16C] - div;
 	v *= rec->m_160->arrB[rec->m_16C];
 	float sum = slot2() + v;
-	float m;
-	if (!(sum >= rec->m_160->arrA[3])) m = rec->m_160->arrA[3];
-	else m = sum;
-	float x = 1.0f - div;
-	x *= 300.0f;
-	x += 1800.0f;
-	m = x > m ? m : x;
-	m_18 = m;
+	float priority;
+	if (!(sum >= rec->m_160->arrA[3])) priority = rec->m_160->arrA[3];
+	else priority = sum;
+	float maxPriority = 1.0f - div;
+	maxPriority *= 300.0f;
+	maxPriority += 1800.0f;
+	priority = maxPriority > priority ? priority : maxPriority;
+	m_18 = priority;
 }

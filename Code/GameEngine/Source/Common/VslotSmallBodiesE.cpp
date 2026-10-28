@@ -271,7 +271,7 @@ class Snapshot;
 class Rva004886C7
 {
 public:
-	void onExit(Int arg);
+	void onExit(Int status);
 	void xfer(Xfer *xfer);
 	Int update();
 private:
@@ -283,7 +283,7 @@ private:
 	Bool m_28;
 };
 
-void Rva004886C7::onExit(Int arg)
+void Rva004886C7::onExit(Int status)
 {
 	if (!m_28)
 		return;

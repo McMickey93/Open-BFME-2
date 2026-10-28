@@ -13,7 +13,7 @@ enum NameKeyType
 class Rva00148F5ECache
 {
 public:
-	Rva00148F5ECache(const char *n) : m_key(NAMEKEY_INVALID), m_name(n) {}
+	Rva00148F5ECache(const char *name) : m_key(NAMEKEY_INVALID), m_name(name) {}
 	NameKeyType get();
 private:
 	NameKeyType m_key;
@@ -50,18 +50,18 @@ void Rva002A9ACC::rva002A9ACC(const Dict *dict)
 	if (!dict)
 		return;
 	bool exists;
-	int v = dict->getInt(((Rva00148F5ECache &)TheKey_playerColor).get(), &exists);
+	int color = dict->getInt(((Rva00148F5ECache &)TheKey_playerColor).get(), &exists);
 	if (exists)
 	{
-		v |= 0xFF000000;
-		m_color1 = v;
-		m_color2 = v;
+		color |= 0xFF000000;
+		m_color1 = color;
+		m_color2 = color;
 	}
-	int v2 = dict->getInt(((Rva00148F5ECache &)TheKey_playerNightColor).get(), &exists);
+	int m_nightColor = dict->getInt(((Rva00148F5ECache &)TheKey_playerNightColor).get(), &exists);
 	if (exists)
 	{
-		v2 |= 0xFF000000;
-		m_color2 = v2;
+		m_nightColor |= 0xFF000000;
+		m_color2 = m_nightColor;
 	}
 }
 

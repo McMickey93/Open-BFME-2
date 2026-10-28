@@ -753,8 +753,8 @@ struct Rva0029A436Data
 class Rva0029A436
 {
 public:
-	void rva0029A436(float angle);
-	void rva0029A452(const Coord3D *pos);
+	void setAngle(float angle);
+	void setPosition(const Coord3D *pos);
 private:
 	Rva0029A436Data *m_00;
 };
@@ -817,7 +817,7 @@ class Rva002E7F1E
 {
 public:
 	Rva002E7F1E();
-	void rva002E7F2F();
+	void clear();
 	bool rva002E7F3E() const;
 private:
 	char m_buffer[0x800];

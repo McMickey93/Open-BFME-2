@@ -19,7 +19,7 @@ public:
 struct PlayerInner003C2BC0
 {
 	char m_pad[4];
-	int m_4;
+	int m_money;
 };
 
 class Player
@@ -54,13 +54,13 @@ void ScriptActions::Rva003C2BC0Do(Parameter *a, Parameter *b)
 	int total = 0;
 	int mask = TheScriptEngine->rva00357475(a->m_string, (bool *)0);
 	while (mask != 0) {
-		Player *p = ThePlayerList->getEachPlayerFromMask(mask);
-		if (p != 0) {
-			PlayerInner003C2BC0 *r = (PlayerInner003C2BC0 *)((char *)p + 0x90);
-			if (r != 0)
-				total += r->m_4;
+		Player *player = ThePlayerList->getEachPlayerFromMask(mask);
+		if (player != 0) {
+			PlayerInner003C2BC0 *money = (PlayerInner003C2BC0 *)((char *)player + 0x90);
+			if (money != 0)
+				total += money->m_money;
 		}
 	}
-	ScriptCounter *c = TheScriptEngine->bfmeCounter(b->m_string);
-	c->m_value = total;
+	ScriptCounter *counter = TheScriptEngine->bfmeCounter(b->m_string);
+	counter->m_value = total;
 }

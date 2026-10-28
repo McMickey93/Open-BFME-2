@@ -113,13 +113,13 @@ extern TeamFactory *TheTeamFactory;
 class Rva003674E7
 {
 public:
-	Team *rva003674E7() const;
+	Team *getTeam() const;
 private:
 	char m_pad[0x40];
 	unsigned int m_teamID;									// +0x40
 };
 
-Team *Rva003674E7::rva003674E7() const
+Team *Rva003674E7::getTeam() const
 {
 	return TheTeamFactory->findTeamByID(m_teamID);
 }

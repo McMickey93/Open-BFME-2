@@ -41,12 +41,12 @@ public:
     static void parseInt(INI *, void *, void *, const void *);
 };
 
-void q4Notify002CCCF3(void *ini, Made002CCCF3 *m, int c, int d)
+void q4Notify002CCCF3(void *ini, Made002CCCF3 *nugget, int store, int d)
 {
     MultiIniFieldParse tmp;
     Rva005088CE::buildFieldParse(tmp);
     tmp.add(FireLogicFieldTable, 0);
-    ((INI *)ini)->initFromINIMulti(m, tmp);
+    ((INI *)ini)->initFromINIMulti(nugget, tmp);
 }
 
 // Native C65068..C650B8: all four fields and the full terminating row.

@@ -156,10 +156,10 @@ public:
  ParticleSystem *operator->() const {return system?system:Make001FCBD7();}
 };
 class Rva0021122A {
- char pad00[0x1c];BfmeParticleSystemHandle particle1C;
+ char pad00[0x1c];BfmeParticleSystemHandle m_particleSystem;
 public: BfmeParticleSystemHandle rva0021122A() const;
 };
-BfmeParticleSystemHandle Rva0021122A::rva0021122A() const {return particle1C;}
+BfmeParticleSystemHandle Rva0021122A::rva0021122A() const {return m_particleSystem;}
 
 // Native 002115EC..002118C2 (726 bytes, RET 0): while the singleton flag at
 // +0x18 is set, give every item of the pointer vectors at +0x240 and +0x234

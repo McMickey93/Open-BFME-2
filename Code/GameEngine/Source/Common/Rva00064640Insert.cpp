@@ -36,10 +36,10 @@ typedef _STL::set<Rva00064640Record, _STL::less<Rva00064640Record>, _STL::alloca
 template _STL::pair<Rva00064640Set::iterator, bool> Rva00064640Set::insert(const Rva00064640Set::value_type &);
 struct Rva005045C6
 {
-	void rva005045C6(const Rva00064640Record &v);
+	void addControlPoint(const Rva00064640Record &v);
 	Rva00064640Set m_set;
 };
-void Rva005045C6::rva005045C6(const Rva00064640Record &v)
+void Rva005045C6::addControlPoint(const Rva00064640Record &v)
 {
 	m_set.insert(v);
 }
@@ -105,7 +105,7 @@ public:
 
 void Rva004E12BCOwner::rva004E12BC(const Rva00064640Record &v)
 {
-	((Rva005045C6 *)((char *)this + 0xC))->rva005045C6(v);
+	((Rva005045C6 *)((char *)this + 0xC))->addControlPoint(v);
 }
 
 // ?rva004E149D@Rva004E149DOwner@@QAEXABVRva00064640Record@@@Z @0x004E149D 8B: offsets this to the Rva005045C6 embedded at +0x4 and
@@ -119,5 +119,5 @@ public:
 
 void Rva004E149DOwner::rva004E149D(const Rva00064640Record &v)
 {
-	((Rva005045C6 *)((char *)this + 0x4))->rva005045C6(v);
+	((Rva005045C6 *)((char *)this + 0x4))->addControlPoint(v);
 }

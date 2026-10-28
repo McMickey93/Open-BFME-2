@@ -107,19 +107,19 @@ public:
 	Vector3 m_vec;
 };
 
-Bool rva0007B68E(const PlaneClass *plane, const Rva0007B68EObj *o)
+Bool rva0007B68E(const PlaneClass *plane, const Rva0007B68EObj *box)
 {
 	const Vector3 *pv = &plane->N;
 	Vector3 t;
-	get_far_extent(*pv, o->m_vec, &t);
-	t.X = o->x - t.X;
-	t.Y = o->y - t.Y;
-	t.Z = o->z - t.Z;
+	get_far_extent(*pv, box->m_vec, &t);
+	t.X = box->x - t.X;
+	t.Y = box->y - t.Y;
+	t.Z = box->z - t.Z;
 	return CollisionMath::Overlap_Test(*plane, t) == CollisionMath::POS;
 }
 
-void rva0007BF5A(Region2D *region2D, Region2D *b, Region2D *c)
+void rva0007BF5A(Region2D *region2D, Region2D *last, Region2D *c)
 {
 	_STL::__false_type flag;
-	Rva0007BF77Copy(region2D, b, c, flag, 0);
+	Rva0007BF77Copy(region2D, last, c, flag, 0);
 }

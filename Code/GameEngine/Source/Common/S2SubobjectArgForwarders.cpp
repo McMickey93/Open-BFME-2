@@ -26,7 +26,7 @@ public:
 };
 
 // The sub-object member is the already-matched 21-byte wrapper at retail
-// 0x005045C6, rowed as ?rva005045C6@Rva005045C6@@QAEXABVRva00064640Record@@@Z
+// 0x005045C6, rowed as ?addControlPoint@Rva005045C6@@QAEXABVRva00064640Record@@@Z
 // and chaining into the rowed set insert 0x005045A3.  It is __thiscall with
 // one argument, so one declaration of it serves both offsets; the forwarded
 // argument is only ever a dword, so it is typed as an opaque pointer here and
@@ -35,7 +35,7 @@ class Rva00064640Record;
 class Rva005045C6
 {
 public:
-	void rva005045C6( const Rva00064640Record &a );
+	void addControlPoint( const Rva00064640Record &a );
 };
 
 #define BFME_SUBOBJECT_ARG_FORWARDER( NAME, OFFSET )                      \
@@ -47,7 +47,7 @@ public:
 	};                                                                    \
 	void NAME( NAME##Owner *owner, GenForwardedArg *a )                   \
 	{                                                                     \
-		owner->m_sub.rva005045C6( *(const Rva00064640Record *)a );       \
+		owner->m_sub.addControlPoint( *(const Rva00064640Record *)a );       \
 	}
 
 // @?Rva003B7140@@YAXPAVRva003B7140Owner@@PAVGenForwardedArg@@@Z 0x003B7140

@@ -72,8 +72,8 @@ class Rva00DFF024Registry
 {
 public:
     __declspec(dllimport) __forceinline void *lookup(int a, int b) { return ((FunctionLexicon *)(void *)this)->findFunction((NameKeyType)a, (FunctionLexicon::TableIndex)b); }
-    void *lookup56(int a, int b);
-    void *lookup34(int a, int b);
+    void *lookup56(int a, int index);
+    void *lookup34(int a, int index);
 };
 
 // ---- from Code/GameEngine/Source/Common/System/FunctionLexicon.cpp
@@ -155,11 +155,11 @@ bool Rva002D22CA::rva002D22D5()
 			int nMiddle = 12;
 			do
 			{
-				for (TableEntry *f = (TableEntry *)*pMiddle; f != 0 && f->key != 0; f++)
+				for (TableEntry *lookAtEntry = (TableEntry *)*pMiddle; lookAtEntry != 0 && lookAtEntry->key != 0; lookAtEntry++)
 				{
-					if (tableEntry == f)
+					if (tableEntry == lookAtEntry)
 						continue;
-					if (unk != f->unk)
+					if (unk != lookAtEntry->unk)
 						continue;
 					ok = false;
 				}
@@ -173,26 +173,26 @@ bool Rva002D22CA::rva002D22D5()
 
 // ---- from Code/GameEngine/Source/Common/Rva00DFF024RegistryLookup56.cpp
 
-void *Rva00DFF024Registry::lookup56(int a, int b)
+void *Rva00DFF024Registry::lookup56(int a, int index)
 {
-    if (b == -1) {
+    if (index == -1) {
         void *r = lookup(a, 5);
         if (r)
             return r;
         return lookup(a, 6);
     }
-    return lookup(a, b);
+    return lookup(a, index);
 }
 
-void *Rva00DFF024Registry::lookup34(int a, int b)
+void *Rva00DFF024Registry::lookup34(int a, int index)
 {
-    if (b == -1) {
+    if (index == -1) {
         void *r = lookup(a, 3);
         if (r)
             return r;
         return lookup(a, 4);
     }
-    return lookup(a, b);
+    return lookup(a, index);
 }
 
 // ---- from Code/GameEngine/Source/Common/Rva002D22CACtor.cpp

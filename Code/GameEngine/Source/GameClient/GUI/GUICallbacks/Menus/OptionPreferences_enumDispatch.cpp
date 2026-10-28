@@ -2,8 +2,8 @@
 // stlport
 //
 // ?Rva002E42AFDispatch@OptionPreferences@@QAEHH@Z, retail 0x002E42AF,
-// 35 bytes, plus ?Rva002E42EEForward@OptionPreferences@@QAEHXZ at
-// 0x002E42EE and ?Rva002E42F6Forward@OptionPreferences@@QAEHXZ at
+// 35 bytes, plus ?getModelLOD@OptionPreferences@@QAEHXZ at
+// 0x002E42EE and ?getAnimationLOD@OptionPreferences@@QAEHXZ at
 // 0x002E42F6 (7 bytes each). Dedicated TU.
 //
 // Slot-0x1C enum-dispatch family shared with the StaticGameLOD getters:
@@ -69,12 +69,12 @@ public:
 	virtual void RvaPad06();
 	virtual Int GetEnumValue(const char *key, const void *table, Int count, Int defaultValue);
 	Int Rva002E42AFDispatch(Int index);
-	Int Rva002E42EEForward();
-	Int Rva002E42F6Forward();
-	Int Rva002E42FEForward();
-	Int Rva002E4306Forward();
-	Int Rva002E430EForward();
-	Int Rva002E4316Forward();
+	Int getModelLOD();
+	Int getAnimationLOD();
+	Int getEffectsLOD();
+	Int getShadowLOD();
+	Int getTerrainLOD();
+	Int getWaterLOD();
 	Int Rva002E431EForward();
 	Int Rva002E4326Forward();
 	Int Rva002E432EForward();
@@ -86,38 +86,38 @@ Int OptionPreferences::Rva002E42AFDispatch(Int index)
 	return GetEnumValue(BfmeEnumTable[index].m_key, BfmeEnumTable[index].m_subtable, BfmeEnumTable[index].m_count, 0);
 }
 
-// ?Rva002E42EEForward@OptionPreferences@@QAEHXZ
-Int OptionPreferences::Rva002E42EEForward(void)
+// ?getModelLOD@OptionPreferences@@QAEHXZ
+Int OptionPreferences::getModelLOD(void)
 {
 	return Rva002E42AFDispatch(0);
 }
 
-// ?Rva002E42F6Forward@OptionPreferences@@QAEHXZ
-Int OptionPreferences::Rva002E42F6Forward(void)
+// ?getAnimationLOD@OptionPreferences@@QAEHXZ
+Int OptionPreferences::getAnimationLOD(void)
 {
 	return Rva002E42AFDispatch(1);
 }
 
-// ?Rva002E42FEForward@OptionPreferences@@QAEHXZ
-Int OptionPreferences::Rva002E42FEForward(void)
+// ?getEffectsLOD@OptionPreferences@@QAEHXZ
+Int OptionPreferences::getEffectsLOD(void)
 {
 	return Rva002E42AFDispatch(2);
 }
 
-// ?Rva002E4306Forward@OptionPreferences@@QAEHXZ
-Int OptionPreferences::Rva002E4306Forward(void)
+// ?getShadowLOD@OptionPreferences@@QAEHXZ
+Int OptionPreferences::getShadowLOD(void)
 {
 	return Rva002E42AFDispatch(3);
 }
 
-// ?Rva002E430EForward@OptionPreferences@@QAEHXZ
-Int OptionPreferences::Rva002E430EForward(void)
+// ?getTerrainLOD@OptionPreferences@@QAEHXZ
+Int OptionPreferences::getTerrainLOD(void)
 {
 	return Rva002E42AFDispatch(4);
 }
 
-// ?Rva002E4316Forward@OptionPreferences@@QAEHXZ
-Int OptionPreferences::Rva002E4316Forward(void)
+// ?getWaterLOD@OptionPreferences@@QAEHXZ
+Int OptionPreferences::getWaterLOD(void)
 {
 	return Rva002E42AFDispatch(5);
 }

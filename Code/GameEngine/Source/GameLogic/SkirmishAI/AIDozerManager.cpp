@@ -117,9 +117,9 @@ void AIDozerManager::preEmptivelyBuildDozers()
 		Object *factory = TheGameLogic->findObjectByID(*it);
 		if (factory == 0 || factory->isDestroyed() || !rva00599AE3(factory))
 			continue;
-		Rva00599435Keyframe c;
-		c.m_value = 0.0f;
-		c.m_frame = (unsigned int)factory;
+		Rva00599435Keyframe candidate;
+		candidate.m_value = 0.0f;
+		candidate.m_frame = (unsigned int)factory;
 		for (_STL::list<ObjectID>::iterator d = m_dozers.begin(); d != m_dozers.end(); ++d) {
 			Object *dozer = TheGameLogic->findObjectByID(*d);
 			Coord3D delta;
@@ -128,10 +128,10 @@ void AIDozerManager::preEmptivelyBuildDozers()
 			delta.z = dozer->getPosition()->z;
 			subCoord3D(&delta, factory->getPosition());
 			float dist = lengthSqrd2D(&delta);
-			if (dist > c.m_value)
-				c.m_value = dist;
+			if (dist > candidate.m_value)
+				candidate.m_value = dist;
 		}
-		candidates.push_back(c);
+		candidates.push_back(candidate);
 	}
 	if (!candidates.empty()) {
 		_STL::sort(candidates.begin(), candidates.end(), Rva00599435Compare());

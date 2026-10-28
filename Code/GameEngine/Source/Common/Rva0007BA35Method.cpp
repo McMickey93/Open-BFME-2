@@ -99,11 +99,11 @@ void Rva0007BA35::rva0007BA35()
 	int lod = mgr->m_177c;
 	if (lod >= 4)
 	{
-		int tmp = 0x800;
-		int *p = &g_00DB447C.v0;
+		int minimumMapSize = 0x800;
+		int *mapSize = &g_00DB447C.v0;
 		if (g_00DB447C.v0 < 0x800)
-			p = &tmp;
-		g_00DB447C.v0 = *p;
+			mapSize = &minimumMapSize;
+		g_00DB447C.v0 = *mapSize;
 	}
 	if (m_20 != 0)
 	{

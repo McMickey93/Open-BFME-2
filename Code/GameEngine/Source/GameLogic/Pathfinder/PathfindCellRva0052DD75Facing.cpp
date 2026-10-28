@@ -65,30 +65,30 @@ struct Rva0052DD75Mid
 {
     int x;
     int y;
-    Rva0052DD75Inner *m_8;
+    Rva0052DD75Inner *m_next;
 };
 
 class PathfindCell
 {
   public:
-    float rva0052DD75(float a, int n, float c);
+    float rva0052DD75(float m_defaultAngle, int n, float c);
     Rva0052DD75Mid *m_0;
 };
 
-float PathfindCell::rva0052DD75(float a, int n, float c)
+float PathfindCell::rva0052DD75(float m_defaultAngle, int n, float c)
 {
     Rva0052DD75Mid *mid = m_0;
     if (mid == 0)
-        return a;
-    if (mid->m_8 == 0)
-        return a;
+        return m_defaultAngle;
+    if (mid->m_next == 0)
+        return m_defaultAngle;
     FacingCoord acc;
     __vref(acc.x) = 0.0f;
     __vref(acc.y) = 0.0f;
     float factor = 1.0f;
     while (n > 0)
     {
-        Rva0052DD75Inner *inner = m_0->m_8;
+        Rva0052DD75Inner *inner = m_0->m_next;
         --n;
         if (inner == 0)
             break;

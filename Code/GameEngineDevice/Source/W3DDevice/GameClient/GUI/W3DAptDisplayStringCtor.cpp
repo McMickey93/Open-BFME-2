@@ -166,10 +166,10 @@ static __forceinline char rawCharAt(const AsciiString &asciiString, Int index)
 	return text ? text[8 + index] : 0;
 }
 
-static __forceinline void setCoord(Coord2D &c, Real x, Real y)
+static __forceinline void setCoord(Coord2D &coord, Real x, Real y)
 {
-	c.x = x;
-	c.y = y;
+	coord.x = x;
+	coord.y = y;
 }
 
 class AptDisplayStringBase

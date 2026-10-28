@@ -169,13 +169,13 @@ template <> ObjectIDList::iterator ObjectIDList::erase(iterator position)
 {
     // Native pool erase loads prev before next; preserve its actual unlink
     // and free-list operation (the ObjectID payload has no destructor work).
-    _STL::_List_node_base *n = position._M_node;
-    _STL::_List_node_base *prev = n->_M_prev;
-    _STL::_List_node_base *next = n->_M_next;
+    _STL::_List_node_base *node = position._M_node;
+    _STL::_List_node_base *prev = node->_M_prev;
+    _STL::_List_node_base *next = node->_M_next;
     prev->_M_next = next;
     next->_M_prev = prev;
-    n->_M_next = (_STL::_List_node_base *)g_freeList;
-    g_freeList = n;
+    node->_M_next = (_STL::_List_node_base *)g_freeList;
+    g_freeList = node;
     return iterator((_STL::_List_node<ObjectID> *)next);
 }
 struct DamageFieldUpdateModuleData
@@ -203,7 +203,7 @@ protected:
 };
 enum WeaponStatus { READY_TO_FIRE, OUT_OF_AMMO, BETWEEN_FIRING_SHOTS, RELOADING_CLIP, PRE_ATTACK, WEAPON_STATUS_5 };
 class Weapon { public: WeaponStatus getStatus() const; Object *forceFireWeapon(const Object*, const Object*); };
-struct DamageEntry { Weapon *m_weapon00; unsigned int m_frame04; unsigned char m_flag08; };
+struct DamageEntry { Weapon *m_weapon; unsigned int m_frame04; unsigned char m_flag08; };
 struct DamageNode { DamageNode *m_next00, *m_prev04; DamageEntry *m_entry08; };
 class GameLogic;
 extern GameLogic *TheGameLogic;
@@ -293,9 +293,9 @@ void DamageFieldUpdate::rva004911AE(Object *other)
 		DamageEntry *entry = node->m_entry08;
 		if (frame <= entry->m_frame04)
 			continue;
-		if (entry->m_weapon00->getStatus() != READY_TO_FIRE)
+		if (entry->m_weapon->getStatus() != READY_TO_FIRE)
 			continue;
-		entry->m_weapon00->forceFireWeapon(m_object, other);
+		entry->m_weapon->forceFireWeapon(m_object, other);
 		if (entry->m_flag08 == 0)
 			continue;
 		entry->m_frame04 = (unsigned int)-1;

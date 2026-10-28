@@ -53,11 +53,11 @@ struct Rva00483C35ClearanceData
 {
 	unsigned char m_pad000[0x190];
 	GeometryInfo m_geometry;
-	Coord3D m_1EC;
-	float m_1F8;
-	float m_1FC;
-	float m_200;
-	float m_204;
+	Coord3D m_clearanceGeometryOffset;
+	float m_clearanceMaxHeight;
+	float m_clearanceMaxHeightFraction;
+	float m_clearanceMinHeight;
+	float m_clearanceMinHeightFraction;
 };
 
 class Rva000421C8
@@ -154,14 +154,14 @@ bool ClearanceTestingSlowDeathBehavior::rva00483F19()
 	if (0 == obj)
 		return false;
 	Coord3D center;
-	obj->transformPoint(&md->m_1EC, &center);
+	obj->transformPoint(&md->m_clearanceGeometryOffset, &center);
 	float base = md->m_geometry.m_14;
 	float radius = base * 1.1f;
 	if (ThePartitionManager->getClosestObject(&center, radius, 3,
 			Rva00483C9FFilter(obj, obj->rva00294815()).link(&
 				Rva00261603Filter(center, md->m_geometry, obj->m_angle, true))))
 		return false;
-	if (1.0f >= md->m_1FC || 1.0f >= md->m_204)
+	if (1.0f >= md->m_clearanceMaxHeightFraction || 1.0f >= md->m_clearanceMinHeightFraction)
 	{
 		if (TheTerrainLogic != 0)
 		{
@@ -174,14 +174,14 @@ bool ClearanceTestingSlowDeathBehavior::rva00483F19()
 				++total;
 				float h = TheTerrainLogic->getLayerHeight(pt.x, pt.y,
 					TheTerrainLogic->getHighestLayerForDestination(&Rva00483F19Probe(pt.x, pt.y, z), false), 0, true);
-				if (z + md->m_1F8 < h)
+				if (z + md->m_clearanceMaxHeight < h)
 					++high;
-				else if ((z + md->m_200 > h))
+				else if ((z + md->m_clearanceMinHeight > h))
 					++low;
 			}
 			if (total != 0)
 			{
-				if ((float)high / (float)total >= md->m_1FC || (float)low / (float)total >= md->m_204)
+				if ((float)high / (float)total >= md->m_clearanceMaxHeightFraction || (float)low / (float)total >= md->m_clearanceMinHeightFraction)
 					return false;
 			}
 		}

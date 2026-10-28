@@ -85,9 +85,9 @@ Rva002390CB Drawable::rva0027675F(int key)
 	if (key == -1)
 		return Rva002390CB();
 	Rva002390CB result;
-	for (Rva0027675FListener **l = m_listeners; l && *l; ++l)
+	for (Rva0027675FListener **dm = m_listeners; dm && *dm; ++dm)
 	{
-		Rva0027675FIface *i = (*l)->getLookup();
+		Rva0027675FIface *i = (*dm)->getLookup();
 		if (i && i->lookup(key, &result))
 			return result;
 	}
@@ -108,9 +108,9 @@ bool Drawable::rva00276805(int key)
 Rva002390CB Drawable::rva00274CD8(const AsciiString &name)
 {
 	Rva002390CB result;
-	for (Rva0027675FListener **l = m_listeners; l && *l; ++l)
+	for (Rva0027675FListener **dm = m_listeners; dm && *dm; ++dm)
 	{
-		Rva0027675FIface *i = (*l)->getLookup();
+		Rva0027675FIface *i = (*dm)->getLookup();
 		if (i && i->lookupName(name, &result))
 			return result;
 	}
@@ -124,8 +124,8 @@ Rva002390CB Drawable::rva00274CD8(const AsciiString &name)
 // and fallback field names remain unknown. All three existing siblings stay
 // exact with O1, including their reference destruction and hidden results.
 int Drawable::rva00274D6F() {
- for(Rva0027675FListener **l=m_listeners;l&&*l;++l) {
-  Rva0027675FIface *i=(*l)->getLookup();
+ for(Rva0027675FListener **dm=m_listeners;dm&&*dm;++dm) {
+  Rva0027675FIface *i=(*dm)->getLookup();
   if(i) { int value; if(i->lookupValue(&value)) return value; }
  }
  return m_template->fallbackValue();

@@ -26,7 +26,7 @@ public:
 // VA 0x00e05fa8, exactly slot eight of the indexed table at 0x00e05f88.
 // All 36 bytes are zero in retail. The old separate G00A05FA8 definition
 // represented this same slot rather than an independent integer flag.
-Rva00548B97Helper *G00A05F88[9];
+Rva00548B97Helper *overlayLayouts[9];
 
 void __cdecl Rva003B3371Call(int index);
 #include <new>
@@ -35,9 +35,9 @@ enum GSOverlayType;
 
 void __cdecl GameSpyCloseOverlay(GSOverlayType index)
 {
-	if (index == 8 && G00A05F88[8] != 0)
+	if (index == 8 && overlayLayouts[8] != 0)
 		Rva003B3371Call(22);
-	Rva00548B97Helper **slot = &G00A05F88[index];
+	Rva00548B97Helper **slot = &overlayLayouts[index];
 	if (*slot != 0) {
 		(*slot)->v3(0);
 		(*slot)->v8();
@@ -53,5 +53,5 @@ void __cdecl GameSpyCloseOverlay(GSOverlayType index)
 // records nine slots and the options slot at base + 32.
 bool GameSpyIsOverlayOpen(GSOverlayType overlay)
 {
-	return G00A05F88[overlay] != 0;
+	return overlayLayouts[overlay] != 0;
 }

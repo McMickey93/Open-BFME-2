@@ -1,5 +1,5 @@
 // cl: /MD
-// ?rva005E1008@Rva005E1008@@QAEXM@Z retail 0x005E1008 86B
+// ?showTimerOverlay@Rva005E1008@@QAEXM@Z retail 0x005E1008 86B
 // Evidence: chain via rowed Fire 0x005277D9 with ShowTimerOverlay using level +0x08 prefix +0x0C from +8 else g_Rva0107301CEmptyString plus flags +0x40 +0x43 and true bool temp plus float arg to +0x3C; same Fire shape as Rva00527890Move.cpp; ret 4 float
 struct Rva005E1008Inner
 {
@@ -14,8 +14,8 @@ void __cdecl Rva005277D9Fire(Rva00222A8BTarget *target, void *level, const char 
 class Rva005E1008
 {
 public:
-	void rva005E1008(float v);
-	void rva005E105E();
+	void showTimerOverlay(float v);
+	void hideTimerOverlay();
 	void rva005E0E99(bool);
 private:
 	char m_pad00[8];
@@ -29,7 +29,7 @@ private:
 	bool m_flag43;
 };
 
-void Rva005E1008::rva005E1008(float v)
+void Rva005E1008::showTimerOverlay(float v)
 {
 	if (m_flag43 == 0) {
 		if (m_flag40 != 0) {
@@ -44,7 +44,7 @@ void Rva005E1008::rva005E1008(float v)
 
 // Native005E105E..005E10A8 clears timer-overlay flag43, after the
 // existing Apt boolean call when initialized40. Same observed sibling layout.
-void Rva005E1008::rva005E105E()
+void Rva005E1008::hideTimerOverlay()
 {
  if(m_flag43) {
   if(m_flag40) {

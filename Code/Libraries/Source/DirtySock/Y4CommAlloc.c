@@ -22,7 +22,7 @@ void *Rva007F0000( unsigned int size );
  * calls does not return null on failure, it crashes, so the guard is
  * unreachable in practice and only the shape of it survives.
  */
-void *Rva0080B000( void )
+void *ProtoSSLCreate( void )
 {
 	void *pObject;
 
@@ -39,7 +39,7 @@ void *Rva0080B000( void )
 void Rva0080ADE0( void *object, int releaseState );
 void Rva007F0030( void *object );
 
-void Rva0080B050( void *object )
+void ProtoSSLReset( void *object )
 {
 	Rva0080ADE0( object, 0 );
 }
@@ -50,7 +50,7 @@ void Rva0080B070( void *object )
 	Rva007F0030( object );
 }
 
-struct Rva0080B000Comm
+struct ProtoSSLRefT
 {
 	void *m_socket;
 	char m_gap04[ 0x104 ];
@@ -66,7 +66,7 @@ int Rva007FD510( void *socket, const void *address, int addressLength );
 int Rva007FD7A0( void *socket, int mode );
 void *Rva007FD7D0( void *socket, void *address, int *addressLength );
 
-int Rva0080B150( struct Rva0080B000Comm *comm, const void *address,
+int Rva0080B150( struct ProtoSSLRefT *comm, const void *address,
 	int addressLength )
 {
 	if ( comm->m_socket != 0 )
@@ -83,21 +83,21 @@ int Rva0080B150( struct Rva0080B000Comm *comm, const void *address,
 	return Rva007FD510( comm->m_socket, address, addressLength );
 }
 
-int Rva0080B460( struct Rva0080B000Comm *comm, int mode )
+int Rva0080B460( struct ProtoSSLRefT *comm, int mode )
 {
 	return Rva007FD7A0( comm->m_socket, mode );
 }
 
-int Rva0080B480( struct Rva0080B000Comm *comm )
+int Rva0080B480( struct ProtoSSLRefT *comm )
 {
 	Rva0080ADE0( comm, comm->m_backend != 0 );
 	return 0;
 }
 
-struct Rva0080B000Comm *Rva0080B0A0( struct Rva0080B000Comm *comm,
+struct ProtoSSLRefT *ProtoSSLAccept( struct ProtoSSLRefT *comm,
 	int unsupported, void *address, int *addressLength )
 {
-	struct Rva0080B000Comm *accepted;
+	struct ProtoSSLRefT *accepted;
 	void *socket;
 
 	if ( unsupported != 0 )
@@ -111,7 +111,7 @@ struct Rva0080B000Comm *Rva0080B0A0( struct Rva0080B000Comm *comm,
 		return 0;
 	}
 
-	accepted = (struct Rva0080B000Comm *)Rva0080B000();
+	accepted = (struct ProtoSSLRefT *)ProtoSSLCreate();
 	if ( accepted == 0 )
 	{
 		Rva007FD3F0( socket );
@@ -124,7 +124,7 @@ struct Rva0080B000Comm *Rva0080B0A0( struct Rva0080B000Comm *comm,
 	return accepted;
 }
 
-struct Rva0080D980Backend
+struct SecureStateT
 {
 	int m_field00;
 	int m_field04;
@@ -137,7 +137,7 @@ void Rva0080F300( void *state, unsigned char *data, int length );
 int Rva007FD920( void *socket, const void *data, int length, int flags,
 	const void *address, int addressLength );
 
-int Rva0080C390( struct Rva0080B000Comm *comm, const void *data, int length )
+int Rva0080C390( struct ProtoSSLRefT *comm, const void *data, int length )
 {
 	int payloadLength;
 	int headerOffset;
@@ -218,13 +218,13 @@ int Rva0080C390( struct Rva0080B000Comm *comm, const void *data, int length )
 	return 0;
 }
 
-int Rva0080D980( struct Rva0080B000Comm *comm, const char *data, int length )
+int ProtoSSLSend( struct ProtoSSLRefT *comm, const char *data, int length )
 {
 	int result;
-	struct Rva0080D980Backend *backend;
+	struct SecureStateT *backend;
 
 	result = -1;
-	backend = (struct Rva0080D980Backend *)comm->m_backend;
+	backend = (struct SecureStateT *)comm->m_backend;
 	if ( length < 0 )
 	{
 		length = strlen( data );
@@ -355,4 +355,4 @@ int Rva0080F180( struct Rva0080F100Object *object, const char *keyA,
 /* Callers elsewhere reach bodies in this unit through spellings pinned to the same
    retail address (same cdecl/thiscall ABI); bind them here. */
 #pragma comment(linker, "/alternatename:?Rva0080B070Destroy@@YAXPAX@Z=_Rva0080B070")
-#pragma comment(linker, "/alternatename:?Rva0080B000Create@@YAPAXXZ=_Rva0080B000")
+#pragma comment(linker, "/alternatename:?Rva0080B000Create@@YAPAXXZ=_ProtoSSLCreate")

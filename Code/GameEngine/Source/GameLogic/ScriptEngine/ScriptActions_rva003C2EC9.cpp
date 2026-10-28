@@ -71,9 +71,9 @@ extern PlayerList *ThePlayerList;
 
 void ScriptActions::Rva003C2EC9Do(const void *a1, const void *a2, const void *a3)
 {
-	const AsciiString &s1 = *(const AsciiString *)((const char *)a1 + 0x10);
-	const AsciiString &s3 = *(const AsciiString *)((const char *)a3 + 0x10);
-	int mask = TheScriptEngine->rva00357475(s1, (bool *)0);
+	const AsciiString &playerName = *(const AsciiString *)((const char *)a1 + 0x10);
+	const AsciiString &counterName = *(const AsciiString *)((const char *)a3 + 0x10);
+	int mask = TheScriptEngine->rva00357475(playerName, (bool *)0);
 	if (mask == 0)
 		return;
 	Player *player = ThePlayerList->getPlayerFromMask(mask);
@@ -90,6 +90,6 @@ void ScriptActions::Rva003C2EC9Do(const void *a1, const void *a2, const void *a3
 	memset(&mustBeClear, 0, sizeof(mustBeClear));
 	memset(&mustBeClear, 0, sizeof(mustBeClear));
 	int v = counts->rva0039BF67(mustBeSet, mustBeClear);
-	ScriptCounter *c = TheScriptEngine->bfmeCounter((AsciiString &)s3);
-	c->m_value = v;
+	ScriptCounter *counter = TheScriptEngine->bfmeCounter((AsciiString &)counterName);
+	counter->m_value = v;
 }

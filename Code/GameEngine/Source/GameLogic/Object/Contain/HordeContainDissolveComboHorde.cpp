@@ -54,8 +54,8 @@ public:
 struct Rva00469689Body
 {
 	unsigned char m_pad00[0x24];
-	int m_24; // +0x24
-	int getLevel24() const { return m_24; }
+	int m_currentLevel; // +0x24
+	int getLevel24() const { return m_currentLevel; }
 };
 
 class Object

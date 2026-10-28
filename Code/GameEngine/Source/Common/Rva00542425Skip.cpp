@@ -1,5 +1,5 @@
 // cl: /O1 /MD /Oi-
-// ?Rva00542425Skip@@YAPADPAD@Z @0x00542425 36B
+// ?skipIdentifier@@YAPADPAD@Z @0x00542425 36B
 // Identifier-char skip: advances past [A-Za-z0-9_] via isalnum IAT and '_' check
 // returning first non-ident pointer. Evidence: retail bytes unlock lane plus two
 // callers in 0x005424C4 and isalnum import and underscore literal.
@@ -13,50 +13,50 @@
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
-static char *Rva00542425Skip(char *p)
+static char *skipIdentifier(char *text)
 {
-	char *s = p;
+	char *cursor = text;
 	for (;;) {
-		char c = *s;
-		if (c == 0)
+		char ch = *cursor;
+		if (ch == 0)
 			break;
-		if (isalnum(c)) {
-			s++;
+		if (isalnum(ch)) {
+			cursor++;
 			continue;
 		}
-		if (*s == '_') {
-			s++;
+		if (*cursor == '_') {
+			cursor++;
 			continue;
 		}
 		break;
 	}
-	return s;
+	return cursor;
 }
 
-// ?Rva00542449Find@@YAPADPADD@Z @0x00542449 16B
+// ?findChar@@YAPADPADD@Z @0x00542449 16B
 // Character find: advances until NUL or the stack-passed character, returning
 // the stop pointer. Same EAX-pointer private convention as Rva00542425Skip
 // directly before it (retail bytes: live-in eax, char at [esp+4], plain ret).
-static char *Rva00542449Find(char *p, char c)
+static char *findChar(char *text, char c)
 {
-	char *s = p;
+	char *cursor = text;
 	for (;;) {
-		char ch = *s;
+		char ch = *cursor;
 		if (ch == 0)
 			break;
 		if (ch == c)
 			break;
-		s++;
+		cursor++;
 	}
-	return s;
+	return cursor;
 }
 
 // ?Rva00542425Caller@@YAPADPAD@Z present-unmatched
-char *Rva00542425Caller(char *p)
+char *Rva00542425Caller(char *text)
 {
-	char *q = Rva00542425Skip(p);
-	q = Rva00542449Find(q, ',');
-	return Rva00542425Skip(q);
+	char *cursor = skipIdentifier(text);
+	cursor = findChar(cursor, ',');
+	return skipIdentifier(cursor);
 }
 
 // ?rva005424C4@XmlNameSlotList@@QAEHXZ @0x005424C4 535B
@@ -107,7 +107,7 @@ int XmlNameSlotList::rva005424C4()
  if(*m_pos==0)
   return ((BfmeLexEAN *)this)->bfmeFailEAN(-1);
  m_tail=m_pos;
- char *tagEnd=Rva00542425Skip(m_pos);
+ char *tagEnd=skipIdentifier(m_pos);
  m_pos=tagEnd;
  if(*m_pos==0)return ((BfmeLexEAN *)this)->bfmeFailEAN(-1);
  m_pos=((Rva005423F0 *)this)->rva005423F0(m_pos);
@@ -116,7 +116,7 @@ int XmlNameSlotList::rva005424C4()
  if(kind==1) {
   while(isalnum(*m_pos)) {
    char *name=m_pos;
-   char *nameEnd=Rva00542425Skip(m_pos);
+   char *nameEnd=skipIdentifier(m_pos);
    m_pos=nameEnd;
    if(*m_pos==0)return ((BfmeLexEAN *)this)->bfmeFailEAN(-1);
    m_pos=((Rva005423F0 *)this)->rva005423F0(m_pos);

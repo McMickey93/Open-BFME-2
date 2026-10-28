@@ -35,9 +35,9 @@ class Rva0014D9F3This {
 public:
   char m_pad00[0x48];
   TextureBaseClass m_tex48;
-  void rva0014D9F3(Rva0014D9F3Outer *o, void *b);
+  void rva0014D9F3(Rva0014D9F3Outer *effect, void *b);
 };
-void Rva0014D9F3This::rva0014D9F3(Rva0014D9F3Outer *o, void *b) {
+void Rva0014D9F3This::rva0014D9F3(Rva0014D9F3Outer *effect, void *b) {
   Float4 buf;
   Float4 tmp;
   if (*(void **)&m_tex48 != 0)
@@ -62,6 +62,6 @@ zero:
   buf.f[3] = 0.0f;
 done:
   tmp = buf;
-  Rva0014D9F3Inner *inner = o->m_body00;
-  inner->m_fn88(o, b, &tmp);
+  Rva0014D9F3Inner *inner = effect->m_body00;
+  inner->m_fn88(effect, b, &tmp);
 }

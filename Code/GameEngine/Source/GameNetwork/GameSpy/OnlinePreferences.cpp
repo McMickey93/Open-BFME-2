@@ -137,10 +137,10 @@ public:
 	Int getColor(void);
 	void setSide(Int val);
 	Int getSide(void);
-	void rva005DF336(Int val);
-	Int rva005DF37E(void);
-	void rva005DF3C7(Int val);
-	Int rva005DF40F(void);
+	void setHighest1vs1Rank(Int val);
+	Int getHighest1vs1Rank(void);
+	void setHighest2vs2Rank(Int val);
+	Int getHighest2vs2Rank(void);
 };
 
 class GameSpyMiscPreferences : public UserPreferences
@@ -194,22 +194,22 @@ Int QuickMatchPreferences::getSide(void)
 }
 
 // BFME 2's two ladder-rank keys, after setSide/getSide in the same order.
-void QuickMatchPreferences::rva005DF336(Int val)
+void QuickMatchPreferences::setHighest1vs1Rank(Int val)
 {
 	setInt("Highest1vs1Rank", val);
 }
 
-Int QuickMatchPreferences::rva005DF37E(void)
+Int QuickMatchPreferences::getHighest1vs1Rank(void)
 {
 	return getInt("Highest1vs1Rank", 0);
 }
 
-void QuickMatchPreferences::rva005DF3C7(Int val)
+void QuickMatchPreferences::setHighest2vs2Rank(Int val)
 {
 	setInt("Highest2vs2Rank", val);
 }
 
-Int QuickMatchPreferences::rva005DF40F(void)
+Int QuickMatchPreferences::getHighest2vs2Rank(void)
 {
 	return getInt("Highest2vs2Rank", 0);
 }

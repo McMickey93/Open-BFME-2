@@ -35,7 +35,7 @@ public:
 class Rva00152D1CObj
 {
 public:
-	void rva152d1c(int n);
+	void rva152d1c(int lod);
 private:
 	char m_pad[8];
 	Rva00152D1CInner *m_08;
@@ -43,12 +43,12 @@ private:
 	AsciiString m_str;
 };
 
-void Rva00152D1CObj::rva152d1c(int n)
+void Rva00152D1CObj::rva152d1c(int lod)
 {
 	Rva00152D1CInner *inner = m_08;
-	const char *v = inner ? inner->v00() : 0;
-	AsciiString tmp1(v);
+	const char *shaderName = inner ? inner->v00() : 0;
+	AsciiString tmp1(shaderName);
 	AsciiString tmp2(m_str);
 	_STL::vector<Rva0007BB16Record> tmpVec(m_vec);
-	((FXShaderSetup *)this)->InitializeShader(tmp1.str(), tmp2.str(), &tmpVec, n);
+	((FXShaderSetup *)this)->InitializeShader(tmp1.str(), tmp2.str(), &tmpVec, lod);
 }

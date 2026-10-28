@@ -116,26 +116,26 @@ public:
 extern class TerrainLogic *TheTerrainLogic;
 extern class View *TheTacticalView;
 
-void ScriptActions::Rva003C4E28Find(const AsciiString &name, float x, float y, float z)
+void ScriptActions::Rva003C4E28Find(const AsciiString &name, float sec, float easeIn, float easeOut)
 {
-	Rva003C4E28Entry *p = (*(Rva003C4E28ListMgr **)&TheTerrainLogic)->GetHead();
+	Rva003C4E28Entry *way = (*(Rva003C4E28ListMgr **)&TheTerrainLogic)->GetHead();
 	goto test;
 loop:
-	if (p->m_name.compare(name) == 0)
+	if (way->m_name.compare(name) == 0)
 		goto found;
-	p = p->m_next;
+	way = way->m_next;
 test:
-	if (p)
+	if (way)
 		goto loop;
 	goto end;
 found:
-	float tz = z;
+	float tz = easeOut;
 	float pos[3];
-	pos[0] = p->m_x;
-	pos[1] = p->m_y;
-	pos[2] = p->m_z;
-	int ix = (int)(x * 1000.0f);
-	float fy = y * 1000.0f;
+	pos[0] = way->m_x;
+	pos[1] = way->m_y;
+	pos[2] = way->m_z;
+	int ix = (int)(sec * 1000.0f);
+	float fy = easeIn * 1000.0f;
 	float fz = tz * 1000.0f;
 	(*(Rva003C4E28PlaceMgr **)&TheTacticalView)->Place(pos, ix, fy, fz);
 end:;

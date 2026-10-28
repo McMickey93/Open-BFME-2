@@ -283,10 +283,10 @@ class Rva0030675AOwner
 public:
     const Coord3D *rva0030675A();
 private:
-    Drawable *m_drawable00;
+    Drawable *m_drawable;
 };
 
 const Coord3D *Rva0030675AOwner::rva0030675A()
 {
-    return m_drawable00->getPosition();
+    return m_drawable->getPosition();
 }

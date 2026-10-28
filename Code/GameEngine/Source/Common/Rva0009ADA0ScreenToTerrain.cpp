@@ -1,6 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
 //
-// ?rva0009ADA0@Rva0009D55BProduct@@UAEXPBHPAVVector3@@@Z retail 0x0009ADA0..0x0009AE98
+// ?screenToTerrain@Rva0009D55BProduct@@UAEXPBHPAVVector3@@@Z retail 0x0009ADA0..0x0009AE98
 // (248 bytes). Slot 14 (+0x38) of the view vtable 0x00BC89C8 whose slot 27
 // is the rowed per-frame update 0x0009B0B7 (same class view). A screen to
 // terrain projection in the shape of ZH W3DView::screenToTerrain: when the
@@ -153,7 +153,7 @@ public:
 	virtual void v11();
 	virtual void v12();
 	virtual void v13(const int *screen, Vector3 *start, Vector3 *dir);
-	virtual void rva0009ADA0(const int *screen, Vector3 *world);
+	virtual void screenToTerrain(const int *screen, Vector3 *world);
 	virtual void v15();
 	virtual float rva0009AC2F();
 	virtual void rva0009AD06(int enable);
@@ -201,7 +201,7 @@ private:
 	float m_velocity138;            // +0x138
 };
 
-void Rva0009D55BProduct::rva0009ADA0(const int *screen, Vector3 *world)
+void Rva0009D55BProduct::screenToTerrain(const int *screen, Vector3 *world)
 {
 	if (reinterpret_cast<Rva002BF4F3 *>(this)->rva002BF2B7((int)screen, world))
 		return;

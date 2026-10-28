@@ -20,7 +20,7 @@ extern "C" void _ReadWriteBarrier(void);
 
 class Rva0053FA0A {
 public:
-	void rva0053FA32();
+	void release();
 };
 
 class CreateAHeroData : public Rva0053FA0A {

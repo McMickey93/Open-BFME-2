@@ -265,23 +265,23 @@ void Pathfinder::ClassifyWall(Object*obj,bool insert)
    }
   }
   for(j=cellBounds.lo.y;j<=cellBounds.hi.y;j++)for(i=cellBounds.lo.x;i<=cellBounds.hi.x;++i){
-   PathfindCell*c=&m_map[i][j];
-   if(c->layer==layer){
-    bool dirty=c->SetType_Dirty(0);dirty|=((Rva0052E001*)c)->rva0052E001(false);dirty|=((Rva00366500*)c)->rva00366500(true);dirty|=((Rva00366500*)c)->rva0036652D(false);
+   PathfindCell*cell=&m_map[i][j];
+   if(cell->layer==layer){
+    bool dirty=cell->SetType_Dirty(0);dirty|=((Rva0052E001*)cell)->rva0052E001(false);dirty|=((Rva00366500*)cell)->rva00366500(true);dirty|=((Rva00366500*)cell)->rva0036652D(false);
     _ReadWriteBarrier();
-    if(dirty)zones.MarkDirty(i,j);c->setPinched(false);
+    if(dirty)zones.MarkDirty(i,j);cell->setPinched(false);
    }
   }
   for(_STL::set<int>::iterator p=wallIDs.begin();p!=wallIDs.end();++p){
    Object*other=TheGameLogic->findObjectByID((ObjectID)*p);if((!other)||(other->status&1))continue;
-   Drawable*d=other->getDrawable();if((!d))continue;float z;PolygonTrigger*q=(PolygonTrigger*)d->rva002725B1((int)&z);if(!q)continue;
-   IRegion2D qb;q->getBounds(&qb);
+   Drawable*otherDrawable=other->getDrawable();if((!otherDrawable))continue;float otherHeight;PolygonTrigger*otherArea=(PolygonTrigger*)otherDrawable->rva002725B1((int)&otherHeight);if(!otherArea)continue;
+   IRegion2D qb;otherArea->getBounds(&qb);
    IRegion2D qc;
    qc.lo.x=FLOOR(qb.lo.x/10)-2;
    qc.lo.y=FLOOR(qb.lo.y/10)-2;
    qc.hi.x=CEIL(qb.hi.x/10)+2;
    qc.hi.y=CEIL(qb.hi.y/10)+2;
-   if((qc.lo.x<=cellBounds.hi.x&&qc.hi.x>=cellBounds.lo.x&&qc.lo.y<=cellBounds.hi.y&&qc.hi.y>=cellBounds.lo.y)){ClassifyWall(other,true);deletePoly(q);}
+   if((qc.lo.x<=cellBounds.hi.x&&qc.hi.x>=cellBounds.lo.x&&qc.lo.y<=cellBounds.hi.y&&qc.hi.y>=cellBounds.lo.y)){ClassifyWall(other,true);deletePoly(otherArea);}
   }
  }
  deletePoly(area);

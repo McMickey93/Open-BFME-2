@@ -86,12 +86,12 @@ private:
 
 bool Rva005DAAB6::rva005DABD5(bool arg)
 {
-	void *p1 = (void *)TheThingFactory->findTemplate(*((const AsciiString *)&m_0C));
+	void *thingTemplate = (void *)TheThingFactory->findTemplate(*((const AsciiString *)&m_0C));
 	Object *object = TheGameLogic->findObjectByID(m_08);
-	if (p1 == 0 || object == 0)
+	if (thingTemplate == 0 || object == 0)
 		return false;
-	float f = m_3C;
-	int r = ((Rva00A027B8 *)TheBuildAssistant)->slot14(object, p1, &m_30, f, arg);
+	float angle = m_3C;
+	int r = ((Rva00A027B8 *)TheBuildAssistant)->slot14(object, thingTemplate, &m_30, angle, arg);
 	if (r == 0)
 		return false;
 	m_24 = *(ObjectID *)((char *)r + 0x74);

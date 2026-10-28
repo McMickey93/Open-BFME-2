@@ -60,13 +60,13 @@ public:
 extern class Rva002872BA *TheTriggerManager;
 #define TheRva002871A4Host (*(FireLogicSystem * *)&TheTriggerManager)
 
-void ScriptActions::rva003BD3CB(void *p, float f, int c)
+void ScriptActions::rva003BD3CB(void *waypointName, float radius, int c)
 {
-	void *r = TheTerrainLogic->t34(p);
+	void *r = TheTerrainLogic->t34(waypointName);
 	if (r == 0)
 		return;
 	FireLogicSystem *fireLogicSystem = TheRva002871A4Host;
 	if (fireLogicSystem == 0)
 		return;
-	fireLogicSystem->ChangeBurnRateInArea((const Coord3D *)((char *)r + 0x0C), f, c, false);
+	fireLogicSystem->ChangeBurnRateInArea((const Coord3D *)((char *)r + 0x0C), radius, c, false);
 }

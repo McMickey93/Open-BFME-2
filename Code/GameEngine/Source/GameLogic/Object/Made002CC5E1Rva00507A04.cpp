@@ -140,14 +140,14 @@ public:
 	virtual bool v1(void *a, void *b);
 	virtual bool rva00507943(const void *a, int b);
 	virtual void rva0050797D(void *a, void *b);
-	virtual void v4(void *a, void *b);
+	virtual void v4(void *a, void *position);
 private:
 	float m_128;
 	float m_12C;
 	float m_130;
 };
 
-void DamageNugget::v4(void *a, void *b)
+void DamageNugget::v4(void *a, void *position)
 {
 	const AsciiString &helperName = TheWritableGlobalData->m_luaEventHelperName;
 	if (((const StringBase<char> *)&helperName)->isEmpty())
@@ -164,7 +164,7 @@ void DamageNugget::v4(void *a, void *b)
 	Team *team = source->getControllingPlayer()->m_defaultTeam;
 	Object *helper = TheThingFactory->newObject(thingTemplate, team, &mask, (ObjectID)0);
 	helper->setProducer(source);
-	helper->setPosition((const struct Coord3D *)b);
+	helper->setPosition((const struct Coord3D *)position);
 	static NameKeyType key = TheNameKeyGenerator->nameToKey("DelayedLuaEventUpdate");
 	DelayedLuaEventUpdate *update = (DelayedLuaEventUpdate *)helper->findModule(key);
 	if (!update)

@@ -144,7 +144,7 @@ class Rva00343F8A; struct Rva00343EFAState;
 bool wantToSquishTarget(Rva00343EFAState *thisState);	// wantToSquishTarget
 bool rva0033FDEB(Rva00343F8A *thisState, void *userData);	// cannotPossiblyAttackObject
 bool rva0033FD98(Rva00343F8A *thisState, void *userData);	// outOfWeaponRangePosition
-int rva00343EE5(void *thisState, void *userData);	// inWeaponRangeObject
+int inWeaponRangeObject(void *thisState, void *userData);	// inWeaponRangeObject
 enum
 {
 	CHASE_TARGET = 100,
@@ -205,7 +205,7 @@ AttackStateMachine::AttackStateMachine(Object *obj, Rva00346D17Attack *att, Unsi
 		{
 			static const StateConditionInfo portableStructureChaseConditions[] =
 			{
-				{ (void *)rva00343EE5, AIM_AT_TARGET, NULL },
+				{ (void *)inWeaponRangeObject, AIM_AT_TARGET, NULL },
 				{ NULL, 0, NULL }	// keep last
 			};
 			defineState( CHASE_TARGET, new Rva004D74AC( this ), EXIT_MACHINE_WITH_FAILURE, EXIT_MACHINE_WITH_FAILURE, portableStructureChaseConditions );

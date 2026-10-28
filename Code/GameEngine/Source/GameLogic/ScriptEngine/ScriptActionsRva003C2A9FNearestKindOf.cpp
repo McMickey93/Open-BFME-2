@@ -139,10 +139,10 @@ void ScriptActions::Rva003C2A9FDo(const AsciiString &teamName, int kindBit)
 			delta.x -= center.x;
 			delta.y -= center.y;
 			delta.z -= center.z;
-			float d = delta.length();
-			if (!best || d < bestDist) {
+			float dist = delta.length();
+			if (!best || dist < bestDist) {
 				best = cand;
-				bestDist = d;
+				bestDist = dist;
 			}
 		}
 	} while (mask != 0);
@@ -180,10 +180,10 @@ void ScriptActions::Rva003C2260Do(const AsciiString &teamName, int kindBit)
 			delta.x -= center.x;
 			delta.y -= center.y;
 			delta.z -= center.z;
-			float d = delta.length();
-			if (!best || d < bestDist) {
+			float dist = delta.length();
+			if (!best || dist < bestDist) {
 				best = cand;
-				bestDist = d;
+				bestDist = dist;
 			}
 		}
 	} while (mask != 0);
@@ -231,10 +231,10 @@ void ScriptActions::Rva003C239FDo(const AsciiString &teamName, int kindBit, Para
 			delta.x -= center.x;
 			delta.y -= center.y;
 			delta.z -= center.z;
-			float d = delta.length();
-			if (!best || d < bestDist) {
+			float dist = delta.length();
+			if (!best || dist < bestDist) {
 				best = cand;
-				bestDist = d;
+				bestDist = dist;
 			}
 		}
 	} while (mask != 0);
@@ -279,10 +279,10 @@ void ScriptActions::Rva003C9C0AAttack(Parameter *unitParm, int kindBit)
 			delta.x -= unitPos->x;
 			delta.y -= unitPos->y;
 			delta.z -= unitPos->z;
-			float d = delta.length();
-			if (!best || d < bestDist) {
+			float dist = delta.length();
+			if (!best || dist < bestDist) {
 				best = cand;
-				bestDist = d;
+				bestDist = dist;
 			}
 		}
 	} while (mask != 0);

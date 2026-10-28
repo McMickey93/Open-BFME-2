@@ -27,11 +27,11 @@ struct Rva004393D6 : public _STL::list<BfmePod196>
 	int m_04;
 	int m_08;
 	int m_0c;
-	Rva004393D6(const Rva004393D6 &o);
+	Rva004393D6(const Rva004393D6 &other);
 	~Rva004393D6(); // native explicit-clear destructor at 0x00438FC5
 	Rva004393D6 &operator=(const Rva004393D6 &o);
 };
-Rva004393D6::Rva004393D6(const Rva004393D6 &o) : _STL::list<BfmePod196>(o), m_04(o.m_04), m_08(o.m_08), m_0c(o.m_0c)
+Rva004393D6::Rva004393D6(const Rva004393D6 &other) : _STL::list<BfmePod196>(other), m_04(other.m_04), m_08(other.m_08), m_0c(other.m_0c)
 {
 }
 Rva004393D6 &Rva004393D6::operator=(const Rva004393D6 &o)

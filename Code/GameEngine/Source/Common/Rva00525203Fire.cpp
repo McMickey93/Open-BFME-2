@@ -17,7 +17,7 @@ static __forceinline const char *GetStr(const AsciiString &asciiString)
 	return t ? t + 8 : "";
 }
 
-int __cdecl Rva00525203Fire(void *a1, void *a2, const char *a3, const char *a4, const AsciiString *asciiString)
+int __cdecl Rva00525203Fire(void *a1, void *level, const char *prefix, const char *function, const AsciiString *asciiString)
 {
-	return ((Rva00222A8BTarget *)a1)->rva00222B19(a2, a3, a4, 1, GetStr(*asciiString), 0, 0, 0, 0);
+	return ((Rva00222A8BTarget *)a1)->rva00222B19(level, prefix, function, 1, GetStr(*asciiString), 0, 0, 0, 0);
 }

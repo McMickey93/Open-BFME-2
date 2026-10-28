@@ -53,17 +53,17 @@ int ObjectSMCHelper::framesUntilNext()
 
 	unsigned int frame = ((Rva004DE700FrameSource *)TheGameLogic)->m_frame;
 	unsigned int best = 99999999;
-	Rva004DE700TimerNode *n = m_timers.begin();
-	if (n != m_timers.end())
+	Rva004DE700TimerNode *node = m_timers.begin();
+	if (node != m_timers.end())
 	{
 		do
 		{
-			Rva004DE700TimerValue value = n->m_value;
+			Rva004DE700TimerValue value = node->m_value;
 			unsigned int f = value.m_frame;
-			n = n->m_next;
+			node = node->m_next;
 			if (f < best)
 				best = f;
-		} while (n != m_timers.end());
+		} while (node != m_timers.end());
 	}
 	int delta = best - frame;
 	if (delta > 0)

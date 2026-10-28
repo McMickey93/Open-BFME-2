@@ -108,11 +108,11 @@ struct Rva004F9F39Template
 struct Rva004F9F39Unit : public TargetRef00217D4C
 {
 	Rva004F9F39Key *m_08; // +0x08
-	float m_0c; // +0x0C
+	float m_health; // +0x0C
 	unsigned char m_pad10[0x1C - 0x10];
 	MedianKey004F60EC *m_1c; // +0x1C
 	unsigned char m_pad20[0x2C - 0x20];
-	Rva004F9F39Template *m_2c; // +0x2C
+	Rva004F9F39Template *m_template; // +0x2C
 	MedianKey004F60EC *getBonus() const { return m_1c; }
 };
 struct Rva004F9F39Mask
@@ -160,7 +160,7 @@ void LivingWorldAutoResolveBattle::rva004F9F39()
 		for (TreeHintRef00217D4C *it = vec.m_start; it != end; ++it)
 		{
 			Rva004F9F39Unit *unit = it->get();
-			Rva00417FBA *table = unit->m_2c->m_autoResolveLeadership;
+			Rva00417FBA *table = unit->m_template->m_autoResolveLeadership;
 			if (!table)
 				continue;
 			int *entry = table->rva00417FBA(unit->m_08->m_key);
@@ -170,22 +170,22 @@ void LivingWorldAutoResolveBattle::rva004F9F39()
 		}
 		_STL::sort(records.begin(), records.end(), Rva004F6352Cmp());
 		Rva004F6352 *rend = records.end();
-		for (Rva004F6352 *r = records.begin(); r != rend; ++r)
+		for (Rva004F6352 *record = records.begin(); record != rend; ++record)
 		{
-			int count = r->m_ptr->_00[1];
-			Rva004F9F39Info *info = (Rva004F9F39Info *)r->m_04;
+			int count = record->m_ptr->_00[1];
+			Rva004F9F39Info *info = (Rva004F9F39Info *)record->m_04;
 			bool frontToBack = info->m_frontToBack;
-			int n = vec.size();
-			for (int k = 0; count > 0 && k < n; ++k)
+			int numUnits = vec.size();
+			for (int k = 0; count > 0 && k < numUnits; ++k)
 			{
-				const TreeHintRef00217D4C &ref = frontToBack ? vec.m_start[k] : vec[n - k - 1];
+				const TreeHintRef00217D4C &ref = frontToBack ? vec.m_start[k] : vec[numUnits - k - 1];
 				Rva004F9F39Unit *unit = ref.get();
 				if (unit->getBonus() == 0)
 				{
-					unsigned int bit = unit->m_2c->m_autoResolveUnitType;
-					if ((info->m_mask.m_bits[bit >> 5] & (1u << (bit & 31))) && unit != (Rva004F9F39Unit *)r->m_08.m_ptr && !(unit->m_0c <= 0.0f))
+					unsigned int bit = unit->m_template->m_autoResolveUnitType;
+					if ((info->m_mask.m_bits[bit >> 5] & (1u << (bit & 31))) && unit != (Rva004F9F39Unit *)record->m_08.m_ptr && !(unit->m_health <= 0.0f))
 					{
-						unit->m_1c = r->m_ptr;
+						unit->m_1c = record->m_ptr;
 						--count;
 					}
 				}

@@ -78,9 +78,9 @@ void Rva0010F38A::rva0010F38A()
     g.m_target = p;
     g.m_locked = 0;
     ((Rva0010F24F *)&g)->rva0010F24F();
-    void *s = m_inner->m_stream;
-    if (s != 0)
-        AIL_pause_stream(s, 1);
+    void *stream = m_inner->m_stream;
+    if (stream != 0)
+        AIL_pause_stream(stream, 1);
     if (g.m_locked != 0)
         ((Rva0010F26E *)&g)->rva0010F26E();
 }
@@ -101,9 +101,9 @@ void Rva0010F3DA::rva0010F3DA()
     g.m_target = p;
     g.m_locked = 0;
     ((Rva0010F24F *)&g)->rva0010F24F();
-    void *s = m_inner->m_stream;
-    if (s != 0)
-        AIL_pause_stream(s, 0);
+    void *stream = m_inner->m_stream;
+    if (stream != 0)
+        AIL_pause_stream(stream, 0);
     if (g.m_locked != 0)
         ((Rva0010F26E *)&g)->rva0010F26E();
 }

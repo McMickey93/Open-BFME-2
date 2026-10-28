@@ -61,7 +61,7 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 template<class T> class AptRef : public Rva0057BC63FunctorHolder
 {
 public:
-    AptRef(FunctorBinding b) : Rva0057BC63FunctorHolder(b) {}
+    AptRef(FunctorBinding binding) : Rva0057BC63FunctorHolder(binding) {}
     ~AptRef()
     {
         if (ptr) ReleaseTreeHintRef00217D4C((TargetRef00217D4C *)ptr);

@@ -23,7 +23,7 @@ namespace _STL { void __cdecl free(void *block); }
 
 class Rva0053FA0A {
 public:
-	void rva0053FA32();
+	void release();
 };
 
 class CreateAHeroData : public Rva0053FA0A {

@@ -419,16 +419,16 @@ public:
 class Rva0029B16A
 {
 public:
-	void setMissionHelpText(int a, int b);
+	void setMissionHelpText(int text, int duration);
 private:
 	unsigned char m_pad00[0x7F4];
 	IngameNoticeDisplay *m_7F4;
 };
 
-void Rva0029B16A::setMissionHelpText(int a, int b)
+void Rva0029B16A::setMissionHelpText(int text, int duration)
 {
 	if (m_7F4)
-		m_7F4->Start(*reinterpret_cast<const UnicodeString *>(a), b);
+		m_7F4->Start(*reinterpret_cast<const UnicodeString *>(text), duration);
 }
 
 class Team;
@@ -444,46 +444,46 @@ public:
 class Rva002A9CDE
 {
 public:
-	void guardSupplyCenter(int a, int b);
+	void guardSupplyCenter(int team, int minSupplies);
 private:
 	unsigned char m_pad00[0x2DC];
 	AIPlayer *m_2DC;
 };
 
-void Rva002A9CDE::guardSupplyCenter(int a, int b)
+void Rva002A9CDE::guardSupplyCenter(int team, int minSupplies)
 {
 	if (m_2DC)
-		m_2DC->guardSupplyCenter((Team *)a, b);
+		m_2DC->guardSupplyCenter((Team *)team, minSupplies);
 }
 
 class Rva002A9CF0
 {
 public:
-	void preTeamDestroy(int a);
+	void preTeamDestroy(int team);
 private:
 	unsigned char m_pad00[0x2DC];
 	AIPlayer *m_2DC;
 };
 
-void Rva002A9CF0::preTeamDestroy(int a)
+void Rva002A9CF0::preTeamDestroy(int team)
 {
 	if (m_2DC)
-		m_2DC->aiPreTeamDestroy((const Team *)a);
+		m_2DC->aiPreTeamDestroy((const Team *)team);
 }
 
 class Rva002A9DEC
 {
 public:
-	void rva002A9DEC(int a);
+	void rva002A9DEC(int upgrade);
 private:
 	unsigned char m_pad00[0x2DC];
 	AIPlayer *m_2DC;
 };
 
-void Rva002A9DEC::rva002A9DEC(int a)
+void Rva002A9DEC::rva002A9DEC(int upgrade)
 {
 	if (m_2DC)
-		m_2DC->buildUpgrade(*reinterpret_cast<const AsciiString *>(a));
+		m_2DC->buildUpgrade(*reinterpret_cast<const AsciiString *>(upgrade));
 }
 
 struct GlobalA03314;

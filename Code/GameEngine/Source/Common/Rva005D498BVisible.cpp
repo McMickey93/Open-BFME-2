@@ -31,22 +31,22 @@ private:
 // AptScrollBar::Impl::SetEnabled (WorldBuilder name, AptScrollBar.cpp line 112;
 // string "SetEnabled"): retail 0x005D4949 66B, the same guarded fire as
 // SetVisible on the flag at +0x24.
-void AptScrollBar::Impl::SetEnabled(bool v)
+void AptScrollBar::Impl::SetEnabled(bool enabled)
 {
-	if (v == m_24)
+	if (enabled == m_24)
 		return;
-	bool flag = v;
+	bool flag = enabled;
 	const char *prefix = m_inner08 ? m_inner08->m_name : "";
-	Rva005277D9Fire((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_level04, prefix, "SetEnabled", &v);
+	Rva005277D9Fire((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_level04, prefix, "SetEnabled", &enabled);
 	m_24 = flag;
 }
-void AptScrollBar::Impl::SetVisible(bool v)
+void AptScrollBar::Impl::SetVisible(bool visible)
 {
-	if (v == m_25)
+	if (visible == m_25)
 		return;
-	bool flag = v;
+	bool flag = visible;
 	const char *prefix = m_inner08 ? m_inner08->m_name : "";
-	Rva005277D9Fire((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_level04, prefix, "SetVisible", &v);
+	Rva005277D9Fire((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_level04, prefix, "SetVisible", &visible);
 	m_25 = flag;
 }
 
@@ -56,19 +56,19 @@ void AptScrollBar::Impl::SetVisible(bool v)
 class Rva005D49CD
 {
 public:
-	void rva005D49CD(bool v);
-	void rva005D49D5(bool v);
+	void rva005D49CD(bool enabled);
+	void rva005D49D5(bool visible);
 private:
 	char m_pad00[0x14];
 	AptScrollBar::Impl *m_impl14;
 };
 
-void Rva005D49CD::rva005D49CD(bool v)
+void Rva005D49CD::rva005D49CD(bool enabled)
 {
-	m_impl14->SetEnabled(v);
+	m_impl14->SetEnabled(enabled);
 }
 
-void Rva005D49CD::rva005D49D5(bool v)
+void Rva005D49CD::rva005D49D5(bool visible)
 {
-	m_impl14->SetVisible(v);
+	m_impl14->SetVisible(visible);
 }

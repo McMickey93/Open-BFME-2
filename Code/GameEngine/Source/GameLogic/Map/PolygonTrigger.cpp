@@ -120,11 +120,11 @@ void PolygonTrigger::getBounds(IRegion2D *out)
 {
 	if (!out)
 		return;
-	Region2D r = rva0007E03A();
-	out->lo.x = fast_float2long_round(floor(r.lo.x));
-	out->lo.y = fast_float2long_round(floor(r.lo.y));
-	out->hi.x = fast_float2long_round(ceil(r.hi.x));
-	out->hi.y = fast_float2long_round(ceil(r.hi.y));
+	Region2D region = rva0007E03A();
+	out->lo.x = fast_float2long_round(floor(region.lo.x));
+	out->lo.y = fast_float2long_round(floor(region.lo.y));
+	out->hi.x = fast_float2long_round(ceil(region.hi.x));
+	out->hi.y = fast_float2long_round(ceil(region.hi.y));
 }
 
 // Native2E3E2A..2E3E51 is an owned-pointer transfer into a returned temporary.

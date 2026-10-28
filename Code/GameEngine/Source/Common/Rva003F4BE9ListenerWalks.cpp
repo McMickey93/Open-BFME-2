@@ -159,8 +159,8 @@ private:
 
 void Rva005E957C::rva003F41A4(void *elem)
 {
-	Rva003F41A4Elem *e = (Rva003F41A4Elem *)elem;
-	(e->*m_fn)(m_4, m_8, m_c, m_10, m_14);
+	Rva003F41A4Elem *listener = (Rva003F41A4Elem *)elem;
+	(listener->*m_fn)(m_4, m_8, m_c, m_10, m_14);
 }
 
 class Rva003F5224List

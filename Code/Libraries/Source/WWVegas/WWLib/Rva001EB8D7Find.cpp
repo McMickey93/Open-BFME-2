@@ -23,12 +23,12 @@ private:
 	Elem *m_end1C;
 };
 
-int Rva001EB8D7::rva001EB8D7(const StringBase<char> &s)
+int Rva001EB8D7::rva001EB8D7(const StringBase<char> &name)
 {
 	Elem *elem = m_start14;
 	while (elem != m_finish18)
 	{
-		if (elem->m_str.compareNoCase(s) == 0)
+		if (elem->m_str.compareNoCase(name) == 0)
 			return (elem - m_start14);
 		++elem;
 	}
@@ -37,9 +37,9 @@ int Rva001EB8D7::rva001EB8D7(const StringBase<char> &s)
 
 // ?rva001EB90C@Rva001EB8D7@@QAEPAXABV?$StringBase@D@@@Z @0x001EB90C 52B
 // Evidence: chain from 0x001EB8D7; same this offsets 0x14 0x18 stride 0x24; caller 0x001EBC01.
-void *Rva001EB8D7::rva001EB90C(const StringBase<char> &s)
+void *Rva001EB8D7::rva001EB90C(const StringBase<char> &name)
 {
-	int idx = rva001EB8D7(s);
+	int idx = rva001EB8D7(name);
 	unsigned num = (unsigned)(m_finish18 - m_start14);
 	if (idx < 0 || (unsigned)idx >= num)
 		return 0;
@@ -58,7 +58,7 @@ struct Rva001EB8A4Elem
 class Rva001EB8A4
 {
 public:
-	bool rva001EB8A4(const Rva001EB8A4Elem &e);
+	bool rva001EB8A4(const Rva001EB8A4Elem &unit);
 private:
 	char m_pad00[0x18];
 	StringBase<char> *m_begin18;
@@ -66,13 +66,13 @@ private:
 	StringBase<char> *m_cap20;
 };
 
-bool Rva001EB8A4::rva001EB8A4(const Rva001EB8A4Elem &e)
+bool Rva001EB8A4::rva001EB8A4(const Rva001EB8A4Elem &unit)
 {
 	StringBase<char> *p = m_begin18;
 	StringBase<char> *last = m_end1C;
 	for (; p != last; ++p)
 	{
-		if (e.m_str04.compareNoCase(*p) == 0)
+		if (unit.m_str04.compareNoCase(*p) == 0)
 			return true;
 	}
 	return false;

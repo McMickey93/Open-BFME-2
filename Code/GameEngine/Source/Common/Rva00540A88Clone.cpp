@@ -10,7 +10,7 @@ class Rva0053F8E5DwordCounter;
 class Rva0053FA0A
 {
 public:
-	void rva0053FA32();
+	void release();
 };
 
 struct Rva0053FC99Src
@@ -26,7 +26,7 @@ public:
 	~Rva0053FC81()
 	{
 		if (m_ptr)
-			((Rva0053FA0A *)m_ptr)->rva0053FA32();
+			((Rva0053FA0A *)m_ptr)->release();
 	}
 
 	Rva0053F8E5DwordCounter *m_ptr;
@@ -41,7 +41,7 @@ public:
 	~Rva0053FC99()
 	{
 		if (m_ptr)
-			((Rva0053FA0A *)m_ptr)->rva0053FA32();
+			((Rva0053FA0A *)m_ptr)->release();
 	}
 
 private:

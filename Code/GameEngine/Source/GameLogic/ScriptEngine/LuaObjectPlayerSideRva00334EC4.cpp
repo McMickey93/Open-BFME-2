@@ -147,8 +147,8 @@ inline Object *GameLogic::findObjectByID(ObjectID id)
 	return node->object;
 }
 
-// ?Rva00334EC4@@YAHPAUlua_State@@@Z (Lua ObjectPlayerSide binding)
-int Rva00334EC4( lua_State *state )
+// ?ObjectPlayerSide@@YAHPAUlua_State@@@Z (Lua ObjectPlayerSide binding)
+int ObjectPlayerSide( lua_State *state )
 {
 	unsigned id = Rva00990030Lookup( (Rva00990030Range *)state, 1 );
 	if( !id && lua_type( state, 1 ) != 1 )
@@ -169,8 +169,8 @@ fail:
 	return 1;
 }
 
-// ?Rva00334FAB@@YAHPAUlua_State@@@Z (Lua ObjectTemplateName binding)
-int Rva00334FAB( lua_State *state )
+// ?ObjectTemplateName@@YAHPAUlua_State@@@Z (Lua ObjectTemplateName binding)
+int ObjectTemplateName( lua_State *state )
 {
 	unsigned id = Rva00990030Lookup( (Rva00990030Range *)state, 1 );
 	if( !id && lua_type( state, 1 ) != 1 )

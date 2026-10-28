@@ -59,7 +59,7 @@ public:
 
 struct BfmeNodeZK
 {
-	BfmeNodeZK *m_bfmeNextZK;
+	BfmeNodeZK *m_next;
 	int m_bfmeIdZK;
 	int m_bfmeKindZK;
 };
@@ -67,7 +67,7 @@ struct BfmeNodeZK
 struct BfmeHeadZK
 {
 	int m_bfmePadZK;
-	BfmeNodeZK *m_bfmeFirstZK;
+	BfmeNodeZK *m_first;
 };
 
 class ScriptList
@@ -89,17 +89,17 @@ private:
 void ScriptList::takeScript(BfmeKeyZK *key, BfmeHeadZK *list, BfmeNodeZK *node,
 	BfmeHeadZK *fallback, BfmeNodeZK **where)
 {
-	BfmeNodeZK **slot = &list->m_bfmeFirstZK;
+	BfmeNodeZK **slot = &list->m_first;
 
 	while (*slot != node)
 	{
 		if (*slot == 0)
 			return;
 
-		slot = &(*slot)->m_bfmeNextZK;
+		slot = &(*slot)->m_next;
 	}
 
-	bfmeMoveZK(key, slot, where != 0 ? where : &fallback->m_bfmeFirstZK);
+	bfmeMoveZK(key, slot, where != 0 ? where : &fallback->m_first);
 }
 
 // From BFME 1 BfmeConv1878.cpp at verified donor revision
@@ -117,8 +117,8 @@ void ScriptList::bfmeMoveZK(BfmeKeyZK *key, BfmeNodeZK **from, BfmeNodeZK **to)
 		return;
 	(*from)->m_bfmeIdZK = index;
 	(*from)->m_bfmeKindZK = m_table.m_records[index].m_references;
-	BfmeNodeZK *next = (*from)->m_bfmeNextZK;
-	(*from)->m_bfmeNextZK = *to;
+	BfmeNodeZK *next = (*from)->m_next;
+	(*from)->m_next = *to;
 	*to = *from;
 	*from = next;
 }
@@ -133,7 +133,7 @@ void ScriptList::takeScripts(ScriptList *source,BfmeNodeZK **from,BfmeNodeZK **t
     _STL::deque<BfmeScriptSlotAddress> slots;
     BfmeScriptSlotAddress slot;
     slot.address=reinterpret_cast<unsigned int>(from);
-    for(;*reinterpret_cast<BfmeNodeZK**>(slot.address);slot.address=reinterpret_cast<unsigned int>(&(*reinterpret_cast<BfmeNodeZK**>(slot.address))->m_bfmeNextZK))
+    for(;*reinterpret_cast<BfmeNodeZK**>(slot.address);slot.address=reinterpret_cast<unsigned int>(&(*reinterpret_cast<BfmeNodeZK**>(slot.address))->m_next))
         slots.push_back(slot);
     while(!slots.empty()) {
         bfmeMoveZK(reinterpret_cast<BfmeKeyZK*>(source),reinterpret_cast<BfmeNodeZK**>(slots.back().address),to);

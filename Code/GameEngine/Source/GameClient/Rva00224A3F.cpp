@@ -20,13 +20,13 @@ class INI;
 class Rva002241D6
 {
 public:
-	void rva002241D6(INI *ini);
+	void parseButtonMap(INI *ini);
 };
 
 // ?rva00224A31@@YAXPAVINI@@PAVRva002241D6@@@Z @0x00224A31 (14B)
 void __declspec(noinline) rva00224A31(INI *ini, Rva002241D6 *inst)
 {
-	inst->rva002241D6(ini);
+	inst->parseButtonMap(ini);
 }
 
 struct BlockParse

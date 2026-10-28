@@ -69,21 +69,21 @@ struct ParticleView
 	unsigned char pad0[4];
 	unsigned char flag4;
 	unsigned char pad5[0x44 - 5];
-	GameClientRandomVariable var44;
-	GameClientRandomVariable var50;
+	GameClientRandomVariable m_burstDelay;
+	GameClientRandomVariable m_burstCount;
 	unsigned char pad5C[0x6C - 0x5C];
-	Coord3D off6C;
+	Coord3D m_slavePosOffset;
 	unsigned char pad78[0xA4 - 0x78];
 	HolderA4 *holderA4;
 	unsigned char padA8[0xEC - 0xA8];
 	FortyEight fieldEC;
-	int count11C;
+	int m_burstDelayLeft;
 	unsigned char pad120[0x13C - 0x120];
-	float scale13C;
-	float scale140;
-	Coord3D pos144;
+	float m_countCoeff;
+	float m_delayCoeff;
+	Coord3D m_pos;
 	unsigned char pad150[0x15C - 0x150];
-	BfmeParticleSystemPtr slave15C;
+	BfmeParticleSystemPtr m_slaveSystem;
 	unsigned char pad160[0x16C - 0x160];
 	int flag16C;
 	unsigned char pad170[0x1A1 - 0x170];
@@ -124,42 +124,42 @@ void ParticleSystem::rva001F4696(void *posArg, void *arg2, bool b, void *infoArg
 			d2[2] = s2[2];
 			d2[3] = s2[3];
 		}
-		Coord3D *dstPos = &self->pos144;
+		Coord3D *dstPos = &self->m_pos;
 		*dstPos = *pos;
-		dstPos->x += self->off6C.x;
-		dstPos->y += self->off6C.y;
-		dstPos->z += self->off6C.z;
+		dstPos->x += self->m_slavePosOffset.x;
+		dstPos->y += self->m_slavePosOffset.y;
+		dstPos->z += self->m_slavePosOffset.z;
 	}
 
-	if (self->count11C == 0)
+	if (self->m_burstDelayLeft == 0)
 	{
-		int n = (int)self->var50.getValue();
+		int count = (int)self->m_burstCount.getValue();
 		if (self->holderA4 != 0)
 		{
-			int scaled = (int)((float)n * self->scale13C);
+			int scaled = (int)((float)count * self->m_countCoeff);
 			self->holderA4->v9(arg2, scaled);
 		}
-		int m = (int)self->var44.getValue();
+		int m = (int)self->m_burstDelay.getValue();
 		float f = (float)(unsigned int)m;
-		float g = f * self->scale140;
-		self->count11C = (int)g;
+		float g = f * self->m_delayCoeff;
+		self->m_burstDelayLeft = (int)g;
 	}
 	else
 	{
 		if (self->flag4 != 0)
 		{
-			self->count11C = 1;
+			self->m_burstDelayLeft = 1;
 		}
 		else
 		{
-			self->count11C -= 1;
+			self->m_burstDelayLeft -= 1;
 		}
 	}
 
-	BfmeParticleSystemPtr *slavePtr = &self->slave15C;
+	BfmeParticleSystemPtr *slavePtr = &self->m_slaveSystem;
 	if (slavePtr->m_target == 0)
 		return;
 	_ReadWriteBarrier();
 	ParticleSystem *next = slavePtr->operator->();
-	next->rva001F4696(&self->pos144, arg2, b, info);
+	next->rva001F4696(&self->m_pos, arg2, b, info);
 }

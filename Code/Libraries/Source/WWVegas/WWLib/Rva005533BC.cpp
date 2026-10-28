@@ -5,13 +5,13 @@
 // 0x005548B1 unclaimed; LINK BONUS via 0x0055485B 0x00554816; frameless /O1.
 struct Rva005533BCNode {
   char pad00[8];
-  Rva005533BCNode *left08;
-  Rva005533BCNode *right0C;
+  Rva005533BCNode *m_left;
+  Rva005533BCNode *m_right;
   unsigned char key10;
 };
 struct Rva005533BCRoot {
   char pad00[4];
-  Rva005533BCNode *root04;
+  Rva005533BCNode *m_root;
 };
 class Rva005533BC {
 public:
@@ -20,18 +20,18 @@ public:
 };
 void *Rva005533BC::rva005533BC(const void *key)
 {
-  Rva005533BCRoot *h = holder00;
-  Rva005533BCNode *n = h->root04;
-  if (n == 0)
-    return h;
+  Rva005533BCRoot *header = holder00;
+  Rva005533BCNode *node = header->m_root;
+  if (node == 0)
+    return header;
   unsigned char k = *(const unsigned char *)key;
-  void *ret = h;
-  while (n != 0) {
-    if (n->key10 >= k) {
-      ret = n;
-      n = n->left08;
+  void *ret = header;
+  while (node != 0) {
+    if (node->key10 >= k) {
+      ret = node;
+      node = node->m_left;
     } else
-      n = n->right0C;
+      node = node->m_right;
   }
   return ret;
 }

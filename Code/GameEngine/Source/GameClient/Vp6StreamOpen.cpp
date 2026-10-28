@@ -61,19 +61,19 @@ bool Rva007E3C20Vp6Stream::open(const AsciiString &path,const Video *video,bool 
 // bits 2 (already done) / 4 (advanced) / 1 (output dispatched).
 // The body describes native scheduling and virtual dispatch only. No codec
 // implementation source was read or used. The original method name is unknown.
-int Rva007E3C20Vp6Stream::rva000911F6( int arg )
+int Rva007E3C20Vp6Stream::rva000911F6( int flags )
 {
 	bool initiallyDone = s13();
 	int resultFlags = initiallyDone ? 2 : 0;
 	if ( last < 0 )
 		s02();
-	int nonBlocking = arg & 4;
+	int nonBlocking = flags & 4;
 	if ( nonBlocking == 0 && ( resultFlags & 2 ) )
 		return resultFlags;
-	if ( !s05( arg ) )
+	if ( !s05( flags ) )
 		return resultFlags;
-	int targetFrame = ((Rva00090FE0 *)this)->rva00090FE0((unsigned int)arg);
-	if ( g_00DE4498 != 0 || nonBlocking != 0 || ( arg & 0x40 ) != 0 ) {
+	int targetFrame = ((Rva00090FE0 *)this)->rva00090FE0((unsigned int)flags);
+	if ( g_00DE4498 != 0 || nonBlocking != 0 || ( flags & 0x40 ) != 0 ) {
 		int m44 = c; int m40 = this->b;
 		DWORD now = timeGetTime();
 		// Equal-valued divisor alternatives retain this compiler
@@ -93,7 +93,7 @@ int Rva007E3C20Vp6Stream::rva000911F6( int arg )
 		s02();
 		resultFlags |= 4;
 	}
-	if ( arg & 1 )
+	if ( flags & 1 )
 		return resultFlags;
 	if ( (lastAlpha) == last )
 		return resultFlags;

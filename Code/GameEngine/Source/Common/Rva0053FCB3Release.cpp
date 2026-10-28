@@ -3,7 +3,7 @@
 // Evidence: chain from rowed Release 0x0053FA32; holder at +0 per setter siblings 0x0053FC81/0x0053FC99; callers are EH funclet jmps.
 class Rva0053FA0A {
 public:
-  void rva0053FA32();
+  void release();
 };
 class Rva0053FCB3 {
 public:
@@ -14,6 +14,6 @@ private:
 void Rva0053FCB3::rva0053FCB3()
 {
   if (m_ptr) {
-    m_ptr->rva0053FA32();
+    m_ptr->release();
   }
 }

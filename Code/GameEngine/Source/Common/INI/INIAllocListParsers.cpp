@@ -1,6 +1,6 @@
 // cl: /GX- /DNDEBUG /MD
 //
-// ?Rva0048E022Parse@@YAXPAVINI@@PAX1PBX@Z, retail 0x0048E022 (125B): the
+// ?parseFloodMember@@YAXPAVINI@@PAX1PBX@Z, retail 0x0048E022 (125B): the
 // FloodMember FieldParse proc (row 0x00C4C9A8). News a zeroed 0x38-byte member
 // record (an int then thirteen floats stored through SSE; no unwinding around
 // the new), fills it through initFromINI with the table at VA 0x00C4C850 and
@@ -117,8 +117,8 @@ struct Rva0041F524Army
 
 #include <new>
 
-// ?Rva0048E022Parse@@YAXPAVINI@@PAX1PBX@Z
-void Rva0048E022Parse(INI *ini, void *instance, void *, const void *)
+// ?parseFloodMember@@YAXPAVINI@@PAX1PBX@Z
+void parseFloodMember(INI *ini, void *instance, void *, const void *)
 {
 	Rva0048E022Member *member = new Rva0048E022Member;
 	int entry = (int)member;

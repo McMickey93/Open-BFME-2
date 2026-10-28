@@ -228,10 +228,10 @@ ModelConditionUpgradeModuleData::ModelConditionUpgradeModuleData()
 	CondStore *condStore = &m_addConditionFlags;
 	*(unsigned int *)this = ((unsigned int)__identifier("??_7WeaponSetUpgradeModuleData@@6B@"));
 	((Rva0042526Member *)condStore)->Rva0042526Member::Rva0042526Member();
-	CondStore *stor164 = &m_164;
-	((Rva0042526Member *)stor164)->Rva0042526Member::Rva0042526Member();
+	CondStore *removeConditionFlags = &m_164;
+	((Rva0042526Member *)removeConditionFlags)->Rva0042526Member::Rva0042526Member();
 	memset(condStore, 0, 0x4C);
-	memset(stor164, 0, 0x4C);
+	memset(removeConditionFlags, 0, 0x4C);
 	m_addTempConditionFlag |= -1;
 	m_tempConditionTime = 0.0f;
 }

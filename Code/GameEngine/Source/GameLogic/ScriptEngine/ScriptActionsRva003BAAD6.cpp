@@ -274,11 +274,11 @@ public:
 	virtual void s39(Object *);
 };
 #define Rva00DFEDF0_BFB1 (*(Rva003BBFB1Holder **)&TheInGameUI)
-void ScriptActions::doNamedHideSpecialPowerDisplay(Parameter *p)
+void ScriptActions::doNamedHideSpecialPowerDisplay(Parameter *unit)
 {
-	Object *o = TheScriptEngine->getUnitNamed(p);
-	if (o)
-		Rva00DFEDF0_BFB1->s39(o);
+	Object *theObj = TheScriptEngine->getUnitNamed(unit);
+	if (theObj)
+		Rva00DFEDF0_BFB1->s39(theObj);
 }
 
 // ?doNamedShowSpecialPowerDisplay@ScriptActions@@QAEXPAVParameter@@@Z @0x003BBFD6 37B leaf caller 0x003CC482 globals 0xDFE16C 0xDFEDF0 slots getUnitNamed 0xA0
@@ -329,11 +329,11 @@ public:
 	virtual void s40(Object *);
 };
 #define Rva00DFEDF0_BFD6 (*(Rva003BBFD6Holder **)&TheInGameUI)
-void ScriptActions::doNamedShowSpecialPowerDisplay(Parameter *p)
+void ScriptActions::doNamedShowSpecialPowerDisplay(Parameter *unit)
 {
-	Object *o = TheScriptEngine->getUnitNamed(p);
-	if (o)
-		Rva00DFEDF0_BFD6->s40(o);
+	Object *theObj = TheScriptEngine->getUnitNamed(unit);
+	if (theObj)
+		Rva00DFEDF0_BFD6->s40(theObj);
 }
 
 // ?Rva003BB274Ai@ScriptActions@@QAEXPAVParameter@@H@Z @0x003BB274 41B leaf caller 0x003CB376 globals 0xDFE16C callees getUnitNamed rva0026DE3B
@@ -343,7 +343,7 @@ class AIUpdateInterface
 public:
 	void rva0026DE3B(int);
 };
-void ScriptActions::Rva003BB274Ai(Parameter *p, int v)
+void ScriptActions::Rva003BB274Ai(Parameter *p, int attitude)
 {
 	Object *o = TheScriptEngine->getUnitNamed(p);
 	if (!o)
@@ -351,7 +351,7 @@ void ScriptActions::Rva003BB274Ai(Parameter *p, int v)
 	AIUpdateInterface *ai = *(AIUpdateInterface **)((char *)o + 0x258);
 	if (!ai)
 		return;
-	ai->rva0026DE3B(v);
+	ai->rva0026DE3B(attitude);
 }
 
 // ?Rva003BBF23Disable@ScriptActions@@QAEXPAVParameter@@_N@Z @0x003BBF23 46B leaf caller 0x003CC4CC globals 0xDFE16C callees getUnitNamed setDisabledUntil
@@ -365,12 +365,12 @@ class Object
 public:
 	void setDisabledUntil(DisabledType, unsigned int);
 };
-void ScriptActions::Rva003BBF23Disable(Parameter *p, bool b)
+void ScriptActions::Rva003BBF23Disable(Parameter *unit, bool held)
 {
-	Object *o = TheScriptEngine->getUnitNamed(p);
-	if (!o)
+	Object *theObj = TheScriptEngine->getUnitNamed(unit);
+	if (!theObj)
 		return;
-	o->setDisabledUntil(DISABLED_TYPE_3, b ? 0x3FFFFFFF : 0);
+	theObj->setDisabledUntil(DISABLED_TYPE_3, held ? 0x3FFFFFFF : 0);
 }
 
 // ?doMilitaryCaption@ScriptActions@@QAEXHM@Z @0x003BBEF4 47B leaf caller 0x003CC3CC globals g_00BBE358 TheInGameUI slot 0x5c ceil ftol2 x87
@@ -406,8 +406,8 @@ public:
 	virtual void s23(int a1, int a2);
 };
 #define Rva00DFEDF0_BBEF4 (*(Rva003BBEF4Holder **)&TheInGameUI)
-void ScriptActions::doMilitaryCaption(int a1, float a2)
+void ScriptActions::doMilitaryCaption(int briefing, float a2)
 {
 	int v = (int)ceil(a2 * 1000.0f);
-	Rva00DFEDF0_BBEF4->s23(a1, v);
+	Rva00DFEDF0_BBEF4->s23(briefing, v);
 }

@@ -75,7 +75,7 @@ typedef _STL::pair<const AsciiString,TreeHintRef00217D4C> ScreenRefPair;
 class Rva00056F61;
 struct Rva0041534BIter {
  void *m_node;Rva00056F61 *m_table;
- Rva0041534BIter(void *n,Rva00056F61*t):m_node(n),m_table(t){}
+ Rva0041534BIter(void *n,Rva00056F61*table):m_node(n),m_table(table){}
 };
 class Rva00056F61 {public:__declspec(nothrow) Rva0041534BIter rva0041534B(const AsciiString *);};
 void *Rva000427195::rva0041112B(const AsciiString *name) {

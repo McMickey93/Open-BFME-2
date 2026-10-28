@@ -26,6 +26,6 @@ public:
 
 void bfmeParseD780(INI *ini, void *instance, void * /*store*/, const void * /*userData*/)
 {
-	AsciiString s = ini->getNextQuotedAsciiString();
-	((CreditsManager *)instance)->addText(s);
+	AsciiString asciiString = ini->getNextQuotedAsciiString();
+	((CreditsManager *)instance)->addText(asciiString);
 }

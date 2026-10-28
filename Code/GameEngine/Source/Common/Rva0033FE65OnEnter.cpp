@@ -31,7 +31,7 @@ struct SubQ00346FD0
 struct Owner00346FD0
 {
 	char m_pad00[4];
-	SubP00346FD0 *m_p04;
+	SubP00346FD0 *m_template;
 	char m_pad08[0x38 - 0x08];
 	float m_x38;
 	float m_y3c;
@@ -41,13 +41,13 @@ struct Owner00346FD0
 	char m_pad78[0x240 - 0x78];
 	SubQ00346FD0 *m_q240;
 	char m_pad244[0x258 - 0x244];
-	AIUpdateInterface *m_ai258;
+	AIUpdateInterface *m_ai;
 };
 class StateMachineDef
 {
 public:
 	char m_pad00[0x14];
-	Owner00346FD0 *m_owner14;
+	Owner00346FD0 *m_owner;
 };
 class State
 {
@@ -84,13 +84,13 @@ private:
 };
 StateReturnType Rva0033FE65::onEnter()
 {
-	Owner00346FD0 *obj = m_machine->m_owner14;
-	AIUpdateInterface *ai = obj->m_ai258;
+	Owner00346FD0 *obj = m_machine->m_owner;
+	AIUpdateInterface *ai = obj->m_ai;
 	m_22 = 5;
 	if (ai)
 		ai->rva00263025();
 	m_25 = true;
-	SubP00346FD0 *p = obj->m_p04;
+	SubP00346FD0 *p = obj->m_template;
 	if (p->m_flag635) {
 		SubQ00346FD0 *q = obj->m_q240;
 		if (q)
@@ -98,7 +98,7 @@ StateReturnType Rva0033FE65::onEnter()
 	}
 	void *logFile = theLogicRandomLogFile;
 	if (logFile) {
-		unsigned int u = (unsigned int)obj->m_p04;
+		unsigned int u = (unsigned int)obj->m_template;
 		int id = obj->m_id74;
 		u += 0x64;
 		_ReadWriteBarrier();

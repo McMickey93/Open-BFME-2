@@ -23,14 +23,14 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 	int cap = 3 * quality;
 	short vertical[72];
 	short horizontal[72];
-	int r;
+	int row;
 	unsigned int c;
 
 	if (cap > 32)
 		cap = 32;
 
 	const unsigned char *vrow = source;
-	for (r = 0; r < 9; r++) {
+	for (row = 0; row < 9; row++) {
 		for (c = 0; c < 8; c++) {
 			int difference = (vrow[c] - vrow[c - pitch]) > 0 ? (vrow[c] - vrow[c - pitch]) : (vrow[c - pitch] - vrow[c]);
 			int weight;
@@ -41,12 +41,12 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 				weight = 0;
 			else if (weight > cap)
 				weight = cap;
-			vertical[r * 8 + c] = (short)weight;
+			vertical[row * 8 + c] = (short)weight;
 		}
 		vrow += pitch;
 	}
 	const unsigned char *hrow = source;
-	for (r = 0; r < 8; r++) {
+	for (row = 0; row < 8; row++) {
 		for (c = 0; c < 9; c++) {
 			int difference = (hrow[c] - hrow[c - 1]) > 0 ? (hrow[c] - hrow[c - 1]) : (hrow[c - 1] - hrow[c]);
 			int weight;
@@ -54,7 +54,7 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			if (weight < -64) weight = sharpen;
 			else if (weight < 0) weight = 0;
 			else if (weight > cap) weight = cap;
-			horizontal[r * 9 + c] = (short)weight;
+			horizontal[row * 9 + c] = (short)weight;
 		}
 		hrow += pitch;
 	}
@@ -62,15 +62,15 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 	short *downWeights = vertical + 8 + 1;
 	short *upWeights = vertical + 1;
 	int off = 0;
-	for (r = 0; r < 8; r++) {
+	for (row = 0; row < 8; row++) {
 		int temp[8];
 		{
 			int centerPixel = source[off + 0];
 			int rightPixel = source[off + 1];
-			int left = horizontal[r * 9 + 0];
-			int up = upWeights[r * 8 + -1];
-			int down = downWeights[r * 8 + -1];
-			int right = horizontal[r * 9 + 0 + 1];
+			int left = horizontal[row * 9 + 0];
+			int up = upWeights[row * 8 + -1];
+			int down = downWeights[row * 8 + -1];
+			int right = horizontal[row * 9 + 0 + 1];
 			int value = ((128 - right - down - up - left) * centerPixel
 				+ down * below[off + 0] + left * source[off + -1]
 				+ up * above[off + 0] + right * rightPixel + 64) >> 7;
@@ -79,10 +79,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			else temp[0] = value;
 		}
 		{
-			int left = horizontal[r * 9 + 1];
-			int up = upWeights[r * 8 + 0];
-			int down = downWeights[r * 8 + 0];
-			int right = horizontal[r * 9 + 1 + 1];
+			int left = horizontal[row * 9 + 1];
+			int up = upWeights[row * 8 + 0];
+			int down = downWeights[row * 8 + 0];
+			int right = horizontal[row * 9 + 1 + 1];
 			int value = ((128 - right - down - up - left) * source[off + 1]
 				+ down * below[off + 1] + left * source[off + 0]
 				+ up * above[off + 1] + right * source[off + 2] + 64) >> 7;
@@ -91,10 +91,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			else temp[1] = value;
 		}
 		{
-			int left = horizontal[r * 9 + 2];
-			int up = upWeights[r * 8 + 1];
-			int down = downWeights[r * 8 + 1];
-			int right = horizontal[r * 9 + 2 + 1];
+			int left = horizontal[row * 9 + 2];
+			int up = upWeights[row * 8 + 1];
+			int down = downWeights[row * 8 + 1];
+			int right = horizontal[row * 9 + 2 + 1];
 			int value = ((128 - right - down - up - left) * source[off + 2]
 				+ down * below[off + 2] + left * source[off + 1]
 				+ up * above[off + 2] + right * source[off + 3] + 64) >> 7;
@@ -103,10 +103,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			else temp[2] = value;
 		}
 		{
-			int left = horizontal[r * 9 + 3];
-			int up = upWeights[r * 8 + 2];
-			int down = downWeights[r * 8 + 2];
-			int right = horizontal[r * 9 + 3 + 1];
+			int left = horizontal[row * 9 + 3];
+			int up = upWeights[row * 8 + 2];
+			int down = downWeights[row * 8 + 2];
+			int right = horizontal[row * 9 + 3 + 1];
 			int value = ((128 - right - down - up - left) * source[off + 3]
 				+ down * below[off + 3] + left * source[off + 2]
 				+ up * above[off + 3] + right * source[off + 4] + 64) >> 7;
@@ -115,10 +115,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			else temp[3] = value;
 		}
 		{
-			int left = horizontal[r * 9 + 4];
-			int up = upWeights[r * 8 + 3];
-			int down = downWeights[r * 8 + 3];
-			int right = horizontal[r * 9 + 4 + 1];
+			int left = horizontal[row * 9 + 4];
+			int up = upWeights[row * 8 + 3];
+			int down = downWeights[row * 8 + 3];
+			int right = horizontal[row * 9 + 4 + 1];
 			int value = ((128 - right - down - up - left) * source[off + 4]
 				+ down * below[off + 4] + left * source[off + 3]
 				+ up * above[off + 4] + right * source[off + 5] + 64) >> 7;
@@ -127,10 +127,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			else temp[4] = value;
 		}
 		{
-			int left = horizontal[r * 9 + 5];
-			int up = upWeights[r * 8 + 4];
-			int down = downWeights[r * 8 + 4];
-			int right = horizontal[r * 9 + 5 + 1];
+			int left = horizontal[row * 9 + 5];
+			int up = upWeights[row * 8 + 4];
+			int down = downWeights[row * 8 + 4];
+			int right = horizontal[row * 9 + 5 + 1];
 			int value = ((128 - right - down - up - left) * source[off + 5]
 				+ down * below[off + 5] + left * source[off + 4]
 				+ up * above[off + 5] + right * source[off + 6] + 64) >> 7;
@@ -139,10 +139,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 			else temp[5] = value;
 		}
 		{
-			int left = horizontal[r * 9 + 6];
-			int up = upWeights[r * 8 + 5];
-			int down = downWeights[r * 8 + 5];
-			int right = horizontal[r * 9 + 6 + 1];
+			int left = horizontal[row * 9 + 6];
+			int up = upWeights[row * 8 + 5];
+			int down = downWeights[row * 8 + 5];
+			int right = horizontal[row * 9 + 6 + 1];
 			int value = ((128 - right - down - up - left) * source[off + 6]
 				+ down * below[off + 6] + left * source[off + 5]
 				+ up * above[off + 6] + right * source[off + 7] + 64) >> 7;
@@ -153,10 +153,10 @@ extern "C" void __cdecl DeringBlockStrong_C(void *instance, const unsigned char 
 		{
 			int centerPixel = source[off + 7];
 			int rightPixel = source[off + 8];
-			int left = horizontal[r * 9 + 7];
-			int up = upWeights[r * 8 + 6];
-			int down = downWeights[r * 8 + 6];
-			int right = horizontal[r * 9 + 7 + 1];
+			int left = horizontal[row * 9 + 7];
+			int up = upWeights[row * 8 + 6];
+			int down = downWeights[row * 8 + 6];
+			int right = horizontal[row * 9 + 7 + 1];
 			int value = ((128 - right - down - up - left) * centerPixel
 				+ down * below[off + 7] + left * source[off + 6]
 				+ up * above[off + 7] + right * rightPixel + 64) >> 7;

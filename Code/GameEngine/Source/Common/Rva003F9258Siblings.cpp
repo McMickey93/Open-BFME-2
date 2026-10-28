@@ -62,9 +62,9 @@ void Rva003F9258Parse(INI *ini, Rva003F7BE9 *holder)
 		INIException exc(3, "Invalid data in Tutorial::ParseINI");
 		_CxxThrowException(&exc, (const _s__ThrowInfo *)&rva003F9258ThrowInfoAnchor); __assume(0);
 	}
-	Rva003F9258Data *p = new Rva003F9258Data;
-	ini->initFromINI(p, g_00C37560);
-	holder->rva003F7BE9((const ModuleData *)p);
+	Rva003F9258Data *tutorial = new Rva003F9258Data;
+	ini->initFromINI(tutorial, g_00C37560);
+	holder->rva003F7BE9((const ModuleData *)tutorial);
 }
 
 // 0x004FD719 PlayerDefeatCondition::ParseINI, record size 0x18.
@@ -102,9 +102,9 @@ void Rva004FD719Parse(INI *ini, Rva004FD37F *holder)
 		INIException exc(3, "Invalid data in PlayerDefeatCondition::ParseINI");
 		_CxxThrowException(&exc, (const _s__ThrowInfo *)&rva003F9258ThrowInfoAnchor); __assume(0);
 	}
-	Rva004FD719Data *p = new Rva004FD719Data;
-	ini->initFromINI(p, g_00C635D0);
-	holder->rva004FD37F((const ModuleData *)p);
+	Rva004FD719Data *playerDefeatCondition = new Rva004FD719Data;
+	ini->initFromINI(playerDefeatCondition, g_00C635D0);
+	holder->rva004FD37F((const ModuleData *)playerDefeatCondition);
 }
 
 // 0x004FD7FB TeamDefeatCondition::ParseINI, record size 0x24.
@@ -146,9 +146,9 @@ void Rva004FD7FBParse(INI *ini, Rva004FD448 *holder)
 		INIException exc(3, "Invalid data in TeamDefeatCondition::ParseINI");
 		_CxxThrowException(&exc, (const _s__ThrowInfo *)&rva003F9258ThrowInfoAnchor); __assume(0);
 	}
-	Rva004FD7FBData *p = new Rva004FD7FBData;
-	ini->initFromINI(p, g_00C636D0);
-	reinterpret_cast<LivingWorldScenario::Scenario *>(holder)->addTeamVictoryCondition(reinterpret_cast<const LivingWorldScenario::TeamVictoryCondition *>(p));
+	Rva004FD7FBData *teamDefeatCondition = new Rva004FD7FBData;
+	ini->initFromINI(teamDefeatCondition, g_00C636D0);
+	reinterpret_cast<LivingWorldScenario::Scenario *>(holder)->addTeamVictoryCondition(reinterpret_cast<const LivingWorldScenario::TeamVictoryCondition *>(teamDefeatCondition));
 }
 
 // 0x0059E436 SpawnGenericBuilding::ParseINI, record size 0x14.
@@ -184,9 +184,9 @@ void Rva0059E436Parse(INI *ini, Rva0059E390 *holder)
 		INIException exc(3, "Invalid data in SpawnGenericBuilding::ParseINI");
 		_CxxThrowException(&exc, (const _s__ThrowInfo *)&rva003F9258ThrowInfoAnchor); __assume(0);
 	}
-	Rva0059E436Data *p = new Rva0059E436Data;
-	ini->initFromINI(p, g_00C70FFC);
-	holder->rva0059E390((const ModuleData *)p);
+	Rva0059E436Data *spawnGenericBuilding = new Rva0059E436Data;
+	ini->initFromINI(spawnGenericBuilding, g_00C70FFC);
+	holder->rva0059E390((const ModuleData *)spawnGenericBuilding);
 }
 
 // 0x0059E511 SpawnGenericArmy::ParseINI, record size 0x14.
@@ -222,9 +222,9 @@ void Rva0059E511Parse(INI *ini, Rva0059E3A7 *holder)
 		INIException exc(3, "Invalid data in SpawnGenericArmy::ParseINI");
 		_CxxThrowException(&exc, (const _s__ThrowInfo *)&rva003F9258ThrowInfoAnchor); __assume(0);
 	}
-	Rva0059E511Data *p = new Rva0059E511Data;
-	ini->initFromINI(p, g_00C71064);
-	holder->rva0059E3A7((const ModuleData *)p);
+	Rva0059E511Data *spawnGenericArmy = new Rva0059E511Data;
+	ini->initFromINI(spawnGenericArmy, g_00C71064);
+	holder->rva0059E3A7((const ModuleData *)spawnGenericArmy);
 }
 
 // 0x0059E6D3 OwnershipSet::ParseINI, record size 0x2c.
@@ -264,7 +264,7 @@ void Rva0059E6D3Parse(INI *ini, Rva004FD4AE *holder)
 		INIException exc(3, "Invalid data in OwnershipSet::ParseINI");
 		_CxxThrowException(&exc, (const _s__ThrowInfo *)&rva003F9258ThrowInfoAnchor); __assume(0);
 	}
-	Rva0059E6D3Data *p = new Rva0059E6D3Data;
-	ini->initFromINI(p, g_00C710E8);
-	holder->rva004FD4AE((const ModuleData *)p);
+	Rva0059E6D3Data *ownershipSet = new Rva0059E6D3Data;
+	ini->initFromINI(ownershipSet, g_00C710E8);
+	holder->rva004FD4AE((const ModuleData *)ownershipSet);
 }

@@ -173,7 +173,7 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 struct FunctorHeader { void *vptr; int refs; };
 class Rva00579E47 { public:
     Rva00579E47(const DelegateDesc &);
-    Rva00579E47(const Rva00579E47 &r):ptr(r.ptr) { if(ptr) ++ptr->refs; }
+    Rva00579E47(const Rva00579E47 &other):ptr(other.ptr) { if(ptr) ++ptr->refs; }
     FunctorHeader *ptr;
 };
 template<class T> class AptRef : public Rva00579E47 { public:

@@ -73,8 +73,8 @@ public:
 	unsigned char m_pad[0x13C];
 	unsigned char m_flag13C;
 	unsigned char m_pad13D[3];
-	ModelConditionFlagType m_cond140;
-	unsigned m_val144;
+	ModelConditionFlagType m_deathAnim;
+	unsigned m_deathAnimDuration;
 };
 
 class ObjectCreationUpgrade
@@ -184,9 +184,9 @@ void ObjectCreationUpgrade::rva004B463C()
 	if (!target)
 		return;
 	target->kill((DamageType)8, (DeathType)0);
-	if (data->m_cond140 == (ModelConditionFlagType)-1)
+	if (data->m_deathAnim == (ModelConditionFlagType)-1)
 		return;
-	target->setSpecialModelConditionState(data->m_cond140, data->m_val144);
+	target->setSpecialModelConditionState(data->m_deathAnim, data->m_deathAnimDuration);
 }
 
 // ?rva004B3FF5@ObjectCreationUpgrade@@SA?AW4NameKeyType@@XZ

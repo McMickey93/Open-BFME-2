@@ -51,13 +51,13 @@ public: Shadow *addShadow(RenderObjClass *,Shadow::ShadowTypeInfo *,Drawable *);
 extern W3DShadowManager *TheW3DShadowManager;
 struct Rva000B9B4ATemplatePrefix {
  unsigned char unknown00[0x90];
- AsciiString name90;
+ AsciiString m_shadowTextureName;
  unsigned char unknown94[0x4e8-0x94];
  float sizeX,sizeY,offsetX,offsetY;
  unsigned char unknown4F8[8];
  float projectionX,projectionY;
  unsigned char unknown508[0x5e2-0x508];
- unsigned short type5E2;
+ unsigned short m_shadowType;
  unsigned char unknown5E4[9];
  unsigned char flag5ED,color5EE,flag5EF;
 };
@@ -366,12 +366,12 @@ int Rva000BAC53DrawInterface::rva000BAEBF(float *out)
 void W3DScriptedModelDraw::allocateShadows()
 {
  const Rva000B9B4ATemplatePrefix *t=drawable8->thing4;
- if(!shadow58 && render50 && TheW3DShadowManager && t->type5E2) {
+ if(!shadow58 && render50 && TheW3DShadowManager && t->m_shadowType) {
   Shadow::ShadowTypeInfo info;
-  reinterpret_cast<StringBase<char> *>(&info.first)->set(*reinterpret_cast<const StringBase<char> *>(&t->name90));
+  reinterpret_cast<StringBase<char> *>(&info.first)->set(*reinterpret_cast<const StringBase<char> *>(&t->m_shadowTextureName));
   info.flags[1]=0;
   info.flags[2]=1;
-  info.type=t->type5E2;
+  info.type=t->m_shadowType;
   info.sizeX=t->sizeX;
   info.sizeY=t->sizeY;
   info.offsetX=t->offsetX;

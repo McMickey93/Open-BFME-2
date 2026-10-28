@@ -113,7 +113,7 @@ class AptTimerAdder { public: AptTimerAdder(); ~AptTimerAdder(); private: char s
 class Rva005FBC20 {
 public:
  Rva005FBC20(Rva005FBBEE*, unsigned, const AsciiString&);
- void rva005FB5AE(const char*); void rva005FB5BE(const char*); void rva005FB5D2(const char*);
+ void OnChainHitAnim(const char*); void OnHitAnimDone(const char*); void OnReinforceAnimDone(const char*);
 private:
  Rva005FBBEE *owner; unsigned level; AsciiString name;
  Rva0052413E bindings; AptTimerAdder timers; // +c,+18
@@ -127,9 +127,9 @@ struct DelegateDesc {
 class Rva00579E47Delegate : public Rva00579E47 {
 public: Rva00579E47Delegate(DelegateDesc d):Rva00579E47(d){}
 };
-void Rva005FBC20::rva005FB5AE(const char*) { if(hitActive) owner->slot1(); }
-void Rva005FBC20::rva005FB5BE(const char*) { if(hitActive) {hitActive=false; owner->slot2();} }
-void Rva005FBC20::rva005FB5D2(const char*) { if(reinforceActive) {reinforceActive=false; owner->slot3();} }
+void Rva005FBC20::OnChainHitAnim(const char*) { if(hitActive) owner->slot1(); }
+void Rva005FBC20::OnHitAnimDone(const char*) { if(hitActive) {hitActive=false; owner->slot2();} }
+void Rva005FBC20::OnReinforceAnimDone(const char*) { if(reinforceActive) {reinforceActive=false; owner->slot3();} }
 Rva005FBC20::Rva005FBC20(Rva005FBBEE *p,unsigned l,const AsciiString &asciiString)
  :owner(p),level(l),name(asciiString),field24(0),field2c(-1),field30(0),health(100.0f),cachedCount(-1),hitActive(false),reinforceActive(false)
 {
@@ -142,7 +142,7 @@ Rva005FBC20::Rva005FBC20(Rva005FBBEE *p,unsigned l,const AsciiString &asciiStrin
  } bind;
  bind.provider=&AptCommandMapAdder::AddCommandMap;
  AsciiString prefix;prefix.format("_level%u.",level);
- (bindings.*bind.caller)(prefix+name+"_OnChainHitAnim",Rva00579E47Delegate(DelegateDesc(this,&Rva005FBC20::rva005FB5AE)));
- (bindings.*bind.caller)(prefix+name+"_OnHitAnimDone",Rva00579E47Delegate(DelegateDesc(this,&Rva005FBC20::rva005FB5BE)));
- (bindings.*bind.caller)(prefix+name+"_OnReinforceAnimDone",Rva00579E47Delegate(DelegateDesc(this,&Rva005FBC20::rva005FB5D2)));
+ (bindings.*bind.caller)(prefix+name+"_OnChainHitAnim",Rva00579E47Delegate(DelegateDesc(this,&Rva005FBC20::OnChainHitAnim)));
+ (bindings.*bind.caller)(prefix+name+"_OnHitAnimDone",Rva00579E47Delegate(DelegateDesc(this,&Rva005FBC20::OnHitAnimDone)));
+ (bindings.*bind.caller)(prefix+name+"_OnReinforceAnimDone",Rva00579E47Delegate(DelegateDesc(this,&Rva005FBC20::OnReinforceAnimDone)));
 }

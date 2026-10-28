@@ -59,10 +59,10 @@ extern const FieldParse EmotionFieldTable[] =
 	{ 0, 0, 0, 0 }
 };
 
-void q4Notify002CCB04(void *ini, Made002CCB04 *m, int c, int d)
+void q4Notify002CCB04(void *ini, Made002CCB04 *nugget, int c, int d)
 {
 	MultiIniFieldParse tmp;
 	tmp.add((FieldParse *)Rva00507552Get(), 0);
 	tmp.add(EmotionFieldTable, 0);
-	((INI *)ini)->initFromINIMulti(m, tmp);
+	((INI *)ini)->initFromINIMulti(nugget, tmp);
 }

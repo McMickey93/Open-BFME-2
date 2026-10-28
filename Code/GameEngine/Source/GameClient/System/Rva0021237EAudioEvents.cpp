@@ -138,7 +138,7 @@ struct UpdateReceiverView21123 {
  char pad26C[0x2C0-0x26C];
  bool hidden2C0;
  char pad2C1[3];
- LivingWorldEyeTower *tower2C4;
+ LivingWorldEyeTower *m_eyeTower;
 
 };
 void Rva0021237E::rva002123BE()
@@ -147,7 +147,7 @@ void Rva0021237E::rva002123BE()
  ((Rva00211494*)this)->rva00211494();
  ((Rva002112A9*)this)->rva002112A9();
  if(view->object268) view->object268->rva003EEAB7();
- if(view->tower2C4) view->tower2C4->updateState();
+ if(view->m_eyeTower) view->m_eyeTower->updateState();
  for(UpdateMapView::iterator it=view->map218.begin();it!=view->map218.end();++it)
   ((UpdateSlot21123*)it->second)->v0C();
  if(!view->hidden2C0 && ((SingletonView21123*)((Rva002D3627Host *)TheLivingWorld))->mode==1 && theRadarWindowOverrideSource->rva002D35E6() && !((Rva002B5073*)TheLivingWorldLogic)->rva002B5073(8) && TheMouse)

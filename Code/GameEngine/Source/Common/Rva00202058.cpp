@@ -9,12 +9,12 @@
 class OptionPreferences
 {
 public:
-	int Rva002E42EEForward();
-	int Rva002E42F6Forward();
-	int Rva002E42FEForward();
-	int Rva002E4306Forward();
-	int Rva002E430EForward();
-	int Rva002E4316Forward();
+	int getModelLOD();
+	int getAnimationLOD();
+	int getEffectsLOD();
+	int getShadowLOD();
+	int getTerrainLOD();
+	int getWaterLOD();
 	int Rva002E431EForward();
 	int Rva002E4326Forward();
 	int Rva002E432EForward();
@@ -67,27 +67,27 @@ private:
 
 void Rva00202058::rva00202058(OptionPreferences *prefs)
 {
-	m_17c = prefs->Rva002E42EEForward();
-	m_1b0 = prefs->Rva002E42F6Forward();
-	m_180 = prefs->Rva002E42FEForward();
-	m_1b9 = (prefs->Rva002E42FEForward() >= 2);
+	m_17c = prefs->getModelLOD();
+	m_1b0 = prefs->getAnimationLOD();
+	m_180 = prefs->getEffectsLOD();
+	m_1b9 = (prefs->getEffectsLOD() >= 2);
 	int idx1;
-	int v = prefs->Rva002E42FEForward();
+	int v = prefs->getEffectsLOD();
 	if (v <= 0)
 		idx1 = 0;
 	else
 	{
-		int v2 = prefs->Rva002E42FEForward();
+		int v2 = prefs->getEffectsLOD();
 		if (v2 == 1)
 			idx1 = 1;
 		else
 		{
-			int v3 = prefs->Rva002E42FEForward();
+			int v3 = prefs->getEffectsLOD();
 			if (v3 == 2)
 				idx1 = 2;
 			else
 			{
-				int v4 = prefs->Rva002E42FEForward();
+				int v4 = prefs->getEffectsLOD();
 				idx1 = 3 + (v4 != 3);
 			}
 		}
@@ -97,25 +97,25 @@ void Rva00202058::rva00202058(OptionPreferences *prefs)
 	m_1c0 = lODDef->f44;
 	m_1c4 = lODDef->f48;
 	int widx;
-	if (prefs->Rva002E4306Forward() < 1 || prefs->Rva002E4306Forward() > 2)
+	if (prefs->getShadowLOD() < 1 || prefs->getShadowLOD() > 2)
 		widx = 0;
 	else
 		widx = 1;
 	m_189 = (unsigned char)widx;
-	m_188 = (prefs->Rva002E4306Forward() == 2);
-	m_18a = (prefs->Rva002E4306Forward() >= 3);
-	m_18c = prefs->Rva002E4306Forward();
-	m_190 = (prefs->Rva002E430EForward() >= 2);
-	m_191 = (prefs->Rva002E430EForward() >= 1);
-	m_194 = prefs->Rva002E4316Forward();
-	m_198 = (prefs->Rva002E4316Forward() >= 1);
-	int u = prefs->Rva002E430EForward();
+	m_188 = (prefs->getShadowLOD() == 2);
+	m_18a = (prefs->getShadowLOD() >= 3);
+	m_18c = prefs->getShadowLOD();
+	m_190 = (prefs->getTerrainLOD() >= 2);
+	m_191 = (prefs->getTerrainLOD() >= 1);
+	m_194 = prefs->getWaterLOD();
+	m_198 = (prefs->getWaterLOD() >= 1);
+	int u = prefs->getTerrainLOD();
 	int idx2;
 	if (u <= 0)
 		idx2 = 1;
 	else
 	{
-		int u2 = prefs->Rva002E430EForward();
+		int u2 = prefs->getTerrainLOD();
 		idx2 = 2 + (u2 > 1);
 	}
 	LODDef *d2 = &m_defs[idx2];
@@ -132,7 +132,7 @@ void Rva00202058::rva00202058(OptionPreferences *prefs)
 		idx3 = (t2 <= 1);
 	}
 	m_1a8 = idx3;
-	m_1ac = (prefs->Rva002E430EForward() >= 1);
+	m_1ac = (prefs->getTerrainLOD() >= 1);
 	m_1b4 = prefs->Rva002E4326Forward();
 	m_1b8 = (prefs->Rva002E4326Forward() >= 2);
 	m_1bc = prefs->Rva002E432EForward();

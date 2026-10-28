@@ -81,7 +81,7 @@ void __identifier("?Rva0035AECFParse@@YAXPAVINI@@PAX1PBX@Z")();
 void __identifier("?Rva002567EAParse@@YAXPAVINI@@PAX1PBX@Z")();
 void __identifier("?parseReal@INI@@SAXPAV1@PAX1PBX@Z")();
 void __identifier("?Rva000B9468Parse@@YAXPAVINI@@PAX1PBX@Z")();
-void __identifier("?Rva0035B864Parse@@YAXPAVINI@@PAX1PBX@Z")();
+void __identifier("?parseStances@@YAXPAVINI@@PAX1PBX@Z")();
 void __identifier("?Rva0026F28BParse@@YAXPAVINI@@PAXPAI@Z")();
 }
 // The retail table at 0x00815468: 54 entries and the null terminator; every parser is a rowed code owner.
@@ -135,7 +135,7 @@ extern const FieldParse g_00C15468[55] = {
 	{ "DisableOnModelCondition", (FieldParseProc)&__identifier("?Rva000B9468Parse@@YAXPAVINI@@PAX1PBX@Z"), 0, 0x1E0 },
 	{ "CommandRangeStart", (FieldParseProc)&__identifier("?parseInt@INI@@SAXPAV1@PAX1PBX@Z"), 0, 0x22C },
 	{ "CommandRangeCount", (FieldParseProc)&__identifier("?parseInt@INI@@SAXPAV1@PAX1PBX@Z"), 0, 0x230 },
-	{ "Stances", (FieldParseProc)&__identifier("?Rva0035B864Parse@@YAXPAVINI@@PAX1PBX@Z"), 0, 0x234 },
+	{ "Stances", (FieldParseProc)&__identifier("?parseStances@@YAXPAVINI@@PAX1PBX@Z"), 0, 0x234 },
 	{ "CreateAHeroUIPrerequisiteButtonName", (FieldParseProc)&__identifier("?parseAsciiString@INI@@SAXPAV1@PAX1PBX@Z"), 0, 0x240 },
 	{ "CreateAHeroUIMinimumLevel", (FieldParseProc)&__identifier("?parseInt@INI@@SAXPAV1@PAX1PBX@Z"), 0, 0x244 },
 	{ "CreateAHeroUIIconImageName", (FieldParseProc)&__identifier("?parseAsciiString@INI@@SAXPAV1@PAX1PBX@Z"), 0, 0x248 },

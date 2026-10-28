@@ -197,10 +197,10 @@ void Rva0010461F::rva00104359()
 		m_68[k] = *(const Coord2D *)cur;
 		if ((cur->x != next->x || cur->y != next->y) && (cur->x != prev->x || cur->y != prev->y))
 		{
-			float a1 = angleOf(*next - *cur);
-			float a2 = angleOf(*prev - *cur);
-			float bisector = Rva0010410FWrap(Rva0010416EFloat(a2, a1) * 0.5f + a1);
-			float half = Rva0010416EFloat(bisector, a1);
+			float nextAngle = angleOf(*next - *cur);
+			float prevAngle = angleOf(*prev - *cur);
+			float bisector = Rva0010410FWrap(Rva0010416EFloat(prevAngle, nextAngle) * 0.5f + nextAngle);
+			float half = Rva0010416EFloat(bisector, nextAngle);
 			if (fabs(half) > 0.00001f)
 			{
 				float dist = size * 0.5f / sinf(half);

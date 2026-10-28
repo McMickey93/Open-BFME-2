@@ -104,8 +104,8 @@ void Rva00492F6AParse(INI *ini, void *, void *store, const void *)
 		throw INIException(3, "Invalid Weather setting: '%s'.", store);
 }
 
-// ?Rva0035B864Parse@@YAXPAVINI@@PAX1PBX@Z
-void Rva0035B864Parse(INI *ini, void *, void *store, const void *)
+// ?parseStances@@YAXPAVINI@@PAX1PBX@Z
+void parseStances(INI *ini, void *, void *store, const void *)
 {
 	const char *token = ini->getNextToken();
 	while (token)

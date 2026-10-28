@@ -15,17 +15,17 @@ class Rva005B2DDF {
   char m_00[0x14];
   _STL::vector<BfmeE16> m_14;
 public:
-  void* GetPowerData(unsigned a, unsigned b);
+  void* GetPowerData(unsigned row, unsigned column);
   void* rva005B2E09(Rva005B2E09Cell* c);
   void* rva005B2E35(Rva005B2E09Cell* c);
 };
-void* Rva005B2DDF::GetPowerData(unsigned a, unsigned b)
+void* Rva005B2DDF::GetPowerData(unsigned row, unsigned column)
 {
-  if (a >= m_14.size())
+  if (row >= m_14.size())
     return 0;
-  if (b >= 4)
+  if (column >= 4)
     return 0;
-  return ((void**)&m_14[0])[a * 4 + b];
+  return ((void**)&m_14[0])[row * 4 + column];
 }
 void* Rva005B2DDF::rva005B2E09(Rva005B2E09Cell* c)
 {

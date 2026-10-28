@@ -135,7 +135,7 @@ class __multiple_inheritance FunctorTarget;
 typedef void (FunctorTarget::*FunctorMethod)();
 struct FunctorBinding
 {
-	FunctorBinding(FunctorMethod m, FunctorTarget *functorTarget) : target(functorTarget), method(m) {}
+	FunctorBinding(FunctorMethod functorMethod, FunctorTarget *functorTarget) : target(functorTarget), method(functorMethod) {}
 	FunctorTarget *target;
 	unsigned pad;
 	FunctorMethod method;
@@ -150,7 +150,7 @@ class Rva0057BC63FunctorHolder
 {
 public:
 	Rva0057BC63FunctorHolder(const FunctorBinding &);
-	Rva0057BC63FunctorHolder(const Rva0057BC63FunctorHolder &x) : ptr(x.ptr)
+	Rva0057BC63FunctorHolder(const Rva0057BC63FunctorHolder &other) : ptr(other.ptr)
 	{
 		if (ptr) ++ptr->count;
 	}
@@ -161,7 +161,7 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 template <class T> class AptRef : public Rva0057BC63FunctorHolder
 {
 public:
-	AptRef(FunctorBinding b) : Rva0057BC63FunctorHolder(b) {}
+	AptRef(FunctorBinding binding) : Rva0057BC63FunctorHolder(binding) {}
 	~AptRef()
 	{
 		if (ptr) ReleaseTreeHintRef00217D4C((TargetRef00217D4C *)ptr);

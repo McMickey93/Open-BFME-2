@@ -52,12 +52,12 @@ void HordeMeleeAmoeba::xfer(Xfer *xfer)
  unsigned count=slots.size();
  view->count(count);
  slots.resize(count);
- for(BfmePod60 *p=slots.begin();p!=slots.end();++p) {
-  HmaTransferView &hmaTransferView=view->position(p->position);
-  HmaTransferView &b=((HmaTransferView*)&hmaTransferView)->boolean(p->needsPosition);
-  Rva0058731DCheck((Rva0058731DHost*)&((HmaTransferView*)&b)->integer(p->index),(int)p->values);
-  if(version.current>2)view->boolean(p->loaded39);
-  else if(view->isLoading())p->loaded39=true;
+ for(BfmePod60 *slot=slots.begin();slot!=slots.end();++slot) {
+  HmaTransferView &hmaTransferView=view->position(slot->position);
+  HmaTransferView &b=((HmaTransferView*)&hmaTransferView)->boolean(slot->needsPosition);
+  Rva0058731DCheck((Rva0058731DHost*)&((HmaTransferView*)&b)->integer(slot->index),(int)slot->values);
+  if(version.current>2)view->boolean(slot->loaded39);
+  else if(view->isLoading())slot->loaded39=true;
  }
 }
 

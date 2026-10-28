@@ -38,23 +38,23 @@ public:
 struct Rva002886E9Object
 {
 	char m_pad[0x264];
-	Rva003BD306Target *m_264;
+	Rva003BD306Target *m_experienceTracker;
 };
 
 int __cdecl Rva00288726(Object *obj, void *userData);
 
 int __cdecl Rva002886E9(Object *obj, void *userData)
 {
-	((Rva002886E9Object *)obj)->m_264->rva0039B3D1((float)(int)userData, false);
+	((Rva002886E9Object *)obj)->m_experienceTracker->rva0039B3D1((float)(int)userData, false);
 	return 1;
 }
 
-void ScriptActions::Rva003C1EC2Set(const AsciiString &team, int v)
+void ScriptActions::Rva003C1EC2Set(const AsciiString &team, int experience)
 {
-	Team *t = TheScriptEngine->getTeamNamed(team, false);
-	if (t != 0)
+	Team *theTeam = TheScriptEngine->getTeamNamed(team, false);
+	if (theTeam != 0)
 	{
-		t->rva0039DD12(Rva002886E9, (void *)v);
-		t->rva0039DD12(Rva00288726, 0);
+		theTeam->rva0039DD12(Rva002886E9, (void *)experience);
+		theTeam->rva0039DD12(Rva00288726, 0);
 	}
 }

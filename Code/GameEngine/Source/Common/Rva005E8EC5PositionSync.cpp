@@ -58,7 +58,7 @@ struct Rva005E8EC5Target
 	Rva003F07CEOwner *m_gate1C;
 	int m_20;
 	unsigned char m_pad24[4];
-	Coord2D m_position28;
+	Coord2D m_position;
 };
 
 class Rva005E8EC5
@@ -79,7 +79,7 @@ void Rva005E8EC5::rva005E8EC5()
 		if (m_target04->m_20 != 0 || !m_target04->m_gate1C->rva003F07CE())
 			reinterpret_cast<Rva005F884D *>(m_member08)->rva005F884D();
 	}
-	const Coord2D &source = m_target04->m_position28;
+	const Coord2D &source = m_target04->m_position;
 	Coord2D position;
 	position.x = source.x;
 	position.y = source.y;

@@ -282,7 +282,7 @@ void Rva00587217::buildFieldParse(MultiIniFieldParse &multiIniFieldParse)
 // --- 0x00343EE5 (21B): 1 when the pinned 0x00343DD8 test fails, else 0.
 bool rva00343DD8(void *a, void *b);							// 0x00343DD8
 
-int rva00343EE5(void *a, void *b)
+int inWeaponRangeObject(void *thisState, void *b)
 {
-	return !rva00343DD8(a, b);
+	return !rva00343DD8(thisState, b);
 }

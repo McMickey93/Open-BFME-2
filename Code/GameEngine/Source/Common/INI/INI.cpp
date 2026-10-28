@@ -115,7 +115,7 @@ struct Out0002CA72;
 
 struct Pair0002CA72;
 
-class Rva0002C7FD { public: void rva0002C7FD(unsigned int); };
+class Rva0002C7FD { public: void resize(unsigned int); };
 
 class Rva0002CA72
 {
@@ -813,7 +813,7 @@ const char *rva0002D145(const char *token) {return INI::preprocessMacro(token);}
 
 struct Out0002CA72 *Rva0002CD2F::rva0002CD2F(struct Out0002CA72 *out, const struct Pair0002CA72 *obj)
 {
-    ((Rva0002C7FD *)this)->rva0002C7FD(m_count + 1);
+    ((Rva0002C7FD *)this)->resize(m_count + 1);
     ((Rva0002CA72 *)this)->rva0002CA72(out, obj);
     return out;
 }
@@ -2010,7 +2010,7 @@ void INI::parseAsciiString(INI *ini, void *instance, void *store, const void *us
 
 // tu-skeleton: 0x0002C2C7 360B ?isDeclarationOfType@INI@@SA_NVAsciiString@@0PAD@Z -- matched in Code/GameEngine/Source/Common/INI/INIO1Bodies.cpp (not merged yet)
 
-// tu-skeleton: 0x0002C7FD 214B ?rva0002C7FD@Rva0002C7FD@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
+// tu-skeleton: 0x0002C7FD 214B ?resize@Rva0002C7FD@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
 
 // tu-skeleton: 0x0002CF5E 6B (unledgered) -- unmatched, no code, never credited
 
@@ -2113,7 +2113,7 @@ bool INI::loadDirectory(AsciiString dirName, bool subdirs, INILoadType loadType,
 
 // tu-skeleton: 0x0075C9A4 8B $L5346 -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
 
-// tu-skeleton: 0x0075C9AC 10B __ehhandler$?rva0002C7FD@Rva0002C7FD@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
+// tu-skeleton: 0x0075C9AC 10B __ehhandler$?resize@Rva0002C7FD@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva0002C7FD.cpp (not merged yet)
 
 // tu-skeleton: 0x0075CA7E 8B Unwind@00b5ca7e -- matched in Code/GameEngine/Source/Common/System/INI_loadFile.cpp (not merged yet)
 

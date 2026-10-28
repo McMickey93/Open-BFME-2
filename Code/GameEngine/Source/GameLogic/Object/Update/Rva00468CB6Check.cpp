@@ -135,7 +135,7 @@ public:
 private:
 	char m_pad[0x30 - 4];
 public:
-	TurretStateMachine *m_30;
+	TurretStateMachine *m_turretStateMachine;
 };
 
 // Both native callers4726DD and471FFA load ECX with primary HordeContain.
@@ -150,7 +150,7 @@ bool HordeContain::rva00468CB6(Rva00468CB6A *a, Object *object)
 	bool ok = false;
 	if (a->isAllowed())
 	{
-		Object *goal = a->m_30->getGoalObject();
+		Object *goal = a->m_turretStateMachine->getGoalObject();
 		if (goal != 0)
 		{
 			if (object == goal)

@@ -49,15 +49,15 @@ struct LODGlobalDataView {
  char gap4B[0x13];
  LODBool field5E;
  char gap5F[0x1];
- LODBool field60;
- LODBool field61;
+ LODBool m_useShadowVolumes;
+ LODBool m_useShadowDecals;
  LODBool field62;
  char gap63[0x21];
- LODBool field84;
+ LODBool m_showSoftWaterEdge;
  char gap85[0x8B];
- int field110;
- int field114;
- int field118;
+ int m_maxTankTrackEdges;
+ int m_maxTankTrackOpaqueEdges;
+ int m_maxTankTrackFadeDelay;
  char gap11C[0x889];
  LODBool field9A5;
  char gap9A6[0x1];
@@ -65,7 +65,7 @@ struct LODGlobalDataView {
  char gap9A8[0x16];
  LODBool field9BE;
  char gap9BF[0x109];
- int fieldAC8;
+ int m_maxParticleCount;
  char gapACC[0x24];
  LODBool fieldAF0;
  LODBool fieldAF1;
@@ -274,9 +274,9 @@ void Rva00DFE144Globals::rva002022E9(int level)
  GD->field9A5=info.healthStyle>0;GD->field9A7=info.healthStyle<2;
  if(!GD->field9A5)GD->field9BE=1;
  else {OptionPreferences preferences;GD->field9BE=preferences.getAllHealthBars();}
- GD->field25=info.fpsLimit;GD->fieldAC8=info.maxParticles;controlMinimum=info.minimumFps;
- GD->field60=info.shadowVolumes;GD->field61=info.shadowDecals;GD->field62=info.shadowsOff;
- if(GD->field62){GD->field60=0;GD->field61=0;}
+ GD->field25=info.fpsLimit;GD->m_maxParticleCount=info.maxParticles;controlMinimum=info.minimumFps;
+ GD->m_useShadowVolumes=info.shadowVolumes;GD->m_useShadowDecals=info.shadowDecals;GD->field62=info.shadowsOff;
+ if(GD->field62){GD->m_useShadowVolumes=0;GD->m_useShadowDecals=0;}
  int option=info.option;
  if(!usePresetOption)option=presets[0].option;
  Rva00117BB0SetOption(option);
@@ -289,8 +289,8 @@ void Rva00DFE144Globals::rva002022E9(int level)
  after_client:
  GD->field49=info.cloud;GD->field4A=info.light;
  controlCloud=GD->field49?2:(GD->field4A!=0);
- GD->field5E=info.sample>=2;GD->field84=info.softWater;
- GD->field110=info.trackEdges;GD->field114=info.opaqueEdges;GD->field118=info.fadeDelay;
+ GD->field5E=info.sample>=2;GD->m_showSoftWaterEdge=info.softWater;
+ GD->m_maxTankTrackEdges=info.trackEdges;GD->m_maxTankTrackOpaqueEdges=info.opaqueEdges;GD->m_maxTankTrackFadeDelay=info.fadeDelay;
  GD->field24=info.particles<=0;GD->field1C=info.treeSway;
  control44=info.opaque44;control48=info.opaque48;
  if(TheTerrainRenderObject){LODRenderLock lock;((LODTerrainSlots*)TheTerrainRenderObject)->slot129();((LODTerrainSlots*)TheTerrainRenderObject)->slot130();}

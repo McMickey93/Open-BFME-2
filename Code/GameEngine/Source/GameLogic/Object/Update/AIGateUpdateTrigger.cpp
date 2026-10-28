@@ -65,11 +65,11 @@ void AIGateUpdate::loadTrigger() {
 // complete entry through4B0A24 is61B. It classifies the entering/leaving
 // object relative to owner+8 and adjusts counters28/2C; names unresolved.
 void AIGateUpdate::rva004B09E7(Object *o,AIGateUpdate *gate,bool entered) {
- Relationship r=o->getRelationship(gate->object);
+ Relationship relationship=o->getRelationship(gate->object);
  if(entered) {
-  switch(r) {case RELATION_0:++gate->count2C;break;case RELATION_2:++gate->count28;break;}
+  switch(relationship) {case RELATION_0:++gate->count2C;break;case RELATION_2:++gate->count28;break;}
  } else {
-  switch(r) {case RELATION_0:--gate->count2C;break;case RELATION_2:--gate->count28;break;}
+  switch(relationship) {case RELATION_0:--gate->count2C;break;case RELATION_2:--gate->count28;break;}
  }
 }
 
@@ -82,8 +82,8 @@ void AIGateUpdate::rva004B09E7(Object *o,AIGateUpdate *gate,bool entered) {
 Vector2 AIGateUpdate::rva004B0A24(float x,float y) {
  GateOffset v(x,y,0);
  float a=object->angle;
- float s=(float)sin(a),c=(float)cos(a);
- const float &ss=s,&cc=c;
+ float sinAngle=(float)sin(a),c=(float)cos(a);
+ const float &ss=sinAngle,&cc=c;
  v.rotate(ss,cc);
  return Vector2(object->px+v.X,object->py+v.Y);
 }

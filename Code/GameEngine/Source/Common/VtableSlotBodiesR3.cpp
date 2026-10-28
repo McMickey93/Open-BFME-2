@@ -590,7 +590,7 @@ public:
 struct Rva00260E1ETarget
 {
 	char m_pad00[0x54];
-	int m_shift54;
+	int m_playerIndex;
 };
 
 class Rva00260E2AFilter : public Rva000421C8
@@ -603,7 +603,7 @@ private:
 
 int Rva00260E2AFilter::getPlayerMask()
 {
-	return 1 << m_target08->m_shift54;
+	return 1 << m_target08->m_playerIndex;
 }
 
 // 0x0026118B: whether the +0x258 word of the argument is set.
@@ -738,7 +738,7 @@ bool Rva003F718D::rva003F718D(int, int)
 struct Rva00203665Data
 {
 	char m_pad00[0xAC8];
-	int m_valueAC8;
+	int m_maxParticleCount;
 };
 
 class Rva00203665
@@ -749,7 +749,7 @@ public:
 
 int Rva00203665::rva00203665()
 {
-	return ((Rva00203665Data *)TheWritableGlobalData)->m_valueAC8;
+	return ((Rva00203665Data *)TheWritableGlobalData)->m_maxParticleCount;
 }
 
 // 0x00345F76: 0 when bit 0x2000 of the +0x114 word four links down (+0x18,

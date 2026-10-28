@@ -338,7 +338,7 @@ int Rva00591062Get(Rva00591062Host *p);
 int Rva00590FA5Get(const Rva0023E928 *obj);
 
 // FillBufferWithCommand's serializers rowed in their own units under address names.
-void Rva0058C80FWrite(char *buffer, NetCommandRef *msg);
+void FillBufferWithFrameCommand(char *buffer, NetCommandRef *msg);
 
 void Rva0058C96CWrite(char *buffer, NetCommandRef *msg);
 
@@ -2375,7 +2375,7 @@ void NetPacket::FillBufferWithCommand(UnsignedByte *buffer, NetCommandRef *msg)
 		FillBufferWithAckCommand(buffer, msg);
 		break;
 	case 3:
-		Rva0058C80FWrite((char *)buffer, msg);
+		FillBufferWithFrameCommand((char *)buffer, msg);
 		break;
 	case 23:
 		FillBufferWithRouterFallbackCommand(buffer, msg);
@@ -5808,7 +5808,7 @@ class Rva004D64F5 *__cdecl Rva00592496Read(int base, unsigned int *cursor)
 
 // tu-skeleton: 0x0058C484 4B ?rva0058C484@Rva0058C484@@QAEHXZ -- matched in Code/GameEngine/Source/Common/VtableConstantPredicates.cpp (not merged yet)
 
-// tu-skeleton: 0x0058C80F 213B ?Rva0058C80FWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058C80FWrite.cpp (not merged yet)
+// tu-skeleton: 0x0058C80F 213B ?FillBufferWithFrameCommand@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058C80FWrite.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameNetwork/Rva0058C96CWrite.cpp
 
