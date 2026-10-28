@@ -13,6 +13,8 @@
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../Libraries/Include/Lib/Region2D.h"
+// Keep math.h's unused out-of-line floorf copy local.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 
 inline float Coord3D::length() const { return (float)sqrt(x*x+y*y+z*z); }

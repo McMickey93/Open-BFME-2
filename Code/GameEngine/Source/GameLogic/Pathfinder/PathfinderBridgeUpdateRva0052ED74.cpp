@@ -17,6 +17,8 @@
 #include "Lib/Region2D.h"
 #include "../../Common/GameLogicObjectLookupView.h"
 static __forceinline float bridgeDelta(float a,float b){return (float)(a-b);}
+// Keep math.h's unused out-of-line floorf copy local.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 static __forceinline int float2long(float f){int i;__asm{fld f
  fistp i}return i;}

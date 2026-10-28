@@ -1,0 +1,486 @@
+{
+  "base_revision": "7c27ac5b25af4714cbbd36ea3e8967f7099b1443",
+  "index_meta": {
+    "date": "2026-10-28 11:08",
+    "commit": "41c28839bf",
+    "clean_tree": true,
+    "census_date": "2026-10-28 10:03",
+    "census_commit": "c8734bec0c"
+  },
+  "objects": [
+    {
+      "source": "Code/GameEngine/Source/GameLogic/Pathfinder/PathfindLayerReset_~PathfindLayer_ClassifyBridgeCells.cpp",
+      "before_sha256": "ab95c44f3e9c683fe8be66ca4c6a9a8b4d9c3fa286100ad12a5989e7052f2fad",
+      "after_sha256": "fdf3760505f66447cc4a270ad69ffe0dcb2a3b4c81a1ea7c69687b8000e9460b",
+      "removed_comdats": {
+        "_floorf": [
+          "d9d07276ff39",
+          18
+        ]
+      },
+      "retained_comdats": {
+        "??0Region2D@@QAE@XZ": [
+          "03ca90960a9c",
+          3
+        ],
+        "??1Region2D@@QAE@XZ": [
+          "8bf7b464aaa2",
+          1
+        ],
+        "_sqrtf": [
+          "99747d18cb82",
+          17
+        ],
+        "?sqrt@@YAMM@Z": [
+          "99747d18cb82",
+          17
+        ],
+        "?length@Coord3D@@QBEMXZ": [
+          "506dde09e95c",
+          69
+        ],
+        "?normalize@Coord3D@@QAEXXZ": [
+          "862b1e00fb42",
+          86
+        ],
+        "__real@3f800000": [
+          "5bb96baed2a6",
+          4
+        ],
+        "?fast_float2long_round@@YAJM@Z": [
+          "975c9cad6d6e",
+          13
+        ],
+        "??$__vref@M@@YAACMAAM@Z": [
+          "341dc3ec187f",
+          5
+        ],
+        "?ClassifyBridgeCells@PathfindLayer@@QAEXXZ": [
+          "99c9727a4dc8",
+          1339
+        ],
+        "__real@3dcccccd": [
+          "7948480730a1",
+          4
+        ],
+        "__real@40e00000": [
+          "23054ec14159",
+          4
+        ],
+        "__real@40a00000": [
+          "efd272b17de4",
+          4
+        ],
+        "__real@41200000": [
+          "400bec6bce4c",
+          4
+        ]
+      },
+      "bindings_before": {
+        "defined": [
+          "??$__vref@M@@YAACMAAM@Z",
+          "??0Region2D@@QAE@XZ",
+          "??1Region2D@@QAE@XZ",
+          "?ClassifyBridgeCells@PathfindLayer@@QAEXXZ",
+          "?fast_float2long_round@@YAJM@Z",
+          "?length@Coord3D@@QBEMXZ",
+          "?normalize@Coord3D@@QAEXXZ",
+          "?sqrt@@YAMM@Z",
+          "__real@3dcccccd",
+          "__real@3f800000",
+          "__real@40a00000",
+          "__real@40e00000",
+          "__real@41200000",
+          "_floorf",
+          "_sqrtf"
+        ],
+        "undefined": [
+          "??0Rva0027C36A@@QAE@XZ",
+          "??4Rva0027C36A@@QAEAAV0@ABV0@@Z",
+          "?MarkDirty@PathfindZoneManager@@QAEXHH@Z",
+          "?SetType_Dirty@PathfindCell@@QAE_NH@Z",
+          "?TheAI@@3PAVAI@@A",
+          "?TheTerrainLogic@@3PAVTerrainLogic@@A",
+          "?getBridgeHeight@Bridge@@QAEMPBUCoord3D@@PAU2@@Z",
+          "?getCell@Pathfinder@@QAEPAVPathfindCell@@W4PathfindLayerEnum@@HH@Z",
+          "?isCellEntryPoint@Bridge@@QAE_NPBURegion2D@@PAM@Z",
+          "?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z",
+          "?isCellOnSide@Bridge@@QAE_NPBURegion2D@@@Z",
+          "?isGroundOrBridgeLayer@@YAHH@Z",
+          "?isPointOnBridge@Bridge@@QAE_NPBUCoord3D@@@Z",
+          "?rva00366500@Rva00366500@@QAE_NH@Z",
+          "?rva0036652D@Rva00366500@@QAE_NH@Z",
+          "?rva0052DED3@PathfindCell@@QAEXXZ",
+          "__fltused",
+          "__imp__floor",
+          "_sqrt"
+        ],
+        "weak": []
+      },
+      "bindings_after": {
+        "defined": [
+          "??$__vref@M@@YAACMAAM@Z",
+          "??0Region2D@@QAE@XZ",
+          "??1Region2D@@QAE@XZ",
+          "?ClassifyBridgeCells@PathfindLayer@@QAEXXZ",
+          "?fast_float2long_round@@YAJM@Z",
+          "?length@Coord3D@@QBEMXZ",
+          "?normalize@Coord3D@@QAEXXZ",
+          "?sqrt@@YAMM@Z",
+          "__real@3dcccccd",
+          "__real@3f800000",
+          "__real@40a00000",
+          "__real@40e00000",
+          "__real@41200000",
+          "_sqrtf"
+        ],
+        "undefined": [
+          "??0Rva0027C36A@@QAE@XZ",
+          "??4Rva0027C36A@@QAEAAV0@ABV0@@Z",
+          "?MarkDirty@PathfindZoneManager@@QAEXHH@Z",
+          "?SetType_Dirty@PathfindCell@@QAE_NH@Z",
+          "?TheAI@@3PAVAI@@A",
+          "?TheTerrainLogic@@3PAVTerrainLogic@@A",
+          "?getBridgeHeight@Bridge@@QAEMPBUCoord3D@@PAU2@@Z",
+          "?getCell@Pathfinder@@QAEPAVPathfindCell@@W4PathfindLayerEnum@@HH@Z",
+          "?isCellEntryPoint@Bridge@@QAE_NPBURegion2D@@PAM@Z",
+          "?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z",
+          "?isCellOnSide@Bridge@@QAE_NPBURegion2D@@@Z",
+          "?isGroundOrBridgeLayer@@YAHH@Z",
+          "?isPointOnBridge@Bridge@@QAE_NPBUCoord3D@@@Z",
+          "?rva00366500@Rva00366500@@QAE_NH@Z",
+          "?rva0036652D@Rva00366500@@QAE_NH@Z",
+          "?rva0052DED3@PathfindCell@@QAEXXZ",
+          "__fltused",
+          "__imp__floor",
+          "_sqrt"
+        ],
+        "weak": []
+      }
+    },
+    {
+      "source": "Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderNewMap.cpp",
+      "before_sha256": "19501cbd9c2a41bc07d8ede2db462caf9f0a2f79bd6b5d63560ff5d4f3e28d90",
+      "after_sha256": "3ba9baad5a50944353339ad43122406fdad7beb9e77a7f4f037bee684622d925",
+      "removed_comdats": {
+        "_floorf": [
+          "d9d07276ff39",
+          18
+        ]
+      },
+      "retained_comdats": {
+        "??0Region3D@@QAE@XZ": [
+          "03ca90960a9c",
+          3
+        ],
+        "??1Region3D@@QAE@XZ": [
+          "8bf7b464aaa2",
+          1
+        ],
+        "?fast_float2long_round@@YAJM@Z": [
+          "975c9cad6d6e",
+          13
+        ],
+        "?NewMap@Pathfinder@@QAEXXZ": [
+          "c82e3aa397d3",
+          571
+        ],
+        "__real@3dcccccd": [
+          "7948480730a1",
+          4
+        ],
+        "??_EPathfindCell@@QAEPAXI@Z": [
+          "d8ab7c50f685",
+          75
+        ]
+      },
+      "bindings_before": {
+        "defined": [
+          "??0Region3D@@QAE@XZ",
+          "??1Region3D@@QAE@XZ",
+          "??_EPathfindCell@@QAEPAXI@Z",
+          "?NewMap@Pathfinder@@QAEXXZ",
+          "?fast_float2long_round@@YAJM@Z",
+          "__real@3dcccccd",
+          "_floorf"
+        ],
+        "undefined": [
+          "??0PathfindCell@@QAE@XZ",
+          "??1PathfindCell@@QAE@XZ",
+          "??3@YAXPAX@Z",
+          "??_L@YGXPAXIHP6EX0@Z1@Z",
+          "??_M@YGXPAXIHP6EX0@Z@Z",
+          "??_U@YAPAXI@Z",
+          "??_V@YAXPAX@Z",
+          "?MarkDirty@PathfindZoneManager@@QAEXPAURva005312BERect@@@Z",
+          "?Rva0052F2EC@Pathfinder@@QAEXXZ",
+          "?SetPortal@Rva0052DA63@@QAEXPAX@Z",
+          "?TheGameLogic@@3PAVGameLogic@@A",
+          "?TheTerrainLogic@@3PAVTerrainLogic@@A",
+          "?Update@PathfindZoneManager@@QAEXPAPAVPathfindCell@@PAVPathfindLayer@@ABUIRegion2D@@@Z",
+          "?allocateCells@PathfindLayer@@QAEXPBUIRegion2D@@@Z",
+          "?get@Rva002E6ECA@@QBEHXZ",
+          "?getFirstObject@GameLogic@@QAEPAVObject@@XZ",
+          "?getLayerForDestination@TerrainLogic@@QAE?AW4PathfindLayerEnum@@PAVObject@@PBUCoord3D@@@Z",
+          "?rva001E3647Pos@Pathfinder@@QAEPAXHPBUCoord3D@@@Z",
+          "?rva0036666B@Rva0036666B@@QAE_NXZ",
+          "?rva00530212@Pathfinder@@QAEXPAVObject@@_N11@Z",
+          "?rva005328E2@PathfindZoneManager@@QAEXPAURva005312BERect@@@Z",
+          "__EH_prolog",
+          "___CxxFrameHandler",
+          "__except_list",
+          "__fltused",
+          "__imp__floor"
+        ],
+        "weak": []
+      },
+      "bindings_after": {
+        "defined": [
+          "??0Region3D@@QAE@XZ",
+          "??1Region3D@@QAE@XZ",
+          "??_EPathfindCell@@QAEPAXI@Z",
+          "?NewMap@Pathfinder@@QAEXXZ",
+          "?fast_float2long_round@@YAJM@Z",
+          "__real@3dcccccd"
+        ],
+        "undefined": [
+          "??0PathfindCell@@QAE@XZ",
+          "??1PathfindCell@@QAE@XZ",
+          "??3@YAXPAX@Z",
+          "??_L@YGXPAXIHP6EX0@Z1@Z",
+          "??_M@YGXPAXIHP6EX0@Z@Z",
+          "??_U@YAPAXI@Z",
+          "??_V@YAXPAX@Z",
+          "?MarkDirty@PathfindZoneManager@@QAEXPAURva005312BERect@@@Z",
+          "?Rva0052F2EC@Pathfinder@@QAEXXZ",
+          "?SetPortal@Rva0052DA63@@QAEXPAX@Z",
+          "?TheGameLogic@@3PAVGameLogic@@A",
+          "?TheTerrainLogic@@3PAVTerrainLogic@@A",
+          "?Update@PathfindZoneManager@@QAEXPAPAVPathfindCell@@PAVPathfindLayer@@ABUIRegion2D@@@Z",
+          "?allocateCells@PathfindLayer@@QAEXPBUIRegion2D@@@Z",
+          "?get@Rva002E6ECA@@QBEHXZ",
+          "?getFirstObject@GameLogic@@QAEPAVObject@@XZ",
+          "?getLayerForDestination@TerrainLogic@@QAE?AW4PathfindLayerEnum@@PAVObject@@PBUCoord3D@@@Z",
+          "?rva001E3647Pos@Pathfinder@@QAEPAXHPBUCoord3D@@@Z",
+          "?rva0036666B@Rva0036666B@@QAE_NXZ",
+          "?rva00530212@Pathfinder@@QAEXPAVObject@@_N11@Z",
+          "?rva005328E2@PathfindZoneManager@@QAEXPAURva005312BERect@@@Z",
+          "__EH_prolog",
+          "___CxxFrameHandler",
+          "__except_list",
+          "__fltused",
+          "__imp__floor"
+        ],
+        "weak": []
+      }
+    },
+    {
+      "source": "Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderBridgeUpdateRva0052ED74.cpp",
+      "before_sha256": "6b694458197bd891215c45bad137de614cec4f49b06d9c257338a185b279e9e6",
+      "after_sha256": "16361beb5b0e7498f7291834e5277daba6ddeb2a592b7038a587fe5d2d0db150",
+      "removed_comdats": {
+        "_floorf": [
+          "d9d07276ff39",
+          18
+        ]
+      },
+      "retained_comdats": {
+        "??0Region2D@@QAE@XZ": [
+          "03ca90960a9c",
+          3
+        ],
+        "??1Region2D@@QAE@XZ": [
+          "8bf7b464aaa2",
+          1
+        ],
+        "_ceilf": [
+          "def4f95b7445",
+          18
+        ],
+        "_fabsf": [
+          "eecb1335d06a",
+          17
+        ],
+        "?ceil@@YAMM@Z": [
+          "def4f95b7445",
+          18
+        ],
+        "?fabs@@YAMM@Z": [
+          "eecb1335d06a",
+          17
+        ],
+        "?floor@@YAMM@Z": [
+          "d9d07276ff39",
+          18
+        ],
+        "??0BridgeBounds@@QAE@ABU0@@Z": [
+          "7f8de6438c3d",
+          31
+        ],
+        "??1BridgeBounds@@QAE@XZ": [
+          "8bf7b464aaa2",
+          1
+        ],
+        "?getOwner@PathfindCell@@QBEHXZ": [
+          "2d3d0edbd6a1",
+          13
+        ],
+        "?getType@PathfindCell@@QBEHXZ": [
+          "c7558641a590",
+          7
+        ],
+        "?getLayer@PathfindCell@@QBEHXZ": [
+          "f1a6bd177acc",
+          10
+        ],
+        "?getObstacleID@PathfindCell@@QBEHXZ": [
+          "2d3d0edbd6a1",
+          13
+        ],
+        "?setPinched@PathfindCell@@QAEX_N@Z": [
+          "d49c168abe71",
+          22
+        ],
+        "??0Rva002ED236Pos@@QAE@ABUCoord3D@@@Z": [
+          "79571e26f4e7",
+          25
+        ],
+        "??1Rva002ED236Pos@@QAE@XZ": [
+          "8bf7b464aaa2",
+          1
+        ],
+        "?rva0052E914@Pathfinder@@QAEXHHPAVPathfindCell@@PAVBridge@@_N0M@Z": [
+          "910350d5feba",
+          1120
+        ],
+        "__real@41700000": [
+          "dcbd25175316",
+          4
+        ],
+        "__real@41200000": [
+          "400bec6bce4c",
+          4
+        ],
+        "?rva0052ED74@Rva002E713FOwner@@QAEXPAXH@Z": [
+          "626f0d58598d",
+          1312
+        ],
+        "__real@3dcccccd": [
+          "7948480730a1",
+          4
+        ]
+      },
+      "bindings_before": {
+        "defined": [
+          "??0BridgeBounds@@QAE@ABU0@@Z",
+          "??0Region2D@@QAE@XZ",
+          "??0Rva002ED236Pos@@QAE@ABUCoord3D@@@Z",
+          "??1BridgeBounds@@QAE@XZ",
+          "??1Region2D@@QAE@XZ",
+          "??1Rva002ED236Pos@@QAE@XZ",
+          "?BridgeUpdateNeighborX@@3PAHA",
+          "?BridgeUpdateNeighborY@@3PAHA",
+          "?ceil@@YAMM@Z",
+          "?fabs@@YAMM@Z",
+          "?floor@@YAMM@Z",
+          "?getLayer@PathfindCell@@QBEHXZ",
+          "?getObstacleID@PathfindCell@@QBEHXZ",
+          "?getOwner@PathfindCell@@QBEHXZ",
+          "?getType@PathfindCell@@QBEHXZ",
+          "?rva0052E914@Pathfinder@@QAEXHHPAVPathfindCell@@PAVBridge@@_N0M@Z",
+          "?rva0052ED74@Rva002E713FOwner@@QAEXPAXH@Z",
+          "?setPinched@PathfindCell@@QAEX_N@Z",
+          "__real@3dcccccd",
+          "__real@41200000",
+          "__real@41700000",
+          "_ceilf",
+          "_fabsf",
+          "_floorf"
+        ],
+        "undefined": [
+          "??0Rva0027C36A@@QAE@XZ",
+          "??3@YAXPAX@Z",
+          "??4Rva0027C36A@@QAEAAV0@ABV0@@Z",
+          "?AddWallConnectCell@PathfindLayer@@QAEXPBUICoord2D@@@Z",
+          "?GetWallHeight@Pathfinder@@QAEMW4PathfindLayerEnum@@PBUCoord3D@@PAU3@@Z",
+          "?MarkDirty@PathfindZoneManager@@QAEXHH@Z",
+          "?Rva001E3679@@YA_NH@Z",
+          "?Rva002E7875WorldToCell@@YAPAUICoord2D@@PAU1@_NPBUCoord3D@@@Z",
+          "?SetType_Dirty@PathfindCell@@QAE_NH@Z",
+          "?TheGameLogic@@3PAVGameLogic@@A",
+          "?findObjectByID@GameLogic@@QAEPAVObject@@W4ObjectID@@@Z",
+          "?getBridgeHeight@Bridge@@QAEMPBUCoord3D@@PAU2@@Z",
+          "?getCell@PathfindLayer@@QAEPAVPathfindCell@@HH@Z",
+          "?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z",
+          "?isPointOnBridge@Bridge@@QAE_NPBUCoord3D@@@Z",
+          "?rva002ED236@Pathfinder@@QAE?AW4PathfindLayerEnum@@PAVObject@@URva002ED236Pos@@@Z",
+          "?rva00366500@Rva00366500@@QAE_NH@Z",
+          "?rva0036652D@Rva00366500@@QAE_NH@Z",
+          "?rva0052DFB1@PathfindCell@@QAE_NPBURva0052DFB1Arg@@@Z",
+          "?rva0052E001@Rva0052E001@@QAE_N_N@Z",
+          "?rva0052E0A1@Rva0052E0A1@@QAE_NH@Z",
+          "__fltused",
+          "__imp__ceil",
+          "__imp__floor",
+          "_fabs"
+        ],
+        "weak": []
+      },
+      "bindings_after": {
+        "defined": [
+          "??0BridgeBounds@@QAE@ABU0@@Z",
+          "??0Region2D@@QAE@XZ",
+          "??0Rva002ED236Pos@@QAE@ABUCoord3D@@@Z",
+          "??1BridgeBounds@@QAE@XZ",
+          "??1Region2D@@QAE@XZ",
+          "??1Rva002ED236Pos@@QAE@XZ",
+          "?BridgeUpdateNeighborX@@3PAHA",
+          "?BridgeUpdateNeighborY@@3PAHA",
+          "?ceil@@YAMM@Z",
+          "?fabs@@YAMM@Z",
+          "?floor@@YAMM@Z",
+          "?getLayer@PathfindCell@@QBEHXZ",
+          "?getObstacleID@PathfindCell@@QBEHXZ",
+          "?getOwner@PathfindCell@@QBEHXZ",
+          "?getType@PathfindCell@@QBEHXZ",
+          "?rva0052E914@Pathfinder@@QAEXHHPAVPathfindCell@@PAVBridge@@_N0M@Z",
+          "?rva0052ED74@Rva002E713FOwner@@QAEXPAXH@Z",
+          "?setPinched@PathfindCell@@QAEX_N@Z",
+          "__real@3dcccccd",
+          "__real@41200000",
+          "__real@41700000",
+          "_ceilf",
+          "_fabsf"
+        ],
+        "undefined": [
+          "??0Rva0027C36A@@QAE@XZ",
+          "??3@YAXPAX@Z",
+          "??4Rva0027C36A@@QAEAAV0@ABV0@@Z",
+          "?AddWallConnectCell@PathfindLayer@@QAEXPBUICoord2D@@@Z",
+          "?GetWallHeight@Pathfinder@@QAEMW4PathfindLayerEnum@@PBUCoord3D@@PAU3@@Z",
+          "?MarkDirty@PathfindZoneManager@@QAEXHH@Z",
+          "?Rva001E3679@@YA_NH@Z",
+          "?Rva002E7875WorldToCell@@YAPAUICoord2D@@PAU1@_NPBUCoord3D@@@Z",
+          "?SetType_Dirty@PathfindCell@@QAE_NH@Z",
+          "?TheGameLogic@@3PAVGameLogic@@A",
+          "?findObjectByID@GameLogic@@QAEPAVObject@@W4ObjectID@@@Z",
+          "?getBridgeHeight@Bridge@@QAEMPBUCoord3D@@PAU2@@Z",
+          "?getCell@PathfindLayer@@QAEPAVPathfindCell@@HH@Z",
+          "?isCellOnEnd@Bridge@@QAE_NPBURegion2D@@@Z",
+          "?isPointOnBridge@Bridge@@QAE_NPBUCoord3D@@@Z",
+          "?rva002ED236@Pathfinder@@QAE?AW4PathfindLayerEnum@@PAVObject@@URva002ED236Pos@@@Z",
+          "?rva00366500@Rva00366500@@QAE_NH@Z",
+          "?rva0036652D@Rva00366500@@QAE_NH@Z",
+          "?rva0052DFB1@PathfindCell@@QAE_NPBURva0052DFB1Arg@@@Z",
+          "?rva0052E001@Rva0052E001@@QAE_N_N@Z",
+          "?rva0052E0A1@Rva0052E0A1@@QAE_NH@Z",
+          "__fltused",
+          "__imp__ceil",
+          "__imp__floor",
+          "_fabs"
+        ],
+        "weak": []
+      }
+    }
+  ]
+}

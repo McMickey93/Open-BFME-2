@@ -24,6 +24,8 @@
 // only al after the call (WB reads its result as a byte): the narrowing cast
 // keeps the rowed name. The footprint call 0x00530212 is a thiscall member
 // (ecx = this before the call); its bool flags match the ledger row's signature.
+// Keep math.h's unused out-of-line floorf copy local.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 #include "../../../../Libraries/Include/Lib/Coord3D.h"

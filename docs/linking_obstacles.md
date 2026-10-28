@@ -6953,3 +6953,26 @@ Remaining / next check:
 - Rule question for maintainers: 675 objects are positioned by an ICF-alias row (an address another object's row also claims), many already at the census. If `link_order` ignored such alias rows, objects would sit where their own code is; that is a census rule change (`tools/census_rebaseline.py`), not a seat edit. Until then, a commit that adds a low-address fold row to a unit should first check the unit's other COMDAT copies against the units it overtakes.
 
 Clearance: none. Census confirmation: the next census should show these losses unless the movers are repaired first.
+
+#### Pathfinder consumer subset (2026-10-28)
+
+Scoped repair verified against base `7c27ac5b25` and preview index
+`41c28839bf`: ClassifyBridgeCells, PathfinderNewMap.cpp and
+PathfinderBridgeUpdateRva0052ED74.cpp give math.h's unused inline `floorf`
+internal linkage. Each object stops exposing `_floorf`; all 41 retained
+external COMDAT byte-and-relocation digests and the external dependencies
+remain unchanged. No provider, row, pin, shared header or source path moves.
+[Scoped evidence and object receipts](../reverse/attempt_support/pathfinder-inline-floor-link-20261028-codexb4.md).
+
+Normal builds pass six function rows and two data rows; NewMap's EH graph is
+EXACT. Strict receipts cover all three sources and the existing retail
+`_floorf` owner (eight rows). The same-index ordinary preview changes the
+three consumers from blocked to LINKS, totaling 4,349 authored bytes. These
+are preview results, not measured linked-byte gains. The separate retail
+owner still reports the selected-copy blocker; LINK-133 remains open globally.
+
+The outgoing batch audit is INCONCLUSIVE: the index predates the base and
+affected consumer Common/0CreateAHeroManager21FE49.cpp lacks a current
+receipt. Carry the removed-helper scope and affected consumers into the next
+normal census; full selected-consumer coverage and census confirmation remain
+pending.
