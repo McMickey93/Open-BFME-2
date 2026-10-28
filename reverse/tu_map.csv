@@ -46836,15 +46836,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0056C01E,71,code,Code/GameEngine/Source/Common/VictorySystem.cpp,proposed,K,K=Rva00404781,Code/GameEngine/Source/Common/BfmeCellGridCtor.cpp
 0x0056C065,64,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,N,N=Code/GameEngine/Source/Common/CellGrid.cpp provisional,Code/GameEngine/Source/Common/BfmeCellGridCtor.cpp
 0x0056C0A5,75,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,N,N=Code/GameEngine/Source/Common/CellGrid.cpp provisional,Code/GameEngine/Source/Common/BfmeCellGridCtor.cpp
-0x0056C0F0,125,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C0A5..0x0056C16D provisional,Code/GameEngine/Source/Common/Rva0056C0F0Method.cpp
-0x0056C16D,174,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/CellGrid.cpp provisional,Code/GameEngine/Source/GameLogic/System/CellGridXfer.cpp
-0x0056C21B,59,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C16D..0x0056C256 provisional,Code/GameEngine/Source/Common/Rva0056C21BFanout.cpp
+0x0056C0F0,125,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C0A5..0x0056C16D provisional,Code/GameEngine/Source/Common/CellGrid.cpp
+0x0056C16D,174,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/CellGrid.cpp provisional,Code/GameEngine/Source/Common/CellGrid.cpp
+0x0056C21B,59,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C16D..0x0056C256 provisional,Code/GameEngine/Source/Common/CellGrid.cpp
 0x0056C256,16,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C16D..0x0056C266 provisional,Code/GameEngine/Source/Common/GapBodiesGE30.cpp
 0x0056C266,383,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,N,N=Code/GameEngine/Source/Common/CellGrid.cpp W=Code/GameEngine/Source/GameLogic/Object/CellGrid.cpp provisional,Code/GameEngine/Source/Common/BfmeCellGridCtor.cpp
 0x0056C3E5,5,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C266..0x0056C3EA provisional,Code/GameEngine/Source/Common/BfmeCellGridCtor.cpp
-0x0056C3EA,233,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C266..0x0056C4D3 provisional,Code/GameEngine/Source/GameLogic/System/CellGridRender.cpp
-0x0056C4D3,59,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C266..0x0056C50E provisional,Code/GameEngine/Source/Common/Rva0056C4D3Probe.cpp
-0x0056C50E,520,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/CellGrid.cpp provisional,Code/GameEngine/Source/GameLogic/System/CellGridXfer.cpp
+0x0056C3EA,233,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C266..0x0056C4D3 provisional,Code/GameEngine/Source/Common/CellGrid.cpp
+0x0056C4D3,59,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,C,C=0x0056C266..0x0056C50E provisional,Code/GameEngine/Source/Common/CellGrid.cpp
+0x0056C50E,520,code,Code/GameEngine/Source/Common/CellGrid.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/CellGrid.cpp provisional,Code/GameEngine/Source/Common/CellGrid.cpp
 0x0056C716,122,code,,,-,W=Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/InGameCommandButtonHelp.cpp,Code/GameEngine/Source/GameClient/GUI/InGame/InGameCommandButtonHelpRender.cpp
 0x0056C790,97,code,,,-,,Code/GameEngine/Source/GameClient/GUI/InGameCommandButtonHelpDisplayStrings.cpp
 0x0056C7F1,170,code,,,-,,Code/GameEngine/Source/GameClient/GUI/InGame/InGameCommandButtonHelpRender.cpp
