@@ -94,10 +94,7 @@ extern void *g_00DDF57C; // s_xfer, provider INI_readLine.cpp
 // 0x0002C5E6 disassembly and matched startsWithNoCase at 0x0002C42F.
 struct BfmeStringNoCaseLess
 {
-	bool operator()(const AsciiString &left, const AsciiString &right) const
-	{
-		return left < right;
-	}
+	bool operator()(const AsciiString &a, const AsciiString &b) const;
 };
 // Bind to the kept retail copy instead of emitting this unit's own.
 namespace _STL { template <> _Rb_tree<AsciiString,AsciiString,_Identity<AsciiString>,BfmeStringNoCaseLess,allocator<AsciiString> >::~_Rb_tree(); }
