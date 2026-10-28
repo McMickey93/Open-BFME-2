@@ -3653,4 +3653,9 @@ local,BfmeSceneVector::rva00142330::y1,BfmeSceneVector::rva00142330::maxY,inferr
 param,Rva0041534BIter::t,Rva0041534BIter::table,inferred,agree:nl-0980875b263c,Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp,
 param,Rva00574910::rva00574910::arg,Rva00574910::rva00574910::msg,inferred,agree:nl-533cdbb48c0d,Code/GameEngine/Source/Common/MemberBaseDtorsB01.cpp,
 member,Rva0025E5F4Command::type14,Rva0025E5F4Command::m_commandType,inferred,agree:nl-ab4f05c7832d,Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp,
+param,Rva003955AFData::query::a1,Rva003955AFData::query::worldPos,inferred,agree:nl-af42e5c66319,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
+param,Rva003955AFData::query::a2,Rva003955AFData::query::build,inferred,agree:nl-2e5b5ab69590,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
+param,Rva003955AFData::query::f,Rva003955AFData::query::angle,inferred,agree:nl-cfe71565a1a2,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
+param,Rva003955AFData::query::a4,Rva003955AFData::query::options,inferred,agree:nl-b5ecf8ea6a43,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
+param,Rva003955AFData::query::a5,Rva003955AFData::query::builderObject,inferred,agree:nl-60270834e4c4,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
 function,?rva005E118B@@YIXPAVRva005F8A7ESub@@@Z,?HideTimerOverlay@@YIXPAVRva005F8A7ESub@@@Z,inferred,agree:nl-1741de5d7beb,Code/GameEngine/Source/Common/Rva005E1158Forward.cpp,0x005E118B

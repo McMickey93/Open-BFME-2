@@ -31,9 +31,9 @@ public:
 class Rva003955AFData
 {
 public:
-	int query(int a1, int a2, float f, int a4, int a5);
+	int query(int worldPos, int build, float angle, int options, int builderObject);
 };
-int Rva003955AFData::query(int a1, int a2, float f, int a4, int a5)
+int Rva003955AFData::query(int worldPos, int build, float angle, int options, int builderObject)
 {
-	return ((Rva00A027B8 *)TheBuildAssistant)->slot16(a1, a2, f, a4 | 0x100, a5, 0);
+	return ((Rva00A027B8 *)TheBuildAssistant)->slot16(worldPos, build, angle, options | 0x100, builderObject, 0);
 }
