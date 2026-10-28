@@ -13978,8 +13978,8 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/Rva00490D3FCtor
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/Rva00492179Ctor.cpp	Rva00492179::~Rva00492179	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/Rva00492402Ctor.cpp	Rva00492402::~Rva00492402	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/Rva00492C59Ctor.cpp	Rva00492C59::~Rva00492C59	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/Rva00494DCACtor.cpp	Rva00494DCA::~Rva00494DCA	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/Rva004A466EFinish.cpp	StructureCollapseUpdate::StructureCollapseUpdate	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/ScaleWallSpecialAbilityUpdate.cpp	Rva00494DCA::~Rva00494DCA	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cpp	SlavedUpdate::doGuardLogic	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cpp	SlavedUpdate::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cpp	SlavedUpdate::onObjectCreated	1
