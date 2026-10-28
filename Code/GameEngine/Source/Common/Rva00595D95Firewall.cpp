@@ -61,8 +61,11 @@ public:
 class GlobalData
 {
 public:
-	char m_pad[0xA4C];
-	int m_firewallBehavior;
+	char m_pad00[0xA4C];
+	int m_firewallBehavior; // +0xA4C
+	char m_padA50[0x8];
+	short m_firewallPortAllocationDelta; // +0xA58
+	char m_padA5A[0x2];
 };
 
 extern GlobalData *TheWritableGlobalData;
