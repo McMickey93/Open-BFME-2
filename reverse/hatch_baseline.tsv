@@ -1711,7 +1711,6 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv1457.cpp	?bfmeFwdOneSVA@Bfme
 alternatename	Code/GameEngine/Source/Common/BfmeConv1457.cpp	?bfmeInsertV17@BfmeVecV17@@QAEXPAHI0@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1468.cpp	?bfmeDoOR@@YAXPAX0EPAE@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1481.cpp	?bfmeFwdThreeSUA@BfmeThingSUA@@QAEXDH@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1483.cpp	?bfmeDoPG@BfmeThingPG@@QAEXPADPAXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1496.cpp	?bfmeInsertV52@BfmeStrV52@@QAEXPAD0000@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1497.cpp	?bfmeInsertV53@BfmeStrV53@@QAEXPAD0000@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1503.cpp	?bfmeFreeVNC@Rva00800E50Owner@@QAEXPAVRva007E8810Message@@@Z	1
@@ -1841,6 +1840,7 @@ alternatename	Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp	?v67@Display@@UAE
 alternatename	Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp	?v68@Display@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingBFGTail.cpp	?rva0025F30DCallView@BfmeThingBFG@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingCDEDestructor.cpp	?ArrayDeleteHelperBodyThunk@@YGXPAXII0@Z	1
+alternatename	Code/GameEngine/Source/Common/BfmeThingPF.cpp	?bfmeDoPG@BfmeThingPG@@QAEXPADPAXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredEightyFour.cpp	?bfmeHitAEA@BfmeEntryAEA@@QAE_NPAUBfmeKeyAEA@@PAX@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	?bfmeDropVIH@BfmeSubVIH@@QAEXPAVBfmeThingVIH@@@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	?g_bfmeThingUCHead@@3PAVBfmeNodeUC@@A	1
