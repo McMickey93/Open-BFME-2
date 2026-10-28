@@ -24,6 +24,8 @@
 #include <iterator>
 #include <stl/_algobase.h>
 #include <stl/_iterator_base.h>
+#include <memory>
+
 //
 // HTreeClass destructor, retail 0x001667E0, 26 bytes.
 // Calls Free then the C allocator on the first owned-sequence word at +0x1C.
@@ -224,6 +226,27 @@ namespace _STL {template<> void _Construct<Rva00162800Record,Rva00162800Record>(
 
 template _STL::_Vector_base<Rva00162800Record,_STL::allocator<Rva00162800Record> >::_Vector_base(unsigned int,const _STL::allocator<Rva00162800Record>&);
 
+// Native placement construction is owned once, by the rowed 81-byte helper
+// at 0x001610F0. Declare it; a forwarding COMDAT is not that retail body.
+namespace _STL {
+template<> void _Construct<Elem36, Elem36>(Elem36 *, const Elem36 &);
+}
+
+namespace _STL {
+// STLport's normal append algorithm, with an uninitialized empty dispatch
+// tag: retail does not zero the tag byte, and the tag carries no value.
+// Scoped here to preserve the independently verified shared providers.
+template<> inline void vector<Elem36>::push_back(const Elem36 &v) {
+ if(this->_M_finish != this->_M_end_of_storage._M_data) {
+  _Construct(this->_M_finish,v);
+  ++this->_M_finish;
+ } else {
+  __false_type tag;
+  _M_insert_overflow(this->_M_finish,v,tag,1UL,true);
+ }
+}
+}
+
 // tu-skeleton: 0x001606E0 1144B ?Simple_Evaluate_Pivot@HTreeClass@@QBE_NHABVMatrix3D@@PAV2@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassBoneLookup.cpp (not merged yet)
 
 // tu-skeleton: 0x00160B60 68B ?Get_Bone_Index@HTreeClass@@QBEHPBD@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassBoneLookup.cpp (not merged yet)
@@ -231,6 +254,8 @@ template _STL::_Vector_base<Rva00162800Record,_STL::allocator<Rva00162800Record>
 // tu-skeleton: 0x00160BB0 22B ?Get_Bone_Name@HTreeClass@@QBEPBDH@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassBoneLookup.cpp (not merged yet)
 
 // tu-skeleton: 0x00160BD0 35B ?Get_Parent_Index@HTreeClass@@QBEHH@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassBoneLookup.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/htree.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/htree.cpp
 
@@ -999,8 +1024,6 @@ void HTreeClass::Free(void)
 	Unknown30 = 0;
 }
 
-// tu-skeleton: 0x00160CB0 770B ?Slave_Update@HTreeClass@@QAEXPBV1@ABVMatrix3D@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassReadPivots.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/Rva00160FC0Storage.cpp
 
 // ?rva00160FC0@HTreeClass@@QAEXPAVRva00160FC0Input@@@Z
@@ -1039,6 +1062,30 @@ void HTreeClass::rva00160FC0(Rva00160FC0Input *next)
     }
 }
 
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlVectorRva00162800.cpp
+
+// Reference: pristine STLport4.5.3. Address-derived opaque ABI view.
+// Target boundary and stride independently establish storage width; no game class identity inferred.
+// The emitted unsigned max copy must match retail RVA 0x00013740.
+// Define it for speed, then restore this unit's flags for its own bodies.
+
+#pragma optimize("s", off)
+
+#pragma optimize("t", on)
+
+#pragma optimize("", on)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/HTreeClassDestructor.cpp
+
+HTreeClass::~HTreeClass()
+{
+	Free();
+	if (OwnedSequence1C[0])
+		free(reinterpret_cast<void *>(OwnedSequence1C[0]));
+}
+
+// tu-skeleton: 0x00160CB0 770B ?Slave_Update@HTreeClass@@QAEXPBV1@ABVMatrix3D@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassReadPivots.cpp (not merged yet)
+
 // tu-skeleton: 0x001610A0 23B ?size@?$vector@URunwayInfo@ParkingPlaceBehavior@@V?$allocator@URunwayInfo@ParkingPlaceBehavior@@@_STL@@@_STL@@QBEIXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp (not merged yet)
 
 // tu-skeleton: 0x001610C0 34B ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVAsciiString@@VArchivedFileInfo@@@_STL@@@_STL@@@_STL@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVAsciiString@@VArchivedFileInfo@@@_STL@@@2@IPBX@Z -- matched in Code/GameEngine/Source/Common/System/ArchiveFile.cpp (not merged yet)
@@ -1056,19 +1103,6 @@ void HTreeClass::rva00160FC0(Rva00160FC0Input *next)
 // tu-skeleton: 0x001622B0 1335B ?Capture_Update@HTreeClass@@QAEHH@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassFirstCapturedBone.cpp (not merged yet)
 
 // tu-skeleton: 0x001627F0 7B ?get_allocator@?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QBE?AV?$allocator@G@2@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_wide_string_default_ctor.cpp (not merged yet)
-
-// ---- from Code/Libraries/Source/WWVegas/WWLib/StlVectorRva00162800.cpp
-
-// Reference: pristine STLport4.5.3. Address-derived opaque ABI view.
-// Target boundary and stride independently establish storage width; no game class identity inferred.
-// The emitted unsigned max copy must match retail RVA 0x00013740.
-// Define it for speed, then restore this unit's flags for its own bodies.
-
-#pragma optimize("s", off)
-
-#pragma optimize("t", on)
-
-#pragma optimize("", on)
 
 // tu-skeleton: 0x00162860 32B ??$__copy_backward_ptrs@PAUElem36@@PAU1@@_STL@@YAPAUElem36@@PAU1@00ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00162860.cpp (not merged yet)
 
@@ -1092,15 +1126,71 @@ void HTreeClass::rva00160FC0(Rva00160FC0Input *next)
 
 // tu-skeleton: 0x001666D0 267B ?Init_Default@HTreeClass@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassInitDefault.cpp (not merged yet)
 
-// ---- from Code/Libraries/Source/WWVegas/WW3D2/HTreeClassDestructor.cpp
-
-HTreeClass::~HTreeClass()
-{
-	Free();
-	if (OwnedSequence1C[0])
-		free(reinterpret_cast<void *>(OwnedSequence1C[0]));
-}
-
 // tu-skeleton: 0x00166800 371B ?Load_W3D@HTreeClass@@QAEHAAVChunkLoadClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassLoadW3D.cpp (not merged yet)
 
-// tu-skeleton: 0x00166980 229B ?Capture_Bone@HTreeClass@@QAEXH@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassCaptureBone.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/HTreeClassCaptureBone.cpp
+
+// ?Capture_Bone@HTreeClass@@QAEXH@Z
+//
+// ?Capture_Bone@HTreeClass@@QAEXH@Z, retail 0x00166980 (229 bytes).
+//
+// BFME2 rewrote Zero Hour's per-pivot IsCaptured flag as a sorted vector of
+// 36-byte captured-bone records at +0x1C (Begin/End/Capacity), the same
+// member HTreeClassFree.cpp clears and HTreeClassReleaseBone.cpp erases from.
+// Target loop first tests equality, overwriting a matching identity record,
+// then greater-than, inserting before it and resetting the scan to begin.
+// After that scan, it appends only when the iterator equals the current end.
+// BFME 1 874e38488 Zero Hour htree.cpp supplies the bone-capture purpose;
+// target bytes and already-matched Control_Bone/Release_Bone supply this
+// target-specific sorted-vector representation, not the donor flag layout.
+// The record is Index, identity quaternion (0,0,0,1), zero translation, and a
+// false world-space flag, matching the Control_Bone record model. The vector
+// helpers keep the recovered Elem36 stand-in identity so the call sites mangle
+// to the rowed STLport 36-byte vector bodies.
+
+// ?Capture_Bone@HTreeClass@@QAEXH@Z
+void HTreeClass::Capture_Bone(int boneindex)
+{
+	// The seed retains the vector as its three 32-bit storage words.
+	Elem36Vector &bones=*reinterpret_cast<Elem36Vector *>(OwnedSequence1C);
+	Elem36 bone;
+	bone.Index = boneindex;
+	bone.WorldSpace = false;
+	bone.Transform.Rotation.X=0.0f; bone.Transform.Rotation.Y=0.0f;
+	bone.Transform.Rotation.Z=0.0f; bone.Transform.Rotation.W=1.0f;
+	bone.Transform.Translation.X=0.0f; bone.Transform.Translation.Y=0.0f; bone.Transform.Translation.Z=0.0f;
+
+	Elem36 *it = bones.begin();
+	Elem36 *end = reinterpret_cast<Elem36 *>(OwnedSequence1C[1]);
+ while (it != end) {
+  if(it->Index == boneindex) {
+   it->Index=boneindex;
+   it->Transform.Rotation.X=0.0f; it->Transform.Rotation.Y=0.0f;
+   it->Transform.Rotation.Z=0.0f; it->Transform.Rotation.W=1.0f;
+   it->Transform.Translation.X=0.0f; it->Transform.Translation.Y=0.0f; it->Transform.Translation.Z=0.0f;
+   it->WorldSpace=false;
+   break;
+  }
+  if(it->Index > boneindex) {
+   bones.insert(it, bone);
+   it = bones.begin();
+   break;
+  }
+  ++it;
+ }
+ if(it == reinterpret_cast<Elem36 *>(OwnedSequence1C[1])) bones.push_back(bone);
+}
+
+// tu-skeleton: 0x007674A0 11B uw_007674a0 -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassCopyConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007674AB 11B uw_007674ab -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassCopyConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007674B6 10B __ehhandler$??0HTreeClass@@QAE@ABV0@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassCopyConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007674C0 11B uw_007674c0 -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassInitDefault.cpp (not merged yet)
+
+// tu-skeleton: 0x007674CB 10B __ehhandler$?Init_Default@HTreeClass@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassInitDefault.cpp (not merged yet)
+
+// tu-skeleton: 0x007674E0 11B uw_007674e0 -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassLoadW3D.cpp (not merged yet)
+
+// tu-skeleton: 0x007674EB 10B __ehhandler$?Load_W3D@HTreeClass@@QAEHAAVChunkLoadClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HTreeClassLoadW3D.cpp (not merged yet)
