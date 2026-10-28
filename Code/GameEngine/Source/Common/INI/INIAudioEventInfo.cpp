@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <algorithm>
 #include <memory>
+#include "string_base.h"
 
 struct RvaPair001D9F62 { AsciiString m_key; int m_value; ~RvaPair001D9F62(); };
 
@@ -505,6 +506,36 @@ private:
 	_STL::vector<BfmeE8> m_B8;
 };
 
+struct VecPair
+{
+	void *beg;
+	void *end;
+};
+
+class Rva001D9A00
+{
+public:
+	bool rva001D9A00();
+private:
+	unsigned char m_pad00[0x0C];
+	StringBase<char> m_str;
+	unsigned char m_pad10[0x50 - 0x10];
+	void *m_beg1;
+	void *m_end1;
+	unsigned char m_pad58[0x60 - 0x58];
+	void *m_beg2;
+	void *m_end2;
+	unsigned char m_pad68[0x70 - 0x68];
+	void *m_beg3;
+	void *m_end3;
+	unsigned char m_pad78[0x80 - 0x78];
+	VecPair m_v4;
+	unsigned char m_pad88[0xB0 - 0x88];
+	int m_B0;
+};
+
+// ---- from Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+
 // ---- from Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 
 // ---- from Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
@@ -885,6 +916,33 @@ void Rva001DAB71::rva001DAB9F(int *range)
 	Rva001DAB3F(range, (Rva001DA112 *)m_70.target, (Rva001DA112 *)m_70.total);
 }
 
+// ---- from Code/Libraries/Source/WWVegas/WWLib/Rva001DA2D5Ctor.cpp
+
+// ??0Rva001DA2D5@@QAE@XZ, retail 0x001DA19E..0x001DA2D5 (311 bytes, no EH
+// frame, ret 0): the default constructor of the 0xC4-byte class whose dtor
+// 0x001DA2D5 is rowed in Rva001DA2D5Finish.cpp and whose copying ctor
+// 0x004335BC is rowed under the same class name; the rowed Rva00433390
+// constructor (and 0x0005AD2A) builds this base first. It installs table
+// 0x00BDA270 and initializes, in offset order: three cleared words, a 100.0f
+// limit and seven cleared floats, 1.0f, two cleared words, 25, -1, 2, two
+// cleared words, four zero-initialized vectors each followed by a cleared
+// count word (+0x50..+0x8C), a float block (0, 100, 1000, 1, 1, 0, 1, 1),
+// 2, -1 and a last vector at +0xB8. Retail builds this unit without exception
+// handling (no frame for the vector members). Field meanings are not
+// established.
+
+Rva001DA2D5::Rva001DA2D5()
+	: AudioInfoRefCountBase(), m_08(), m_0C(),
+	  m_10(100.0f),
+	  m_14(0.0f), m_18(0.0f), m_1C(0.0f), m_20(), m_28(),
+	  m_30(1.0f),
+	  m_34(), m_3C(25), m_40(-1), m_44(2), m_48(0), m_4C(0),
+	  m_50(), m_5C(0), m_60(), m_6C(0), m_70(), m_7C(0), m_80(), m_8C(0),
+	  m_90(0.0f), m_94(100.0f), m_98(1000.0f), m_9C(1.0f), m_A0(1.0f), m_A4(0.0f), m_A8(1.0f), m_AC(1.0f),
+	  m_B0(2), m_B4(-1)
+{
+}
+
 // tu-skeleton: 0x001D96FF 10B ?rva001D96FF@Rva001D96FF@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/Disp8DwordMaskClearers.cpp (not merged yet)
 
 // tu-skeleton: 0x001D9709 12B ?rva001D9709@Rva001D9709@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/Disp8DwordMaskClearers.cpp (not merged yet)
@@ -903,7 +961,30 @@ void Rva001DAB71::rva001DAB9F(int *range)
 
 // tu-skeleton: 0x001D99E7 25B ??0BfmeStringTailRecord156@@QAE@ABVRva0036CA00Str@@H@Z -- matched in Code/GameEngine/Source/Common/INI/AudioEventInfoParseSoundLists.cpp (not merged yet)
 
-// tu-skeleton: 0x001D9A00 79B ?rva001D9A00@Rva001D9A00@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/Thing/Rva001D9A00Finish.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Thing/Rva001D9A00Finish.cpp
+
+// ?rva001D9A00@Rva001D9A00@@QAE_NXZ @0x001D9A00 79B unlock
+// Same layout as sibling 0x001D98BD (+0xB0 type, +0x80/0x84 vector, +0x50/0x54
+// +0x60/0x64 +0x70/0x74 vectors, +0x0C string). Case 2 checks the three
+// pointer pairs, case 5 the +0x80 pair through its address, else the string
+// non-empty via rowed isEmpty 0x00001E2F. Caller 0x0005D7A3.
+// Neighbour FXBoneInfoAssign shares /O1 flags; no floats or EH.
+
+bool Rva001D9A00::rva001D9A00()
+{
+	switch (m_B0)
+	{
+	case 2:
+		return m_beg1 != m_end1 || m_beg2 != m_end2 || m_beg3 != m_end3;
+	case 5:
+		{
+			VecPair *vecPair = &m_v4;
+			return vecPair->beg != vecPair->end;
+		}
+	default:
+		return !m_str.isEmpty();
+	}
+}
 
 // tu-skeleton: 0x001D9A4F 18B ??$_Construct@VBfmeStringTailRecord156@@V1@@_STL@@YAXPAVBfmeStringTailRecord156@@ABV1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_tailrecord156.cpp (not merged yet)
 
@@ -954,33 +1035,6 @@ void Rva001DAB71::rva001DAB9F(int *range)
 // tu-skeleton: 0x001DA05E 180B ??4?$vector@URva001DA05ERecord@@V?$allocator@URva001DA05ERecord@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001DA05E.cpp (not merged yet)
 
 // tu-skeleton: 0x001DA112 140B ?rva001DA112@Rva001DA112@@QAEXHHPAD@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva001DA112Assign.cpp (not merged yet)
-
-// ---- from Code/Libraries/Source/WWVegas/WWLib/Rva001DA2D5Ctor.cpp
-
-// ??0Rva001DA2D5@@QAE@XZ, retail 0x001DA19E..0x001DA2D5 (311 bytes, no EH
-// frame, ret 0): the default constructor of the 0xC4-byte class whose dtor
-// 0x001DA2D5 is rowed in Rva001DA2D5Finish.cpp and whose copying ctor
-// 0x004335BC is rowed under the same class name; the rowed Rva00433390
-// constructor (and 0x0005AD2A) builds this base first. It installs table
-// 0x00BDA270 and initializes, in offset order: three cleared words, a 100.0f
-// limit and seven cleared floats, 1.0f, two cleared words, 25, -1, 2, two
-// cleared words, four zero-initialized vectors each followed by a cleared
-// count word (+0x50..+0x8C), a float block (0, 100, 1000, 1, 1, 0, 1, 1),
-// 2, -1 and a last vector at +0xB8. Retail builds this unit without exception
-// handling (no frame for the vector members). Field meanings are not
-// established.
-
-Rva001DA2D5::Rva001DA2D5()
-	: AudioInfoRefCountBase(), m_08(), m_0C(),
-	  m_10(100.0f),
-	  m_14(0.0f), m_18(0.0f), m_1C(0.0f), m_20(), m_28(),
-	  m_30(1.0f),
-	  m_34(), m_3C(25), m_40(-1), m_44(2), m_48(0), m_4C(0),
-	  m_50(), m_5C(0), m_60(), m_6C(0), m_70(), m_7C(0), m_80(), m_8C(0),
-	  m_90(0.0f), m_94(100.0f), m_98(1000.0f), m_9C(1.0f), m_A0(1.0f), m_A4(0.0f), m_A8(1.0f), m_AC(1.0f),
-	  m_B0(2), m_B4(-1)
-{
-}
 
 // tu-skeleton: 0x001DA2D5 164B ??1Rva001DA2D5@@UAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva001DA2D5Finish.cpp (not merged yet)
 
