@@ -11,6 +11,13 @@
 // ??1Rva004B4CDF@@UAE@XZ). Callers include the 28B scalar-deleting shape at
 // 0x002A73E4 plus array loops at 0x002A752F/0x002A7604.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <new>
+#include <stdlib.h>
+#undef _CRTIMP
+
 class Rva00360D26Member
 {
 public:
@@ -32,9 +39,6 @@ Rva002A73B8::~Rva002A73B8()
 {
 }
 
-void *operator new(unsigned int size);
-void operator delete(void *p);
-
 // Anchor: new/delete calls the scalar deleting dtor directly (non-virtual,
 // so devirtualization is a direct ??_G call), emitting the COMDAT for
 // ??_GRva002A73B8@@QAEPAXI@Z at 0x002A73E4. Operator new/delete resolve to
@@ -50,12 +54,6 @@ void Rva002A752FDestroy(Rva002A73B8 *first, Rva002A73B8 *last)
 	for (; first != last; ++first)
 		first->~Rva002A73B8();
 }
-
-// Retail calls free directly (the game allocator), not through the CRT
-// import: read <stdlib.h> without dllimport.
-#define _CRTIMP
-#include <stdlib.h>
-#undef _CRTIMP
 
 class Rva002A7677
 {
