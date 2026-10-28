@@ -1,4 +1,5 @@
-// cl: /DNDEBUG /MD
+// cl: /DBFME_ASCII_DTOR_DECL /GX /MD /DNDEBUG /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /I.
+// stlport
 //
 // ?xfer@RousingSpeechUpdate@@MAEXPAVXfer@@@Z, retail 0x004AD2AF, 132 bytes.
 // Slot 3 of the vftable 0x00C54FE8 whose slot-2 name getter returns
@@ -6,7 +7,68 @@
 // SpecialAbilityUpdate::xfer 0x0044F996, the light-CRC out, Version(1,2),
 // the ObjectID list at +0x88 (pinned xferSTLObjectIDList 0x00331F2D), a bool
 // at +0x90, an unsigned int at +0x8C and from version 2 floats at +0x94 and
-// +0x98 (the GloriousChargeUpdateXfer shape). Member names not recovered.
+// +0x98 (the GloriousChargeUpdate::xfer shape). Member names not recovered.
+
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
+#include <vector>
+#include "ascii_string.h"
+class Drawable;
+class Rva0010CConditionBits
+{
+public:
+	unsigned int test(int bit) const
+	{
+		return m_words[bit >> 5] & (1U << (bit & 0x1f));
+	}
+	void set(int bit)
+	{
+		m_words[bit >> 5] |= 1U << (bit & 0x1f);
+	}
+	void clear(int bit)
+	{
+		m_words[bit >> 5] &= ~(1U << (bit & 0x1f));
+	}
+private:
+	unsigned int m_words[20];
+};
+#include "../../../Common/GameLogicObjectLookupView.h"
+enum KindOfType
+{
+	KINDOF_FIRST = 0
+};
+#include "../../../../../Libraries/Include/Lib/Coord3D.h"
+class Player;
+class ExperienceTracker
+{
+public:
+	bool rva0039B4EC(int levels, bool flag1, bool flag2);
+};
+class Object
+{
+public:
+	void rva0028AE6D();
+	Drawable *getDrawable() const;
+	bool isKindOf(KindOfType t) const;
+	Player *getControllingPlayer() const; // 0x0028AFA9
+	const Coord3D *getPosition() const { return &m_pos; }
+	ObjectID getID() const { return m_id; }
+	unsigned char m_pad000[0x38];
+	Coord3D m_pos; // +0x38
+	unsigned char m_pad044[0x74 - 0x44];
+	ObjectID m_id; // +0x74
+	unsigned char m_pad078[0x10C - 0x78];
+	Rva0010CConditionBits m_conditionBits; // +0x10C
+	unsigned char m_pad15C[0x264 - 0x15C];
+	ExperienceTracker *m_experienceTracker264; // +0x264
+	unsigned char m_pad268[0x44C - 0x268];
+	int m_44C; // +0x44C
+};
+class FXList
+{
+public:
+	static void doFXObj(const FXList *fx, const Object *primary, const Object *secondary);
+};
 
 class AsciiString;
 class UnicodeString;
@@ -25,12 +87,7 @@ class RGBColor;
 class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
-class Thing;
-class ModuleData;
-class Object;
-
 #include "../../../../Include/Common/BfmeXfer.h"
-
 class Xfer::Version
 {
 public:
@@ -41,10 +98,252 @@ public:
 	unsigned char m_minimum;
 };
 
-enum ObjectID
+class Rva00360D26Member
 {
-	INVALID_ID = 0
+public:
+	~Rva00360D26Member();
+
+private:
+	unsigned char m_data[4];
 };
+
+class Rva0044ECCE
+{
+public:
+	virtual ~Rva0044ECCE();
+
+private:
+	unsigned char m_pad[0xC8 - 4];
+};
+
+// Field names from the chained parse table 0x00C54F28 (10 of 10 BFME1
+// fields); layout from the rowed ctor 0x4AD0EE.
+class __declspec(novtable) RousingSpeechUpdateModuleData : public Rva0044ECCE
+{
+public:
+	virtual ~RousingSpeechUpdateModuleData();
+
+	float m_bonusRadius; // +0xC8
+	int m_speechDuration; // +0xCC
+	int m_updateInterval; // +0xD0
+	const FXList *m_leaderFX; // +0xD4
+	const FXList *m_followerFX; // +0xD8
+	bool m_createWave; // +0xDC
+	unsigned char m_padDD[3]; // +0xDD
+	float m_waveWidth; // +0xE0
+	_STL::vector<AsciiString> m_modifierNames; // +0xE4
+	bool m_levelUp; // +0xF0
+	unsigned char m_padF1[3]; // +0xF1
+	Rva00360D26Member m_objectFilter; // +0xF4
+};
+
+struct Rva004AD613Node
+{
+	Rva004AD613Node *m_next;
+	Rva004AD613Node *m_prev;
+	ObjectID m_id;
+};
+
+struct Rva004AD613Iterator
+{
+	Rva004AD613Node *m_node;
+	ObjectID &operator*() const { return m_node->m_id; }
+	Rva004AD613Iterator &operator++() { m_node = m_node->m_next; return *this; }
+	bool operator!=(const Rva004AD613Iterator &other) const { return m_node != other.m_node; }
+};
+
+// Native2A1B6F and its whole insertion helper copy one opaque four-byte
+// element into a 12-byte list node; they never dereference the word as a
+// pointer. Reuse that existing owner for these ObjectID payloads.
+class Rva002A1B6FNativeList { public: void append(void *const &value); };
+
+class Rva0029FB3BMember
+{
+public:
+	bool empty() const { return m_head->m_next == m_head; }
+	Rva004AD613Iterator begin() const { Rva004AD613Iterator it; it.m_node = m_head->m_next; return it; }
+	Rva004AD613Iterator end() const { Rva004AD613Iterator it; it.m_node = m_head; return it; }
+	void reset();
+	Rva004AD613Node *m_head;
+};
+
+class Thing;
+
+class ModuleData;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class BehaviorModule
+{
+public:
+	virtual ~BehaviorModule();
+protected:
+	const ModuleData *m_moduleData; // +0x04
+	Object *m_object; // +0x08
+};
+
+class BehaviorModuleInterface
+{
+public:
+	virtual void behaviorModuleInterfaceAnchor();
+};
+
+enum UpdateSleepTime
+{
+	UPDATE_SLEEP_NONE = 1,
+	UPDATE_SLEEP_FOREVER = 0x3fffffff
+};
+
+class UpdateModuleInterface
+{
+public:
+	virtual UpdateSleepTime update() = 0;
+};
+
+class UpdateModule : public BehaviorModule, public BehaviorModuleInterface, public UpdateModuleInterface
+{
+protected:
+	unsigned int m_14;
+	int m_18;
+	int m_1C;
+};
+
+class SpecialPowerUpdateInterface
+{
+public:
+	virtual void specialPowerUpdateAnchor();
+};
+
+// Primary-vtable slots 1..17 of SpecialAbilityUpdate (vtable 0x00C3FBA8):
+// xfer 0x0044F996 in slot 3 and the pool key in slot 4; only the positions
+// of slots 15 and 17 matter to update().
+class SpecialAbilityUpdate : public UpdateModule, public SpecialPowerUpdateInterface
+{
+public:
+	virtual void slot01(); virtual void slot02();
+protected:
+	virtual void xfer(Xfer *xfer); // slot 3
+public:
+	virtual NameKeyType getModuleNameKey() const; // slot 4
+	virtual void slot05(); virtual void slot06();
+	virtual void slot07(); virtual void slot08(); virtual void slot09();
+	virtual void slot10(); virtual void slot11(); virtual void slot12();
+	virtual void slot13(); virtual void slot14();
+	virtual void startPreparation(); // slot 15; 0x00450D9A, RousingSpeechUpdate 0x004ACE11
+	virtual void slot16();
+	virtual void triggerAbilityEffect(); // slot 17; 0x0045108D, RousingSpeechUpdate 0x004AD399
+private:
+	unsigned char m_pad24[0x88 - 0x24];
+};
+
+class RousingSpeechUpdate : public SpecialAbilityUpdate
+{
+public:
+	virtual NameKeyType getModuleNameKey() const;
+	virtual void startPreparation();
+	void rva004ACF1D();
+	void rva004AD176();
+	virtual void triggerAbilityEffect();
+	virtual UpdateSleepTime update();
+protected:
+	virtual void xfer(Xfer *xfer);
+private:
+	const RousingSpeechUpdateModuleData *getRousingSpeechData() const
+	{
+		return (const RousingSpeechUpdateModuleData *)m_moduleData;
+	}
+	Rva0029FB3BMember m_88; // +0x88
+	unsigned int m_8C; // +0x8C
+	bool m_90; // +0x90
+	float m_94; // +0x94
+	float m_98; // +0x98
+};
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+extern GameLogic *TheGameLogic;
+
+// BFME2's partition filters (the view AIStructureCreepTactic.cpp documents):
+// a vptr, the +0x04 link to the next filter (0x00625790), then each filter's
+// own members.
+class Rva000421C8
+{
+public:
+	Rva000421C8() : m_next(0) {}
+	virtual ~Rva000421C8() {}
+	virtual bool allow(Object *obj) = 0;
+	virtual int getPlayerMask();
+	Rva000421C8 *link(Rva000421C8 *next);	// 0x00625790
+	Rva000421C8 *m_next;
+};
+
+// vftable 0x00BFAD10, allow 0x0026119D: not effectively dead.
+class Rva0026119DFilter : public Rva000421C8
+{
+public:
+	virtual bool allow(Object *obj);
+};
+
+// vftable 0x00BFBC90, allow 0x00260EB1: the object, relationship flags and
+// whether a hit allows.
+class Rva00260EB1Filter : public Rva000421C8
+{
+public:
+	Rva00260EB1Filter(const Object *obj, int flags, bool match)
+		: m_obj(obj), m_flags(flags), m_match(match) {}
+	virtual bool allow(Object *obj);
+	virtual int getPlayerMask();
+	const Object *m_obj;
+	int m_flags;
+	bool m_match;
+};
+
+// vftable 0x00BF91BC, allow 0x002611BF: +0x08 an object.
+class Rva002611BFFilter : public Rva000421C8
+{
+public:
+	Rva002611BFFilter(const Object *obj) : m_obj(obj) {}
+	virtual bool allow(Object *obj);
+	const Object *m_obj;
+};
+
+// vftable 0x00BCECF0, allow 0x002614EC: +0x08 what to compare, +0x0C a
+// player, +0x10 whether a hit allows.
+class Rva002614ECFilter : public Rva000421C8
+{
+public:
+	Rva002614ECFilter(const void *what, Player *player, bool match)
+		: m_what(what), m_player(player), m_match(match) {}
+	virtual bool allow(Object *obj);
+	const void *m_what;
+	Player *m_player;
+	bool m_match;
+};
+
+// vftable 0x00C54EB4, allow 0x004ACDAC (this unit's own filter): +0x08 a
+// radius, +0x0C a centre.
+class Rva004ACDACFilter : public Rva000421C8
+{
+public:
+	Rva004ACDACFilter(float radius, const Coord3D *centre)
+		: m_radius(radius), m_centre(centre) {}
+	virtual bool allow(Object *obj);
+	float m_radius;
+	const Coord3D *m_centre;
+};
+
+#include "../../../Common/PartitionRangeQueryCallView.h"
+
+extern PartitionManager *ThePartitionManager;
 
 void XferObjectID(Xfer *xfer, ObjectID *id);
 
@@ -64,28 +363,23 @@ public:
 
 Xfer *xferSTLObjectIDList(Xfer *xfer, BridgeBehaviorObjectIDList *list);
 
-class SpecialAbilityUpdate
+static __forceinline void setModelConditionBit(Object *object, int bit)
 {
-protected:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void xfer(Xfer *xfer);
-	char m_unrecovered04[0x88 - 0x04];
-};
+	if (object->m_conditionBits.test(bit) == 0)
+	{
+		object->m_conditionBits.set(bit);
+		object->rva0028AE6D();
+	}
+}
 
-class RousingSpeechUpdate : public SpecialAbilityUpdate
+static __forceinline void clearModelConditionBit(Object *object, int bit)
 {
-protected:
-	virtual void xfer(Xfer *xfer);
-
-private:
-	BridgeBehaviorObjectIDList m_88;
-	unsigned int m_8C;
-	bool m_90;
-	float m_94;
-	float m_98;
-};
+	if (object->m_conditionBits.test(bit) != 0)
+	{
+		object->m_conditionBits.clear(bit);
+		object->rva0028AE6D();
+	}
+}
 
 // ?xfer@RousingSpeechUpdate@@MAEXPAVXfer@@@Z @0x004AD2AF
 void RousingSpeechUpdate::xfer(Xfer *xfer)
@@ -98,7 +392,7 @@ void RousingSpeechUpdate::xfer(Xfer *xfer)
 	Xfer::Version version(1, 2);
 	*xfer == version;
 
-	xferSTLObjectIDList(xfer, &m_88);
+	xferSTLObjectIDList(xfer, reinterpret_cast<BridgeBehaviorObjectIDList *>(&m_88));
 	*xfer == m_90;
 	*xfer == m_8C;
 	if (version.m_minimum >= 2)
