@@ -32,6 +32,7 @@
 // preserving retail's unwind states.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 #include "ascii_string.h"
@@ -39,7 +40,7 @@
 #include "Common/Snapshot.h"
 #include "../../Common/GameLogicObjectLookupView.h"
 
-void operator delete[](void *);
+
 
 class Team;
 class Player

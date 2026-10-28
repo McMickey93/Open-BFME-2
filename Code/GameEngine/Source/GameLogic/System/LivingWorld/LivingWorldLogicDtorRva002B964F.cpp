@@ -30,6 +30,7 @@
 // import: read <stdlib.h> without dllimport.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 #include "unicode_string.h"
@@ -169,7 +170,7 @@ struct Rva002B964FMessageRef
 };
 
 class Rva002B74DE { public: ~Rva002B74DE(); };
-void __cdecl operator delete(void *);
+
 
 class Rva002B9099
 {
