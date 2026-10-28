@@ -19,11 +19,9 @@ struct Coord3DData
 	Real z;
 };
 
-struct Coord3D : public Coord3DData
-{
-	Coord3D();
-	~Coord3D();
-};
+#define COORD3D_VIEW_EXTERN_CTOR
+#define COORD3D_VIEW_EXTERN_DTOR
+#include "../../../../Libraries/Include/Lib/Coord3DCtorView.h"
 
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 
@@ -95,8 +93,8 @@ void W3DView::getAxisAlignedViewRegion(Region3D &axisAlignedRegion)
 	// take those 4 corners projected into the world and create an axis aligned bounding
 	// box, we will use this box to iterate the drawables in 3D space
 	//
-	axisAlignedRegion.lo = box[ 0 ];
-	axisAlignedRegion.hi = box[ 0 ];
+	axisAlignedRegion.lo = *(Coord3DData *)&box[ 0 ];
+	axisAlignedRegion.hi = *(Coord3DData *)&box[ 0 ];
 	for( Int i = 0; i < 4; i++ )
 	{
 
