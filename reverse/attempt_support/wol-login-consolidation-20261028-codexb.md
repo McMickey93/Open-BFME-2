@@ -1,10 +1,12 @@
 # WOLLoginMenu consolidation, 2026-10-28
 
 Inspected base: 75b54b305c. Preview census index: 41c28839bf.
-The naming planner supplies an S-level WOLLoginMenu path anchor, an alternative
-GameSpyLoginPreferences path, and structural contiguity/EH-parent evidence.
-These are distinct evidence kinds; the supported skeleton planner rebuilds the
-stale TU map in memory and approves 106 rows. No regenerated map is committed.
+The naming planner reports an S class-site hint from ZH for WOLLoginMenu, an
+N name-based alternative GameSpyLoginPreferences path, and structural
+contiguity/EH-parent evidence. None is a verified BFME 2 path-string operand;
+the report labels the stale-map placements as hints. The supported skeleton
+planner rebuilds the map from current inputs in memory and approves 106 rows.
+That current approval governs this merge. No regenerated map is committed.
 Five whole-file donors own 26 matched rows; four mixed sources remain outside
 this batch. All five pass baseline byte verification and ordinary link preview
 (1638 authored bytes). No census gain is claimed.
@@ -47,3 +49,39 @@ The prerequisite batch audit is INCONCLUSIVE: index 41c28839bf predates base
 75b54b305c, and affected consumer Common/0CreateAHeroManager21FE49.cpp lacks a
 current receipt. Carry the provider selection and affected-consumer scope into
 the next scheduled census; runtime and broader consumer closure remain unverified.
+
+## Applied composition
+
+After prerequisite ae625c2439, the supported merge absorbs only
+Code/Libraries/Source/WWVegas/WWLib/stlport_string_list_pair_cleanup.cpp into
+WOLLoginMenu.cpp, removing one source file. The 0x005CA25C row's source field
+moves in functions.csv and tu_map.csv; the map is not regenerated. The tool
+refreshes the header queues: no header-adoption key is present, and the existing
+nine-declaration MS-header entry is unchanged apart from its queue position.
+There are no affected code/data identity baseline keys, hatch entries, or
+provider-name changes. The existing shadow AsciiString binding finding remains.
+
+The merged TU passes 7/7 normal byte matches, its literal, frozen-file, CSV,
+class, staged TU-ownership and data checks; both EH graphs are EXACT. It has a
+strict reusable compiler receipt. Against the original pair, all 28 COMDAT
+byte-and-relocation digests, 28 external definitions and 12 unresolved
+dependencies are identical, with no added, removed or changed entries. The
+supported merge's bounded donor link guard passes.
+
+The tooling compatibility audit covers origin/master through the staged merge,
+including the previously handed-off commits: this donor is the only deleted or
+renamed Code path in that range. Searches cover its full path/basename across
+active tools, hooks, workflows, source/header includes, build/configuration
+files, ledgers, registers, header queues, fold proofs and documentation. No
+active consumer needs updating. Remaining old-path references are source
+provenance/precedent comments in WOLLoginMenu.cpp and
+stlport_rb_tree_int_colormap_erase.cpp, historical attempt records, and the
+historical census link_status.csv snapshot. These are intentionally retained.
+
+Final scoped preview retains LINKS for the combined 367 authored bytes. The
+adjacent Common/GameSpyLoginPreferences.cpp provider also passes strict
+preparation (88/88 rows, 25 literals, 14 empty-string references and four named
+imports). The refreshed merge audit is INCONCLUSIVE: index 41c28839bf predates
+base ae625c2439, and affected consumer Common/0CreateAHeroManager21FE49.cpp
+still lacks a current receipt. Carry the changed provider selection and these
+consumers into the next scheduled census; no measured linked-byte gain is claimed.
