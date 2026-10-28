@@ -39,6 +39,33 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 #include <cstddef>
 #define _STLP_BFME_LOWER_BOUND_EXTERN  // call retail's one __lower_bound<const size_t*> (vendor/stlport/stl/_hashtable.c)
 #define _STLP_NO_EXCEPTIONS 1
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+#include "../../../Include/Common/BfmeXfer.h"
+#include "../../../../Libraries/Include/Lib/Coord3D.h"
+#define TheRvaHostPtr (*(Rva002039C5Host **)&TheScriptEngine)
+// ?rva0039D8D3@Team@@QAEXI@Z @0x0039D8D3 (40B).
+// Team::rva0039D8D3(unsigned ms): deadline at +0x124 is (ms/1000)*fps plus
+// TheGameLogic frame. Caller at 0x3A2EA0 passes 5000 with float at +0x120.
+// Globals 0xDFE78C frame and 0xDBA4E4 fps. Neighbours share /O1.
+extern int BfmeLogicFramesPerSecond;
+#define LogicFramesPerSecond BfmeLogicFramesPerSecond
+#include <windows.h>
 
 namespace _STL {
 static inline void _Construct(int *__p, const int &__val)
@@ -56,19 +83,6 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 class Rva003A1C3AInner;
 
 class Object;
-
-template<class OBJCLASS>
-class DLINK_ITERATOR
-{
-private:
-	OBJCLASS *m_cur;
-	unsigned char m_targetAbiState[20];
-
-public:
-	void advance();
-	bool done() const { return m_cur == 0; }
-	OBJCLASS *cur() const { return m_cur; }
-};
 
 class Rva003A1C3AInner
 {
@@ -294,19 +308,6 @@ struct Rva0039F5C8Iterator
 {
     Rva0039EA4ENode *m_node;
     Rva0039F5C8Iterator(Rva0039EA4ENode *node) : m_node(node) {}
-};
-
-class Rva0039EA4E
-{
-public:
-    Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
-    Rva0039F5C8Iterator rva0039F5C8(const Rva0039D8FBKey &key);
-    Rva0039EA4ENode *rva0039F597(const Rva0039D8FBKey &key);
-    Rva0039F5C8Iterator rva0039FB73(const Rva0039D8FBKey &key);
-    unsigned int size() const { return m_nodeCount04; }
-
-    Rva0039EA4ENode *m_header00;
-    unsigned int m_nodeCount04; // TeamFactory::xfer checks it against the saved count
 };
 
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
@@ -683,44 +684,6 @@ template Rva003A37FATable::hashtable(Rva003A37FATable::size_type,
 	const Rva003A37FATable::hasher &, const Rva003A37FATable::key_equal &,
 	const Rva003A37FATable::allocator_type &);
 
-class Dict
-{
-public:
-	Dict(int numPairsToPreAllocate = 0);
-	~Dict() { releaseData(); }
-
-private:
-	void releaseData();
-	void *m_data;
-};
-
-class Player
-{
-public:
-	Team *getDefaultTeam() const { return m_defaultTeam; }
-private:
-	unsigned char m_pad00[0x4C];
-public:
-	AsciiString m_playerName;
-private:
-	unsigned char m_pad50[0x54 - 0x50];
-public:
-	int m_playerIndex;		// +0x54, TeamFactory::xfer's inlined getPlayerIndex
-private:
-	unsigned char m_pad58[0x2EC - 0x58];
-private:
-	Team *m_defaultTeam;
-public:
-	const AsciiString &getPlayerNameStr() const { return m_playerName; }
-};
-
-enum NameKeyType
-{
-    NAMEKEY_INVALID = 0,
-    NAMEKEY_MAX = 1 << 23,
-    FORCE_NAMEKEYTYPE_LONG = 0x7fffffff
-};
-
 class NameKeyGenerator
 {
 public:
@@ -729,107 +692,7 @@ public:
 
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-class PlayerList
-{
-public:
-	Player *findPlayerWithNameKey(NameKeyType key);
-	Player *getNeutralPlayer() { return m_players[0]; }
-	// LINK: same-body helper under a TU-unique name (identical inlined bytes); the getNeutralPlayer copy loses to the first-in-order copy. No flags touched.
-	Player *bfme_getNeutralPlayer_3c6a8() { return m_players[0]; }
-
-private:
-	unsigned char m_pad00[0x18];
-	Player *m_players[1]; // +0x18
-};
-
 extern PlayerList *ThePlayerList;
-
-class TeamPrototype:public Snapshot {
-public:
-	TeamPrototype(TeamFactory*,const AsciiString&,const AsciiString&,Player*,bool,Dict*,int);
-public:
-	void addToLists();
-protected:
-	virtual ~TeamPrototype();
-protected:
-	virtual const char *GetSnapshotName() const;
-protected:
-	virtual void xfer(Xfer*);
-protected:
-	virtual void loadPostProcess();
-public:
-	TeamFactory *m_factory;
-public:
-	Player*m_owningPlayer;
-public:
-	int m_id;
-public:
-	AsciiString m_ownerName,m_name;
-public:
-	int m_flags;
-public:
-	bool m_productionConditionAlwaysFalse;
-public:
-	AsciiString m_conditionName;
-public:
-	Script*m_productionConditionScript;
-public:
-	bool m_retrievedGenericScripts;
-public:
-	Script*m_genericScriptsToRun[32];
-public:
-	AsciiString m_genericScriptNames[32];
-public:
-	TeamTemplateInfo m_teamTemplate;
-public:
-	AsciiString m_attackPriorityName;
-public:
-	bool m_byte31C,m_byte31D,m_byte31E;
-public:
-	unsigned m_frame320;
-public:
-	TeamFlag324 m_byte324;
-public:
-	TeamInitialCoordinate m_coordinate328;
-public:
-	Team *m_dlinkhead_TeamInstanceList;
-public:
-	bool getIsSingleton() const { return (m_flags & 1) != 0; }
-public:
-	Team *getFirstItemIn_TeamInstanceList() const { return m_dlinkhead_TeamInstanceList; }
-public:
-	const AsciiString &getOwnerName() const { return m_ownerName; }
-public:
-	const AsciiString &getName() const { return m_name; }
-};
-
-// Object as this TU's units read it: one view, the offsets every unit here
-// agrees on (template +0x04, position +0x38, producer +0x78, status bytes
-// +0x94 and +0x114, contain module
-// +0x250, AI +0x258, containedBy +0x274, private status +0x438). A unit that
-// reads a slot through its own interface view casts the member.
-class Object
-{
-public:
-	unsigned char m_pad00[0x04];
-	ThingTemplate *m_template;			// +0x04
-	unsigned char m_pad08[0x38 - 0x08];
-	Coord3D m_pos;						// +0x38
-	unsigned char m_pad44[0x78 - 0x44];
-	ObjectID m_producerID;				// +0x78
-	unsigned char m_pad7C[0x94 - 0x7C];
-	unsigned char m_status94;			// +0x94
-	unsigned char m_pad95[0x114 - 0x95];
-	unsigned int m_status114;			// +0x114
-	unsigned char m_pad118[0x250 - 0x118];
-	Rva003A1C3AInner *m_inner250;		// +0x250
-	unsigned char m_pad254[0x258 - 0x254];
-	AIUpdateInterface *m_ai;			// +0x258
-	unsigned char m_pad25C[0x274 - 0x25C];
-	Object *m_containedBy;				// +0x274
-	unsigned char m_pad278[0x438 - 0x278];
-	unsigned char m_dead;				// +0x438
-};
 
 class ObjectLookupMap
 {
@@ -889,6 +752,661 @@ public:
 	int bucketIndex(const AsciiString *name);
 public:
 	void *rva003A2F08(const TreeHintPair003A2F08 &x);
+};
+
+class SidesList;
+
+class Rva003A3CBBOwner
+{
+public:
+	Team *createInstance(const AsciiString &a, const AsciiString &b);
+};
+
+enum NameKeyType
+{
+    NAMEKEY_INVALID = 0,
+    NAMEKEY_MAX = 1 << 23,
+    FORCE_NAMEKEYTYPE_LONG = 0x7fffffff
+};
+
+class Dict {
+public:
+	AsciiString getAsciiString(int key,bool *exists=0) const;
+public:
+	bool getBool(int key,bool *exists=0) const;
+private:
+	unsigned storage;
+public:
+	Dict(int numPairsToPreAllocate = 0);
+public:
+	~Dict() { releaseData(); }
+private:
+	void releaseData();
+};
+
+struct TeamInfoRecord { short next;char unknown02[4];unsigned short flags;unsigned unknown08;Dict dict; };
+
+class TeamsInfoRec {public:char unknown00[12];TeamInfoRecord *records;
+ int first()const{return records[0].next;}
+ int getNextTeamID(int id)const{return records[id].next;}
+ bool isFinal(int id)const{return records[id].flags==0;}
+ Dict *getTeamInfo(int id){return &records[id].dict;}
+};
+
+class SidesList {public:char unknown00[0xf44];TeamsInfoRec teams;};
+
+class Rva00148F5ECache {public:NameKeyType get();NameKeyType m_key;const char *m_name;};
+
+// The first two globals retain the data ledger's provisional const owner
+// spelling; their mutable key and name pointer share the lazy-cache layout.
+class StaticNameKey {private:mutable int value;const char *name;};
+
+extern const StaticNameKey TheKey_teamName,TheKey_teamOwner;
+
+extern Rva00148F5ECache TheKey_teamIsSingleton;
+
+// ?TheKey_teamIsSingleton@@3VRva00148F5ECache@@A (data_ledger RVA 0x9BDA04,
+// unowned): lazy key cache {0,"teamIsSingleton"}; get() resolves via the
+// name text on first use. Defined here; nothing else defines it.
+Rva00148F5ECache TheKey_teamIsSingleton = { NAMEKEY_INVALID, "teamIsSingleton" };
+
+enum ErrorCode
+{
+	ERROR_BASE = 0xdead0001,
+	ERROR_BUG = (ERROR_BASE + 0x0001),
+	ERROR_BAD_ARG = (ERROR_BASE + 0x0002)
+};
+
+class Script
+{
+public:
+	Script *duplicate() const;
+	void *getAction() const { return m_action; }
+
+private:
+	unsigned char m_pad00[0x34];
+	void *m_action; // +0x34
+};
+
+class BfmeRoomZC;
+
+class Rva003573C4Owner
+{
+public:
+	void *rva003573C4(const AsciiString &owner, const BfmeRoomZC &name, void *outName);	// rowed 0x003573C4
+};
+
+class Rva0020D451Engine
+{
+public:
+	void rva0020D451(const AsciiString &scope, void *action, void *script, void *scriptName, Team *team);	// rowed 0x0020D451
+};
+
+class ScriptEngine
+{
+};
+
+extern ScriptEngine *TheScriptEngine;
+
+// The production condition and execute-actions flag of the prototype's team
+// template (+0x12C), as the Team.cpp seed's TeamTemplateInfo names them.
+struct TeamTemplateProductionView
+{
+	unsigned char m_pad000[0x110];
+	AsciiString m_productionCondition; // +0x110, prototype +0x23C
+	bool m_executeActions; // +0x114, prototype +0x240
+};
+
+// flags: region default (reverse/retail_inventory/flag_regions.csv)
+//
+// ?decreaseAIPriorityForFailure@TeamPrototype@@QAEXXZ @0x0039D73A (13B).
+// TeamPrototype priority decrement: subtracts the dword at +0x224 from the
+// dword at +0x21C. Retail shape is mov eax plus disp32 sub plus ret.
+// Caller at 0x003BFC5D passes the TeamPrototype at Team+0x30 and then logs
+// Team priority decreased with the updated +0x21C value, proving the owner
+// is TeamPrototype and the +0x21C field is its priority.
+
+// The production-priority slots of the prototype's team template (+0x12C),
+// spelled as the Team.cpp seed's TeamTemplateInfo names them (Zero Hour's
+// m_productionPriority and its success increase and failure decrease).
+struct TeamTemplatePriorityView
+{
+	char m_pad00[0xF0];
+	int m_productionPriority; // +0xF0, prototype +0x21C
+	int m_productionPrioritySuccessIncrease; // +0xF4, prototype +0x220
+	int m_productionPriorityFailureDecrease; // +0xF8, prototype +0x224
+};
+
+// The generic script names of the prototype's team template (+0x12C), as
+// the Team.cpp seed's TeamTemplateInfo names them.
+struct TeamTemplateGenericScriptsView
+{
+	unsigned char m_pad000[0x118];
+	AsciiString m_teamGenericScripts[MAX_GENERIC_SCRIPTS]; // +0x118, prototype +0x244
+};
+
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
+class XferException
+{
+public:
+	XferException(int tag, const char *format, ...);
+	XferException(const XferException &that);
+	~XferException(void);
+
+	char *text;
+	int tagValue;
+};
+
+enum { TEAM_FACTORY_PROTOTYPE_SLOTS = 40 };
+
+//
+// ?getTargetableCount@Team@@QBEHXZ @0x0039D9E3 (71B).
+// Team::getTargetableCount(): counts live members that either have an AI interface
+// or whose template kind0 has bit 0x80. Retail walks via the rowed
+// iterate_TeamMemberList at 0x263864 and advance at 0x263526, skipping dead
+// bit at Object+0x438 bit0, then counting when AI at Object+0x258 is present
+// otherwise checking template at Object+0x04 kind byte at +0x108 bit 0x80.
+// Callers none yet; neighbours getControllingPlayer and healAllObjects share
+// the /O1 flags and 24-byte iterator shape.
+
+typedef unsigned int UnsignedInt;
+
+class AIUpdateInterface
+{
+public:
+	Object *getCurrentVictim() const;
+};
+
+// ?rva0039E968@Team@@QAEPAVObject@@H@Z @0x0039E968 57B chain lane: first
+// member whose rowed 0x0028D8EB test is 1 else null; 0x18B iterator via
+// rowed iterate plus rowed DLINK_ITERATOR<Object> advance; cmp al,1. The
+// test class Rva0028D8EB is the honest placeholder for what reads
+// as Object+0x3A4 at the call site.
+class Rva0028D8EB
+{
+public:
+	bool rva0028D8EB(int bit);
+};
+
+// ?rva0039E8FF@Team@@QAE_NH@Z @0x0039E8FF 105B unlock Team method iterating members via rowed iterate plus rowed DLINK_ITERATOR<Object> advance plus virtual 0x7c and 0xac plus rowed Object::affectedByUpgrade; caller 0x003C4A28
+struct Rva0039E8FFMid
+{
+	virtual void f00(); virtual void f01(); virtual void f02(); virtual void f03();
+	virtual void f04(); virtual void f05(); virtual void f06(); virtual void f07();
+	virtual void f08(); virtual void f09(); virtual void f10(); virtual void f11();
+	virtual void f12(); virtual void f13(); virtual void f14(); virtual void f15();
+	virtual void f16(); virtual void f17(); virtual void f18(); virtual void f19();
+	virtual void f20(); virtual void f21(); virtual void f22(); virtual void f23();
+	virtual void f24(); virtual void f25(); virtual void f26(); virtual void f27();
+	virtual void f28(); virtual void f29(); virtual void f30(); virtual void *f31();
+};
+
+struct Rva0039E8FFTarget
+{
+	virtual void g00(); virtual void g01(); virtual void g02(); virtual void g03();
+	virtual void g04(); virtual void g05(); virtual void g06(); virtual void g07();
+	virtual void g08(); virtual void g09(); virtual void g10(); virtual void g11();
+	virtual void g12(); virtual void g13(); virtual void g14(); virtual void g15();
+	virtual void g16(); virtual void g17(); virtual void g18(); virtual void g19();
+	virtual void g20(); virtual void g21(); virtual void g22(); virtual void g23();
+	virtual void g24(); virtual void g25(); virtual void g26(); virtual void g27();
+	virtual void g28(); virtual void g29(); virtual void g30(); virtual void g31();
+	virtual void g32(); virtual void g33(); virtual void g34(); virtual void g35();
+	virtual void g36(); virtual void g37(); virtual void g38(); virtual void g39();
+	virtual void g40(); virtual void g41(); virtual void g42(); virtual bool g43(int val);
+};
+
+class UpgradeTemplate;
+
+class ScriptEngine;
+
+// The prototype read through its +0x318 string only.
+struct TeamRvaInner
+{
+	char m_pad00[0x318];
+	AsciiString m_str318;
+};
+
+// flags: region default (reverse/retail_inventory/flag_regions.csv)
+//
+// ?prependTo_TeamInstanceList@TeamPrototype@@QAEXPAVTeam@@@Z @0x0039D4B5 (35B).
+// Zero Hour's MAKE_DLINK_HEAD(Team, TeamInstanceList) prependTo (GameCommon.h):
+// when the team is not already in the +0x334 head list, prepends it. Retail
+// shape is head lea plus isInList test (Team::dlink_isInList_TeamInstanceList
+// 0x0039D40F) plus conditional prepend (Team::dlink_prependTo_TeamInstanceList
+// 0x0039D429) plus pop plus ret 4. WorldBuilder twin 0x00EF3FE0 is
+// TeamPrototype::prependTo_TeamInstanceList; the caller is the Team ctor
+// 0x003A39A7 (call at 0x003A3ADA).
+
+typedef bool Bool;
+
+struct Rva0039E9A1Slot
+{
+    unsigned char m_padB0[0xB0];
+    Coord3D m_pos;
+    unsigned char m_flagBC;
+};
+
+// Both relation maps are read through this one view.
+struct TeamMapInner
+{
+	unsigned char m_pad00[0x14];
+	int m_14;
+};
+
+class Rva004EC05A { public: void rva004EC05A(void *); };
+
+struct Rva002A8AB1Record;
+
+class Rva002A8F24 { public: Rva002A8AB1Record *rva002A8AB1(void *); };
+
+extern Rva002A8F24 *TheSkirmishAIManager;
+
+// One unit record and the template's record array and count (+0x130 and
+// +0x1D8 of the prototype), spelled as the Team.cpp seed's Rva0039EA9C and
+// TeamTemplateInfo (+0x12C) name them.
+struct UnitInfo { int m_00,m_04,m_08; AsciiString m_0c,m_10; int m_14; };
+
+struct TeamTemplateUnitsView { char m_vptr[4]; UnitInfo m_unitsInfo[7]; int m_numUnitsInfo; };
+
+// The hash table's bucket-vector begin()/size() const copies here differed
+// from retail's; declared imported and force-inlined they are not emitted.
+namespace _STL {
+template <> __declspec(dllimport) __forceinline
+size_t vector<void *>::size() const { return size_t(this->_M_finish - this->_M_start); }
+template <> __declspec(dllimport) __forceinline
+vector<void *>::const_iterator vector<void *>::begin() const { return this->_M_start; }
+template <> __declspec(dllimport) __forceinline void *const &vector<void *>::operator[](size_t __n) const { return *(begin() + __n); }
+}
+
+enum Relationship
+{
+	ENEMIES = 0,
+	NEUTRAL = 1,
+	ALLIES = 2
+};
+
+typedef std::hash_map<int, Relationship, std::hash<int>, std::equal_to<int> > TeamRelationMapType;
+
+// Both relation maps are read through this one view.
+struct RetailTeamRelationMap
+{
+	void *m_vtbl;
+	TeamRelationMapType m_map;
+};
+
+// ?rva0039D889@Team@@QAEX_N@Z 0x0039D889 49 Team flag setter between 0x0039D84A and 0x0039D8BA
+// Retail sets [esi+0x112]=1 when byte arg true else cleans list at esi+4 via rowed 0x0055B01F when [esi+0x113] nonzero then stores arg to [esi+0x113]. Callers at 0x004F16A2 0x004F170A 0x004F27A3 0x004F30F0. Neighbour TeamRva0039D8BA.cpp shares flags.
+class Rva0055B0CC
+{
+public:
+	void rva0055B01F();
+};
+
+// ?rva0039D8BA@Team@@QAEXPAVObject@@@Z @0x0039D8BA (18B).
+// Team::rva0039D8BA(Object*): sets Team+0x5c entered flag then refreshes the
+// ScriptEngine frame cache via rowed Rva002039C5Host::rva002039C5 on the
+// 0xDFE16C global. Callers at 0x2920D6 and 0x2921EB pass Team from Object+0x304
+// with the Object as arg. Neighbours share /O1.
+extern class ScriptEngine *TheScriptEngine;
+
+class Rva002039C5Host
+{
+public:
+	void rva002039C5();
+};
+
+class Rva0039DB31Contain
+{
+public:
+	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03();
+	virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07();
+	virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11();
+	virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15();
+	virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
+	virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23();
+	virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27();
+	virtual void s28(); virtual void s29(); virtual void s30(); virtual void s31();
+	virtual void s32(); virtual void s33(); virtual void s34(); virtual void s35();
+	virtual void s36(); virtual void s37(); virtual void s38(); virtual void s39();
+	virtual void s40(); virtual void s41(); virtual void s42(); virtual void s43();
+	virtual void s44(); virtual void s45();
+	virtual void slot46(const void *arg, int flag);
+};
+
+class Rva0039DB31Provider
+{
+public:
+	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03();
+	virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07();
+	virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11();
+	virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15();
+	virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
+	virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23();
+	virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27();
+	virtual void s28(); virtual void s29(); virtual void s30();
+	virtual Rva0039DB31Contain *slot31();
+};
+
+template<class OBJCLASS>
+class DLINK_ITERATOR
+{
+private:
+	OBJCLASS *m_cur;
+	unsigned char m_targetAbiState[20];
+
+public:
+	void advance();
+	bool done() const { return m_cur == 0; }
+	OBJCLASS *cur() const { return m_cur; }
+};
+
+typedef int (__cdecl *TeamPredicate)(Object *obj, void *userData);
+
+struct ThingTemplate
+{
+	unsigned char m_pad[0x108];
+	UnsignedInt m_kind0;
+	unsigned char m_pad2[0x10E - 0x10C];
+	unsigned char m_kindByte10e;
+};
+
+// The by-value kind filter is the 28-byte storage the ledger names after
+// its copy constructor 0x0004543D, which every caller copies it through.
+class BfmeFixedStorage0004543D
+{
+public:
+	unsigned int w[7];
+};
+
+typedef BfmeFixedStorage0004543D Rva0039DDC2Filter;
+
+template<int N>
+class BitFlags
+{
+public:
+	unsigned int m_bits[(N + 31) / 32];
+};
+
+class Thing
+{
+public:
+	bool isKindOfMulti(const BitFlags<116> &mustBeSet, const BitFlags<116> &mustBeClear) const;
+};
+
+extern BitFlags<116> KINDOFMASK_NONE;
+
+// 0x00362437 is rowed as Rva2225E0Filter::accepts(Object *, Player *); the old
+// ?bfmeHas1026@BfmeTab1026@@QAEDHH@Z pin names the same body.
+class Rva2225E0Filter
+{
+public:
+	bool accepts(Object *obj, Player *player);
+};
+
+class BfmeTab1026 : public Rva2225E0Filter
+{
+public:
+};
+
+class AIVirtual110
+{
+public:
+	virtual bool _v0();
+	virtual bool _v1();
+	virtual bool _v2();
+	virtual bool _v3();
+	virtual bool _v4();
+	virtual bool _v5();
+	virtual bool _v6();
+	virtual bool _v7();
+	virtual bool _v8();
+	virtual bool _v9();
+	virtual bool _v10();
+	virtual bool _v11();
+	virtual bool _v12();
+	virtual bool _v13();
+	virtual bool _v14();
+	virtual bool _v15();
+	virtual bool _v16();
+	virtual bool _v17();
+	virtual bool _v18();
+	virtual bool _v19();
+	virtual bool _v20();
+	virtual bool _v21();
+	virtual bool _v22();
+	virtual bool _v23();
+	virtual bool _v24();
+	virtual bool _v25();
+	virtual bool _v26();
+	virtual bool _v27();
+	virtual bool _v28();
+	virtual bool _v29();
+	virtual bool _v30();
+	virtual bool _v31();
+	virtual bool _v32();
+	virtual bool _v33();
+	virtual bool _v34();
+	virtual bool _v35();
+	virtual bool _v36();
+	virtual bool _v37();
+	virtual bool _v38();
+	virtual bool _v39();
+	virtual bool _v40();
+	virtual bool _v41();
+	virtual bool _v42();
+	virtual bool _v43();
+	virtual bool _v44();
+	virtual bool _v45();
+	virtual bool _v46();
+	virtual bool _v47();
+	virtual bool _v48();
+	virtual bool _v49();
+	virtual bool _v50();
+	virtual bool _v51();
+	virtual bool _v52();
+	virtual bool _v53();
+	virtual bool _v54();
+	virtual bool _v55();
+	virtual bool _v56();
+	virtual bool _v57();
+	virtual bool _v58();
+	virtual bool _v59();
+	virtual bool _v60();
+	virtual bool _v61();
+	virtual bool _v62();
+	virtual bool _v63();
+	virtual bool _v64();
+	virtual bool _v65();
+	virtual bool _v66();
+	virtual bool _v67();
+	virtual bool _v68();
+	virtual bool _v69();
+	virtual bool _v70();
+	virtual bool _v71();
+	virtual bool _v72();
+	virtual bool _v73();
+	virtual bool _v74();
+	virtual bool _v75();
+	virtual bool _v76();
+	virtual bool _v77();
+	virtual bool _v78();
+	virtual bool _v79();
+	virtual bool _v80();
+	virtual bool _v81();
+	virtual bool _v82();
+	virtual bool _v83();
+	virtual bool _v84();
+	virtual bool _v85();
+	virtual bool _v86();
+	virtual bool _v87();
+	virtual bool _v88();
+	virtual bool _v89();
+	virtual bool _v90();
+	virtual bool _v91();
+	virtual bool _v92();
+	virtual bool _v93();
+	virtual bool _v94();
+	virtual bool _v95();
+	virtual bool _v96();
+	virtual bool _v97();
+	virtual bool _v98();
+	virtual bool _v99();
+	virtual bool _v100();
+	virtual bool _v101();
+	virtual bool _v102();
+	virtual bool _v103();
+	virtual bool _v104();
+	virtual bool _v105();
+	virtual bool _v106();
+	virtual bool _v107();
+	virtual bool _v108();
+	virtual bool _v109();
+	virtual bool isReady();
+};
+
+class Rva002627E8 {
+public:
+	float rva002627E8() const;
+};
+
+class ObjectWithRange {
+public:
+	char m_pad[0x258];
+	Rva002627E8 *m_range;
+};
+
+const float g_00C1ADB8 = 999999.0f;
+
+struct Rva0039Mid
+{
+    char m_pad[8];
+    Team *m_team08;
+};
+
+struct Rva0039Owner
+{
+    char m_pad[0x2EC];
+    Team *m_unit;
+};
+
+class Rva0039EA4E
+{
+public:
+    Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
+    Rva0039F5C8Iterator rva0039F5C8(const Rva0039D8FBKey &key);
+    Rva0039EA4ENode *rva0039F597(const Rva0039D8FBKey &key);
+    Rva0039F5C8Iterator rva0039FB73(const Rva0039D8FBKey &key);
+    unsigned int size() const { return m_nodeCount04; }
+
+    Rva0039EA4ENode *m_header00;
+    unsigned int m_nodeCount04; // TeamFactory::xfer checks it against the saved count
+};
+
+// The prototype read through its name and the +0x31E byte only.
+struct TeamPrototypeDoneView
+{
+	unsigned char m_pad000[0x14];
+	AsciiString m_name; // +0x14
+	unsigned char m_pad018[0x31E - 0x18];
+	bool m_tacticalAIFlag31E; // +0x31E, cleared here; donor name unknown
+};
+
+class Player
+{
+public:
+	Team *getDefaultTeam() const { return m_defaultTeam; }
+private:
+	unsigned char m_pad00[0x4C];
+public:
+	AsciiString m_playerName;
+private:
+	unsigned char m_pad50[0x54 - 0x50];
+public:
+	int m_playerIndex;
+private:
+	unsigned char m_pad58[0x2EC - 0x58];
+private:
+	Team *m_defaultTeam;
+public:
+	const AsciiString &getPlayerNameStr() const { return m_playerName; }
+public:
+	bool rva002AA245()const;
+public:
+	int getPlayerIndex() const { return m_playerIndex; }
+};
+
+struct Rva003A0CD1
+{
+	char m_pad00[0x10];
+	AsciiString m_a10;
+	AsciiString m_b14;
+};
+
+ 
+ 
+ 
+ 
+ 
+class Object
+{
+public:
+	unsigned char m_pad00[0x04];
+public:
+	ThingTemplate *m_template;
+public:
+	unsigned char m_pad08[0x38 - 0x08];
+public:
+	Coord3D m_pos;
+public:
+	unsigned char m_pad44[0x78 - 0x44];
+public:
+	ObjectID m_producerID;
+public:
+	unsigned char m_pad7C[0x94 - 0x7C];
+public:
+	unsigned char m_status94;
+public:
+	unsigned char m_pad95[0x114 - 0x95];
+public:
+	unsigned int m_status114;
+public:
+	unsigned char m_pad118[0x250 - 0x118];
+public:
+	Rva003A1C3AInner *m_inner250;
+public:
+	unsigned char m_pad254[0x258 - 0x254];
+public:
+	AIUpdateInterface *m_ai;
+public:
+	unsigned char m_pad25C[0x274 - 0x25C];
+public:
+	Object *m_containedBy;
+public:
+	unsigned char m_pad278[0x438 - 0x278];
+public:
+	unsigned char m_dead;
+public:
+	bool affectedByUpgrade(const UpgradeTemplate *upgrade) const;
+public:
+	void rva00293077(const void *arg);
+public:
+	void healCompletely();
+public:
+	void setTeam(Team *t);
+public:
+	Bool isEffectivelyDead() const { return (m_dead & 1) != 0; }
+public:
+	Bool rva002943B2(const Player *player);
 };
 
  
@@ -976,9 +1494,193 @@ public:
 	void rva003A2CEB(int key, Object *val);
 public:
 	void rva003A2D53(int key, Object *val);
+public:
+	bool enableGenericScript(const AsciiString &scriptName, const AsciiString &groupName, bool enable);
+public:
+	int getTargetableCount() const;
+public:
+	int countBuildings() const;
+public:
+	bool rva0039DAF4() const;
+public:
+	Object *rva0039E8EB();
+public:
+	Object *rva0039E968(int bit);
+public:
+	bool rva0039E8FF(int val);
+public:
+	void setAttackPriorityName(AsciiString name);
+public:
+	Bool dlink_isInList_TeamInstanceList(Team *const *pListHead) const;
+public:
+	void dlink_prependTo_TeamInstanceList(Team **pListHead);
+public:
+	Coord3D *rva0039DA2A(Coord3D *out) const;
+public:
+	Coord3D *rva0039E9A1(Coord3D *out) const;
+public:
+	bool rva0039F0D2();
+public:
+	bool rva0039F824();
+public:
+	bool rva003A10C0(int id) const;
+public:
+	bool rva003A10DF(int id) const;
+public:
+	void dlink_removeFrom_TeamInstanceList(Team **pListHead);
+public:
+	void rva0039D889(bool flag);
+public:
+	void rva0039D8BA(Object *obj);
+public:
+	void rva0039D8D3(unsigned int ms);
+public:
+	void rva0039DB31(const void *arg);
+public:
+	void healAllObjects();
+public:
+	int rva0039DD12(TeamPredicate pred, void *userData) const;
+public:
+	bool rva0039DD4B(bool flag);
+public:
+	bool rva0039DDC2(Rva0039DDC2Filter kindOfFilter, bool flag);
+public:
+	bool rva0039DE46(BfmeTab1026 *tab, bool flag);
+public:
+	bool isIdle() const;
+public:
+	float rva0039E84B(Object *obj);
+public:
+	void transferUnitsTo(Team *other);
+public:
+	void disband();
+public:
+	const AsciiString &getName() const
+	{
+		 
+		 
+		return m_proto == 0 ? AsciiString::TheEmptyString : ((const TeamPrototypeDoneView *)m_proto)->m_name;
+	}
+public:
+	Object *getTeamTargetObject(void);
 };
 
-class SidesList;
+class PlayerList
+{
+public:
+	Player *findPlayerWithNameKey(NameKeyType key);
+public:
+	Player *getNeutralPlayer() { return m_players[0]; }
+public:
+	Player *bfme_getNeutralPlayer_3c6a8() { return m_players[0]; }
+private:
+	unsigned char m_pad00[0x18];
+private:
+	Player *m_players[1];
+public:
+	int rva002A7D30();
+public:
+	Player *getEachPlayerFromMask(int &mask);
+public:
+	Player *getNthPlayer(int index);
+public:
+	void rva002A7AFE(void *team);
+};
+
+class TeamPrototype:public Snapshot {
+public:
+	TeamPrototype(TeamFactory*,const AsciiString&,const AsciiString&,Player*,bool,Dict*,int);
+public:
+	void addToLists();
+protected:
+	virtual ~TeamPrototype();
+protected:
+	virtual const char *GetSnapshotName() const;
+protected:
+	virtual void xfer(Xfer*);
+protected:
+	virtual void loadPostProcess();
+public:
+	TeamFactory *m_factory;
+public:
+	Player*m_owningPlayer;
+public:
+	int m_id;
+public:
+	AsciiString m_ownerName,m_name;
+public:
+	int m_flags;
+public:
+	bool m_productionConditionAlwaysFalse;
+public:
+	AsciiString m_conditionName;
+public:
+	Script*m_productionConditionScript;
+public:
+	bool m_retrievedGenericScripts;
+public:
+	Script*m_genericScriptsToRun[32];
+public:
+	AsciiString m_genericScriptNames[32];
+public:
+	TeamTemplateInfo m_teamTemplate;
+public:
+	AsciiString m_attackPriorityName;
+public:
+	bool m_byte31C,m_byte31D,m_byte31E;
+public:
+	unsigned m_frame320;
+public:
+	TeamFlag324 m_byte324;
+public:
+	TeamInitialCoordinate m_coordinate328;
+public:
+	Team *m_dlinkhead_TeamInstanceList;
+public:
+	bool getIsSingleton() const { return (m_flags & 1) != 0; }
+public:
+	Team *getFirstItemIn_TeamInstanceList() const { return m_dlinkhead_TeamInstanceList; }
+public:
+	const AsciiString &getOwnerName() const { return m_ownerName; }
+public:
+	const AsciiString &getName() const { return m_name; }
+public:
+	const AsciiString &getProductionCondition() const { return m_teamTemplate.m_productionCondition; }
+public:
+	bool getExecuteActions() const { return m_teamTemplate.m_executeActions; }
+public:
+	void increaseAIPriorityForSuccess();
+public:
+	void decreaseAIPriorityForFailure();
+public:
+	void rva0039D747(int delta);
+public:
+	void rva0039D754(int delta);
+public:
+	Script *getGenericScript(int scriptToRetrieve, AsciiString *outName);
+public:
+	const AsciiString &getGenericScriptName(int i) const { return m_teamTemplate.m_teamGenericScripts[i]; }
+public:
+	unsigned int getID() const { return m_id; }
+public:
+	Player *getControllingPlayer() const { return m_owningPlayer; }
+public:
+	void rva003A2C0D(Player *owner, const AsciiString &name, bool isSingleton, Dict *d);
+public:
+	Bool isInList_TeamInstanceList(Team *o) const;
+public:
+	void prependTo_TeamInstanceList(Team *o);
+public:
+	void __declspec(noinline) rva003A0D0A();
+public:
+	void removeFrom_TeamInstanceList(Team *o);
+public:
+	void removeAll_TeamInstanceList(void (*p)(Team *));
+public:
+	Team *findTeamByID(unsigned int id);
+public:
+	void teamAboutToBeDeleted(Team *team);
+};
 
 // TeamFactory as this TU's units read it, one view for every factory body.
 // Bases: SubsystemInterface (12 bytes, rowed ctor 0x001B4E63) and Snapshot
@@ -1029,17 +1731,39 @@ public:
 	unsigned int m_uniqueTeamID;		// +0xC0, Zero Hour TeamID
 };
 
-class Rva003A3CBBOwner
-{
-public:
-	Team *createInstance(const AsciiString &a, const AsciiString &b);
-};
-
 // tu-skeleton: 0x0039D40F 26B ?dlink_isInList_TeamInstanceList@Team@@QBE_NPBQAV1@@Z -- matched in Code/GameEngine/Source/Common/Team_dlink_isInList_TeamInstanceList.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D429 23B ?dlink_prependTo_TeamInstanceList@Team@@QAEXPAPAV1@@Z -- matched in Code/GameEngine/Source/Common/Team_dlink_prependTo_TeamInstanceList.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Team_dlink_prependTo_TeamInstanceList.cpp
 
-// tu-skeleton: 0x0039D440 48B ?dlink_removeFrom_TeamInstanceList@Team@@QAEXPAPAV1@@Z -- matched in Code/GameEngine/Source/Common/Team_dlink_removeFrom_TeamInstanceList.cpp (not merged yet)
+void Team::dlink_prependTo_TeamInstanceList(Team **pListHead)
+{
+	m_dlink_TeamInstanceList_next = *pListHead;
+	Team *old = *pListHead;
+	if (old) {
+		old->m_dlink_TeamInstanceList_prev = this;
+	}
+	*pListHead = this;
+}
+
+// ---- from Code/GameEngine/Source/Common/Team_dlink_removeFrom_TeamInstanceList.cpp
+
+void Team::dlink_removeFrom_TeamInstanceList(Team **pListHead)
+{
+	if( m_dlink_TeamInstanceList_next )
+	{
+		m_dlink_TeamInstanceList_next->m_dlink_TeamInstanceList_prev = m_dlink_TeamInstanceList_prev;
+	}
+	if( m_dlink_TeamInstanceList_prev )
+	{
+		m_dlink_TeamInstanceList_prev->m_dlink_TeamInstanceList_next = m_dlink_TeamInstanceList_next;
+	}
+	else
+	{
+		*pListHead = m_dlink_TeamInstanceList_next;
+	}
+	m_dlink_TeamInstanceList_prev = 0;
+	m_dlink_TeamInstanceList_next = 0;
+}
 
 // tu-skeleton: 0x0039D470 17B ?set@Rva0039D470FloatField@@QAEXM@Z -- matched in Code/GameEngine/Source/Common/Disp32FloatFieldSetters.cpp (not merged yet)
 
@@ -1049,17 +1773,59 @@ public:
 
 // tu-skeleton: 0x0039D495 13B ?set@Rva0039D495ByteSlot@@QAEXE@Z -- matched in Code/GameEngine/Source/Common/DispByteFieldSetters.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D4A2 19B ?isInList_TeamInstanceList@TeamPrototype@@QBE_NPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/TeamPrototype.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/TeamPrototype.cpp
 
-// tu-skeleton: 0x0039D4B5 35B ?prependTo_TeamInstanceList@TeamPrototype@@QAEXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/TeamPrototype.cpp (not merged yet)
+void TeamPrototype::prependTo_TeamInstanceList(Team *team)
+{
+	Team **head = &m_dlinkhead_TeamInstanceList;
+	if (team->dlink_isInList_TeamInstanceList(head)) {
+		return;
+	}
+	team->dlink_prependTo_TeamInstanceList(head);
+}
 
-// tu-skeleton: 0x0039D4D8 35B ?removeFrom_TeamInstanceList@TeamPrototype@@QAEXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/TeamPrototype_removeFrom_TeamInstanceList.cpp (not merged yet)
+// ?isInList_TeamInstanceList@TeamPrototype@@QBE_NPAVTeam@@@Z @0x0039D4A2 (19B),
+// directly before prependTo above: MAKE_DLINK_HEAD's isInList, the node test
+// 0x0039D40F called on the team with this +0x334 head. Retail shape: add ecx
+// 0x334, push, load the team into ecx, call, ret 4 - the skeleton of the
+// rowed forwarder 0x001E1709.
+Bool TeamPrototype::isInList_TeamInstanceList(Team *team) const
+{
+	return team->dlink_isInList_TeamInstanceList(&m_dlinkhead_TeamInstanceList);
+}
 
-// tu-skeleton: 0x0039D4FB 42B ?removeAll_TeamInstanceList@TeamPrototype@@QAEXP6AXPAVTeam@@@Z@Z -- matched in Code/GameEngine/Source/Common/TeamPrototype_removeAll_TeamInstanceList.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/TeamPrototype_removeFrom_TeamInstanceList.cpp
+
+void TeamPrototype::removeFrom_TeamInstanceList(Team *team)
+{
+	Team **head = &m_dlinkhead_TeamInstanceList;
+	if( !team->dlink_isInList_TeamInstanceList(head) )
+	{
+		return;
+	}
+	team->dlink_removeFrom_TeamInstanceList(head);
+}
+
+// ---- from Code/GameEngine/Source/Common/TeamPrototype_removeAll_TeamInstanceList.cpp
+
+void TeamPrototype::removeAll_TeamInstanceList(void (*p)(Team *))
+{
+	Team *team;
+	while( (team = m_dlinkhead_TeamInstanceList) != 0 )
+	{
+		removeFrom_TeamInstanceList(team);
+		if( p != 0 )
+		{
+			p(team);
+		}
+	}
+}
 
 // tu-skeleton: 0x0039D525 7B ?get@Rva0039D525ByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp32ByteGetters.cpp (not merged yet)
 
 // tu-skeleton: 0x0039D52C 7B ?get@Rva0039D52CByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/DispByteFieldGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/Team.cpp
 
 // ---- from Code/GameEngine/Source/Common/RTS/Team.cpp
 
@@ -1514,277 +2280,141 @@ float Rva003A36D3::rva003A36D3(int arg)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva003A37FA.cpp
 
-// tu-skeleton: 0x0039D599 16B ?Rva0039D599TestBit@@YAHIH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D5C1 323B ?xfer@TeamTemplateInfo@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D72D 13B ?increaseAIPriorityForSuccess@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D73A 13B ?decreaseAIPriorityForFailure@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D747 13B ?rva0039D747@TeamPrototype@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D754 13B ?rva0039D754@TeamPrototype@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D761 8B ?clear@Rva0039D761DwordClearer@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Disp32DwordClearers2.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D7C1 7B ?get@Rva0039D7C1ByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp32ByteGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D7C8 7B ?get@Rva0039D7C8LeaGetter@@QBEPAXXZ -- matched in Code/GameEngine/Source/Common/DispDwordLeaFieldGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D7CF 12B ?getControllingPlayer@Team@@QBEPAVPlayer@@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D7DB 101B ?getLocation@Team@@UBE?AVCoord3D@@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetLocation.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D840 10B ?rva0039D840@Rva0039D840@@QAEMXZ -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D84A 63B ?setTeamTargetObject@Team@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D889 49B ?rva0039D889@Team@@QAEX_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039D889.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D8BA 18B ?rva0039D8BA@Team@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039D8BA.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D8CC 7B ?rva0039D8CC@Rva0039D8CC@@QBEHHHHH@Z -- matched in Code/GameEngine/Source/Common/GapLeavesSeat8.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D8D3 40B ?rva0039D8D3@Team@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039D8D3.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D91F 11B ?set@Rva0039D91FStringField@@QAEXABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/AsciiStringFieldSetters.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D92A 42B ?findTeamByID@TeamPrototype@@QAEPAVTeam@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D954 42B ?countTeamInstances@TeamPrototype@@QAEHXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D97E 101B ?setControllingPlayer@Team@@QAEXPAVPlayer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamSetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x0039D9E3 71B ?getTargetableCount@Team@@QBEHXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039D9E3.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DA2A 202B ?rva0039DA2A@Team@@QBEPAUCoord3D@@PAU2@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DA2A.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DAF4 61B ?rva0039DAF4@Team@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039D9E3.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DB31 88B ?rva0039DB31@Team@@QAEXPBX@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DB31.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DB89 124B ?countObjectsByThingTemplate@Team@@QBEXHPBQBVThingTemplate@@_NPAH1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamMemberKindCounts.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DC05 94B ?rva0039DC05@Team@@QBEHH_N0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamMemberKindCounts.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DC63 59B ?countBuildings@Team@@QBEHXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039D9E3.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DC9E 75B ?countObjects@Team@@QBEHV?$BitFlags@$0HE@@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/Team_countObjects.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DCE9 41B ?healAllObjects@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamHealAllObjects.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DD12 57B ?rva0039DD12@Team@@QBEHP6AHPAVObject@@PAX@Z1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DD12.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DD4B 119B ?rva0039DD4B@Team@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DD4B.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DDC2 132B ?rva0039DDC2@Team@@QAE_NVBfmeFixedStorage0004543D@@_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DE46 126B ?rva0039DE46@Team@@QAE_NPAVBfmeTab1026@@_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DE46.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DEC4 88B ?hasAnyUnits@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/Team_hasAnyUnits.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DF1C 107B ?hasAnyBuildings@Team@@QAE_NVBfmeFixedStorage0004543D@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/Team_hasAnyBuildings.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DF87 113B ?rva0039DF87@Team@@QAE_NPAVBfmeTab1026@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x0039DFF8 74B ?isIdle@Team@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/Team_isIdle.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E042 142B ?hasAnyObjects@Team@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamHasAnyObjects.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E0D0 141B ?rva0039E0D0@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039E0D0.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E15D 176B ?didAllEnter@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E20D 123B ?didPartialEnter@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E288 123B ?didPartialExit@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E303 197B ?didAllExit@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E3C8 172B ?allInside@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E474 153B ?noneInside@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E50D 172B ?someInsideSomeOutside@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E5B9 167B ?rva0039E5B9@Team@@QAEXPAUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E660 113B ?transferUnitsTo@Team@@QAEXPAV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E6D1 155B ?transferKindOfUnitsTo@Team@@QAEXPAV1@ABV?$BitFlags@$0EF@@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E76C 134B ?damageTeamMembers@Team@@QAE_NM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamApplyDamage.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E7F2 35B ?moveTeamTo@Team@@QAEXUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E815 54B ?hasAnyBuildFacility@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/Team_hasAnyBuildFacility.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E84B 160B ?rva0039E84B@Team@@QAEMPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamMemberRangeFloor.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E8EB 20B ?rva0039E8EB@Team@@QAEPAVObject@@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039E8EB.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E8FF 105B ?rva0039E8FF@Team@@QAE_NH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039E8EB.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E968 57B ?rva0039E968@Team@@QAEPAVObject@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039E8EB.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E9A1 63B ?rva0039E9A1@Team@@QBEPAUCoord3D@@PAU2@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039DA2A.cpp (not merged yet)
 
-// tu-skeleton: 0x0039E9E0 47B ?disband@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/Team_disband.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EA0F 18B ??R?$less@U?$pair@HH@_STL@@@_STL@@QBE_NABU?$pair@HH@1@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EA9C 27B ??0Rva0039EA9C@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0039EA9CCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EAED 236B ??1TeamTemplateInfo@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EBD9 69B ?countObjectsByThingTemplate@TeamPrototype@@QBEXHPBQBVThingTemplate@@_NPAH1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EC1E 187B ?getGenericScript@TeamPrototype@@QAEPAVScript@@HPAVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeGetGenericScript.cpp (not merged yet)
 
-// tu-skeleton: 0x0039ECD9 56B ?countBuildings@TeamPrototype@@QAEHXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039ED11 91B ?countObjects@TeamPrototype@@QAEHV?$BitFlags@$0HE@@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039ED6C 48B ?healAllObjects@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039ED9C 69B ?rva0039ED9C@TeamPrototype@@QAEHP6AHPAVObject@@PAX@Z1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EDE1 64B ?rva0039EDE1@TeamPrototype@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EE21 79B ?rva0039EE21@TeamPrototype@@QAE_NVBfmeFixedStorage0004543D@@_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EE70 68B ?rva0039EE70@TeamPrototype@@QAE_NPAVBfmeTab1026@@_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EEB4 58B ?hasAnyUnits@TeamPrototype@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EEEE 88B ?hasAnyBuildings@TeamPrototype@@QAE_NVBfmeFixedStorage0004543D@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EF46 64B ?rva0039EF46@TeamPrototype@@QAE_NPAVBfmeTab1026@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EF86 64B ?hasAnyObjects@TeamPrototype@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039EFC6 58B ?hasAnyBuildFacility@TeamPrototype@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F000 58B ?damageTeamMembers@TeamPrototype@@QAEXM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F03A 90B ?moveTeamTo@TeamPrototype@@QAEXUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeMoveTeamTo.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F094 62B ?setAttackPriorityName@Team@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/Team_setAttackPriorityName.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F0D2 17B ?rva0039F0D2@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039F0D2.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F0E3 1163B ?updateState@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamUpdateState.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F597 49B ?rva0039F597@Rva0039EA4E@@QAEPAURva0039EA4ENode@@ABURva0039D8FBKey@@@Z -- matched in Code/GameEngine/Source/Common/RTS/Rva0039F597Find.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F5DC 34B ?_M_create_node@?$_Rb_tree@VArmorTemplateSet@@V1@U?$_Identity@VArmorTemplateSet@@@_STL@@U?$less@VArmorTemplateSet@@@3@V?$allocator@VArmorTemplateSet@@@3@@_STL@@IAEPAU?$_Rb_tree_node@VArmorTemplateSet@@@2@ABVArmorTemplateSet@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_create_nodes2.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F5FE 148B ?_M_insert@?$_Rb_tree@U?$pair@HH@_STL@@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@U?$less@U?$pair@HH@_STL@@@2@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@_STL@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F72C 53B ?findTeamPrototypeByID@TeamFactory@@QAEPAVTeamPrototype@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindById.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F761 68B ?findTeamByID@TeamFactory@@QAEPAVTeam@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeamByID.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F7A5 127B ?loadPostProcess@TeamFactory@@MAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryRecomputeIDs.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F824 17B ?rva0039F824@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039F0D2.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F835 194B ?notifyTeamOfObjectDeath@Team@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamNotifyTeamOfObjectDeath.cpp (not merged yet)
 
-// tu-skeleton: 0x0039F8F7 533B ?updateGenericScripts@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamUpdateGenericScripts.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FB0C 5B ?j_0039fb0c@@YAXXZ -- matched in Code/gen_small/gthunks_000_admitted.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FB11 56B ??1Rva0039F56E@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FB49 42B ??0?$_Rb_tree@HU?$pair@$$CBHUBfmePod8@@@_STL@@U?$_Select1st@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@@_STL@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FB73 20B ?rva0039FB73@Rva0039EA4E@@QAE?AURva0039F5C8Iterator@@ABURva0039D8FBKey@@@Z -- matched in Code/GameEngine/Source/Common/RTS/Rva0039F597Find.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FB87 439B ?insert_unique@?$_Rb_tree@U?$pair@HH@_STL@@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@U?$less@U?$pair@HH@_STL@@@2@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@2@U32@ABU?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FD3E 55B ?_M_skip_to_next@?$_Hashtable_iterator@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@PBVGameWindow@@UhashConstGameWindowPtr@WindowVideoManager@@U?$_Select1st@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@U?$equal_to@PBVGameWindow@@@2@V?$allocator@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@@_STL@@QAEPAU?$_Hashtable_node@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/window_video_manager.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FD93 5B ?rva0039FD93@Rva0039FD93@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FD98 121B ?markTeamDoneForTacticalAI@TeamFactory@@QAEXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FE11 91B ?removeTeamPrototypeFromList@TeamFactory@@QAEXPAVTeamPrototype@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryErasePrototype.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FE6C 79B ?findTeamPrototype@TeamFactory@@QAEPAVTeamPrototype@@ABVAsciiString@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindPrototype.cpp (not merged yet)
 
-// tu-skeleton: 0x0039FEBB 3606B ?loadFromDict@TeamTemplateInfo@@QAEXPAVDict@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0CD1 57B ?rva003A0CD1@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0D0A 88B ?rva003A0D0A@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeRegisterUnits.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0D62 166B ?addUnitInfo@TeamPrototype@@QAEXABVRva0039D769@@@Z -- matched in Code/GameEngine/Source/Common/Rva003A0D62Finish.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0E08 102B ?rva003A0E08@TeamPrototype@@QAEXABVRva0039D769@@@Z -- matched in Code/GameEngine/Source/Common/Rva003A0D62Finish.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0E6E 244B ?evaluateProductionCondition@TeamPrototype@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0F62 112B ?getTeamAsAIGroup@Team@@QAEXPAVAIGroup@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetTeamAsAIGroup.cpp (not merged yet)
 
-// tu-skeleton: 0x003A0FD2 137B ?getRelationship@Team@@QBE?AW4Relationship@@PBV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A105B 101B ?getTeamTargetObject@Team@@QAEPAVObject@@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetTeamTargetObject.cpp (not merged yet)
 
-// tu-skeleton: 0x003A10C0 31B ?rva003A10C0@Team@@QBE_NH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRelationOverrideQueries.cpp (not merged yet)
 
-// tu-skeleton: 0x003A10DF 31B ?rva003A10DF@Team@@QBE_NH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRelationOverrideQueries.cpp (not merged yet)
 
-// tu-skeleton: 0x003A1201 59B ?isInBuildVariations@@YA_NPBVThingTemplate@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A123C 287B ?recruitUnit@Team@@QAE_NPAPAVObject@@PAMPAV2@PBVThingTemplate@@PBUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A135B 487B ?tryToRecruit@Team@@QAEPAVObject@@PBVThingTemplate@@PBUCoord3D@@MHHH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A1542 228B ?rva003A1542@Team@@QAE_NPBVThingTemplate@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A1626 359B ?rva003A1626@Team@@QAEHPBVThingTemplate@@PAVRva00376A62@@HPAV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A178D 790B ?rva003A178D@Team@@QAEHPAVObjectTypes@@HPAV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A1AA3 407B ?rva003A1AA3@Team@@QAEHPBVThingTemplate@@PAVObjectTypes@@HM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A1D1A 587B ?killTeam@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp (not merged yet)
 
-// tu-skeleton: 0x003A1F65 269B ?enableGenericScript@Team@@QAE_NABVAsciiString@@0_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamEnableGenericScript.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2072 711B ?xfer@Team@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2339 107B ?loadPostProcess@Team@@MAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamLoadPostProcess.cpp (not merged yet)
 
-// tu-skeleton: 0x003A23A5 203B ?rva003A23A5@Team@@QAEXH_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGateMembership.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2563 72B ??1TeamRelationMap@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRelationMapDtor_Rva003A2563.cpp (not merged yet)
 
-// tu-skeleton: 0x003A25AB 6B ?GetSnapshotName@TeamRelationMap@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters4.cpp (not merged yet)
 
-// tu-skeleton: 0x003A25B1 109B ??0TeamFactory@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x003A261E 6B ?GetSnapshotName@TeamFactory@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x003A262C 45B ?rva003A262C@TeamFactory@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeRegisterUnits.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2659 141B ?findTeamPrototype@TeamFactory@@QAEPAVTeamPrototype@@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindQualifiedPrototype.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2943 89B ??A?$map@U?$pair@HH@_STL@@PAVTeamPrototype@@U?$less@U?$pair@HH@_STL@@@2@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@_STL@@QAEAAPAVTeamPrototype@@ABU?$pair@HH@1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp (not merged yet)
 
-// tu-skeleton: 0x003A299C 165B ??0?$_Rb_tree@HU?$pair@$$CBHUBfmePod8@@@_STL@@U?$_Select1st@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_copy_ctors_bfmealloc.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2AA6 210B ?xfer@TeamRelationMap@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/RelationMapXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2B78 92B ?addTeamPrototypeToList@TeamFactory@@QAEXPAVTeamPrototype@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2BD4 57B ?addToLists@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2C0D 152B ?rva003A2C0D@TeamPrototype@@QAEXPAVPlayer@@ABVAsciiString@@_NPAVDict@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeReset.cpp (not merged yet)
 
-// tu-skeleton: 0x003A2CA5 70B ?teamAboutToBeDeleted@TeamPrototype@@QAEXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/RTS/TeamRva003A2CEB.cpp
 
@@ -1826,12 +2456,6 @@ void Team::rva003A2D53(int key, Object *val)
 	}
 }
 
-// tu-skeleton: 0x003A2DBB 258B ?rva003A2DBB@Team@@QAEXM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A2DBB.cpp (not merged yet)
-
-// tu-skeleton: 0x003A2EBD 57B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x003A2EF6 18B ??0?$map@HUBfmePod8@@U?$less@H@_STL@@V?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@3@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva003A2F08Insert.cpp
 
 // ?rva003A2F08@Rva000427195@@QAEPAXABU?$pair@$$CBVAsciiString@@UTreeHintPayload00207343@@@_STL@@@Z @0x003A2F08 68B: hashtable insert_noresize for AsciiString-keyed 12B node family shared with new_node 0x003A2539 and bucketIndex 0x00223149 plus reserve 0x00212858. Evidence: reserve with count+1 then bucketIndex then new_node then link at bucket head then inc count then return node+4; buckets at +4 count at +0x10; caller 0x003A37AA; same table Rva000427195 as EvaBucketIndex.
@@ -1847,58 +2471,6 @@ void *Rva000427195::rva003A2F08(const TreeHintPair003A2F08 &x)
 	++m_numElements;
 	return &node->_M_val;
 }
-
-// tu-skeleton: 0x003A2F4C 136B ?clear@TeamFactory@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryClear.cpp (not merged yet)
-
-// tu-skeleton: 0x003A2FD4 116B ?initTeamForTacticalAI@TeamFactory@@QAEPAURva003A2FD4Proto@@ABVAsciiString@@PAXHI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactory_initTeamForTacticalAI.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3048 66B ?teamAboutToBeDeleted@TeamFactory@@QAEXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryTeamAboutToBeDeleted.cpp (not merged yet)
-
-// tu-skeleton: 0x003A308A 527B ?xfer@TeamFactory@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x003A33A7 38B ?deleteTeamCallback@@YAXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A33CD 223B ??1TeamPrototype@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A34AC 158B ?updateState@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
-
-// tu-skeleton: 0x003A354A 5B ?cleanup@Rva003A354ATableCleanupForward@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A354F 388B ??1Team@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A36F7 9B ?rva003A36F7@Rva003ABEFD@@QAEMH@Z -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3700 9B ?rva003A3700@Rva003ABEFD@@QAEMH@Z -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3709 6B ?GetSnapshotName@Team@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A370F 8B ??_ETeam@@O3AEPAXI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDeleter.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3717 31B ?rva003A3717@Team@@QAE_NABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3736 45B ?rva003A3736@Team@@QAEMM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3763 121B ?rva003A3763@Rva00056F61@@QAEPA_NPBVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp (not merged yet)
-
-// tu-skeleton: 0x003A37DC 30B ?rva003A37DC@Rva000427195@@QAEXUVideoPair@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarVideoMapErase.cpp (not merged yet)
-
-// tu-skeleton: 0x003A383A 95B ??1TeamFactory@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3899 5B ?init@TeamFactory@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A389E 19B ?reset@TeamFactory@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A38CD 28B ??_GTeam@@MAEPAXI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDeleter.cpp (not merged yet)
-
-// tu-skeleton: 0x003A38E9 81B ?rva003A38E9@Team@@QAEXABVAsciiString@@E@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A38E9.cpp (not merged yet)
-
-// tu-skeleton: 0x003A393A 31B ??0Rva003A393A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/ArmorHashMapCtor003A393A.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3959 50B ??0TeamRelationMap@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A39A7 471B ??0Team@@QAE@PAVTeamPrototype@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3B7E 317B ?createInactiveTeam@TeamFactory@@QAEPAVTeam@@ABVAsciiString@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInstance.cpp
 
@@ -1961,10 +2533,6 @@ Team *TeamFactory::createTeamOnPrototype(TeamPrototype *prototype, bool activate
 	return team;
 }
 
-// tu-skeleton: 0x003A3E37 61B ?findTeam@TeamFactory@@QAEPAVTeam@@ABVAsciiString@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeam.cpp (not merged yet)
-
-// tu-skeleton: 0x003A3E74 473B ?xfer@TeamPrototype@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeXfer.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryInitTeam.cpp
 
 // ?initTeam@TeamFactory@@QAEXABVAsciiString@@0_NPAVDict@@@Z, retail 0x003A404D
@@ -1995,9 +2563,1311 @@ void TeamFactory::initTeam(const AsciiString &name, const AsciiString &owner, bo
 		createInactiveTeam(tp->getOwnerName(), tp->getName());
 }
 
+// tu-skeleton: 0x0039D599 16B ?Rva0039D599TestBit@@YAHIH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D5C1 323B ?xfer@TeamTemplateInfo@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoXfer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp
+
+// ?increaseAIPriorityForSuccess@TeamPrototype@@QAEXXZ @0x0039D72D (13B), the increment twin
+// directly before it: adds the dword at +0x220 to the priority. Its caller at
+// 0x003CB963 logs "Team '%s' priority increased to %d for success." after it.
+void TeamPrototype::increaseAIPriorityForSuccess()
+{
+	m_teamTemplate.m_productionPriority += m_teamTemplate.m_productionPrioritySuccessIncrease;
+}
+
+void TeamPrototype::decreaseAIPriorityForFailure()
+{
+	m_teamTemplate.m_productionPriority -= m_teamTemplate.m_productionPriorityFailureDecrease;
+}
+
+void TeamPrototype::rva0039D747(int delta)
+{
+	m_teamTemplate.m_productionPriority += delta;
+}
+
+void TeamPrototype::rva0039D754(int delta)
+{
+	m_teamTemplate.m_productionPriority -= delta;
+}
+
+// tu-skeleton: 0x0039D761 8B ?clear@Rva0039D761DwordClearer@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Disp32DwordClearers2.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D7C1 7B ?get@Rva0039D7C1ByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp32ByteGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D7C8 7B ?get@Rva0039D7C8LeaGetter@@QBEPAXXZ -- matched in Code/GameEngine/Source/Common/DispDwordLeaFieldGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D7CF 12B ?getControllingPlayer@Team@@QBEPAVPlayer@@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D7DB 101B ?getLocation@Team@@UBE?AVCoord3D@@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetLocation.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D840 10B ?rva0039D840@Rva0039D840@@QAEMXZ -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D84A 63B ?setTeamTargetObject@Team@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039D889.cpp
+
+void Team::rva0039D889(bool flag)
+{
+	if (flag)
+		m_112 = true;
+	else if (m_113)
+		((Rva0055B0CC *)((char *)this + 4))->rva0055B01F();
+	m_113 = flag;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039D8BA.cpp
+
+void Team::rva0039D8BA(Object *obj)
+{
+	(void)obj;
+	m_enteredOrExited = true;
+	TheRvaHostPtr->rva002039C5();
+}
+
+// tu-skeleton: 0x0039D8CC 7B ?rva0039D8CC@Rva0039D8CC@@QBEHHHHH@Z -- matched in Code/GameEngine/Source/Common/GapLeavesSeat8.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039D8D3.cpp
+
+void Team::rva0039D8D3(unsigned int ms)
+{
+	m_deadline = (ms / 1000) * LogicFramesPerSecond + TheGameLogic->getFrame();
+}
+
+// tu-skeleton: 0x0039D91F 11B ?set@Rva0039D91FStringField@@QAEXABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/AsciiStringFieldSetters.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D92A 42B ?findTeamByID@TeamPrototype@@QAEPAVTeam@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D954 42B ?countTeamInstances@TeamPrototype@@QAEHXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp (not merged yet)
+
+// tu-skeleton: 0x0039D97E 101B ?setControllingPlayer@Team@@QAEXPAVPlayer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamSetControllingPlayer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039D9E3.cpp
+
+int Team::getTargetableCount() const
+{
+	int count = 0;
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		if ((cur->m_dead & 1) != 0)
+			continue;
+		if (cur->m_ai != 0) {
+			++count;
+			continue;
+		}
+		ThingTemplate *thingTemplate = cur->m_template;
+		if ((thingTemplate->m_kind0 & 0x80) == 0)
+			continue;
+		++count;
+	}
+	return count;
+}
+
+// ?countBuildings@Team@@QBEHXZ @0x0039DC63 (59B).
+// Team::countBuildings(): counts members whose template is present and whose
+// template kind0 has bit 0x80. Retail walks via the rowed
+// iterate_TeamMemberList at 0x263864 and advance at 0x263526, with the same
+// 24-byte iterator and +0x04/+0x108 layout as the getTargetableCount sibling above.
+// Caller at 0x0039ECF4.
+int Team::countBuildings() const
+{
+	int count = 0;
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		ThingTemplate *thingTemplate = cur->m_template;
+		if( thingTemplate == 0 )
+			continue;
+		if( (thingTemplate->m_kind0 & 0x80) == 0 )
+			continue;
+		++count;
+	}
+	return count;
+}
+
+// ?rva0039DAF4@Team@@QBE_NXZ @0x0039DAF4 (61B).
+// Team::rva0039DAF4(): true when any member has a current victim. Walks via
+// rowed iterate_TeamMemberList at 0x263864 and advance at 0x263526, reads
+// AI at Object+0x258 and calls rowed getCurrentVictim at 0x00268D71.
+// Caller at 0x004ED068. Same /O1 flags and 24-byte iterator as siblings.
+bool Team::rva0039DAF4() const
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		AIUpdateInterface *ai = cur->m_ai;
+		if (ai == 0)
+			continue;
+		if (ai->getCurrentVictim() != 0)
+			return true;
+	}
+	return false;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039DA2A.cpp
+
+// ?rva0039DA2A@Team@@QBEPAUCoord3D@@PAU2@@Z @ 0x0039DA2A 202B (ours 202B exact size/count, 0 structural, 0 register)
+// Team centroid: averages live member positions.
+// Explicit result-buffer ABI view: WB EF5250 and retail79DADE return the
+// result address in EAX. Callers may consume it directly or ignore it; this
+// reconciles the former void-output and aggregate-return declarations. Walks via rowed iterate_TeamMemberList 0x263864 + DLINK advance pin 0x263526 (pin 5911),
+// skips Object+0x438 bit0 dead + Object+0x94 bit0 status (TeamHasAnyObjects precedent), sums Object+0x38/0x3C/0x40 Coord3D,
+// divides by count via the 1.0f literal at 0xBBB8D8. Neighbours getTargetableCount/countBuildings share /O1 flags + 24B iterator.
+// Near miss: X accumulation operand order (retail movss sum/addss pos vs ours movss pos/addss sum, 2 insns) + global reloc;
+// Y/Z, frame, dec-chain-free SSE arithmetic, empty/average shared write tail (ox=x oz=z oy=y order) all exact.
+
+Coord3D *Team::rva0039DA2A(Coord3D *out) const
+{
+    Coord3D sum;
+    sum.x = 0.0f;
+    sum.y = 0.0f;
+    sum.z = 0.0f;
+    int count = 0;
+    for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+        Object *cur = iter.cur();
+        if ((cur->m_dead & 1) != 0)
+            continue;
+        if ((cur->m_status94 & 1) != 0)
+            continue;
+        sum.x = *(const volatile float *)&sum.x + cur->m_pos.x;
+        sum.y += cur->m_pos.y;
+        sum.z += cur->m_pos.z;
+        ++count;
+    }
+    float ox;
+    float oy;
+    float oz;
+    if (count > 0) {
+        float inv = 1.0f / (float)count;
+        ox = sum.x * inv;
+        oy = sum.y * inv;
+        oz = sum.z * inv;
+    }
+    else {
+        ox = sum.x;
+        oz = sum.z;
+        oy = sum.y;
+    }
+    out->x = ox;
+    out->y = oy;
+    out->z = oz;
+    return out;
+}
+
+// ?rva0039E9A1@Team@@QBEPAUCoord3D@@PAU2@@Z, retail 0x0039E9A1, 63 bytes.
+// Flagged position slot at (m_slotBase30 + 0x12C): when the slot pointer
+// is set and its +0xBC flag is nonzero, its +0xB0 Coord3D is the answer;
+// otherwise the live-member centroid rva0039DA2A fills it in. Both paths
+// hand the output pointer back (retail keeps out in eax at the shared
+// return), so the call is a real call, not a tail jump. The +0x30 base
+// plus 0x12C add and the two early-outs are retail facts; the slot
+// owner's identity beyond this relation is unresolved.
+Coord3D *Team::rva0039E9A1(Coord3D *out) const
+{
+    const Rva0039E9A1Slot *slot = (const Rva0039E9A1Slot *)((const char *)m_proto + 0x12C);
+    if (slot != 0 && slot->m_flagBC != 0)
+    {
+        const Coord3D *pos = &slot->m_pos;
+        out->x = pos->x;
+        out->y = pos->y;
+        out->z = pos->z;
+        return out;
+    }
+    rva0039DA2A(out);
+    return out;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039DB31.cpp
+
+void Team::rva0039DB31(const void *arg)
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance())
+	{
+		Object *obj = iter.cur();
+		Rva0039DB31Provider *provider = (Rva0039DB31Provider *)obj->m_inner250;
+		Rva0039DB31Contain *contain = provider ? provider->slot31() : 0;
+		if (contain)
+			contain->slot46(arg, 0);
+		else
+			obj->rva00293077(arg);
+	}
+}
+
+// tu-skeleton: 0x0039DB89 124B ?countObjectsByThingTemplate@Team@@QBEXHPBQBVThingTemplate@@_NPAH1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamMemberKindCounts.cpp (not merged yet)
+
+// tu-skeleton: 0x0039DC05 94B ?rva0039DC05@Team@@QBEHH_N0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamMemberKindCounts.cpp (not merged yet)
+
+// tu-skeleton: 0x0039DC9E 75B ?countObjects@Team@@QBEHV?$BitFlags@$0HE@@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/Team_countObjects.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamHealAllObjects.cpp
+
+void Team::healAllObjects()
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		iter.cur()->healCompletely();
+	}
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039DD12.cpp
+
+int Team::rva0039DD12(TeamPredicate pred, void *userData) const
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		if (!pred(iter.cur(), userData))
+			return 0;
+	}
+	return 1;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039DD4B.cpp
+
+bool Team::rva0039DD4B(bool flag)
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		if ((cur->m_dead & 1) != 0)
+			continue;
+		if ((cur->m_status94 & 1) != 0)
+			continue;
+		ThingTemplate *thingTemplate = cur->m_template;
+		if ((thingTemplate->m_kindByte10e & 0x80) != 0)
+			continue;
+		if (flag) {
+			if ((thingTemplate->m_kind0 & 0x80) == 0)
+				continue;
+			UnsignedInt s = cur->m_status114;
+			bool b3 = ((s >> 3) & 1) != 0;
+			bool b4 = ((s >> 4) & 1) != 0;
+			if (b3)
+				continue;
+			if (b4)
+				continue;
+		}
+		if ((thingTemplate->m_kind0 & 0x80) == 0)
+			continue;
+		return true;
+	}
+	return false;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp
+
+bool Team::rva0039DDC2(Rva0039DDC2Filter kindOfFilter, bool flag)
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		if ((cur->m_dead & 1) != 0)
+			continue;
+		if ((cur->m_status94 & 1) != 0)
+			continue;
+		ThingTemplate *thingTemplate = cur->m_template;
+		if ((thingTemplate->m_kindByte10e & 0x80) != 0)
+			continue;
+		if (flag) {
+			if ((thingTemplate->m_kind0 & 0x80) != 0) {
+				UnsignedInt status = cur->m_status114;
+				bool isAwaitingConstruction = ((status >> 3) & 1) != 0;
+				bool isPartiallyConstructed = ((status >> 4) & 1) != 0;
+				if (isAwaitingConstruction)
+					continue;
+				if (isPartiallyConstructed)
+					continue;
+			}
+		}
+		((unsigned char *)&kindOfFilter)[0] |= 0x80;
+		const BitFlags<116> &mustBeSet = *(const BitFlags<116> *)(const void *)&kindOfFilter;
+		const BitFlags<116> &mustBeClear = KINDOFMASK_NONE;
+		if (((const Thing *)cur)->isKindOfMulti(mustBeSet, mustBeClear))
+			return true;
+	}
+	return false;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039DE46.cpp
+
+bool Team::rva0039DE46(BfmeTab1026 *tab, bool flag)
+{
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		if ((cur->m_dead & 1) != 0)
+			continue;
+		if ((cur->m_status94 & 1) != 0)
+			continue;
+		ThingTemplate *thingTemplate = cur->m_template;
+		if ((thingTemplate->m_kindByte10e & 0x80) != 0)
+			continue;
+		if (flag) {
+			if ((thingTemplate->m_kind0 & 0x80) != 0) {
+				UnsignedInt status = cur->m_status114;
+				bool b3 = ((status >> 3) & 1) != 0;
+				bool partiallyConstructed = ((status >> 4) & 1) != 0;
+				if (b3)
+					continue;
+				if (partiallyConstructed)
+					continue;
+			}
+		}
+		if (tab->accepts(cur, 0) != 0)
+			return true;
+	}
+	return false;
+}
+
+// tu-skeleton: 0x0039DEC4 88B ?hasAnyUnits@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/Team_hasAnyUnits.cpp (not merged yet)
+
+// tu-skeleton: 0x0039DF1C 107B ?hasAnyBuildings@Team@@QAE_NVBfmeFixedStorage0004543D@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/Team_hasAnyBuildings.cpp (not merged yet)
+
+// tu-skeleton: 0x0039DF87 113B ?rva0039DF87@Team@@QAE_NPAVBfmeTab1026@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/Team_isIdle.cpp
+
+bool Team::isIdle() const
+{
+	bool ok = true;
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		AIVirtual110 *ai = (AIVirtual110 *)cur->m_ai;
+		if (ai == 0)
+			continue;
+		if ((cur->m_dead & 1) != 0)
+			continue;
+		if (!ai->isReady()) {
+			ok = false;
+			break;
+		}
+	}
+	return ok;
+}
+
+// tu-skeleton: 0x0039E042 142B ?hasAnyObjects@Team@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamHasAnyObjects.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E0D0 141B ?rva0039E0D0@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRva0039E0D0.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E15D 176B ?didAllEnter@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E20D 123B ?didPartialEnter@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E288 123B ?didPartialExit@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E303 197B ?didAllExit@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E3C8 172B ?allInside@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E474 153B ?noneInside@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E50D 172B ?someInsideSomeOutside@Team@@QAE_NPAVPolygonTrigger@@I@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E5B9 167B ?rva0039E5B9@Team@@QAEXPAUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E660 113B ?transferUnitsTo@Team@@QAEXPAV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E6D1 155B ?transferKindOfUnitsTo@Team@@QAEXPAV1@ABV?$BitFlags@$0EF@@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E76C 134B ?damageTeamMembers@Team@@QAE_NM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamApplyDamage.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E7F2 35B ?moveTeamTo@Team@@QAEXUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (not merged yet)
+
+// tu-skeleton: 0x0039E815 54B ?hasAnyBuildFacility@Team@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/Team_hasAnyBuildFacility.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamMemberRangeFloor.cpp
+
+float Team::rva0039E84B(Object *obj)
+{
+	float f = g_00C1ADB8;
+	Rva002627E8 *p = ((ObjectWithRange *)obj)->m_range;
+	if (p)
+		f = p->rva002627E8();
+	float best = f;
+	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
+		Object *cur = iter.cur();
+		Rva002627E8 *rp = ((ObjectWithRange *)cur)->m_range;
+		if (rp == 0)
+			continue;
+		if (rp->rva002627E8() < best)
+			best = rp->rva002627E8();
+	}
+	float scaled = f * 0.25f;
+	f = scaled > best ? scaled : best;
+	return f;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039E8EB.cpp
+
+Object *Team::rva0039E8EB()
+{
+	DLINK_ITERATOR<Object> iter = iterate_TeamMemberList();
+	return iter.cur();
+}
+
+Object *Team::rva0039E968(int bit)
+{
+	DLINK_ITERATOR<Object> iter = iterate_TeamMemberList();
+	while (!iter.done()) {
+		if ((char)((Rva0028D8EB *)iter.cur())->rva0028D8EB(bit) == 1)
+			return iter.cur();
+		iter.advance();
+	}
+	return 0;
+}
+
+bool Team::rva0039E8FF(int val)
+{
+	if (val == 0)
+		return false;
+	DLINK_ITERATOR<Object> iter = iterate_TeamMemberList();
+	while (!iter.done()) {
+		Object *cur = iter.cur();
+		Rva0039E8FFMid *mid = (Rva0039E8FFMid *)cur->m_inner250;
+		void *res = mid ? mid->f31() : 0;
+		if (res != 0) {
+			if (((Rva0039E8FFTarget *)res)->g43(val))
+				return true;
+		} else {
+			if (cur->affectedByUpgrade((const UpgradeTemplate *)val) == 1)
+				return true;
+		}
+		iter.advance();
+	}
+	return false;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/Team_disband.cpp
+
+void Team::disband()
+{
+    Team *team = ((Rva0039Mid *)m_proto)->m_team08;
+    if (team) {
+        Team *u = ((Rva0039Owner *)team)->m_unit;
+        if ((Team *)this != u)
+            ((Team *)this)->transferUnitsTo(u);
+    } else {
+        Object *object;
+        do {
+            object = m_dlinkhead_TeamMemberList;
+            if (object == 0)
+                break;
+            object->setTeam(0);
+        } while (object != 0);
+    }
+}
+
+// tu-skeleton: 0x0039EA0F 18B ??R?$less@U?$pair@HH@_STL@@@_STL@@QBE_NABU?$pair@HH@1@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0039EA9CCtor.cpp
+
+// ??0Rva0039EA9C@@QAE@XZ @0x0039EA9C 27B, call sites 0x0059A388 0x0059A689
+// 0x005A9FDF. Six-dword record: zeros, 1 at +0x08, -1 at +0x14.
+// Structural inference: retail stores the -1 last (or dword [+0x14], -1
+// after the zero and 1 stores) even though plain int initialisers schedule
+// it first; a +0x14 member sub-object with its own inline -1 constructor
+// gives exactly that order.
+
+// Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
+// the anchor keeps the noinline body emitted.
+__declspec(noinline) inline Rva0039EA9C::Rva0039EA9C() : m_00(0), m_04(0), m_08(1)
+{
+}
+
+// ?bfmeAnchorRva0039EA9C absent-from-retail
+void *bfmeAnchorRva0039EA9C(void *where)
+{
+	return new (where) Rva0039EA9C();
+}
+
+// tu-skeleton: 0x0039EAED 236B ??1TeamTemplateInfo@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EBD9 69B ?countObjectsByThingTemplate@TeamPrototype@@QBEXHPBQBVThingTemplate@@_NPAH1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamPrototypeGetGenericScript.cpp
+
+// ?getGenericScript@TeamPrototype@@QAEPAVScript@@HPAVAsciiString@@@Z, retail
+// 0x0039EC1E (187 bytes).
+// Identity (target): WorldBuilder's debug Team.cpp:1372 body
+// TeamPrototype::getGenericScript ("We attempted to find a generic script,
+// but couldn't.") has retail's loop and callee order: the ScriptEngine
+// lookup 0x003573C4 (prototype owner name +0x10, script name, out string)
+// then Script::duplicate (0x003B7550).
+// Donor (Zero Hour TeamPrototype::getGenericScript): fill the 32 run copies
+// once (flag +0x28), then return the requested one. BFME 2 deltas (target):
+// the lookup also yields a string, kept per slot at +0xAC when a copy was
+// made and handed back through the second argument; the names are at +0x244
+// and the copies at +0x2C.
+
+Script *TeamPrototype::getGenericScript(int scriptToRetrieve, AsciiString *outName)
+{
+	if (!m_retrievedGenericScripts)
+	{
+		m_retrievedGenericScripts = true;
+		for (int i = 0; i < MAX_GENERIC_SCRIPTS; ++i)
+		{
+			Script *dup = 0;
+			AsciiString foundName;
+			if (!m_teamTemplate.m_teamGenericScripts[i].isEmpty())
+			{
+				Script *script = (Script *)((Rva003573C4Owner *)TheScriptEngine)->rva003573C4(m_ownerName, *(const BfmeRoomZC *)&m_teamTemplate.m_teamGenericScripts[i], &foundName);
+				if (script)
+					dup = script->duplicate();
+			}
+			m_genericScriptsToRun[i] = dup;
+			if (dup)
+				m_genericScriptNames[i] = foundName;
+		}
+	}
+	Script *result = m_genericScriptsToRun[scriptToRetrieve];
+	if (result && outName)
+		*outName = m_genericScriptNames[scriptToRetrieve];
+	return result;
+}
+
+// tu-skeleton: 0x0039ECD9 56B ?countBuildings@TeamPrototype@@QAEHXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039ED11 91B ?countObjects@TeamPrototype@@QAEHV?$BitFlags@$0HE@@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039ED6C 48B ?healAllObjects@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039ED9C 69B ?rva0039ED9C@TeamPrototype@@QAEHP6AHPAVObject@@PAX@Z1@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EDE1 64B ?rva0039EDE1@TeamPrototype@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EE21 79B ?rva0039EE21@TeamPrototype@@QAE_NVBfmeFixedStorage0004543D@@_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EE70 68B ?rva0039EE70@TeamPrototype@@QAE_NPAVBfmeTab1026@@_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EEB4 58B ?hasAnyUnits@TeamPrototype@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EEEE 88B ?hasAnyBuildings@TeamPrototype@@QAE_NVBfmeFixedStorage0004543D@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EF46 64B ?rva0039EF46@TeamPrototype@@QAE_NPAVBfmeTab1026@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EF86 64B ?hasAnyObjects@TeamPrototype@@QAE_N_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039EFC6 58B ?hasAnyBuildFacility@TeamPrototype@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039F000 58B ?damageTeamMembers@TeamPrototype@@QAEXM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp (not merged yet)
+
+// tu-skeleton: 0x0039F03A 90B ?moveTeamTo@TeamPrototype@@QAEXUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeMoveTeamTo.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/Team_setAttackPriorityName.cpp
+
+// ?setAttackPriorityName@Team@@QAEXVAsciiString@@@Z @0x0039F094 62B
+// Team AsciiString setter by value. Loads +0x30 inner then sets AsciiString
+// at +0x318 from the by-value param at [ebp+8] via rowed StringBase set
+// 0x000366F0 with EH states 0 then -1 and releaseBuffer 0x00036410.
+// Caller at 0x003BEDD1 proves Team ecx with a copied AsciiString temp.
+// Evidence: ret 4 thiscall; EH prolog; [ecx+0x30] null check.
+
+void Team::setAttackPriorityName(AsciiString name)
+{
+	TeamRvaInner *inner = (TeamRvaInner *)m_proto;
+	if (inner) {
+		AsciiString &slot = inner->m_str318;
+		((StringBase<char> *)&slot)->set(*(const StringBase<char> *)&name);
+	}
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRva0039F0D2.cpp
+
+bool Team::rva0039F0D2()
+{
+	return ((TeamMapInner *)m_teamRelations)->m_14 != 0;
+}
+
+bool Team::rva0039F824()
+{
+	return ((TeamMapInner *)m_playerRelations)->m_14 != 0;
+}
+
+// tu-skeleton: 0x0039F0E3 1163B ?updateState@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamUpdateState.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/Rva0039F597Find.cpp
+
+Rva0039EA4ENode *Rva0039EA4E::rva0039F597(const Rva0039D8FBKey &key)
+{
+	Rva0039EA4ENode *j = m_header00;
+	Rva0039EA4ENode *x = m_header00->m_parent04;
+	while (x) {
+		if (!(unsigned char)Rva0039D8FBLess(x->m_key10, key)) {
+			j = x;
+			x = x->m_left08;
+		} else
+			x = x->m_right0C;
+	}
+	return j;
+}
+
+// ?rva0039FB73@Rva0039EA4E@@QAE?AURva0039F5C8Iterator@@ABURva0039D8FBKey@@@Z
+// @0x0039FB73 (20B): the map-level wrapper over the walk above, returning
+// its node as an iterator through the hidden result pointer; the same shape
+// as 0x0039F5C8 over 0x0039EA4E (Rva0039EA4EFinish.cpp).
+Rva0039F5C8Iterator Rva0039EA4E::rva0039FB73(const Rva0039D8FBKey &key)
+{
+	return Rva0039F5C8Iterator(rva0039F597(key));
+}
+
+// tu-skeleton: 0x0039F5DC 34B ?_M_create_node@?$_Rb_tree@VArmorTemplateSet@@V1@U?$_Identity@VArmorTemplateSet@@@_STL@@U?$less@VArmorTemplateSet@@@3@V?$allocator@VArmorTemplateSet@@@3@@_STL@@IAEPAU?$_Rb_tree_node@VArmorTemplateSet@@@2@ABVArmorTemplateSet@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_create_nodes2.cpp (not merged yet)
+
+// tu-skeleton: 0x0039F5FE 148B ?_M_insert@?$_Rb_tree@U?$pair@HH@_STL@@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@U?$less@U?$pair@HH@_STL@@@2@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@_STL@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryFindById.cpp
+
+// ?findTeamPrototypeByID@TeamFactory@@QAEPAVTeamPrototype@@I@Z @0x0039F72C 53B
+// Name (donor): Zero Hour TeamFactory::findTeamPrototypeByID, which
+// TeamFactory::xfer calls on load exactly where retail calls this body.
+// TeamFactory prototype map linear find by id. Walks the +0xB0 map from
+// header->left via rowed _M_increment 0x00024250; each node carries the
+// 8-byte key at +0x10 and the TeamPrototype at +0x18 whose +0x0C id is
+// compared to the arg. Returns the prototype or null. Same owner/map/node
+// as siblings 0x0039FE6C and 0x0039FE11; callers at 0x002B17B4 0x003A31C4
+// 0x004EDB33 prove the single-arg thiscall shape.
+// Evidence: ret 4 thiscall; [ecx+0xB0] header and [header+8] begin.
+// The prototype map as the Team.cpp seed spells it: lower_bound's header and
+// node (Rva0039EA4E, 0x0039EA4E) with the TeamPrototype value at +0x18.
+
+TeamPrototype *TeamFactory::findTeamPrototypeByID(unsigned int id)
+{
+	Rva0039EA4ENode *node = m_prototypes.m_header00->m_left08;
+	if (node != m_prototypes.m_header00) {
+		do {
+			TeamPrototype *proto = node->m_value18;
+			if (proto->m_id == id)
+				return proto;
+			node = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)node);
+		} while (node != m_prototypes.m_header00);
+	}
+	return 0;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeamByID.cpp
+
+// ?findTeamByID@TeamFactory@@QAEPAVTeam@@I@Z @0x0039F761 68B
+// Zero Hour TeamFactory::findTeamByID: a null id returns null; otherwise walk
+// the prototype map at +0xB0 (header->left begin, rowed _M_increment
+// 0x00024250, 8-byte key at +0x10, TeamPrototype at +0x18 as in the sibling
+// TeamFactoryFindById.cpp) and return the first non-null
+// TeamPrototype::findTeamByID (0x0039D92A). Callers: getTeamNamed 0x003584E9,
+// the CaveContain/GarrisonContain/TurretAI xfers and
+// AIGuardAttackAggressorState::update with ecx = TheTeamFactory.
+// The prototype map as the Team.cpp seed spells it: lower_bound's header and
+// node (Rva0039EA4E, 0x0039EA4E) with the TeamPrototype value at +0x18.
+
+Team *TeamFactory::findTeamByID(unsigned int id)
+{
+	if (id == 0)
+		return 0;
+	Rva0039EA4ENode *node = m_prototypes.m_header00->m_left08;
+	if (node != m_prototypes.m_header00) {
+		do {
+			Team *team = node->m_value18->findTeamByID(id);
+			if (team)
+				return team;
+			node = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)node);
+		} while (node != m_prototypes.m_header00);
+	}
+	return 0;
+}
+
+// tu-skeleton: 0x0039F7A5 127B ?loadPostProcess@TeamFactory@@MAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryRecomputeIDs.cpp (not merged yet)
+
+// tu-skeleton: 0x0039F835 194B ?notifyTeamOfObjectDeath@Team@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamNotifyTeamOfObjectDeath.cpp (not merged yet)
+
+// tu-skeleton: 0x0039F8F7 533B ?updateGenericScripts@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamUpdateGenericScripts.cpp (not merged yet)
+
+// tu-skeleton: 0x0039FB0C 5B ?j_0039fb0c@@YAXXZ -- matched in Code/gen_small/gthunks_000_admitted.cpp (not merged yet)
+
+// tu-skeleton: 0x0039FB11 56B ??1Rva0039F56E@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x0039FB49 42B ??0?$_Rb_tree@HU?$pair@$$CBHUBfmePod8@@@_STL@@U?$_Select1st@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@@_STL@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x0039FB87 439B ?insert_unique@?$_Rb_tree@U?$pair@HH@_STL@@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@U?$less@U?$pair@HH@_STL@@@2@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@2@U32@ABU?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@2@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp (not merged yet)
+
+// tu-skeleton: 0x0039FD3E 55B ?_M_skip_to_next@?$_Hashtable_iterator@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@PBVGameWindow@@UhashConstGameWindowPtr@WindowVideoManager@@U?$_Select1st@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@U?$equal_to@PBVGameWindow@@@2@V?$allocator@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@@_STL@@QAEPAU?$_Hashtable_node@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/window_video_manager.cpp (not merged yet)
+
+// tu-skeleton: 0x0039FD93 5B ?rva0039FD93@Rva0039FD93@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp
+
+// ?markTeamDoneForTacticalAI@TeamFactory@@QAEXPAVTeam@@@Z, retail 0x0039FD98
+// (121 bytes).
+// Identity (target): WorldBuilder's debug Team.cpp:387..397 body
+// TeamFactory::markTeamDoneForTacticalAI asserts team->getControllingPlayer()
+// and (*it).second, and calls getControllingPlayer, Team::getName,
+// nameToKey twice and the +0xB0 prototype map lower_bound (rowed 0x0039EA4E)
+// in retail's order, then clears byte +0x31E of the found prototype.
+// Layout (target): Team::m_proto +0x30 with the prototype name at +0x14
+// (Team::getName inlined, AsciiString::TheEmptyString 0x00DE0878 for no
+// prototype); the controlling player's name at +0x4C; the map key is
+// (player name key, team name key), the same key/node shape as
+// TeamFactoryFindPrototype.cpp (findPrototype 0x0039FE6C).
+
+void TeamFactory::markTeamDoneForTacticalAI(Team *team)
+{
+	if (!team->getControllingPlayer())
+		return;
+	int teamKey = TheNameKeyGenerator->nameToKey(team->getName());
+	int playerKey = TheNameKeyGenerator->nameToKey(team->getControllingPlayer()->getPlayerNameStr());
+	Rva0039D8FBKey key;
+	key.m_first = playerKey;
+	key.m_second = teamKey;
+	Rva0039EA4ENode *it = m_prototypes.rva0039EA4E(key);
+	if (it != m_prototypes.m_header00)
+		((TeamPrototypeDoneView *)it->m_value18)->m_tacticalAIFlag31E = false;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryErasePrototype.cpp
+
+// ?removeTeamPrototypeFromList@TeamFactory@@QAEXPAVTeamPrototype@@@Z @0x0039FE11 91B
+// Name (donor): Zero Hour TeamFactory::removeTeamPrototypeFromList; caller
+// TeamPrototype 0x003A0CD1 passes its own this (REL32 0x003A0D03).
+// TeamFactory prototype map erase by two name keys. Converts both AsciiStrings
+// via TheNameKeyGenerator then lower_bounds the +0xB0 map through rowed
+// 0x0039EA4E; erases the node via rowed STL map<int void*> erase 0x005530A8
+// when it is not the header. Same owner/map/key/node as sibling findPrototype
+// 0x0039FE6C; single stack arg at +0x10/+0x14 proves the two-string struct.
+// Evidence: callees all rowed; caller 0x003A0CD1 pushes its this; LINK BONUS none.
+
+void TeamFactory::removeTeamPrototypeFromList(TeamPrototype *tp)
+{
+	const Rva003A0CD1 &x = *(const Rva003A0CD1 *)tp;
+	int keyB = TheNameKeyGenerator->nameToKey(x.m_b14);
+	int keyA = TheNameKeyGenerator->nameToKey(x.m_a10);
+	Rva0039D8FBKey key;
+	key.m_first = keyA;
+	key.m_second = keyB;
+	Rva0039EA4ENode *node = m_prototypes.rva0039EA4E(key);
+	if (node != m_prototypes.m_header00) {
+		typedef _STL::pair<const int, void *> V;
+		typedef _STL::_Rb_tree<int, V, _STL::_Select1st<V>, _STL::less<int>, _STL::allocator<V> > Tree;
+		((Tree *)&m_prototypes)->erase(Tree::iterator((Tree::_Link_type)node));
+	}
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryFindPrototype.cpp
+
+// ?findTeamPrototype@TeamFactory@@QAEPAVTeamPrototype@@ABVAsciiString@@0@Z @0x0039FE6C 79B
+// Name (donor): BFME 1 calls this two-name TeamFactory::findTeamPrototype
+// overload at the same call sites (donor_sweep pin); owner (target): the
+// TeamFactory map at +0xB0, as in the sibling TeamFactory rows.
+// TeamFactory prototype map find by two name keys. Converts both AsciiStrings
+// via TheNameKeyGenerator then lower_bounds the +0xB0 map through rowed
+// 0x0039EA4E; null when the node is the header, else the TeamPrototype at +0x18.
+// Evidence: LINK packet pin, callers 0x00206389 0x00357100 0x00358643, sibling
+// Rva003570D1 declares this signature, map/key/node match Rva0039EA4EFinish.
+
+TeamPrototype *TeamFactory::findTeamPrototype(const AsciiString &asciiString, const AsciiString &b)
+{
+	int keyB = TheNameKeyGenerator->nameToKey(b);
+	int keyA = TheNameKeyGenerator->nameToKey(asciiString);
+	Rva0039D8FBKey key;
+	key.m_first = keyA;
+	key.m_second = keyB;
+	Rva0039EA4ENode *node = m_prototypes.rva0039EA4E(key);
+	if (node != m_prototypes.m_header00)
+		return node->m_value18;
+	return 0;
+}
+
+// tu-skeleton: 0x0039FEBB 3606B ?loadFromDict@TeamTemplateInfo@@QAEXPAVDict@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp (not merged yet)
+
+// tu-skeleton: 0x003A0CD1 57B ?rva003A0CD1@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamPrototypeRegisterUnits.cpp
+
+// Retail 0x003A0D0A 88B, WB twin EF2670 (identity remains address-derived).
+// Target facts: owner +08, unit record array +130 with stride18, second name
+// +10 in each record, count +1D8; existing TeamTemplateInfo ctor independently
+// establishes seven records and that count. Empty object is the exported
+// AsciiString::TheEmptyString at RVA9E0878. Registry and +38 append calls use
+// their owned opaque providers; their higher-level purpose is not asserted.
+
+void TeamPrototype::rva003A0D0A()
+{
+ if(m_owningPlayer) {
+  Rva002A8AB1Record *record=TheSkirmishAIManager->rva002A8AB1(m_owningPlayer);
+  if(record) {
+   for(int i=0;i<m_teamTemplate.m_numUnitsInfo;++i) {
+    if(m_teamTemplate.m_unitsInfo[i].m_10.compare(AsciiString::TheEmptyString)!=0)
+     ((Rva004EC05A *)record)->rva004EC05A(&m_teamTemplate.m_unitsInfo[i].m_10);
+   }
+  }
+ }
+}
+
+// ?rva003A262C@TeamFactory@@QAEXXZ @0x003A262C (45B)
+void TeamFactory::rva003A262C()
+{
+ for (Rva0039EA4ENode *node = m_prototypes.m_header00->m_left08; node != m_prototypes.m_header00;
+      node = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)node))
+  node->m_value18->rva003A0D0A();
+}
+
+// tu-skeleton: 0x003A0D62 166B ?addUnitInfo@TeamPrototype@@QAEXABVRva0039D769@@@Z -- matched in Code/GameEngine/Source/Common/Rva003A0D62Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x003A0E08 102B ?rva003A0E08@TeamPrototype@@QAEXABVRva0039D769@@@Z -- matched in Code/GameEngine/Source/Common/Rva003A0D62Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x003A0E6E 244B ?evaluateProductionCondition@TeamPrototype@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A0F62 112B ?getTeamAsAIGroup@Team@@QAEXPAVAIGroup@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetTeamAsAIGroup.cpp (not merged yet)
+
+// tu-skeleton: 0x003A0FD2 137B ?getRelationship@Team@@QBE?AW4Relationship@@PBV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamGetTeamTargetObject.cpp
+
+// ------------------------------------------------------------------------
+Object *Team::getTeamTargetObject(void)
+{
+	if (m_commonAttackTarget == INVALID_OBJECT_ID) {
+		return NULL;
+	}
+	Object *target = TheGameLogic->findObjectByID(m_commonAttackTarget);
+	if (target) {
+		if( target->rva002943B2( getControllingPlayer() ) )
+		{
+			target = NULL;
+		}
+	}
+	if (target && target->isEffectivelyDead()) {
+		target = NULL;
+	}
+	if (target && target->m_containedBy) {
+		target = NULL; // target entered a building or vehicle, so stop targeting.
+	}
+	if (target == NULL) {
+		m_commonAttackTarget = INVALID_OBJECT_ID;
+	}
+	return target;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamRelationOverrideQueries.cpp
+
+// Retail 0x003A10C0 and 0x003A10DF (31 bytes each, RET 4), between the rowed
+// Team::getTeamTargetObject 0x003A105B and Team::deleteTeam 0x003A10FE: each
+// asks whether one of the team's relation maps (+0x118, then +0x11C; Zero
+// Hour's Team keeps m_teamRelations then m_playerRelations) holds an entry
+// for the id, through the shared hash_map<int, Relationship> _M_find
+// 0x002888D4, as Player::getRelationship (PlayerGetRelationship.cpp) does on
+// the player's maps. The relation map keeps its vtable at +0 and the
+// hash_map at +4. Which override query each one is in BFME 2 is not
+// established; the names are address-derived.
+
+bool Team::rva003A10C0(int id) const
+{
+	RetailTeamRelationMap *map = (RetailTeamRelationMap *)m_teamRelations;
+	return map->m_map.find(id) != map->m_map.end();
+}
+
+bool Team::rva003A10DF(int id) const
+{
+	RetailTeamRelationMap *map = (RetailTeamRelationMap *)m_playerRelations;
+	return map->m_map.find(id) != map->m_map.end();
+}
+
+// tu-skeleton: 0x003A1201 59B ?isInBuildVariations@@YA_NPBVThingTemplate@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A123C 287B ?recruitUnit@Team@@QAE_NPAPAVObject@@PAMPAV2@PBVThingTemplate@@PBUCoord3D@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A135B 487B ?tryToRecruit@Team@@QAEPAVObject@@PBVThingTemplate@@PBUCoord3D@@MHHH@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A1542 228B ?rva003A1542@Team@@QAE_NPBVThingTemplate@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A1626 359B ?rva003A1626@Team@@QAEHPBVThingTemplate@@PAVRva00376A62@@HPAV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A178D 790B ?rva003A178D@Team@@QAEHPAVObjectTypes@@HPAV1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A1AA3 407B ?rva003A1AA3@Team@@QAEHPBVThingTemplate@@PAVObjectTypes@@HM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A1D1A 587B ?killTeam@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamEnableGenericScript.cpp
+
+// ?enableGenericScript@Team@@QAE_NABVAsciiString@@0_N@Z, retail 0x003A1F65
+// (269 bytes).
+// Identity (target): WorldBuilder's debug Team.cpp:4472 body
+// Team::enableGenericScript has retail's callee order: the
+// TeamPrototype::getGenericScript (0x0039EC1E) probe, the "group/script"
+// name built from the copy constructor and two concats, then per slot
+// getGenericScript with the out string and three compares.
+// Donor (Zero Hour Team): per-slot m_shouldAttemptGenericScript flags, here
+// at Team+0x70 (the constructor sets the 32 of them). BFME 2 deltas
+// (target): a slot matches when its group string (getGenericScript's second
+// result) equals the group argument and its script name (prototype +0x244)
+// equals the bare or the group-qualified name; the result says whether any
+// slot changed.
+
+// Retail expands the one-character concat in place as StringBase::concat(text, 1).
+inline void concatChar(AsciiString &asciiString, char c)
+{
+	((StringBase<char> *)&asciiString)->concat(&c, 1);
+}
+
+bool Team::enableGenericScript(const AsciiString &scriptName, const AsciiString &groupName, bool enable)
+{
+	if (m_proto == 0)
+		return false;
+	if (m_proto->getGenericScript(0, 0) == 0)
+		return false;
+	bool found = false;
+	AsciiString fullName(groupName);
+	concatChar(fullName, '/');
+	fullName.concat(scriptName);
+	for (int i = 0; i < MAX_GENERIC_SCRIPTS; ++i)
+	{
+		const AsciiString &name = m_proto->getGenericScriptName(i);
+		AsciiString group;
+		Script *script = m_proto->getGenericScript(i, &group);
+		bool match = false;
+		if (script && groupName == group)
+		{
+			if (name == scriptName)
+				match = true;
+			if (name == fullName)
+				match = true;
+		}
+		if (match)
+		{
+			m_shouldAttemptGenericScript[i] = enable;
+			found = true;
+		}
+	}
+	return found;
+}
+
+// tu-skeleton: 0x003A2072 711B ?xfer@Team@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2339 107B ?loadPostProcess@Team@@MAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamLoadPostProcess.cpp (not merged yet)
+
+// tu-skeleton: 0x003A23A5 203B ?rva003A23A5@Team@@QAEXH_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGateMembership.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2563 72B ??1TeamRelationMap@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRelationMapDtor_Rva003A2563.cpp (not merged yet)
+
+// tu-skeleton: 0x003A25AB 6B ?GetSnapshotName@TeamRelationMap@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters4.cpp (not merged yet)
+
+// tu-skeleton: 0x003A25B1 109B ??0TeamFactory@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A261E 6B ?GetSnapshotName@TeamFactory@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2659 141B ?findTeamPrototype@TeamFactory@@QAEPAVTeamPrototype@@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindQualifiedPrototype.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2943 89B ??A?$map@U?$pair@HH@_STL@@PAVTeamPrototype@@U?$less@U?$pair@HH@_STL@@@2@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@PAVTeamPrototype@@@_STL@@@2@@_STL@@QAEAAPAVTeamPrototype@@ABU?$pair@HH@1@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp (not merged yet)
+
+// tu-skeleton: 0x003A299C 165B ??0?$_Rb_tree@HU?$pair@$$CBHUBfmePod8@@@_STL@@U?$_Select1st@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@2@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_copy_ctors_bfmealloc.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2AA6 210B ?xfer@TeamRelationMap@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/RelationMapXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2B78 92B ?addTeamPrototypeToList@TeamFactory@@QAEXPAVTeamPrototype@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2BD4 57B ?addToLists@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2C0D 152B ?rva003A2C0D@TeamPrototype@@QAEXPAVPlayer@@ABVAsciiString@@_NPAVDict@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeReset.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2CA5 70B ?teamAboutToBeDeleted@TeamPrototype@@QAEXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2DBB 258B ?rva003A2DBB@Team@@QAEXM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A2DBB.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2EBD 57B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x003A2EF6 18B ??0?$map@HUBfmePod8@@U?$less@H@_STL@@V?$allocator@U?$pair@$$CBHUBfmePod8@@@_STL@@@3@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2F4C 136B ?clear@TeamFactory@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryClear.cpp (not merged yet)
+
+// tu-skeleton: 0x003A2FD4 116B ?initTeamForTacticalAI@TeamFactory@@QAEPAURva003A2FD4Proto@@ABVAsciiString@@PAXHI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactory_initTeamForTacticalAI.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryTeamAboutToBeDeleted.cpp
+
+//
+// ?teamAboutToBeDeleted@TeamFactory@@QAEXPAVTeam@@@Z, retail 0x003A3048,
+// 65 bytes.
+//
+// Zero Hour Team.cpp TeamFactory::teamAboutToBeDeleted: every prototype in
+// the factory's map hears about the team, then ThePlayerList does.
+// Target evidence: TheTeamFactory (0x00E028BC) is the receiver at both
+// teardown call sites (deleteTeamCallback 0x003A33A7 and
+// TeamPrototype::updateState 0x003A34AC); the body walks the +0xB0
+// prototype map from header->left through the rowed _M_increment
+// 0x00024250 like the rowed TeamFactory finds (TeamFactoryFindById.cpp),
+// calling 0x003A2CA5 on each node's +0x18 prototype with the team (pinned
+// as TeamPrototype::teamAboutToBeDeleted: it walks the prototype's +0x334
+// team list), and tail-calls ThePlayerList (0x00DFEEE8) member 0x002A7AFE
+// when the list exists.
+// The prototype map as the Team.cpp seed spells it: lower_bound's header and
+// node (Rva0039EA4E, 0x0039EA4E) with the TeamPrototype value at +0x18.
+
+void TeamFactory::teamAboutToBeDeleted(Team *team)
+{
+	for (Rva0039EA4ENode *it = m_prototypes.m_header00->m_left08; it != m_prototypes.m_header00;
+		it = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)it))
+	{
+		it->m_value18->teamAboutToBeDeleted(team);
+	}
+	if (ThePlayerList)
+		ThePlayerList->rva002A7AFE(team);
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp
+
+// ?xfer@TeamFactory@@MAEXPAVXfer@@@Z, retail 0x003A308A (527 bytes).
+// Identity (target): WorldBuilder's debug Team.cpp TeamFactory::DoXfer
+// (callgraph lead) and Zero Hour's TeamFactory::xfer share retail's order:
+// the unique team id, the prototype count checked against the map size
+// (XferException(5, 0) on mismatch), then on save each prototype's id and
+// snapshot over the map (rowed _M_increment 0x00024250), on load
+// findTeamPrototypeByID (0x0039F72C) with the same throw when missing.
+// Layout (target): the method runs on the Snapshot base at TeamFactory+0x0C,
+// so the prototype map (+0xB0) and its count (+0xB4) read at +0xA4/+0xA8 and
+// m_uniqueTeamID (+0xC0) at +0xB4; prototypes carry their id at +0x0C.
+// BFME 2 deltas (target): a light-CRC early out and Version(1, 3); from
+// version 2 a flag (whether the first of 40 prototype slots at +0x10 is
+// set) and, when set, each slot's name (+0x14), owner player index (+0x08,
+// -1 for none) and singleton bit (+0x18 bit 0); a slot with an owner is
+// re-set up on load through 0x003A2C0D (owner, name, singleton, no Dict)
+// and, from version 3, moved as a snapshot. Zero Hour's unused
+// prototypeName local survives as the constructed-and-released string.
+
+void TeamFactory::xfer(Xfer *xfer)
+{
+	if (xfer->IsLightCRC())
+		return;
+
+	Xfer::Version version(1, 3);
+	*xfer == version;
+
+	*xfer == m_uniqueTeamID;
+
+	unsigned short prototypeCount = (unsigned short)m_prototypes.size();
+	*xfer == prototypeCount;
+	if (prototypeCount != m_prototypes.size())
+		throw XferException(5, 0);
+
+	unsigned int teamPrototypeID;
+	TeamPrototype *teamPrototype;
+	AsciiString prototypeName;
+	if (xfer->IsStoring())
+	{
+		for (Rva0039EA4ENode *it = m_prototypes.m_header00->m_left08; it != m_prototypes.m_header00;
+			it = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)it))
+		{
+			teamPrototype = it->m_value18;
+			teamPrototypeID = teamPrototype->getID();
+			*xfer == teamPrototypeID;
+			*xfer == *teamPrototype;
+		}
+	}
+	else
+	{
+		for (unsigned short i = 0; i < prototypeCount; ++i)
+		{
+			*xfer == teamPrototypeID;
+			teamPrototype = findTeamPrototypeByID(teamPrototypeID);
+			if (teamPrototype == 0)
+				throw XferException(5, 0);
+			*xfer == *teamPrototype;
+		}
+	}
+
+	if (version.m_minimum >= 2)
+	{
+		bool hasSlots = m_dummyTeams[0] != 0;
+		*xfer == hasSlots;
+		if (hasSlots)
+		{
+			for (int i = 0; i < TEAM_FACTORY_PROTOTYPE_SLOTS; ++i)
+			{
+				TeamPrototype *slot = m_dummyTeams[i];
+				AsciiString name(slot->getName());
+				*xfer == name;
+				int playerIndex = slot->getControllingPlayer() ? slot->getControllingPlayer()->getPlayerIndex() : -1;
+				*xfer == playerIndex;
+				bool isSingleton = slot->getIsSingleton();
+				*xfer == isSingleton;
+				if (playerIndex != -1)
+				{
+					if (xfer->IsLoading())
+					{
+						Player *owner = ThePlayerList->getNthPlayer(playerIndex);
+						slot->rva003A2C0D(owner, name, isSingleton, 0);
+					}
+					if (version.m_minimum >= 3)
+						*xfer == *slot;
+				}
+			}
+		}
+	}
+}
+
+// tu-skeleton: 0x003A33A7 38B ?deleteTeamCallback@@YAXPAVTeam@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A33CD 223B ??1TeamPrototype@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A34AC 158B ?updateState@TeamPrototype@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x003A354A 5B ?cleanup@Rva003A354ATableCleanupForward@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A354F 388B ??1Team@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A36F7 9B ?rva003A36F7@Rva003ABEFD@@QAEMH@Z -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3700 9B ?rva003A3700@Rva003ABEFD@@QAEMH@Z -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3709 6B ?GetSnapshotName@Team@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A370F 8B ??_ETeam@@O3AEPAXI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDeleter.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3717 31B ?rva003A3717@Team@@QAE_NABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3736 45B ?rva003A3736@Team@@QAEMM@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3763 121B ?rva003A3763@Rva00056F61@@QAEPA_NPBVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp (not merged yet)
+
+// tu-skeleton: 0x003A37DC 30B ?rva003A37DC@Rva000427195@@QAEXUVideoPair@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarVideoMapErase.cpp (not merged yet)
+
+// tu-skeleton: 0x003A383A 95B ??1TeamFactory@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3899 5B ?init@TeamFactory@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A389E 19B ?reset@TeamFactory@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A38CD 28B ??_GTeam@@MAEPAXI@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamDeleter.cpp (not merged yet)
+
+// tu-skeleton: 0x003A38E9 81B ?rva003A38E9@Team@@QAEXABVAsciiString@@E@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamRva003A38E9.cpp (not merged yet)
+
+// tu-skeleton: 0x003A393A 31B ??0Rva003A393A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/ArmorHashMapCtor003A393A.cpp (not merged yet)
+
+// tu-skeleton: 0x003A3959 50B ??0TeamRelationMap@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x003A39A7 471B ??0Team@@QAE@PAVTeamPrototype@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp
+
+// TeamFactory::createInactiveTeam, retail 0x003A3B7E (317 bytes):
+// ?createInactiveTeam@TeamFactory@@QAEPAVTeam@@ABVAsciiString@@0@Z
+// Identity (target): WorldBuilder's debug Team.cpp:513
+// TeamFactory::createInactiveTeam; retail's callee order matches Zero
+// Hour's body: findTeamPrototype (0x0039FE6C), the ERROR_BAD_ARG throw,
+// the singleton's existing team, operator new and Team::Team (0x003A39A7),
+// and on both paths the production-condition script lookup (0x003573C4)
+// and its action run (0x0020D451) when the prototype executes actions.
+// BFME 2 deltas (target): the prototype is keyed by (owner name, team
+// name); the script lookup takes the owner name (+0x10) and returns a scope
+// string, which the action run receives with the action (Script +0x34), the
+// script, the condition name and 0. Layout (target): prototype flags +0x18
+// (bit 0 singleton), production condition +0x23C, execute-actions +0x240,
+// instance list +0x334; the factory's team id counter at +0xC0.
+
+Team *TeamFactory::createInactiveTeam(const AsciiString &owner, const AsciiString &name)
+{
+	TeamPrototype *tp = findTeamPrototype(owner, name);
+	if (!tp)
+		throw ERROR_BAD_ARG;
+
+	Team *team = 0;
+	if (tp->getIsSingleton())
+	{
+		team = tp->getFirstItemIn_TeamInstanceList();
+		if (team)
+		{
+			if (tp->getExecuteActions())
+			{
+				AsciiString scope;
+				Script *script = (Script *)((Rva003573C4Owner *)TheScriptEngine)->rva003573C4(tp->getOwnerName(), reinterpret_cast<const BfmeRoomZC &>(tp->getProductionCondition()), &scope);
+				if (script)
+					((Rva0020D451Engine *)TheScriptEngine)->rva0020D451(scope, script->getAction(), script, (void *)&tp->getProductionCondition(), (Team *)0);
+			}
+			return team;
+		}
+	}
+
+	team = new Team(tp, ++m_uniqueTeamID);
+	if (tp->getExecuteActions())
+	{
+		AsciiString scope;
+		Script *script = (Script *)((Rva003573C4Owner *)TheScriptEngine)->rva003573C4(tp->getOwnerName(), reinterpret_cast<const BfmeRoomZC &>(tp->getProductionCondition()), &scope);
+		if (script)
+			((Rva0020D451Engine *)TheScriptEngine)->rva0020D451(scope, script->getAction(), script, (void *)&tp->getProductionCondition(), (Team *)0);
+	}
+	return team;
+}
+
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeam.cpp
+
+//
+// ?findTeam@TeamFactory@@QAEPAVTeam@@ABVAsciiString@@0@Z @0x003A3E37
+// 61B: the Zero Hour TeamFactory::findTeam shape. The rowed findTeamPrototype
+// (0x0039FE6C) looks the prototype up; its first team instance (+0x334) is
+// returned, and when there is none and the prototype is not a singleton
+// (+0x18 bit 0) the rowed TeamFactory::createInactiveTeam (0x003A3B7E, WB
+// name) makes one; no prototype gives NULL.
+// Target facts: retail returns the +0x334 value itself (it stays in eax
+// through the singleton test), which is why the result is a Team rather
+// than the prototype the banked attempt returned. Name (donor): BFME 1 and
+// Zero Hour call TheTeamFactory->findTeam where AIPlayer::buildSpecificAITeam
+// (REL32 0x004F24D2) calls this body.
+
+Team *TeamFactory::findTeam(const AsciiString &a1, const AsciiString &a2)
+{
+	TeamPrototype *tp = findTeamPrototype(a1, a2);
+	if (tp)
+	{
+		Team *t = tp->getFirstItemIn_TeamInstanceList();
+		if (t == 0 && !tp->getIsSingleton())
+			t = createInactiveTeam(a1, a2);
+		return t;
+	}
+	return 0;
+}
+
+// tu-skeleton: 0x003A3E74 473B ?xfer@TeamPrototype@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeXfer.cpp (not merged yet)
+
 // tu-skeleton: 0x003A40F5 141B ?findTeam@TeamFactory@@QAEPAVTeam@@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryFindQualifiedPrototype.cpp (not merged yet)
 
-// tu-skeleton: 0x003A4182 416B ?initFromSides@TeamFactory@@QAEXPAVSidesList@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp
+
+// TeamFactory::initFromSides, retail 0x003A4182..0x003A4322 (416 bytes).
+// Identity: WorldBuilder EED1D0 and the retail calls agree with Zero Hour
+// Team.cpp initFromSides: clear, read final team dictionaries, then initTeam.
+// Donor: Open-BFME-1 575ba2b04743f190f069805fbdc59936123c45da,
+// inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/Common/RTS/Team.cpp.
+// Target deltas: signed 16-bit links in 16-byte records at SidesList+F50,
+// flags at record+6 and Dict at +C. Retail promotes the link to an int and
+// retains its byte offset across the dictionary calls. The equal-value
+// pointer/index conditionals preserve retail's SIB operand order.
+// Forty dummy AI teams follow, selected by the owned Player predicate2AA245.
+// TeamFactory dummy slots +10 and unique ID +BC are measured target accesses;
+// TeamPrototype's 338-byte allocation and owner/name +10/+14 follow its ctor.
+
+inline int teamKey(const StaticNameKey &key){return ((Rva00148F5ECache*)&key)->get();}
+
+inline int teamKey(Rva00148F5ECache &key){return key.get();}
+
+// Target3A4182..3A4322416B and WB EED1D0 reproduce ZH initFromSides
+// order: clear then final team dictionaries. BFME2 adds forty dummy AI
+// teams owned by the first player whose target predicate2AA245 returns true.
+// Target first/next signed shorts in16B records at sidesF50; flags6==0;
+// DictC. Key caches independently name teamName/teamOwner/teamIsSingleton.
+void TeamFactory::initFromSides(SidesList *sides)
+{
+ clear();
+ int id=sides->teams.first();
+ while(id) {
+  id *= sizeof(TeamInfoRecord);
+  if(*(unsigned short*)(((id ? id : id)+(char*)(sides ? sides->teams.records : sides->teams.records))+6)==0) {
+   Dict *dict=(Dict*)(((id ? id : id)+(char*)(sides ? sides->teams.records : sides->teams.records))+12);
+   AsciiString tname=dict->getAsciiString(teamKey(TheKey_teamName));
+   AsciiString oname=dict->getAsciiString(teamKey(TheKey_teamOwner));
+   bool singleton=dict->getBool(teamKey(TheKey_teamIsSingleton));
+   initTeam(tname,oname,singleton,dict);
+  }
+  id=*(short*)(((id ? id : id)+(char*)(sides ? sides->teams.records : sides->teams.records)));
+ }
+
+ int mask=ThePlayerList->rva002A7D30();
+ Player *player=ThePlayerList->getEachPlayerFromMask(mask);
+ while(player && !player->rva002AA245())
+  player=ThePlayerList->getEachPlayerFromMask(mask);
+ if(!player)return;
+ for(unsigned i=0;i<40;++i) {
+  AsciiString name;name.format("DummyAITeam%u",i);
+  TeamPrototype *team=new TeamPrototype(this,player->m_playerName,name,player,false,0,++m_uniqueTeamPrototypeID);
+  m_dummyTeams[i]=team;
+ }
+}
 
 // tu-skeleton: 0x00781429 8B Unwind@00b81429 -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp (not merged yet)
 
@@ -2024,14 +3894,6 @@ void TeamFactory::initTeam(const AsciiString &name, const AsciiString &owner, bo
 // tu-skeleton: 0x007814C5 14B Unwind@00b814c5 -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x007814D3 10B __ehhandler$??1TeamTemplateInfo@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x007814DD 8B $L1220 -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeGetGenericScript.cpp (not merged yet)
-
-// tu-skeleton: 0x007814E5 10B __ehhandler$?getGenericScript@TeamPrototype@@QAEPAVScript@@HPAVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeGetGenericScript.cpp (not merged yet)
-
-// tu-skeleton: 0x007814EF 8B $L1175 -- matched in Code/GameEngine/Source/Common/RTS/Team_setAttackPriorityName.cpp (not merged yet)
-
-// tu-skeleton: 0x007814F7 10B __ehhandler$?setAttackPriorityName@Team@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/RTS/Team_setAttackPriorityName.cpp (not merged yet)
 
 // tu-skeleton: 0x00781501 8B $L2357 -- matched in Code/GameEngine/Source/Common/RTS/TeamUpdateState.cpp (not merged yet)
 
@@ -2139,12 +4001,6 @@ void TeamFactory::initTeam(const AsciiString &name, const AsciiString &owner, bo
 
 // tu-skeleton: 0x007816C7 10B __ehhandler$?killTeam@Team@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp (not merged yet)
 
-// tu-skeleton: 0x007816D1 8B Unwind@00b816d1 -- matched in Code/GameEngine/Source/Common/RTS/TeamEnableGenericScript.cpp (not merged yet)
-
-// tu-skeleton: 0x007816D9 8B Unwind@00b816d9 -- matched in Code/GameEngine/Source/Common/RTS/TeamEnableGenericScript.cpp (not merged yet)
-
-// tu-skeleton: 0x007816E1 10B __ehhandler$?enableGenericScript@Team@@QAE_NABVAsciiString@@0_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamEnableGenericScript.cpp (not merged yet)
-
 // tu-skeleton: 0x007816EB 13B $L5472 -- matched in Code/GameEngine/Source/Common/RTS/TeamGateMembership.cpp (not merged yet)
 
 // tu-skeleton: 0x007816F8 10B __ehhandler$?rva003A23A5@Team@@QAEXH_N@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamGateMembership.cpp (not merged yet)
@@ -2176,12 +4032,6 @@ void TeamFactory::initTeam(const AsciiString &name, const AsciiString &owner, bo
 // tu-skeleton: 0x00781851 8B uw_00781851 -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryClear.cpp (not merged yet)
 
 // tu-skeleton: 0x00781859 10B __ehhandler$?clear@TeamFactory@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryClear.cpp (not merged yet)
-
-// tu-skeleton: 0x00781863 8B Unwind@00b81863 -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x0078186B 8B Unwind@00b8186b -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x00781873 10B __ehhandler$?xfer@TeamFactory@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x007818E4 8B Unwind@00b818e4 -- matched in Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp (not merged yet)
 
@@ -2248,21 +4098,3 @@ void TeamFactory::initTeam(const AsciiString &name, const AsciiString &owner, bo
 // tu-skeleton: 0x00781A65 8B Unwind@00b81a65 -- matched in Code/GameEngine/Source/Common/RTS/TeamCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00781A6D 10B __ehhandler$??0Team@@QAE@PAVTeamPrototype@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00781A77 8B Unwind@00b81a77 -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp (not merged yet)
-
-// tu-skeleton: 0x00781A7F 10B uw_00781a7f -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp (not merged yet)
-
-// tu-skeleton: 0x00781A89 8B Unwind@00b81a89 -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp (not merged yet)
-
-// tu-skeleton: 0x00781A91 10B __ehhandler$?createInactiveTeam@TeamFactory@@QAEPAVTeam@@ABVAsciiString@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp (not merged yet)
-
-// tu-skeleton: 0x00781B13 8B Unwind@00b81b13 -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (not merged yet)
-
-// tu-skeleton: 0x00781B1B 8B Unwind@00b81b1b -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (not merged yet)
-
-// tu-skeleton: 0x00781B23 8B Unwind@00b81b23 -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (not merged yet)
-
-// tu-skeleton: 0x00781B2B 10B uw_00781b2b -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (not merged yet)
-
-// tu-skeleton: 0x00781B35 10B __ehhandler$?initFromSides@TeamFactory@@QAEXPAVSidesList@@@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (not merged yet)

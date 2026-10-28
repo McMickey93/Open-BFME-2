@@ -1,0 +1,12 @@
+Rows: 139
+references: 308
+  owner      266
+  alias      18
+  eh         15
+  fold       5
+  wrong      4
+rows with a wrong binding: 4
+  wrong/extent: 3
+  wrong/unknown: 1
+Removed references: []
+Added references: []

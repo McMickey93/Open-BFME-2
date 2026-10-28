@@ -1,0 +1,34 @@
+check_csv: OK (functions.csv 98945 rows, symbols.csv 9417 rows, data_rows.csv 2203 rows)
+Pin consistency: OK (5 multi-pinned symbols of 9412; 0 baselined, 0 new, 0 stale)
+Pin baseline: OK (0 entries, 0 removed vs 3db5bfce9e7187c38bafd331480042164ad60ee2, 0 added)
+pin admission: OK
+reverse/gate_baseline.txt: OK (no line added)
+EH baseline: OK (outgoing shrink-only; 0 new key(s))
+header_dependents: 0 changed header(s) and 41 included file(s) reach 3 ledger source(s)
+Source claims: OK (4 sources, scoped byte-verified)
+Data rows: OK (3 row(s) byte-verified)
+Compile: 0 of 4 TU(s) (deps-cache: 4 current)
+Funclet pins: 47 row(s) verified past a renumbered $L label
+    $L1253 (Code/GameEngine/Source/Common/RTS/Team.cpp): $L1253 was renumbered; verified parent EH data places $L19189 at 0x00781AAB
+    $L1254 (Code/GameEngine/Source/Common/RTS/Team.cpp): $L1254 was renumbered; verified parent EH data places $L19190 at 0x00781AB5
+    $L4516 (Code/GameEngine/Source/Common/RTS/Team.cpp): $L4516 was renumbered; verified parent EH data places $L20223 at 0x0078168A
+    $L1499 (Code/GameEngine/Source/Common/RTS/Team.cpp): $L1499 was renumbered; verified parent EH data places $L19111 at 0x007818BE
+    ?rva00781759@@YAXXZ (Code/GameEngine/Source/Common/RTS/Team.cpp): $L1358 was renumbered; verified parent EH data places $L19036 at 0x00781759
+Functions: OK 177/177 matched across 4 source file(s)
+String-ref verify: OK (16 literals + 5 empty-string refs verified, 0 baselined, 0 unverified/skipped)
+Float-ref verify: OK (8 compiler literals verified)
+Import-ref verify: OK (11 named imports verified)
+EH verify: 19 row(s) with EH data (EXACT 19); 0 not exact, 0 in baseline; 0 row(s) without an object; 0.3s
+data_check (converged, enforced): 4 source(s), 11 address(es), 0 second name(s), 0 unjudged row(s)
+link batch audit: INCONCLUSIVE baseline: index at 41c28839bf, outgoing base 3db5bfce9e7187c38bafd331480042164ad60ee2; findings below are provisional since-index changes
+link batch audit: INCONCLUSIVE: 90 source object(s) lack current receipts; first: Code/GameEngine/Source/Common/RTS/Player.cpp
+pre-push: linking UNVERIFIED; audit evidence incomplete or check timed out
+PRE-PUSH OK (4 outgoing source(s) byte-verified)
+To https://github.com/Open-BFME/Open-BFME-2.git
+ ! [rejected]                HEAD -> master (fetch first)
+error: failed to push some refs to 'https://github.com/Open-BFME/Open-BFME-2.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.

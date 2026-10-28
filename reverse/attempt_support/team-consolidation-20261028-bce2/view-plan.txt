@@ -1,0 +1,575 @@
+tu: Code/GameEngine/Source/Common/RTS/Team.cpp
+seed: Code/GameEngine/Source/Common/RTS/Team.cpp  (83 files)
+  Rva003A1C3AInner: plan (2 files)
+        | class Rva003A1C3AInner
+        | {
+        | public:
+        | 	virtual void v00();
+        | 	virtual void v01();
+        | 	virtual int v02();
+        | 	virtual void v03();
+        | 	virtual void v04();
+        | 	virtual void v05();
+        | 	virtual void v06();
+        | 	virtual void v07();
+        | 	virtual void v08();
+        | 	virtual void v09();
+        | 	virtual void v10();
+        | 	virtual void v11();
+        | 	virtual void v12();
+        | 	virtual void v13();
+        | 	virtual void v14();
+        | 	virtual void v15();
+        | 	virtual void v16();
+        | 	virtual void v17();
+        | 	virtual void v18();
+        | 	virtual void v19();
+        | 	virtual void v20();
+        | 	virtual void v21();
+        | 	virtual void v22();
+        | 	virtual void v23();
+        | 	virtual void v24();
+        | 	virtual void v25();
+        | 	virtual void v26();
+        | 	virtual void v27();
+        | 	virtual void v28();
+        | 	virtual void v29();
+        | 	virtual void v30();
+        | 	virtual void v31();
+        | 	virtual void v32();
+        | 	virtual void v33();
+        | 	virtual void v34();
+        | 	virtual void v35();
+        | 	virtual void v36();
+        | 	virtual void v37();
+        | 	virtual void v38();
+        | 	virtual void v39();
+        | 	virtual void v40();
+        | 	virtual void v41();
+        | 	virtual void v42(int a);
+        | 	virtual void v43();
+        | 	virtual void v44();
+        | 	virtual void v45();
+        | 	virtual void v46();
+        | 	virtual void v47();
+        | 	virtual void v48();
+        | 	virtual void v49();
+        | 	virtual void v50();
+        | 	virtual void v51();
+        | 	virtual void v52();
+        | 	virtual void v53();
+        | 	virtual void v54();
+        | 	virtual void v55();
+        | 	virtual void v56();
+        | 	virtual void v57();
+        | 	virtual void v58();
+        | 	virtual void v59();
+        | 	virtual void v60();
+        | 	virtual void v61();
+        | 	virtual void v62();
+        | 	virtual void v63();
+        | 	virtual void v64();
+        | 	virtual void v65();
+        | 	virtual void v66();
+        | 	virtual void v67();
+        | 	virtual void v68();
+        | 	virtual unsigned int v69(int a);
+        | };
+  Rva0039EA9CHandle: plan (2 files)
+        | struct Rva0039EA9CHandle
+        | {
+        | public:
+        | 	Rva0039EA9CHandle() : m_value(-1) {}
+        | 	int m_value; // +0x00
+        | };
+  Rva0039EA9C: conflict (3 files)
+      CONFLICT: +0x14: views disagree on what the field is (Rva0039EA9CHandle vs int: Code/GameEngine/Source/Common/RTS/Team.cpp m_14, Code/GameEngine/Source/Common/Rva0039EA9CCtor.cpp m_14, Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp m_14)
+  TeamTemplateInfo: conflict (9 files)
+      CONFLICT: class-key differs (Code/GameEngine/Source/Common/RTS/Team.cpp: class, Code/GameEngine/Source/Common/RTS/TeamTemplateInfoXfer.cpp: class, Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp: struct, Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp: class, Code/GameEngine/Source/Common/RTS/TeamNotifyTeamOfObjectDeath.cpp: struct, Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp: class, Code/GameEngine/Source/Common/RTS/TeamPrototypeReset.cpp: class, Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp: class, Code/GameEngine/Source/Common/RTS/TeamPrototypeXfer.cpp: class) and no matched name spells it
+  Rva0039D8FBKey: plan (10 files)
+        | struct Rva0039D8FBKey
+        | {
+        | public:
+        | 	int m_first; // +0x00
+        | 	int m_second; // +0x04
+        | };
+  Rva0039EA4ENode: plan (10 files)
+        | struct Rva0039EA4ENode
+        | {
+        | public:
+        | 	int m_color00; // +0x00
+        | 	Rva0039EA4ENode *m_parent04; // +0x04
+        | 	Rva0039EA4ENode *m_left08; // +0x08
+        | 	Rva0039EA4ENode *m_right0C; // +0x0C
+        | 	Rva0039D8FBKey m_key10; // +0x10
+        | 	TeamPrototype *m_value18; // +0x18
+        | };
+  Rva0039F5C8Iterator: plan (3 files)
+        | struct Rva0039F5C8Iterator
+        | {
+        | public:
+        | 	Rva0039F5C8Iterator(Rva0039EA4ENode *node) : m_node(node) {}
+        | 	Rva0039EA4ENode *m_node; // +0x00
+        | };
+  Rva0039EA4E: plan (10 files)
+      note: sizeof 0x8 from Code/GameEngine/Source/Common/RTS/Team.cpp; Code/GameEngine/Source/Common/RTS/TeamFactoryFindById.cpp (0x4), Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeamByID.cpp (0x4), Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp (0x4), Code/GameEngine/Source/Common/RTS/TeamFactoryErasePrototype.cpp (0x4), Code/GameEngine/Source/Common/RTS/TeamFactoryFindPrototype.cpp (0x4), Code/GameEngine/Source/Common/RTS/TeamFactoryTeamAboutToBeDeleted.cpp (0x4) stop at their last field
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryFindById.cpp gets struct Rva0039F5C8Iterator;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeamByID.cpp gets struct Rva0039F5C8Iterator;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp gets struct Rva0039F5C8Iterator;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryErasePrototype.cpp gets struct Rva0039F5C8Iterator;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryFindPrototype.cpp gets struct Rva0039F5C8Iterator;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryTeamAboutToBeDeleted.cpp gets struct Rva0039F5C8Iterator;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp gets struct Rva0039F5C8Iterator;
+        | class Rva0039EA4E
+        | {
+        | public:
+        | 	Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
+        | 	Rva0039F5C8Iterator rva0039F5C8(const Rva0039D8FBKey &key);
+        | 	Rva0039EA4ENode *rva0039F597(const Rva0039D8FBKey &key);
+        | 	Rva0039F5C8Iterator rva0039FB73(const Rva0039D8FBKey &key);
+        | 	unsigned int size() const { return m_nodeCount04; }
+        | 	Rva0039EA4ENode *m_header00; // +0x00
+        | 	unsigned int m_nodeCount04; // +0x04 TeamFactory::xfer checks it against the saved count
+        | };
+  Rva0039D533Src: plan (2 files)
+        | struct Rva0039D533Src
+        | {
+        | public:
+        | 	virtual void v00();
+        | 	virtual bool v01();
+        | 	virtual void v02();
+        | 	virtual void v03();
+        | 	virtual void v04();
+        | 	virtual void v05();
+        | 	virtual void v06();
+        | 	virtual void v07();
+        | 	virtual void v08();
+        | 	virtual void v09();
+        | 	virtual void v10();
+        | 	virtual void v11();
+        | 	virtual void v12();
+        | 	virtual void v13();
+        | 	virtual void v14();
+        | 	virtual void v15();
+        | 	virtual void v16();
+        | 	virtual void v17();
+        | 	virtual void v18();
+        | 	virtual void v19();
+        | 	virtual void v20();
+        | 	virtual void v21();
+        | 	virtual void v22();
+        | 	virtual void v23();
+        | 	virtual void v24();
+        | 	virtual void v25();
+        | 	virtual void v26();
+        | 	virtual void v27(int *out);
+        | 	virtual void v28();
+        | 	virtual void v29();
+        | 	virtual void v30();
+        | 	virtual void v31(int *out);
+        | };
+  Rva0039D533: plan (2 files)
+        | struct Rva0039D533
+        | {
+        | public:
+        | 	void rva0039D533(Rva0039D533Src *src);
+        | 	int m_00; // +0x00
+        | 	int m_04; // +0x04
+        | 	int m_08; // +0x08
+        | 	int m_0c; // +0x0C
+        | 	int m_10; // +0x10
+        | 	int m_14; // +0x14
+        | };
+  Rva0039D5A9: conflict (2 files)
+      CONFLICT: fields overlap: Code/GameEngine/Source/Common/RTS/Team.cpp m_04 +0x4..0x8, Code/GameEngine/Source/Common/Rva003A0D62Finish.cpp m_items +0x4..0xAC
+  Rva0039D769: plan (2 files)
+      note: +0x0 m00: declared private/public; kept public
+      note: +0x4 m04: declared private/public; kept public
+      note: +0x8 m08: declared private/public; kept public
+      note: +0xC m0C: declared private/public; kept public
+      note: +0x10 m10: declared private/public; kept public
+      note: +0x14 m14: declared private/public; kept public
+        | class Rva0039D769
+        | {
+        | public:
+        | 	Rva0039D769 &operator=(const Rva0039D769 &rhs);
+        | 	int m00; // +0x00 +0x00
+        | 	int m04; // +0x04 +0x04
+        | 	int m08; // +0x08 +0x08
+        | 	AsciiString m0C; // +0x0C +0x0C
+        | 	AsciiString m10; // +0x10 +0x10
+        | 	int m14; // +0x14 +0x14
+        | };
+  Rva0039F56E: conflict (2 files)
+      CONFLICT: base clause differs: Code/GameEngine/Source/Common/RTS/Team.cpp: `public Rva0039EA21`; Code/GameEngine/Source/Common/RTS/TeamFactoryClear.cpp: `public CopyTree`
+  ArmorTemplate: plan (3 files)
+      note: no code uses it in Code/GameEngine/Source/Common/RTS/ArmorHashMapCtor003A393A.cpp: they take the block
+        | class ArmorTemplate
+        | {
+        | public:
+        | 	float m_damageCoefficient[38]; // +0x00
+        | };
+  Rva003A2897: plan (2 files)
+      note: sizeof 0x11C from Code/GameEngine/Source/Common/RTS/Team.cpp; Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (0x1) stop at their last field
+      note: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp gets struct ArmorMapHolder;
+        | class Rva003A2897
+        | {
+        | public:
+        | 	bool rva003A2897(NameKeyType key);
+        | 	char m_pad00[0x118];
+        | private:
+        | 	ArmorMapHolder *m_holder; // +0x118
+        | };
+  Rva003A37FAElement: plan (2 files)
+        | struct Rva003A37FAElement
+        | {
+        | public:
+        | 	Rva003A37FAElement();
+        | 	Rva003A37FAElement(const Rva003A37FAElement&);
+        | 	Rva003A37FAElement&operator=(const Rva003A37FAElement&);
+        | 	~Rva003A37FAElement(){}
+        | 	bool operator==(const Rva003A37FAElement&)const;
+        | 	char bytes[8]; // +0x00
+        | };
+  Dict: plan (3 files)
+      note: sizeof 0x4 from Code/GameEngine/Source/Common/RTS/Team.cpp; Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp (0x1) stop at their last field
+      note: +0x0 m_data: CodeView types differ (uint, void*); Code/GameEngine/Source/Common/RTS/Team.cpp's spelling kept, the byte check decides
+      rename in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp: storage -> m_data
+        | class Dict
+        | {
+        | public:
+        | 	Dict(int numPairsToPreAllocate = 0);
+        | 	~Dict() { releaseData(); }
+        | private:
+        | 	void releaseData();
+        | public:
+        | 	int getInt(int,bool *exists=0) const;
+        | 	float getReal(int,bool *exists=0) const;
+        | 	bool getBool(int,bool *exists=0) const;
+        | 	AsciiString getAsciiString(int,bool *exists=0) const;
+        | private:
+        | 	void *m_data; // +0x00
+        | };
+  Player: plan (8 files)
+      note: sizeof 0x338 from Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp; Code/GameEngine/Source/Common/RTS/Team.cpp (0x2F0), Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp (0x50), Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp (0x2F0), Code/GameEngine/Source/Common/RTS/TeamPrototypeReset.cpp (0x50), Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp (0x58), Code/GameEngine/Source/Common/RTS/TeamPrototypeXfer.cpp (0x58), Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp (0x50) stop at their last field
+      note: +0x4C m_playerName: declared private/public; kept public
+      note: +0x54 m_playerIndex: declared private/public; kept public
+      note: +0x2EC m_defaultTeam: declared private/public; kept public
+      note: Code/GameEngine/Source/Common/RTS/Team.cpp gets enum Relationship{...}; class PlayerTemplate; struct RetailPlayerRelationMap;
+      note: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp gets class PlayerTemplate;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp gets enum Relationship{...}; class Team; class Object; class PlayerTemplate; struct RetailPlayerRelationMap;
+      note: Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp gets enum Relationship{...}; class TeamPrototype; struct RetailPlayerRelationMap;
+      note: Code/GameEngine/Source/Common/RTS/TeamPrototypeReset.cpp gets enum Relationship{...}; class Team; class Object; class TeamPrototype; class PlayerTemplate; struct RetailPlayerRelationMap;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp gets enum Relationship{...}; class Team; class Object; class TeamPrototype; class PlayerTemplate; struct RetailPlayerRelationMap;
+      note: Code/GameEngine/Source/Common/RTS/TeamPrototypeXfer.cpp gets enum Relationship{...}; class Team; class Object; class TeamPrototype; class PlayerTemplate; struct RetailPlayerRelationMap;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp gets enum Relationship{...}; class Team; class Object; class TeamPrototype; class PlayerTemplate; struct RetailPlayerRelationMap;
+      rename in Code/GameEngine/Source/Common/RTS/TeamPrototypeReset.cpp: m_name4C -> m_playerName
+        | class Player
+        | {
+        | public:
+        | 	Team *getDefaultTeam() const { return m_defaultTeam; }
+        | 	const AsciiString &getPlayerNameStr() const { return m_playerName; }
+        | 	int getPlayerIndex() const { return m_playerIndex; }
+        | 	Relationship getRelationship(const Player *that) const;
+        | 	Relationship getRelationship(const Team *that) const;
+        | 	Relationship getRelationship(const Object *that) const;
+        | 	void removeTeamFromList(TeamPrototype *team);
+        | 	__declspec(dllimport) __forceinline const PlayerTemplate *getPlayerTemplate() const { return m_playerTemplate; }
+        | 	bool rva002AA245()const;
+        | 	char m_pad00[0x34];
+        | private:
+        | 	const PlayerTemplate *m_playerTemplate; // +0x34 +0x34
+        | 	char m_pad38[0x14];
+        | public:
+        | 	AsciiString m_playerName; // +0x4C
+        | 	char m_pad50[0x4];
+        | 	int m_playerIndex; // +0x54 +0x54, TeamFactory::xfer's inlined getPlayerIndex
+        | 	char m_pad58[0x4];
+        | 	int m_playerType; // +0x5C +0x5C
+        | 	char m_pad60[0x28C];
+        | 	Team *m_defaultTeam; // +0x2EC
+        | 	char m_pad2F0[0x40];
+        | 	RetailPlayerRelationMap *m_playerRelations; // +0x330 +0x330
+        | 	RetailPlayerRelationMap *m_teamRelations; // +0x334 +0x334
+        | };
+  NameKeyGenerator: plan (8 files)
+      note: no code uses it in Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp: they take the block
+      note: Code/GameEngine/Source/Common/RTS/TeamGateMembership.cpp gets class AsciiString;
+        | class NameKeyGenerator
+        | {
+        | public:
+        | 	NameKeyType nameToKey(const AsciiString &nameString);
+        | 	const AsciiString &keyToName(NameKeyType);
+        | 	NameKeyType nameToKey(const char *name);
+        | };
+  PlayerList: conflict (8 files)
+      CONFLICT: +0x18: views disagree on what the field is (Player* vs Player*[4]: Code/GameEngine/Source/Common/RTS/Team.cpp m_players, Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp m_neutralPlayer, Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp m_players)
+  TeamPrototype: conflict (29 files)
+      CONFLICT: base clause differs: Code/GameEngine/Source/Common/RTS/Team.cpp: `public Snapshot`; Code/GameEngine/Source/Common/RTS/TeamFactoryClear.cpp: `-`; Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp: `public Snapshot`; Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp: `public Snapshot`; Code/GameEngine/Source/Common/RTS/TeamPrototypeXfer.cpp: `public Snapshot`
+  BfmeObjectVtbl: plan (5 files)
+        | class BfmeObjectVtbl
+        | {
+        | public:
+        | 	virtual void bfmeObjectSlot0();
+        | };
+  BfmeObjectDlinkBase: plan (5 files)
+        | class BfmeObjectDlinkBase
+        | {
+        | public:
+        | 	Object *dlink_next_TeamMemberList() const;
+        | };
+  BfmeObjectDlinkPad: plan (5 files)
+      note: Code/GameEngine/Source/Common/RTS/TeamSetControllingPlayer.cpp gets struct Coord3D;
+      note: Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp gets struct Coord3D;
+      note: Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp gets struct Coord3D;
+      note: Code/GameEngine/Source/Common/RTS/TeamRva003A2DBB.cpp gets struct Coord3D;
+        | class BfmeObjectDlinkPad
+        | {
+        | public:
+        | 	const ThingTemplate *m_template; // +0x00 +0x04
+        | 	char m_pad04[0x30];
+        | 	Coord3D m_pos; // +0x34 +0x38
+        | 	char m_pad40[0x24];
+        | };
+  BfmeObjectVbptrCarrier: conflict (5 files)
+      CONFLICT: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp: base virtual BfmeObjectVirtualTail has no layout to size it
+  Thing: conflict (3 files)
+      CONFLICT: the ledger spells Thing both `class` and `struct`
+  Object: conflict (31 files)
+      CONFLICT: base clause differs: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp: `public BfmeObjectVtbl, public BfmeObjectDlinkBase, public BfmeObjectDlinkPad, public BfmeObjectVbptrCarrier`; Code/GameEngine/Source/Common/RTS/TeamSetControllingPlayer.cpp: `public BfmeObjectVtbl, public BfmeObjectDlinkBase, public BfmeObjectDlinkPad, public BfmeObjectVbptrCarrier`; Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp: `public BfmeObjectVtbl, public BfmeObjectDlinkBase, public BfmeObjectDlinkPad, public BfmeObjectVbptrCarrier`; Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp: `public Thing`; Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp: `public BfmeObjectVtbl, public BfmeObjectDlinkBase, public BfmeObjectDlinkPad, public BfmeObjectVbptrCarrier`; Code/GameEngine/Source/Common/RTS/TeamRva003A2DBB.cpp: `public BfmeObjectVtbl, public BfmeObjectDlinkBase, public BfmeObjectDlinkPad, public BfmeObjectVbptrCarrier`
+  Rva000427195: conflict (4 files)
+      CONFLICT: class-key differs (Code/GameEngine/Source/Common/RTS/Team.cpp: class, Code/GameEngine/Source/Common/RTS/TeamDtor.cpp: struct, Code/GameEngine/Source/Common/RTS/TeamRva003A38E9.cpp: class, Code/GameEngine/Source/Common/RTS/TeamCtor.cpp: class) and no matched name spells it
+  MemoryPoolObject: conflict (6 files)
+      CONFLICT: virtual slot 0 differs: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp `deleteInstance(int)`, Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp `__vecDelDtor(uint)`
+  Rva0055B0CC: plan (4 files)
+      note: sizeof 0x2C from Code/GameEngine/Source/Common/RTS/TeamGetLocation.cpp; Code/GameEngine/Source/Common/RTS/TeamRva0039D889.cpp (0x1) stop at their last field
+      note: Code/GameEngine/Source/Common/RTS/TeamRva0039D889.cpp gets class Coord3D;
+      note: Code/GameEngine/Source/Common/RTS/TeamDtor.cpp gets class Coord3D;
+      note: Code/GameEngine/Source/Common/RTS/TeamCtor.cpp gets class Coord3D;
+        | class Rva0055B0CC
+        | {
+        | public:
+        | 	void rva0055B01F();
+        | 	Rva0055B0CC();
+        | 	virtual ~Rva0055B0CC();
+        | 	virtual void slot1();
+        | 	virtual void slot2();
+        | 	virtual void slot3();
+        | 	virtual void slot4();
+        | 	virtual void slot5();
+        | 	virtual void slot6();
+        | 	virtual void slot7();
+        | 	virtual void slot8();
+        | 	virtual void slot9();
+        | 	virtual void slot10();
+        | 	virtual void slot11();
+        | 	virtual void slot12();
+        | 	virtual Coord3D getLocation() const;
+        | private:
+        | 	char m_04[0x2C - 4]; // +0x04
+        | };
+  Team: conflict (59 files)
+      CONFLICT: anonymous aggregate member: union { struct { char m_beforeStateTable[0x48]; Rva00056F61 
+  TeamFactory: conflict (20 files)
+      CONFLICT: base clause differs: Code/GameEngine/Source/Common/RTS/Team.cpp: `public SubsystemInterface, public Snapshot`; Code/GameEngine/Source/Common/RTS/TeamFactoryRecomputeIDs.cpp: `public SubsystemInterface,public Snapshot`; Code/GameEngine/Source/Common/RTS/TeamFactoryXfer.cpp: `public SubsystemInterface, public Snapshot`
+  ThingFactory: plan (2 files)
+        | class ThingFactory
+        | {
+        | public:
+        | 	const ThingTemplate *findTemplate(const AsciiString &key);
+        | };
+  ThingTemplate: conflict (19 files)
+      CONFLICT: fields overlap: Code/GameEngine/Source/Common/RTS/TeamGetTeamAsAIGroup.cpp m_head +0x0..0x115, Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp m_name +0x64..0x68
+  AIUpdateInterface: plan (5 files)
+      note: sizeof 0x3BF from Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp; Code/GameEngine/Source/Common/RTS/TeamRva0039D9E3.cpp (0x1), Code/GameEngine/Source/Common/RTS/TeamDidAllEnter.cpp (0x1E0), Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (0x1E0), Code/GameEngine/Source/Common/RTS/TeamApplyDamage.cpp (0x1E0) stop at their last field
+      note: typedefs a file lacks, spelled out: Bool -> bool
+      note: Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp gets class Object;
+      note: Code/GameEngine/Source/Common/RTS/TeamApplyDamage.cpp gets class Object;
+        | class AIUpdateInterface
+        | {
+        | public:
+        | 	bool isRecruitable() const { return m_isRecruitable; }
+        | 	Object *getCurrentVictim() const;
+        | 	char m_pad00[0x1DC];
+        | 	UnsignedInt m_surfaces; // +0x1DC +0x1DC
+        | 	char m_pad1E0[0x1DE];
+        | private:
+        | 	bool m_isRecruitable; // +0x3BE +0x3BE
+        | };
+  BfmeObjectVirtualTail: plan (5 files)
+        | class BfmeObjectVirtualTail
+        | {
+        | public:
+        | 	unsigned char m_vt[4]; // +0x00
+        | };
+  Rva2225E0Filter: plan (2 files)
+        | class Rva2225E0Filter
+        | {
+        | public:
+        | 	bool accepts(Object *obj, Player *player);
+        | };
+  BfmeTab1026: plan (2 files)
+        | class BfmeTab1026 : public Rva2225E0Filter
+        | {
+        | };
+  Rva002A8AB1Record: plan (3 files)
+      note: sizeof 0x168 from Code/GameEngine/Source/Common/RTS/TeamGetLocation.cpp; Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (0x1), Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp (0x1) stop at their last field
+      note: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp gets class Rva002C5FBA;
+      note: Code/GameEngine/Source/Common/RTS/TeamGetLocation.cpp gets class TeamPrototype;
+      note: Code/GameEngine/Source/Common/RTS/TeamDidPartialEnter.cpp gets class TeamPrototype; class Rva002C5FBA;
+        | struct Rva002A8AB1Record
+        | {
+        | public:
+        | 	void rva004EC07D(TeamPrototype *proto);
+        | 	char m_pad00[0x164];
+        | 	Rva002C5FBA *target; // +0x164
+        | };
+  Rva002A8F24: plan (5 files)
+        | class Rva002A8F24
+        | {
+        | public:
+        | 	Rva002A8AB1Record *rva002A8AB1(void *owner);
+        | };
+  Script: plan (5 files)
+      note: sizeof 0x44 from Code/GameEngine/Source/Common/RTS/TeamUpdateGenericScripts.cpp; Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp (0x40), Code/GameEngine/Source/Common/RTS/TeamPrototypeGetGenericScript.cpp (0x38), Code/GameEngine/Source/Common/RTS/TeamPrototypeDtor.cpp (0x4), Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp (0x38) stop at their last field
+      note: typedefs a file lacks, spelled out: Bool -> bool
+      rename in Code/GameEngine/Source/Common/RTS/TeamUpdateGenericScripts.cpp: m_delaySeconds -> m_delayEvaluationSeconds
+        | class Script
+        | {
+        | public:
+        | 	Script *duplicate() const;
+        | 	bool isEasy() const { return m_easy; }
+        | 	bool isNormal() const { return m_normal; }
+        | 	bool isHard() const { return m_hard; }
+        | 	int getDelayEvalSeconds() const { return m_delayEvaluationSeconds; }
+        | 	unsigned int getFrameToEvaluate() const { return m_frameToEvaluate; }
+        | 	void setFrameToEvaluate(unsigned int frame) { m_frameToEvaluate = frame; }
+        | 	void *getAction() const { return m_action; }
+        | 	bool isSequential() const { return m_sequential; }
+        | 	int getLoopCount() const { return m_loopCount; }
+        | 	int getDelayEvaluationSeconds() const { return m_delayEvaluationSeconds; }
+        | 	bool isOneShot() const { return m_oneShot; }
+        | 	bool isActiveRV() const { return m_isActive; }
+        | 	virtual void *deleteInstance(int flags);
+        | 	char m_pad04[0xC];
+        | private:
+        | 	bool m_sequential; // +0x10 +0x10
+        | 	char m_pad11[0x3];
+        | 	int m_loopCount; // +0x14 +0x14
+        | 	char m_pad18[0x8];
+        | 	int m_delayEvaluationSeconds; // +0x20 +0x20
+        | 	char m_pad24[0x5];
+        | 	bool m_oneShot; // +0x29 +0x29
+        | 	char m_pad2A[0x1];
+        | 	bool m_easy; // +0x2B +0x2B
+        | 	bool m_normal; // +0x2C +0x2C
+        | 	bool m_hard; // +0x2D +0x2D
+        | 	char m_pad2E[0x6];
+        | 	void *m_action; // +0x34 +0x34
+        | 	char m_pad38[0x4];
+        | 	unsigned int m_frameToEvaluate; // +0x3C +0x3C
+        | 	bool m_isActive; // +0x40 +0x40
+        | 	char m_pad41[0x3];
+        | };
+  ScriptEngine: plan (6 files)
+      note: typedefs a file lacks, spelled out: Bool -> bool
+      note: Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp gets class SequentialScript;
+      note: Code/GameEngine/Source/Common/RTS/TeamNotifyTeamOfObjectDeath.cpp gets class Script; class Player; class SequentialScript;
+      note: Code/GameEngine/Source/Common/RTS/TeamUpdateGenericScripts.cpp gets class Object;
+      note: Code/GameEngine/Source/Common/RTS/TeamDtor.cpp gets class AsciiString; class Script; class Player; class SequentialScript;
+      note: Code/GameEngine/Source/Common/RTS/TeamCtor.cpp gets class Script; class Player; class SequentialScript; class Object;
+      note: Code/GameEngine/Source/Common/RTS/TeamFactoryCreateInactiveTeam.cpp gets class Player; class SequentialScript; class Object;
+        | class ScriptEngine
+        | {
+        | public:
+        | 	bool rva0020A1D0(const AsciiString &scope, Script *pScript, Team *thisTeam, Player *player);
+        | 	void rva0020C140(const AsciiString &name, const AsciiString &script, Team *team);
+        | 	void appendSequentialScript(const SequentialScript *scriptToSequence);
+        | 	void AppendDebugMessage(const AsciiString &strToAdd, bool forcePause);
+        | 	void rva002051B7(Object *obj);
+        | };
+  Rva003573C4Owner: plan (3 files)
+        | class Rva003573C4Owner
+        | {
+        | public:
+        | 	void *rva003573C4(const AsciiString &scope, const BfmeRoomZC &name, void *arg);
+        | };
+  BfmeFixedStorage0004543D: plan (2 files)
+        | class BfmeFixedStorage0004543D
+        | {
+        | public:
+        | 	unsigned int w[7]; // +0x00
+        | };
+  SkirmishAI: plan (2 files)
+        | class SkirmishAI
+        | {
+        | public:
+        | 	void UnRegister(Team *team);
+        | };
+  TeamTemplateGenericScriptsView: plan (2 files)
+        | struct TeamTemplateGenericScriptsView
+        | {
+        | public:
+        | 	char m_pad00[0x118];
+        | 	AsciiString m_teamGenericScripts[MAX_GENERIC_SCRIPTS]; // +0x118 +0x118, prototype +0x244
+        | };
+  DelayedLuaEventList: conflict (2 files)
+      CONFLICT: +0x4: views disagree on what the field is (BfmeDelayedLuaEvent[72] vs BfmeDispatchDelayedLuaEvent[72]: Code/GameEngine/Source/Common/RTS/TeamNotifyTeamOfObjectDeath.cpp m_events, Code/GameEngine/Source/Common/RTS/TeamKillTeam.cpp m_events)
+  BfmeObjectEventDispatch: plan (2 files)
+        | class BfmeObjectEventDispatch
+        | {
+        | public:
+        | 	void rva003360D2(int index, void *object, BfmeDelayedLuaEventList *eventList);
+        | };
+  Rva0020D451Engine: plan (2 files)
+        | class Rva0020D451Engine
+        | {
+        | public:
+        | 	void rva0020D451(const AsciiString &scope, void *action, void *script, void *scriptName, Team *team); // rowed 0x0020D451
+        | };
+  Rva00148F5ECache: plan (2 files)
+      note: sizeof 0x8 from Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp; Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp (0x1) stop at their last field
+        | class Rva00148F5ECache
+        | {
+        | public:
+        | 	NameKeyType get();
+        | 	NameKeyType m_key; // +0x00
+        | 	const char *m_name; // +0x04
+        | };
+  StaticNameKey: conflict (2 files)
+      CONFLICT: Code/GameEngine/Source/Common/RTS/TeamFactoryInitFromSides.cpp: renaming name -> m_name collides with an existing `m_name` there
+  Waypoint: conflict (2 files)
+      CONFLICT: fields overlap: Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp prefix +0x0..0x8, Code/GameEngine/Source/Common/RTS/TeamXfer.cpp m_id +0x4..0x8
+  TerrainLogic: conflict (2 files)
+      CONFLICT: virtual slot 0 differs: Code/GameEngine/Source/Common/RTS/TeamTemplateInfoLoadFromDict.cpp `slot00()`, Code/GameEngine/Source/Common/RTS/TeamXfer.cpp `v00()`
+  XferException: plan (3 files)
+        | class XferException
+        | {
+        | public:
+        | 	XferException(int tag, const char *format, ...);
+        | 	XferException(const XferException &that);
+        | 	~XferException(void);
+        | 	char *text; // +0x00
+        | 	int tagValue; // +0x04
+        | };
+  TeamRelationMap: conflict (3 files)
+      CONFLICT: base clause differs: Code/GameEngine/Source/Common/RTS/TeamXfer.cpp: `public Snapshot`; Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp: `public Rva003A3959Base`
+  Rva003A393A: conflict (4 files)
+      CONFLICT: fields overlap: Code/GameEngine/Source/Common/RTS/TeamDtor.cpp m_hash +0x0..0x4, Code/GameEngine/Source/Common/RTS/ArmorHashMapCtor003A393A.cpp m_table +0x0..0x14
+  Rva0041534BIter: plan (2 files)
+      note: +0x4 m_table: CodeView types differ (Rva00056F61*, void*); Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp's spelling kept, the byte check decides
+      note: Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp gets class Rva00056F61;
+        | struct Rva0041534BIter
+        | {
+        | public:
+        | 	Rva0041534BIter(void *node, Rva00056F61 *table) : m_node(node), m_table(table) {}
+        | 	void *m_node; // +0x00
+        | 	void *m_table; // +0x04
+        | };
+  Rva00056F61: plan (2 files)
+        | class Rva00056F61
+        | {
+        | public:
+        | 	Rva0041534BIter rva0041534B(const AsciiString *key);
+        | 	bool *rva003A3763(const AsciiString *key);
+        | };

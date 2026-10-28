@@ -852,6 +852,21 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-004: missing or incompatible shared providers and declarations
 
+- **Team consolidation subset (2026-10-28, base `88160d0cb79`):**
+  [The scoped audit](../reverse/attempt_support/team-consolidation-20261028-bce2/README.md)
+  records the supported merge of forty donors into Team.cpp. All 139 ledger
+  rows, fifteen EH graphs and the moved eight-byte data definition verify.
+  All 308 code-binding records are identical before and after; four inherited
+  shadow findings remain, with zero data findings. The census-linked merge
+  guard accepts, and the path audit finds no active consumer needing repair.
+  Team's anonymous aggregate and the other view/compile/byte conflicts still
+  block 42 donors; 25 mixed files stay separate. Source files fall by forty;
+  no new census linking gain or protected-debt retirement is claimed.
+  The publication audit at base `3db5bfce9e7` is INCONCLUSIVE: its index is
+  `41c28839bf` and ninety consumer objects lack current receipts (first:
+  Common/RTS/Player.cpp). Linking remains unverified at batch scope; carry
+  this subset into the next maintainer census. The normal byte/EH gates pass.
+
 - **AutoHeal obsolete donor pulse removed (2026-10-28, base `0e774508a3`):**
   [The cleanup evidence](../reverse/attempt_support/autoheal-obsolete-pulse-20261028-codex.md)
   removes the unused one-argument Zero Hour pulse body and one
