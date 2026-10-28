@@ -203,23 +203,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class ReplaceObjectUpdate : public SpecialAbilityUpdate
-{
-public:
-	virtual void triggerAbilityEffect();
-	void rva004B2C00(Object *obj, Rva004B2A9D *entry);	// 0x004B2C00
-	void rva004B2A60(Object *obj);
-private:
-	const ReplaceObjectUpdateModuleData *getReplaceObjectData() const
-	{
-		return (const ReplaceObjectUpdateModuleData *)m_moduleData;
-	}
-	char m_pad0C[0x44 - 0x0C];
-	Coord3D m_44;		// +0x44
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 //
 // ?rva004B2A60@Rva004B2A60@@QAEXPAVObject@@@Z, retail 0x004B2A60, 61 bytes.
 // Unlock-lane helper: builds a 0x7C DamageInfo temp via rowed Rva00263895Member ctor 0x263895,
@@ -421,7 +404,34 @@ class Rva000A4969;
 
  Rva000A4969 *__stdcall Rva0008F78FCreate(void *);
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class ReplaceObjectUpdate : public SpecialAbilityUpdate
+{
+public:
+	virtual void triggerAbilityEffect();
+	void rva004B2C00(Object *obj, Rva004B2A9D *entry);	// 0x004B2C00
+	void rva004B2A60(Object *obj);
+private:
+	const ReplaceObjectUpdateModuleData *getReplaceObjectData() const
+	{
+		return (const ReplaceObjectUpdateModuleData *)m_moduleData;
+	}
+	char m_pad0C[0x44 - 0x0C];
+	Coord3D m_44;		// +0x44
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x004B2987 49B ??0ReplaceObjectUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdate.cpp
 
 // ---- from Code/GameEngine/Source/Common/ConstIntGetters2.cpp
 
@@ -430,14 +440,6 @@ int Rva004B29B8Get(void)
 {
 	return (int)"ReplaceObjectUpdate";
 }
-
-// tu-skeleton: 0x004B29BE 32B ??1Rva004B29BE@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp (not merged yet)
-
-// tu-skeleton: 0x004B29DE 33B ?xfer@ReplaceObjectUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x004B29FF 69B ?getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x004B2A44 28B ??_GRva004B29BE@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdate.cpp
 
@@ -529,6 +531,22 @@ void ReplaceObjectUpdate::rva004B2C00(Object *obj, Rva004B2A9D *entry)
 	rva004B2A60(obj);
 }
 
+// tu-skeleton: 0x004B29BE 32B ??1Rva004B29BE@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp (not merged yet)
+
+// tu-skeleton: 0x004B29DE 33B ?xfer@ReplaceObjectUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateXfer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp
+
+// ?getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType ReplaceObjectUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheReplaceObjectUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("ReplaceObjectUpdate");
+	return TheReplaceObjectUpdatePoolKey;
+}
+
+// tu-skeleton: 0x004B2A44 28B ??_GRva004B29BE@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp (not merged yet)
+
 // tu-skeleton: 0x004B2A9D 39B ?rva004B2A9D@Rva004B2A9D@@QAEPAHXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva004B2A9D.cpp (not merged yet)
 
 // tu-skeleton: 0x004B2AC4 61B ??0ReplaceObjectUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataCtor.cpp (not merged yet)
@@ -543,16 +561,12 @@ void ReplaceObjectUpdate::rva004B2C00(Object *obj, Rva004B2A9D *entry)
 
 // tu-skeleton: 0x004B2E5D 28B ??_GReplaceObjectUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078E9AF 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E9BC 10B __ehhandler$?getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
-
 // tu-skeleton: 0x0078E9D8 10B uw_0078e9d8 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateFieldParse.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E9E2 10B __ehhandler$?Rva004B2B64_ParseReplaceObject@INI@@SAXPAV1@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateFieldParse.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E9EC 8B Unwind@00b8e9ec -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078E9F4 14B uw_0078e9f4 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+// tu-skeleton: 0x0078E9F4 14B $L4664 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078EA02 10B __ehhandler$??1ReplaceObjectUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
