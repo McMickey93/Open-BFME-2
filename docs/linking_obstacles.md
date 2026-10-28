@@ -101,6 +101,45 @@ Next: reconcile the root table's existing method owners before merging;
 confirm changed consumer selection in the next normal census. Full batch
 audit evidence is recorded in the handoff before publication.
 
+### LINK-132: ICF fold rows move their unit early in census link order, so its non-retail copies are selected
+
+Status: Open; needs a census link-order rule decision (maintainer).
+Updated: 2026-10-28; inspected revision: `4506f9bc93`, index at `c8734bec0c`.
+Evidence / affected units: `link_census.link_order` (and `allowed_symbols.link_order`,
+`link_check`, `tu_skeleton`) places an object by the lowest RVA of any matched row,
+including `fold-proof=` / gen-alias rows that only name another unit's folded body.
+Retail placed that address from one object only, so a fold row is no evidence of
+where its own unit sat. The ICF-fold row batches (760b73e4df, 991302b1d0,
+a0c3cb8b6a and peers, after the 2026-10-27 14:34 census) moved /O2 library units to
+the front, and their FPO copies now beat the retail /O1 copies. Between the 14:34
+and 09:35 censuses the no-wrong-selected figure rose (7,612,844 -> 7,654,261 B),
+but LINKED fell to 7,384,253 B: 270,008 B now fail only by wrong_selected.
+Holders that sit early only because of a fold row (blocked consumers, sole bytes,
+overlapping; fold RVA -> unit's lowest own row):
+`Render2DSentenceDrawBFME2.cpp` `_floorf` 60 units / 180,956 B plus
+`??_EPendingSurfaceStruct` 22,632 B (0x1E13 -> 0x1540B0); `AIBuilder.cpp`
+vector<Object*> dtor/push_back/_M_insert_overflow about 50 KB (0x7FAB3 -> 0x4EC0C1);
+`Rva00622290CollectKeys.cpp` set<Rva001408C0Target> insert/insert_unique 15,160 B
+(0x6C94B -> 0x620B30); `BfmeFVFDescriptorVertexDeclaration.cpp` vector<ICoord2D>
+growth 3,123 B (0x142D70 -> 0x181460); `window_video_manager.cpp` 2,340 B;
+`RTS3DSceneVisibilityCheck.cpp` 995 B; `ThingTemplate.cpp` 882 B; `WOLBuddyOverlay.cpp`
+874 B; and seven smaller ones. Their sum is 378,108 B before overlap.
+Completed: FVF trial only. A declaration-only `vector<ICoord2D>::_M_insert_overflow`
+specialization, and the same as `extern template`, both make the inlined `push_back`
+materialize and zero its `__false_type` tag (`push ecx` ... `mov byte [esp+0x17],0`).
+That fails 0x181880 and 0x1818C0, so both trials were reverted. Per-unit suppression
+fails wherever the unit inlines the caller. CastleBehavior (0x398E9A) and
+TerrainResourceManager (0x35A005) have the same cause (CollectKeys and Render2DSentence
+holders).
+Remaining / next check: a census rule that ignores `fold-proof=` and gen-alias rows
+when ordering objects (they claim no placement), recorded through
+`census_rebaseline.py` with a Verifier-Change trailer, applied the same way in
+`allowed_symbols.link_order`, `link_check` and `tu_skeleton`. Before that, measure it
+with `link_check` positions recomputed under the rule. Alternatively move each fold
+row into the unit retail ICF kept, which only TU evidence can approve.
+Clearance: pending.
+Census confirmation: not claimed.
+
 ### BannerCarrierUpdate string-header composition (2026-10-28)
 
 Status: destructor prerequisite repaired and merged into the approved TU;
