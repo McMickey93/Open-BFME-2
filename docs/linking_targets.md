@@ -42,6 +42,14 @@ passes; the older-index batch audit remains inconclusive for external consumers.
 TU-approval prerequisites and census confirmation remain open.
 [Evidence](../reverse/attempt_support/baseheightmap-approval-cleanup-20261028-codexb.md).
 
+Additional current target (2026-10-28, base `fb38c042b8`, index `41c28839bf`):
+`Libraries/Source/subsystem/SubsystemInterface.cpp` retains LINKS for 22,023
+authored bytes after binding registration directly to the existing eight-byte
+storage push-back provider. All 374 function rows and 181 EH graphs remain
+exact, and the owning tool retires one identity key. Full provider closure and
+consumer/census confirmation remain pending (LINK-134).
+[Evidence](../reverse/attempt_support/subsystem-registration-identity-20261028-codexb.md).
+
 ## One blocker: fresh candidates
 
 Additional current target (2026-10-28, base `4154365966`, index `41c28839bf`):

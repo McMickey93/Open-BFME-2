@@ -53,6 +53,14 @@ template <> void vector<AsciiString, allocator<AsciiString> >::push_back(const A
 }
 #include "Common/Snapshot.h"
 
+// Registration stores two 32-bit pointers. Retail calls the existing eight-byte
+// storage push_back at 0x00539A2E; its copy/growth callees are already owned.
+// BfmeE8 is that provider's structural spelling, not a recovered pair type.
+struct BfmeE8 { int a, b; };
+namespace _STL {
+template <> void vector<BfmeE8, allocator<BfmeE8> >::push_back(const BfmeE8 &);
+}
+
 SubsystemInterfaceList *TheSubsystemList;		// BFME1 0x0134C6C8
 
 // Native VA 0x00DFD93C: the existing legend pointer, initially null.
@@ -93,7 +101,9 @@ void SubsystemInterfaceList::initSubsystem(SubsystemInterface *sys, void *slot, 
 
 	Bool loadedFromLegend = sys->loadIniFilesFromLegend();
 
-	m_subsystems.push_back(std::make_pair(sys, slot));
+	const std::pair<SubsystemInterface *, void *> entry = std::make_pair(sys, slot);
+	reinterpret_cast<std::vector<BfmeE8> &>(m_subsystems).push_back(
+		reinterpret_cast<const BfmeE8 &>(entry));
 
 	if (!loadedFromLegend)
 	{
