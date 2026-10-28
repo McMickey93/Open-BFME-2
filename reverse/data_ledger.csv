@@ -12701,7 +12701,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0086BAFC,4,.rdata,string,??_C@_02FGAJKBDK@B?3?$AA@,,literal,,0,1
 0x0086BB00,4,.rdata,string,??_C@_02FAMCGDNB@G?3?$AA@,,literal,,0,1
 0x0086BB04,20,.rdata,string,??_C@_02EKCPACEK@R?3?$AA@,,literal,,0,1
-0x0086BB18,16,.rdata,global,?g_emptyFieldParseTable@@3QBHB,Code/GameEngine/Source/GameLogic/Object/Damage/HordeTransportContainDamageModuleDataCtor.cpp,provisional,?SlaveAttackFieldTable@@3UFieldParse@@B;?TheRva0059EB90FieldParse@@3QBUFieldParse@@B;?dataFieldParse@?1??buildFieldParse@DamageModuleData@@SAXAAVMultiIniFieldParse@@@Z@4QBUFieldParse@@B;?g_emptyFieldParseTable@@3QBHB;?junk@?1??getArgument@GameMessage@@QBEPBTGameMessageArgumentType@@H@Z@4T3@B@Code/GameEngine/Source/Common/MessageStream.cpp;?myFieldParse@?1??parse@Rva0059B8F0Nugget@@SAXPAVINI@@PAX1PBX@Z@4QBUFieldParse@@B@Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp;?s4TableRva0059EE10@@3UFieldParse@@B,3,30
+0x0086BB18,16,.rdata,global,?g_emptyFieldParseTable@@3QBHB,Code/GameEngine/Source/GameLogic/Object/Damage/HordeTransportContainDamage.cpp,provisional,?SlaveAttackFieldTable@@3UFieldParse@@B;?TheRva0059EB90FieldParse@@3QBUFieldParse@@B;?dataFieldParse@?1??buildFieldParse@DamageModuleData@@SAXAAVMultiIniFieldParse@@@Z@4QBUFieldParse@@B;?g_emptyFieldParseTable@@3QBHB;?junk@?1??getArgument@GameMessage@@QBEPBTGameMessageArgumentType@@H@Z@4T3@B@Code/GameEngine/Source/Common/MessageStream.cpp;?myFieldParse@?1??parse@Rva0059B8F0Nugget@@SAXPAVINI@@PAX1PBX@Z@4QBUFieldParse@@B@Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp;?s4TableRva0059EE10@@3UFieldParse@@B,3,30
 0x0086BB28,56,.rdata,float,__real@4222568a,,literal,,0,1
 0x0086BB60,12,.rdata,string,??_C@_08MJJJPPDE@IsHollow?$AA@,,literal,,0,5
 0x0086BB6C,32,.rdata,global,?g_00C6BB6C@@3QBUFieldParse@@B,Code/GameEngine/Source/GameClient/FXParticleSystemModuleParsers.cpp,owned,,1,1
@@ -20518,8 +20518,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03FE4,4,.data,global,?TheEvacuateDamagePoolKey@?1??getModuleNameKey@EvacuateDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamage.cpp,owned,,1,2
 0x00A03FE8,4,.data,global,?$S1@?1??getModuleNameKey@EvacuateDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamage.cpp,owned,,1,4
 0x00A03FEC,4,.data,global,_s_rva007B253E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03FF0,4,.data,global,?TheHordeTransportContainDamagePoolKey@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/HordeTransportContainDamagePoolKey.cpp,owned,,1,2
-0x00A03FF4,4,.data,global,?$S1@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/HordeTransportContainDamagePoolKey.cpp,owned,,1,4
+0x00A03FF0,4,.data,global,?TheHordeTransportContainDamagePoolKey@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Damage/HordeTransportContainDamage.cpp,owned,,1,2
+0x00A03FF4,4,.data,global,?$S1@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Damage/HordeTransportContainDamage.cpp,owned,,1,4
 0x00A03FF8,4,.data,global,_s_rva007B2568,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03FFC,4,.data,global,?TheCallHelpOnDamagePoolKey@?1??getModuleNameKey@CallHelpOnDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp,owned,,1,2
 0x00A04000,4,.data,global,?$S1@?1??getModuleNameKey@CallHelpOnDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp,owned,,1,4
