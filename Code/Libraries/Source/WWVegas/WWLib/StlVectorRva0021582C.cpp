@@ -1,5 +1,4 @@
-// Reference: pristine STLport4.5.3. Address-derived opaque record ABI.
-// Target boundary and literal pointer stride establish storage width only; no application identity inferred.
+// Reference: pristine STLport4.5.3. vector<BfmeVectorRecord0002154F3>::reserve.
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
 // The emitted unsigned max copy must match retail RVA 0x00013740.
@@ -19,15 +18,11 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 
 
-struct Rva0021582CRecord { Rva0021582CRecord(); Rva0021582CRecord(const Rva0021582CRecord&); ~Rva0021582CRecord(); Rva0021582CRecord&operator=(const Rva0021582CRecord&); private: char bytes[16]; };
-namespace _STL {template<> void _Construct<Rva0021582CRecord,Rva0021582CRecord>(Rva0021582CRecord*,const Rva0021582CRecord&);}
-namespace _STL {template<> void _Destroy<Rva0021582CRecord*>(Rva0021582CRecord*,Rva0021582CRecord*);}
-template void _STL::vector<Rva0021582CRecord>::reserve(unsigned int);
-
-// Bind lifetime operations to the existing rowed native providers.
-// reserve calls allocate-and-copy 215614 -> uninitialized_copy 2155C9
-// -> cdecl placement copy 21559C; clear 21580E calls destroy range 215783.
-// Both loops step 0x10, independently establishing this opaque view width.
-// These bindings identify operations on an ABI view, not a new game type.
-#pragma comment(linker, "/alternatename:??$_Construct@URva0021582CRecord@@U1@@_STL@@YAXPAURva0021582CRecord@@ABU1@@Z=??$_Construct@UBfmeVectorRecord0002154F3@@U1@@_STL@@YAXPAUBfmeVectorRecord0002154F3@@ABU1@@Z")
-#pragma comment(linker, "/alternatename:??$_Destroy@PAURva0021582CRecord@@@_STL@@YAXPAURva0021582CRecord@@0@Z=??$_Destroy@PAUBfmeVectorRecord0002154F3@@@_STL@@YAXPAUBfmeVectorRecord0002154F3@@0@Z")
+// Retail's reserve (0x0021582C) sits among the AsciiString plus vector<AsciiString>
+// record's vector bodies and reaches its rowed providers: allocate-and-copy 0x00215614
+// -> uninitialized_copy 0x002155C9 -> placement copy 0x0021559C; clear 0x0021580E
+// -> destroy range 0x00215783. Both loops step 0x10.
+struct BfmeVectorRecord0002154F3 { BfmeVectorRecord0002154F3(); BfmeVectorRecord0002154F3(const BfmeVectorRecord0002154F3&); ~BfmeVectorRecord0002154F3(); BfmeVectorRecord0002154F3&operator=(const BfmeVectorRecord0002154F3&); private: char bytes[16]; };
+namespace _STL {template<> void _Construct<BfmeVectorRecord0002154F3,BfmeVectorRecord0002154F3>(BfmeVectorRecord0002154F3*,const BfmeVectorRecord0002154F3&);}
+namespace _STL {template<> void _Destroy<BfmeVectorRecord0002154F3*>(BfmeVectorRecord0002154F3*,BfmeVectorRecord0002154F3*);}
+template void _STL::vector<BfmeVectorRecord0002154F3>::reserve(unsigned int);

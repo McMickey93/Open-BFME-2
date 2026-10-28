@@ -4476,7 +4476,7 @@ _rva0060E7F0,0x00211245,address,placeholder
 ?rva0021545C@Rva0021545C@@QAEXPAV1@@Z,0x0021545C,address,placeholder
 ?dup_00215696@@YAXXZ,0x00215696,address,placeholder
 ??0Rva0021572A@@QAE@PAVINI@@@Z,0x0021572A,address,placeholder
-?reserve@?$vector@URva0021582CRecord@@V?$allocator@URva0021582CRecord@@@_STL@@@_STL@@QAEXI@Z,0x0021582C,address,placeholder
+?reserve@?$vector@UBfmeVectorRecord0002154F3@@V?$allocator@UBfmeVectorRecord0002154F3@@@_STL@@@_STL@@QAEXI@Z,0x0021582C,address,placeholder
 ?Rva00215C48Get@@YAHXZ,0x00215C48,address,placeholder
 ?Rva00215C4EGet@@YAHXZ,0x00215C4E,address,placeholder
 ??_GRva00215E42@@UAEPAXI@Z,0x00215E42,address,placeholder
