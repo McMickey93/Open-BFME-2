@@ -17,6 +17,12 @@ Merging is verified, never assumed. Each donor file is compiled alone first and
 the rows that match there are the baseline. Donors are then accreted in three
 deterministic orders (address, row count, text size); a donor is accepted only
 if the TU still compiles and NO baseline row is lost, and the best order wins.
+Accretion tries growing chunks of donors in one compile and bisects a chunk
+that fails; an order or flag set stops once it cannot beat the best so far, and
+a donor rejected for a compile error that also fails beside the seed alone is
+not retried in later orders (greedy(), screen()); a spelling strategy that
+changes no line the compile errors name is skipped (respells()). The accepted
+set is composed and verified again before it is written.
 Duplicate declarations are emitted once; a type that two donors spell
 differently gets one spelling (first, else longest) and the byte check decides
 whether that was safe. A donor that also holds rows of another TU is never
@@ -479,6 +485,17 @@ REDEFINED = re.compile(r"error C2011: '([A-Za-z_]\w*)' : '(?:struct|class|enum|u
 
 def redefined(errors):
     return {next(g for g in m.groups() if g) for e in errors for m in [REDEFINED.search(e)] if m}
+
+
+def respells(failed, text):
+    """Whether `text` changes a line that names an identifier the compile errors
+    of `failed` (text, errors) quote. Spelling strategies differ only in the
+    types two donors spell differently; a strategy whose differences touch none
+    of the names the errors are about cannot cure them, so attempt() skips it."""
+    before, errors = failed
+    names = {n for e in errors for n in re.findall(r"'(?:[\w:]*::)?([A-Za-z_]\w*)", e)}
+    changed = set(before.splitlines()) ^ set(text.splitlines())
+    return not names or any(re.search(r"\b" + re.escape(n) + r"\b", line) for line in changed for n in names)
 
 
 def composition_chunks(text):
@@ -1402,6 +1419,10 @@ def header_queue_rows(root=ROOT):
     return out
 
 
+# the largest donor chunk accretion tries in one compile (greedy())
+ACCRETE_MAX = 64
+
+
 def merge(tu, dry_run=False, log=print, claim=True):
     sk = skeleton(tu)
     don, mixed, refused = donors(tu, sk)
@@ -1537,8 +1558,11 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
         best = None
         need = set().union(*(base[f] for f in files))
         rows = [r for f in files for r in don[f]]
+        failed = None   # (text, errors) of the last strategy that did not compile
         for st in ("union-first", "union-longest", "first", "longest"):
             drop, drop_all = set(), set()
+            if failed and not respells(failed, compose(tu, sk, files, texts, flags, st)):
+                continue    # it changes no line the compile errors name: it fails the same way
             for _ in range(16):
                 text = compose(tu, sk, files, texts, flags, st, frozenset(drop), frozenset(drop_all))
                 got = v.matched(text, rows)
@@ -1554,6 +1578,8 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
                 link_why[tuple(files)] = why
                 best = "link"   # matched, but a unit that links would stop linking
                 continue
+            if got is None:
+                failed = (text, list(v.all_errors))
             best = best or ("compile" if got is None else "bytes")
         return best
 
@@ -1565,16 +1591,52 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
                  else f"{f} never linked at the census and {', '.join(linked)} link")
         return f"link: {whose}; the merged object would not: " + "; ".join(link_why[tuple(files)][:3])[:300]
 
-    def greedy(order, flags):
+    def reject_reason(res, errors, files, f):
+        return (link_reason(files, f) if res == "link"
+                else res + ("" if res == "bytes" else ": " + " | ".join(errors)[:300]))
+
+    tried = {}
+
+    def tried_attempt(files, flags):
+        """attempt(), once per (donor list, flags): accretion asks again for a set it
+        already compiled (a bisected chunk whose first half was accepted)."""
+        key = (tuple(files), tuple(flags))
+        if key not in tried:
+            tried[key] = (attempt(files, flags), list(v.errors))
+        return tried[key]
+
+    def greedy(order, flags, floor=None):
+        """Accrete donors in `order`; each accepted group verified by attempt().
+        None once the rows still reachable cannot beat `floor` (the best trial's
+        score), so a later order or flag set stops as soon as it cannot win.
+
+        Group testing: acc + a chunk is tried as one text; a chunk that verifies is
+        accepted whole, one that fails is bisected down to the donors that fail
+        alone against the then-accepted set (rejected, with that attempt's reason).
+        The chunk doubles after a success and halves after a failure, so a TU of n
+        donors with r rejects costs about n/chunk + r*log(chunk) compiles, not n."""
         acc, rej = [], {}
-        for f in order:
-            res = attempt(acc + [f], flags)
-            if res == "link":
-                rej[f] = link_reason(acc + [f], f)
-            elif res in ("compile", "bytes"):
-                rej[f] = res + ("" if res == "bytes" else ": " + " | ".join(v.errors)[:300])
-            else:
-                acc.append(f)
+
+        def settle(group):
+            res, errors = tried_attempt(acc + group, flags)
+            if res not in ("compile", "bytes", "link"):
+                acc.extend(group)
+                return True
+            if len(group) == 1:
+                rej[group[0]] = reject_reason(res, errors, acc + group, group[0])
+                return False
+            mid = len(group) // 2
+            settle(group[:mid])
+            settle(group[mid:])     # after an accepted first half: the failing set itself, from the cache
+            return False
+
+        at, size = 0, 1             # the seed alone first: everything else is judged against it
+        while at < len(order):
+            if floor is not None and sum(len(base[f]) for f in acc + order[at:]) <= floor:
+                return None
+            group = order[at:at + size]
+            at += len(group)
+            size = min(size * 2, ACCRETE_MAX) if settle(group) else max(1, size // 2)
         return acc, rej
 
     first = {f: min(int(r["target_rva"], 16) for r in don[f]) for f in good}
@@ -1584,11 +1646,44 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
         orders = [[tu] + [f for f in o if f != tu] for o in orders]
     best, seed_error = None, None
     rejected_seed = None
+    def screen(flags, cands, out):
+        """Add to `out` the donors of `cands` (a trial's compile rejects, then
+        under each later flag set the donors screened out so far) that also fail
+        to compile beside the seed alone under `flags`.
+
+        Such a donor is left out of the remaining orders under these flags
+        instead of failing again at several compiles per order. Only a donor a
+        trial already rejected is screened: failing beside the seed alone does
+        not prove it fails in every larger set (another donor can supply what
+        compose dropped from it; LuaScriptEngine.cpp kept three such donors), so
+        the first flag set's first order tries every donor. Byte and link
+        rejects stay in,
+        and without a seed that verifies by itself nothing is screened.
+        Screening only costs rows a reordering might have found; every accepted
+        set is still verified by attempt()."""
+        if tu not in good or tried_attempt([tu], flags)[0] in ("compile", "bytes", "link"):
+            return
+        for f in cands:
+            if f != tu and f not in out:
+                res, errors = tried_attempt([tu, f], flags)
+                if res == "compile":
+                    out[f] = reject_reason(res, errors, [tu, f], f)
+
+    suspects = []
+
     def trial(flags_list):
         nonlocal best, seed_error, rejected_seed
         for flags in flags_list:
+            out = {}
+            screen(flags, suspects, out)
             for o in orders:
-                acc, rej = greedy(o, flags)
+                got = greedy([f for f in o if f not in out], flags, best[0] if best is not None else None)
+                if got is None:
+                    continue    # could not have scored higher than the best trial
+                acc, rej = got
+                screen(flags, [f for f, why in rej.items() if why.startswith("compile")], out)
+                suspects.extend(f for f in out if f not in suspects)
+                rej = {**out, **rej}
                 score = sum(len(base[f]) for f in acc)
                 if (tu in good and tu not in acc):
                     seed_error = seed_error or rej.get(tu) or "the seed does not verify under the merged flags"

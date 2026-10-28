@@ -596,6 +596,125 @@ class MergeDiagnosticsTests(unittest.TestCase):
         self.assertIn("C1001", out["blocked"])
 
 
+class RespellTests(unittest.TestCase):
+    """attempt() skips a spelling strategy that cannot touch what the compile errors name."""
+    BEFORE = "struct Object { int a; };\nstruct Range { int r; };\nint f() { return 0; }"
+
+    def test_a_strategy_that_respells_a_named_type_is_tried(self):
+        errors = ["x.cpp(3) : error C2039: 'm_b' : is not a member of 'Object'"]
+        after = self.BEFORE.replace("int a;", "int a; int m_b;")
+        self.assertTrue(T.respells((self.BEFORE, errors), after))
+
+    def test_a_strategy_that_changes_only_other_types_is_skipped(self):
+        errors = ["x.cpp(3) : error C2065: 'Rva00990030Range' : undeclared identifier"]
+        after = self.BEFORE.replace("int a;", "int a; int m_b;")
+        self.assertFalse(T.respells((self.BEFORE, errors), after))
+
+    def test_errors_that_name_nothing_never_skip(self):
+        self.assertTrue(T.respells((self.BEFORE, ["x.cpp(3) : fatal error C1001"]), self.BEFORE + " "))
+
+
+class AccretionTests(unittest.TestCase):
+    """greedy() accretes donors in chunks and bisects a failing chunk."""
+    TU = "Code/T.cpp"
+
+    def merge(self, names, fails, dry_run=True):
+        """_merge of TU + names; `fails(files)` says whether that composed set loses bytes
+        (truthy) or does not compile ("compile").
+        Returns (report, compiled donor lists, apply mock)."""
+        files = [self.TU] + [f"Code/{n}.cpp" for n in names]
+        texts = {f: f"solo {f}" for f in files}
+        don = {f: [{"target_rva": f"0x{0x1000 + 16 * i:x}"}] for i, f in enumerate(files)}
+        compiled = []
+
+        class Verifier:
+            fd = SimpleNamespace(MANAGED=re.compile(r"(?!)"), overrides=lambda: {})
+            errors, all_errors, flags = [], [], None
+
+            def matched(self, text, rows):
+                if text.startswith("solo "):
+                    return {r["target_rva"] for r in rows}
+                group = text.split("+")
+                compiled.append(group)
+                why = fails(group)
+                if why == "compile":
+                    return None
+                if why:
+                    return set()
+                return {r["target_rva"] for r in rows}
+
+        probe = Verifier()
+
+        def compose(tu_, sk, files_, texts_, flags, *a, **k):
+            return "+".join(Path(f).stem for f in files_)
+
+        carry = SimpleNamespace(report=lambda: {}, problems=[])
+        with patch.object(T, "Verifier", return_value=probe),                 patch.object(T, "compose", side_effect=compose),                 patch.object(T, "Carry", return_value=carry),                 patch.object(T, "apply", return_value=set()) as apply:
+            out = T._merge(self.TU, [], don, {"accepted": [], "rejected": {}}, dry_run, texts=texts)
+        return out, compiled, apply
+
+    @staticmethod
+    def greedy(names, fails):
+        acc = ["T"]
+        for n in names:
+            if not fails(acc + [n]):
+                acc.append(n)
+        return acc
+
+    def test_a_chunk_that_verifies_is_accepted_in_one_compile(self):
+        names = [f"D{i:02}" for i in range(30)]
+        out, compiled, _ = self.merge(names, fails=lambda g: False)
+        self.assertEqual(len(out["accepted"]), 31)
+        # beside the seed screen (one compile per donor, seed + donor), the seed, then chunks
+        # of 2, 4, 8, 16 (one trial: it took everything), then the final re-verify
+        self.assertLessEqual(len([g for g in compiled if len(g) != 2]), 6)
+        self.assertEqual(compiled[-1], ["T"] + names)
+
+    def test_a_failing_chunk_is_bisected_down_to_the_one_bad_donor(self):
+        names = [f"D{i:02}" for i in range(30)]
+        out, compiled, _ = self.merge(names, fails=lambda g: "D11" in g)
+        self.assertNotIn("blocked", out)
+        self.assertEqual(sorted(out["accepted"]), sorted([self.TU] + [f"Code/{n}.cpp" for n in names if n != "D11"]))
+        self.assertEqual(set(out["rejected"]), {"Code/D11.cpp"})
+        self.assertTrue(out["rejected"]["Code/D11.cpp"].startswith("bytes"))
+        self.assertLess(len(compiled), 3 * 31)        # well under one compile per donor per order
+
+    def test_the_result_equals_one_by_one_greedy_on_a_small_case(self):
+        names = ["A", "B", "C", "D", "E", "F", "G", "H"]
+        # C conflicts with A; G conflicts with E; H fails with anything
+        def fails(g):
+            return ("A" in g and "C" in g) or ("E" in g and "G" in g) or ("H" in g and len(g) > 1)
+        out, _, _ = self.merge(names, fails)
+        want = self.greedy(names, fails)
+        self.assertEqual(sorted(Path(f).stem for f in out["accepted"]), sorted(want))
+        self.assertEqual({Path(f).stem for f in out["rejected"]}, {"C", "G", "H"})
+
+    def test_a_compile_reject_that_fails_beside_the_seed_alone_is_screened_out_of_later_orders(self):
+        names = [f"D{i:02}" for i in range(12)]
+        out, compiled, _ = self.merge(names, fails=lambda g: "compile" if "D03" in g and len(g) > 1 else False)
+        self.assertEqual(set(out["rejected"]), {"Code/D03.cpp"})
+        self.assertTrue(out["rejected"]["Code/D03.cpp"].startswith("compile"))
+        # rejected by the first trial, then screened beside the seed: never in a larger set again
+        screened = compiled.index(["T", "D03"])
+        self.assertTrue(any("D03" in g and len(g) > 2 for g in compiled[:screened]))
+        self.assertFalse(any("D03" in g and len(g) > 2 for g in compiled[screened:]))
+
+    def test_a_byte_reject_beside_the_seed_is_not_screened(self):
+        # bytes can depend on another donor's spelling: it stays in the matrix
+        names = ["A", "B", "C"]
+        out, compiled, _ = self.merge(names, fails=lambda g: "B" in g and "C" not in g)
+        self.assertTrue(out["rejected"]["Code/B.cpp"].startswith("bytes"))
+        self.assertNotIn(["T", "B"], compiled)
+
+    def test_the_accepted_set_is_still_reverified_before_it_is_applied(self):
+        names = [f"D{i}" for i in range(6)]
+        out, compiled, apply = self.merge(names, fails=lambda g: False, dry_run=False)
+        apply.assert_called_once()
+        accepted = ["T"] + names
+        # accretion verified it once, and the final re-verify composed it again
+        self.assertGreaterEqual(sum(1 for g in compiled if g == accepted), 2)
+
+
 class LinkGuardTests(unittest.TestCase):
     # LINK-042: GameFont.cpp, statistics.cpp, CrateSystem.cpp, MultiplayerSettings.cpp and
     # htree.cpp linked in the census, then a merge chosen by matched rows alone made them stop.
