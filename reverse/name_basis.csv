@@ -2812,3 +2812,9 @@ local,Rva005C6D4D::rva005C6D9C::p,Rva005C6D4D::rva005C6D9C::buttonFlash,inferred
 param,same::b,same::other,inferred,agree:nl-d2087894098b,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawGetCurrentBonePositions.cpp,
 local,Rva00261C72Filter::allow::arg,Rva00261C72Filter::allow::objectView,inferred,agree:nl-e67d43666978,Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp,0x00261C72
 local,Rva00261C58Filter::allow::arg,Rva00261C58Filter::allow::objectView,inferred,agree:nl-0c05d03ac8ac,Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp,0x00261C58
+param,W3DDisplayStringManager::rva00090381::n,W3DDisplayStringManager::rva00090381::string,inferred,agree:nl-b946e3db67db,Code/GameEngine/Source/Common/Rva00090360Ctor.cpp,0x00090381
+function,?rva00090381@W3DDisplayStringManager@@QAEXPAURva90381Node@@@Z,?freeDisplayString@W3DDisplayStringManager@@QAEXPAURva90381Node@@@Z,inferred,agree:nl-b80ab6845082,Code/GameEngine/Source/Common/Rva00090360Ctor.cpp,0x00090381
+carry,W3DDisplayStringManager::rva00090381::string,W3DDisplayStringManager::freeDisplayString::string,inferred,scope renamed by Rename rva00090381 to freeDisplayString (inferred),Code/GameEngine/Source/Common/Rva00090360Ctor.cpp,0x00090381
+param,Rva00262045::rva00262045::n,Rva00262045::rva00262045::string,inferred,agree:nl-ff5a23de8b66,Code/GameEngine/Source/Common/Rva00262045Unlink.cpp,0x00262045
+function,?rva00262045@Rva00262045@@QAEXPAUNode00262045@@@Z,?unLink@Rva00262045@@QAEXPAUNode00262045@@@Z,inferred,agree:nl-4c10c1a5f988,Code/GameEngine/Source/Common/Rva00262045Unlink.cpp,0x00262045
+carry,Rva00262045::rva00262045::string,Rva00262045::unLink::string,inferred,scope renamed by Rename rva00262045 to unLink (inferred),Code/GameEngine/Source/Common/Rva00262045Unlink.cpp,0x00262045

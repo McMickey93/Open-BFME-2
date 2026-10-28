@@ -15,7 +15,7 @@ class W3DDisplayStringManager : public Rva0026201C
 public:
 	W3DDisplayStringManager();
 	virtual ~W3DDisplayStringManager();
-	void rva00090381(struct Rva90381Node *n);
+	void freeDisplayString(struct Rva90381Node *n);
 private:
 	struct Rva90381Node *m_14[10];
 	struct Rva90381Node *m_3C;
@@ -33,10 +33,10 @@ W3DDisplayStringManager::~W3DDisplayStringManager()
 {
 	for (int i = 0; i < 10; ++i) {
 		if (m_14[i] != 0)
-			rva00090381(m_14[i]);
+			freeDisplayString(m_14[i]);
 		m_14[i] = 0;
 	}
 	if (m_3C != 0)
-		rva00090381(m_3C);
+		freeDisplayString(m_3C);
 	m_3C = 0;
 }

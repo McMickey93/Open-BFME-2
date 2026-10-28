@@ -15,7 +15,7 @@ class W3DDisplayStringManager : public Rva0026201C
 public:
 	W3DDisplayStringManager();
 	virtual ~W3DDisplayStringManager();
-	void rva00090381(struct Rva90381Node *n);
+	void freeDisplayString(struct Rva90381Node *string);
 private:
 	int m_14[10];
 	int m_3C;
@@ -33,22 +33,22 @@ struct Node00262045;
 class Rva00262045
 {
 public:
-	void rva00262045(struct Node00262045 *n);
+	void unLink(struct Node00262045 *n);
 };
 
 #include <new>
 
-// ?rva00090381@W3DDisplayStringManager@@QAEXPAURva90381Node@@@Z @0x00090381 47B
+// ?freeDisplayString@W3DDisplayStringManager@@QAEXPAURva90381Node@@@Z @0x00090381 47B
 // Slot 15 offset 0x3C of vtable 0x007C7E20. Unlinks n via rowed 0x00262045,
 // clears head at +0x10 if it equals n, releases via slot0 plus rowed delete 0x0002FD60.
 // Callers in dtor 0x0009045E.
-void W3DDisplayStringManager::rva00090381(struct Rva90381Node *n)
+void W3DDisplayStringManager::freeDisplayString(struct Rva90381Node *string)
 {
-	if (n != 0) {
-		((Rva00262045 *)this)->rva00262045((struct Node00262045 *)n);
-		if (m_head10 == n)
+	if (string != 0) {
+		((Rva00262045 *)this)->unLink((struct Node00262045 *)string);
+		if (m_head10 == string)
 			m_head10 = 0;
-		operator delete(n->rva(0));
+		operator delete(string->rva(0));
 	}
 }
 
