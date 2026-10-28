@@ -15,9 +15,12 @@ class Rva001DBAA4
 public:
     Rva001DBAA4();
     virtual ~Rva001DBAA4();
-    int m_4;
-    bool m_8, m_9, m_A;
-    int m_C;
+    int m_frameLength;          // +0x04
+    bool m_isFinished;          // +0x08
+    bool m_isForward;           // +0x09
+    bool m_isReversed;          // +0x0a
+    unsigned char m_pad0B;      // +0x0b
+    class GameWindow *m_win;    // +0x0c
 };
 
 class MainMenuMediumScaleUpTransition : public Rva001DBAA4
@@ -47,6 +50,6 @@ void s4parse0059E290(INI *ini, Gen_00489270 *sink)
 {
     MainMenuMediumScaleUpTransition *t = new MainMenuMediumScaleUpTransition;
     ini->initFromINI(t, CountUpTransitionFields);
-    t->m_4 = t->m_14;
+    t->m_frameLength = t->m_14;
     sink->m((int)t);
 }
