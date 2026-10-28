@@ -4,11 +4,11 @@
 class Rva002C5FE8
 {
 public:
+	void rva002C60A9(unsigned int);
 	void *rva002C5FE8(int key);
-	void rva002C60A9(unsigned int key);
-	char m_lead[0x20];
-	void **m_begin;
-	void **m_end;
+	char m_lead[0x20]; // +0x00
+	void **m_begin; // +0x20
+	void **m_end; // +0x24
 };
 void *Rva002C5FE8::rva002C5FE8(int key)
 {

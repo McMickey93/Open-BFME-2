@@ -51,13 +51,15 @@ public:
 struct Coord3DBase
 {
 public:
-    Coord3DBase() { x=0.0f; y=0.0f; z=0.0f; }
-    Coord3DBase(const Coord3DBase &coord3DBase):x(coord3DBase.x),y(coord3DBase.y),z(coord3DBase.z){}
-    // Native retains a temporary cleanup state with no destructor instruction.
-    ~Coord3DBase() {}
-    float x,y,z;
-    Coord3DBase &Sub(const Coord3DBase &coord3DBase) {x-=coord3DBase.x; y-=coord3DBase.y; z-=coord3DBase.z; return *this;}
-    float GetLengthSqrd2D() const {return x*x+y*y;}
+	Coord3DBase() { x=0.0f; y=0.0f; z=0.0f; }
+	// Native retains a temporary cleanup state with no destructor instruction.
+	~Coord3DBase() {}
+	Coord3DBase(const Coord3DBase &coord3DBase):x(coord3DBase.x),y(coord3DBase.y),z(coord3DBase.z){}
+	Coord3DBase &Sub(const Coord3DBase &coord3DBase) {x-=coord3DBase.x; y-=coord3DBase.y; z-=coord3DBase.z; return *this;}
+	float GetLengthSqrd2D() const {return x*x+y*y;}
+	float x; // +0x00
+	float y; // +0x04
+	float z; // +0x08
 };
 class Player;
 class __multiple_inheritance Team;
@@ -74,37 +76,64 @@ public:
     unsigned int frame;
 };
 class Rva002C589B;
-class AITargetChooser { public: void xfer(Xfer *); void rva00505911(); Rva002C589B *getBestTarget(); };
+class AITargetChooser
+{
+public:
+	void xfer(Xfer *);
+	void rva00505911();
+	Rva002C589B *getBestTarget();
+	Rva002C589B *rva00505408(int index); // 0x00505408
+	AITargetChooser(void *p);
+	~AITargetChooser();
+	char m_pad[0x20]; // +0x00
+};
 class AITacticsGenerator
 {
 public:
-    void xfer(Xfer *);
-    void rva005059A1(Team *);
-    void rva00505A56(Team *);
-    void rva005069B4();
-    bool rva005069CE(struct Rva00506909Request*,void*);
+	void DoXfer(Xfer *);
+	void Register(Team *);
+	void UnRegister(Team *);
+	void rva005069B4();
+	bool activateTactic(struct Rva00506909Request*,void*);
+	AITacticsGenerator(void *p);
+	~AITacticsGenerator();
+	void xfer(Xfer *);
+	void rva005059A1(Team *);
+	void rva00505A56(Team *);
+	bool rva005069CE(struct Rva00506909Request*,void*);
+	char m_pad[0x64]; // +0x00
 };
-class Rva002C5FE8 { public: void rva002C60A9(unsigned int); };
+class Rva002C5FE8
+{
+public:
+	void rva002C60A9(unsigned int);
+	void *rva002C5FE8(int key);
+	char m_lead[0x20]; // +0x00
+	void **m_begin; // +0x20
+	void **m_end; // +0x24
+};
 
 class Rva00506A52 { public: void rva00506AFA(); };
+class Object;
 class TacticalAI
 {
 public:
-    void DoXfer(Xfer *);
-    void updateInterestZones();
-    void rva002C6779();
-    void rva002C64D0(const Coord3DBase *, int);
-    __declspec(noinline) void Register(Team *);
-    __declspec(noinline) void UnRegister(Team *);
+	bool checkEnemyForAttackMove(Object *,Object *);
+	void DoXfer(Xfer *);
+	void updateInterestZones();
+	void rva002C6779();
+	void rva002C64D0(const Coord3DBase *, int);
+	__declspec(noinline) void Register(Team *);
+	__declspec(noinline) void UnRegister(Team *);
 private:
-    char prefix00[8];
-    Player *player;
-    AITargetChooser *chooser;
-    AITacticsGenerator *generator;
-    Rva002C589B *target;
-    Rva002C589B *fallback;
-    Rva00506A52 *tail;
-    _STL::vector<Rva002C5EF0 *> interestZones;
+	char prefix00[8]; // +0x00
+	Player *player; // +0x08
+	AITargetChooser *chooser; // +0x0C
+	AITacticsGenerator *generator; // +0x10
+	Rva002C589B *target; // +0x14
+	Rva002C589B *fallback; // +0x18
+	Rva00506A52 *tail; // +0x1C
+	_STL::vector<Rva002C5EF0 *> interestZones; // +0x20
 };
 // DoXfer (0x002C63A1), Register/UnRegister (0x002C5FAA/0x002C5FB2) and the
 // interest-zone merge rva002C64D0 are rowed in TacticalAI.cpp, and

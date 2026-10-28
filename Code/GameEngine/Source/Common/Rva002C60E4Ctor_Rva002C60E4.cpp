@@ -25,20 +25,37 @@ public:
 	bool m_04;
 };
 
+class Xfer;
+class Rva002C589B;
 class AITargetChooser
 {
 public:
+	void xfer(Xfer *);
+	void rva00505911();
+	Rva002C589B *getBestTarget();
+	Rva002C589B *rva00505408(int index); // 0x00505408
 	AITargetChooser(void *p);
 	~AITargetChooser();
-	char m_pad[0x20];
+	char m_pad[0x20]; // +0x00
 };
 
+class Team;
+struct Rva00506909Request;
 class AITacticsGenerator
 {
 public:
+	void DoXfer(Xfer *);
+	void Register(Team *);
+	void UnRegister(Team *);
+	void rva005069B4();
+	bool activateTactic(struct Rva00506909Request*,void*);
 	AITacticsGenerator(void *p);
 	~AITacticsGenerator();
-	char m_pad[0x64];
+	void xfer(Xfer *);
+	void rva005059A1(Team *);
+	void rva00505A56(Team *);
+	bool rva005069CE(struct Rva00506909Request*,void*);
+	char m_pad[0x64]; // +0x00
 };
 typedef AITacticsGenerator AITacticsGenerator;
 

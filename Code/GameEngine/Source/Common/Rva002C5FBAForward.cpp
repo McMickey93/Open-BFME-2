@@ -6,10 +6,17 @@
 // AITargetChooser::rva00505408 with the index. Owner address-named.
 class Rva002C589B;
 
+class Xfer;
 class AITargetChooser
 {
 public:
-	Rva002C589B *rva00505408(int index);		// 0x00505408
+	void xfer(Xfer *);
+	void rva00505911();
+	Rva002C589B *getBestTarget();
+	Rva002C589B *rva00505408(int index); // 0x00505408
+	AITargetChooser(void *p);
+	~AITargetChooser();
+	char m_pad[0x20]; // +0x00
 };
 
 class Rva002C5FBA
