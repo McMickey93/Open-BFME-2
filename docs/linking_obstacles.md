@@ -84,6 +84,25 @@ Common/0CreateAHeroManager21FE49.cpp lacks a current receipt. Carry these moved
 providers and that consumer into the next normal census. The parser satellite
 still lacks approval for this provisional grouping. No new linked bytes are claimed.
 
+### PassiveAreaEffectBehavior collection and module-data composition (2026-10-28)
+
+Status: bounded merge verified; remaining class views and census confirmation
+pending. Inspected base: `e1ad17f97e`; preview index: `41c28839bf`.
+
+The supported merge combines collection and module-data construction in the
+approved provisional TU, removing one net source file. All 13 rows and both
+EH graphs remain exact. All 54 original external COMDAT fingerprints remain;
+the added five-byte AsciiString destructor matches an existing retail-proven
+copy. The merge guard preserves both linked donors (510 authored preview
+bytes). The new destination is not yet in the census, so ordinary post-merge
+preview is unavailable. No new linked coverage is claimed.
+
+The batch audit is INCONCLUSIVE: its index predates the base and affected
+consumer Common/0CreateAHeroManager21FE49.cpp lacks a current receipt. Carry
+this moved scope into the next normal census. Seven whole-file donors need
+class/layout or byte-shape reconciliation; two mixed sources remain separate.
+[Verification, path audit and prerequisites](../reverse/attempt_support/passive-area-consolidation-20261028-codex.md).
+
 ### Terrain projection inline floor linkage (2026-10-28)
 
 Status: consumer repair verified in ordinary preview; global selected-copy
