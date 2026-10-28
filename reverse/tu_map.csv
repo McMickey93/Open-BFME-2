@@ -4253,7 +4253,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00075D52,228,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x00075E36,6,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x00075E3C,6,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,C,C=0x00075E36..0x00075E42,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
-0x00075E42,2023,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,C,C=0x00075E36..0x00076629,Code/GameEngine/Source/Common/Rva00075E42.cpp
+0x00075E42,2023,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,C,C=0x00075E36..0x00076629,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x00076629,184,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerRequirements.cpp
 0x000766E1,20,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_e12_o1.cpp
 0x000766F5,42,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_e12_o1.cpp
@@ -62302,8 +62302,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0075EF44,10,code,,,-,,Code/GameEngine/Source/Common/Rva00751EFDtor.cpp
 0x0075EF4E,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x000754DE@FuncInfo0x00901718,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x0075EF58,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x000754DE@FuncInfo0x00901718,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
-0x0075EF62,11,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x00075E42@FuncInfo0x0090173C,Code/GameEngine/Source/Common/Rva00075E42.cpp
-0x0075EF6D,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x00075E42@FuncInfo0x0090173C,Code/GameEngine/Source/Common/Rva00075E42.cpp
+0x0075EF62,11,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x00075E42@FuncInfo0x0090173C,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
+0x0075EF6D,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x00075E42@FuncInfo0x0090173C,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x0075EF77,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/BfmeShaderShutdown.cpp,proposed,P,P=0x00076790@FuncInfo0x00901760,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp
 0x0075EF7F,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/BfmeShaderShutdown.cpp,proposed,P,P=0x00076790@FuncInfo0x00901760,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp
 0x0075EF89,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,approved,P,P=0x00076C14@FuncInfo0x009017C4,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerSetShroudTex.cpp

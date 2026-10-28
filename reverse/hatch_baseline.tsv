@@ -202,7 +202,6 @@ address_global	Code/GameEngine/Source/Common/Rva000308E0AddHeap.cpp	g_Va00DE03E8
 address_global	Code/GameEngine/Source/Common/Rva00062B17Init.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/Rva00066A9ABody.cpp	g_Va00DB43A4	3
 address_global	Code/GameEngine/Source/Common/Rva00066A9ABody.cpp	g_Va00DB43AC	3
-address_global	Code/GameEngine/Source/Common/Rva00075E42.cpp	g_Va001FDE58	26
 address_global	Code/GameEngine/Source/Common/Rva00078BEEGetters.cpp	g_Va001FDEB0	3
 address_global	Code/GameEngine/Source/Common/Rva00094B08Finish.cpp	g_Va00BBB8D8	1
 address_global	Code/GameEngine/Source/Common/Rva000B2EB5.cpp	g_Va00BBB8D8	3
@@ -1364,7 +1363,7 @@ address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouseInitW3D
 address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DRoadBuffer.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSceneUpdateFixedLightEnvironments.cpp	g_Va00DEDA28	2
 address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSceneUpdateFixedLightEnvironments.cpp	g_Va00DEDA2C	2
-address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp	g_Va001FDE58	3
+address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp	g_Va001FDE58	28
 address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp	g_Va009E1F6C	3
 address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerRequirements.cpp	g_Va001FDE58	2
 address_global	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	g_Va009E1F6C	2
