@@ -1146,6 +1146,10 @@ class Tool:
         report["classes"][c] = entry
         if not plan:
             return
+        spelled = {ws(hal.masked(texts[v.path][v.span[0]:v.span[1]])) for v in plan.views}
+        if len(spelled) == 1:                  # one spelling already: the merge emits it once
+            entry["status"] = "already shared"
+            return
         new = {v.path: rewrite(texts[v.path], v, plan.block, plan.renames.get(v.path, {}), plan.forward.get(v.path, ()))
                for v in plan.views}
         changed = sorted(f for f in new if new[f] != texts[f])
