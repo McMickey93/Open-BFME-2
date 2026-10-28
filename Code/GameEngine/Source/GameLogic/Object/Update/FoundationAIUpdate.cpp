@@ -468,7 +468,15 @@ struct CastleMemberView {
 
 // tu-skeleton: 0x0045515C 11B ?set@Rva0045515CStringField@@QAEXABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/AsciiStringFieldSetters.cpp (not merged yet)
 
-// tu-skeleton: 0x00455167 69B ?getModuleNameKey@FoundationAIUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp
+
+// ?getModuleNameKey@FoundationAIUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType FoundationAIUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheFoundationAIUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("FoundationAIUpdate");
+	return TheFoundationAIUpdatePoolKey;
+}
 
 // tu-skeleton: 0x004551AC 7B ?get@Rva004551ACByteChaseField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp8ByteChaseGetters.cpp (not merged yet)
 
@@ -477,6 +485,8 @@ struct CastleMemberView {
 // tu-skeleton: 0x0045521E 28B ??_GRva00455050@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
 
 // tu-skeleton: 0x0045523A 7B ?get@Rva0045523AFloatChaseField@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdateSlots.cpp
 
@@ -616,10 +626,6 @@ UpdateSleepTime FoundationAIUpdate::update()
 }
 
 // tu-skeleton: 0x0045569D 1174B ?construct@FoundationAIUpdate@@UAEPAVObject@@PBVThingTemplate@@PBUCoord3D@@MPAVPlayer@@H_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdateConstruct.cpp (not merged yet)
-
-// tu-skeleton: 0x00789EBD 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x00789ECA 10B __ehhandler$?getModuleNameKey@FoundationAIUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x00789ED4 8B uw_00789ed4 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
 

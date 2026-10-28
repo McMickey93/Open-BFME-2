@@ -35787,7 +35787,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004550DE,26,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdateSlot14.cpp
 0x004550F8,100,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdateXfer.cpp
 0x0045515C,11,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,C,C=0x004550F8..0x00455167 provisional,Code/GameEngine/Source/Common/AsciiStringFieldSetters.cpp
-0x00455167,69,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp
+0x00455167,69,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp
 0x004551AC,7,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,C,C=0x00455167..0x004551B3 provisional,Code/GameEngine/Source/Common/Disp8ByteChaseGetters.cpp
 0x004551B3,107,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdateCtor.cpp
 0x0045521E,28,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,C,C=0x004551B3..0x0045523A provisional,Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp
@@ -79231,8 +79231,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00789E9E,10,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GettingBuiltBehavior.cpp,approved,P,P=0x00454B5C@FuncInfo0x0093839C provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GettingBuiltBehaviorCompletion.cpp
 0x00789EA8,11,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorSlot13.cpp
 0x00789EB3,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorSlot13.cpp
-0x00789EBD,13,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x00455167@FuncInfo0x009383E4 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp
-0x00789ECA,10,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x00455167@FuncInfo0x009383E4 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp
+0x00789EBD,13,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x00455167@FuncInfo0x009383E4 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp
+0x00789ECA,10,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x00455167@FuncInfo0x009383E4 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp
 0x00789ED4,8,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x004551B3@FuncInfo0x00938408 provisional,Code/gen_small/uw_gen_011.cpp
 0x00789EDC,10,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x004551B3@FuncInfo0x00938408 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdateCtor.cpp
 0x00789EE6,8,code,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp,approved,P,P=0x0045537F@FuncInfo0x00938434 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdate.cpp
