@@ -17,9 +17,9 @@ template<> bool SimpleDynVecClass<Vector3>::Add(Vector3 const &object, int new_s
 // Delete_All inlines Shrink, so this /O2 unit emitted an unreferenced
 // SimpleDynVecClass<Vector3>::Shrink copy that is not retail's /O1 body
 // (0x00100210). Inline it here under the stock body without emitting one.
-template<> __declspec(dllimport) __forceinline bool SimpleDynVecClass<Vector3>::Shrink(void)
+template <> __declspec(dllimport) __forceinline bool SimpleDynVecClass<Vector3>::Shrink(void)
 {
-    if (ActiveCount < VectorMax / 4) {
+    if (ActiveCount < VectorMax/4) {
         return Resize(ActiveCount);
     }
     return true;
