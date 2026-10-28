@@ -53,7 +53,8 @@ public:
 };
 
 static int s_secondary0C;
-static int s_10;
+// Shared with the destructor's complete three-entry secondary table.
+extern "C" const void *const s_10[3];
 extern "C" const void *const __identifier("??_7Rva004DF324@@6B@")[];
 
 class Rva004DF418 : public ObjectHelper
@@ -81,6 +82,3 @@ Rva004DF418::Rva004DF418(Thing *thing, const ModuleData *moduleData)
 	m_20 = 0;
 	setWakeFrame(m_object, UPDATE_SLEEP_FOREVER);
 }
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.

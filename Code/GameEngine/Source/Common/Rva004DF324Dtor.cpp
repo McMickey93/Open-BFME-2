@@ -5,7 +5,7 @@
 // mov ecx,esi/pop esi/jmp 0x4DF7C2 (35B). Models the ModuleUpdateDtors2
 // precedent (Rva004907C0 49B): single polymorphic base declared-only (its
 // dtor resolves to the opaque pin at 0x004DF7C2), two const members assigned
-// from TU-local statics (DIR32 sites, values auto-patched), and an opaque
+// from secondary-table addresses (DIR32 sites), and an opaque
 // PoolMember at +0x24 whose method resolves to the pin at 0x00268902.
 // Owner identity unproven (opaque Rva name).
 
@@ -41,8 +41,23 @@ private:
 	PoolMember m_mem24;
 };
 
-static int s_0C;
-static int s_10;
+static int s_0C; // The separate folded table at RVA 0x007EFF90 remains debt.
+
+// Retail's secondary table at RVA 0x0086157C has three entries before the
+// primary table at 0x00861588. Keep the existing inventory symbol, but own
+// the complete initialized table instead of a zero-filled integer stand-in.
+// These declarations take the rowed entry addresses; they are never called
+// through the erased signatures here. The module's class identity is unknown.
+extern "C" {
+void __identifier("?Rva004A6563Get@@YAHXZ")();
+void __identifier("?getDisabledTypesToProcess@Rva004DF396@@UBE?AV?$BitFlags@$0L@@@XZ")();
+void __identifier("?rva0044DF8D@UpdateModule@@UAEXW4UpdateSleepTime@@@Z")();
+extern const void *const s_10[3] = {
+	(const void *)&__identifier("?Rva004A6563Get@@YAHXZ"),
+	(const void *)&__identifier("?getDisabledTypesToProcess@Rva004DF396@@UBE?AV?$BitFlags@$0L@@@XZ"),
+	(const void *)&__identifier("?rva0044DF8D@UpdateModule@@UAEXW4UpdateSleepTime@@@Z")
+};
+}
 
 Rva004DF324::~Rva004DF324()
 {

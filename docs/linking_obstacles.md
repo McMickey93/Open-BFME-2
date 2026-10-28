@@ -1394,6 +1394,19 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-28.**
 
+- **Module secondary-table storage (2026-10-28, base `7c98b18b59`):**
+  [The two-source storage repair](../reverse/attempt_support/module-secondary-table-storage-20261028-codex.md)
+  replaces two integer stand-ins at RVA 0x0086157C with one complete table
+  in Rva004DF324Dtor.cpp and an external reference in Rva004DF418Finish.cpp.
+  The existing `_s_10` name is retained; all three slots name existing rowed
+  functions. Six affected code rows, the 12-byte table and the constructor EH
+  graph verify; the owning tool retires one duplicate-data key. Paired ordinary
+  previews preserve LINKS and 189 authored bytes. The staged batch audit is
+  INCONCLUSIVE because index `14dc3d2467` predates the base and lacks consumer
+  names. Carry this scope to the next census. The separate folded table at
+  RVA 0x007EFF90 and class identity remain prerequisites; no census or runtime
+  gain is claimed.
+
 - **Shared random-seed storage (2026-10-28, control `87c6af16d4`):**
   [The seven-source binding repair](../reverse/attempt_support/random-seed-storage-20261028-codex.md)
   exposes each existing seed owner under its unchanged C symbol and replaces

@@ -11737,7 +11737,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00861524,12,.rdata,vtable,??_7FiringTracker@@6B@,,literal,,0,2
 0x00861530,52,.rdata,vtable,??_7FiringTracker@@6BObjectModule@@@,,literal,,0,2
 0x00861564,24,.rdata,string,??_C@_0O@CAOAKFA@FiringTracker?$AA@,,literal,,0,2
-0x0086157C,12,.rdata,global,_s_10,Code/GameEngine/Source/Common/Rva004DF324Dtor.cpp,provisional,_s_10@Code/GameEngine/Source/Common/Rva004DF324Dtor.cpp;_s_10@Code/GameEngine/Source/Common/Rva004DF418Finish.cpp,2,2
+0x0086157C,12,.rdata,global,_s_10,Code/GameEngine/Source/Common/Rva004DF324Dtor.cpp,owned,,1,2
 0x00861588,52,.rdata,vtable,??_7Rva004DF324@@6B@,,literal,??_7Rva004DF324@@6B@;?g_00C61588@@3QBQBXB,0,2
 0x008615BC,24,.rdata,string,??_C@_0BF@DBCCKECC@ObjectGuardingHelper?$AA@,,literal,,0,2
 0x008615D4,4,.rdata,vtable,??_7Rva00283081@@6B@,,literal,??_7Rva00283081@@6B@;??_7Rva004DFED8@@6B@,0,3
