@@ -102,10 +102,6 @@ unsigned int											WW3D::PreviousSyncTime = 0;
 
 bool														WW3D::IsSortingEnabled = true;
 
-float														WW3D::PixelCenterX = 0.0f;
-
-float														WW3D::PixelCenterY = 0.0f;
-
 bool														WW3D::IsInitted = false;
 
 bool														WW3D::IsRendering = false;
@@ -1593,9 +1589,18 @@ WW3DErrorType WW3D::On_Activate_App(void)
 
 #pragma optimize("s", on)
 
+// Retail 0x0014D220 reads the two floats DX8Wrapper::Set_Projection_Transform_With_Z_Bias
+// stores (ZNear at 0x009EC4F0, ZFar at 0x009ED9F8); BFME 2 keeps no WW3D::PixelCenterX/Y.
+// DX8Wrapper declares both protected, so a TU-local derived view reads them.
+struct WW3DZRangeView : public DX8Wrapper
+{
+	static float Near() { return ZNear; }
+	static float Far() { return ZFar; }
+};
+
 void WW3D::Get_Pixel_Center(float &x, float &y)
 {
-	x = PixelCenterX; y = PixelCenterY;
+	x = WW3DZRangeView::Near(); y = WW3DZRangeView::Far();
 }
 
 #pragma optimize("", on)
