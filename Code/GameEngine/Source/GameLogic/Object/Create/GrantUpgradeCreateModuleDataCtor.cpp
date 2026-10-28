@@ -1,4 +1,4 @@
-// cl: /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// cl: /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/shims/moduledata
 // stlport
 
 // ??0GrantUpgradeCreateModuleData@@QAE@XZ, retail 0x004B90E1 (78 bytes).
@@ -13,7 +13,7 @@
 // is retail's own INI table at 0x00C594A0 (landed buildFieldParse row) joined
 // to the BFME1 GrantUpgradeCreate donor (UpgradeToGrant plus ExemptStatus;
 // BFME2 extends it with GiveOnBuildComplete). The empty CreateModuleData base
-// (inline-empty ctor plus declared-only dtor) is load-bearing for the EH
+// (inline-empty ctor plus Snapshot-reset dtor) is load-bearing for the EH
 // state machine (Topple precedent): it advances the state to 0 with no
 // emitted code, so the member init is bracketed by state 0/1 exactly as
 // retail. Body order follows retail.
@@ -39,11 +39,18 @@ private:
 
 typedef StringBase<char> AsciiString;
 
+// Retail's state-0 unwind funclet 0x0078F234 jumps to 0x0049B47C, the
+// ModuleData-family destructor fold that restores the Snapshot vptr
+// 0x00BBB554: the base destructor is that reset (ToppleUpdateModuleDataCtor
+// and CivilianSpawnCollideModuleData precedent). The unit defines the
+// funclet's callee itself; no other object provides the nonvirtual spelling.
+#include "Common/Snapshot.h"
+
 class CreateModuleData
 {
 public:
 	CreateModuleData() {}
-	~CreateModuleData();
+	~CreateModuleData() { reinterpret_cast<Snapshot *>(this)->Snapshot::~Snapshot(); }
 
 private:
 };

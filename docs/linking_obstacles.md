@@ -6607,6 +6607,10 @@ Remaining / next check: the next census should confirm the three units. W3DBridg
 
 Clearance: ordinary current-object preview only. Census confirmation: awaiting.
 
+**2026-10-28 repeat sweep (lk4, inspected `1e9d0f5a75`, index 73061d9452):** `link_check.py --refresh` over 2,358 previewable units (every census-unlinked unit plus every source changed since the census; 106 new merged TUs are not previewable), plus a scratch whole-ledger simulation of all 21,940 current objects in `link_census.link_order` with the census's own `check_object` rules (so new TUs and unchanged units are judged too). Provider losses found:
+- `??1CreateModuleData@@QAE@XZ`: GrantUpgradeCreateModuleDataCtor.cpp (88 B), InheritUpgradeCreateModuleDataCtor.cpp (69 B) and SpecialEnemySenseUpdateModuleDataCtor.cpp (65 B) linked only through LockWeaponCreate.cpp's link-wide `/alternatename:??1CreateModuleData@@QAE@XZ=??1CreateModuleData@@UAE@XZ`, which 94ba455bc3 retired as unused by that unit. Repaired: GrantUpgradeCreateModuleDataCtor.cpp's empty base now defines the destructor as the Snapshot reset (Topple/CivilianSpawnCollide precedent; retail state-0 funclet 0x0078F234 jumps to the 7-byte fold 0x0049B47C), so its object provides the name for all three. 3/3 rows exact; link_check 3/3 LINKS (222 B).
+- Preview-only (not regressions): Rva002C021AStep.cpp's `?update@Rva002BFF5A@@QAEXXZ` is defined by the new LivingWorld.cpp TU; Bfme5ThirtyFour.cpp's `??1Rva004A9DF3Element` and PeerThread.cpp's `append(const char *)` retail copies moved into the new AptShapeContainer.cpp and BfmeS1155.cpp TUs, which sit first in link order. The whole-ledger simulation judges all three clean.
+
 ### LINK-125: AptSkirmish callbacks bind a second Apt manager global
 
 Status: Cleared for this consumer's data bindings. Updated: 2026-10-27;
