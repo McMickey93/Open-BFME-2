@@ -181,3 +181,73 @@ CDDrive row (move that line after the new row; no tombstone, because the same
 
 The other leads above (0x004D7ADD StateMachine, dx8wrapper, GameClient,
 LANAPI/LANGameInfo) are unchanged and unclaimed.
+
+## Session 2 (seat halilkkaya-tua2, base `1e9d0f5a75`): results
+
+All counts are approved code rows from `tools/tu_map.py` `build()` run in
+memory over the previous commit's ledger and over the working tree (never
+written), cross-checked with `tu_skeleton.py --plan`. Total 42,810 -> 43,260
+(+450) over five commits; link_check kept every touched unit's verdict.
+
+| Commit | Rows | Approved | Notes |
+|---|---|---:|---|
+| `4b49a1d5d7` | 0x002D9BA6 `AudioEventRTS::getAttackFilename` (owner), `CDDrive::getPath` fold alias; 0x00564E28 `Rva00564E28AsciiField::get` (owner), `CDDrive::getDiskName` fold alias | +67 | AudioEventRTS.cpp 0 -> 67. The simulated "+95" was wrong: with getPath gone, CDManager.cpp's next cluster was getDiskName at 0x00564E28 and the map approved 28 LivingWorldCampaignAct rows for CDManager.cpp. 0x00564E28 is a +0x18 getter whose only caller is rva00564EC0@LivingWorldCampaignAct; fixing it keeps LivingWorldCampaignAct.cpp 28 -> 29 and CDManager.cpp 1 -> 0. |
+| `2a31181a34` | 0x004D7ADD `StateMachine::isGoalObjectDestroyed` (retract + readmit, 12 caller units repointed) | +124 | StateMachine.cpp 0 -> 53, TurretAI.cpp 0 -> 71. All 13 units LINKS before and after. |
+| `18aa80d3fd` | 0x0011E670 `DX8Wrapper::AdjustTextureSize` (owner), `TextureLoader::Validate_Texture_Size` fold alias | +218 | dx8wrapper.cpp 0 -> 219. Name from BFME 1 EA evidence for the same body at 0x009056F0 (file dxwrapper.cpp route wb1, name DXWrapper::AdjustTextureSize route chain/aligned). W3DShroud.cpp (claimed by halilkkaya-tu-s11b's merge) still calls the alias; repoint it and retire the alias row later. |
+| `1711fdad14` | 0x00041AD4 `Win32Mouse::setPosition` (was DirectInputMouse; retract + readmit) | +16 | Slot 17 of ??_7Win32Mouse@@6B@ 0x007C2478 and ??_7W3DMouse@@6B@ 0x007C86D8; no DirectInputMouse vftable. Win32Mouse.cpp 0 -> 17. |
+| `8f5546775f` | 0x004B901D `GrantUpgradeCreate::onCreate`, 0x004B9093 `GrantUpgradeCreate::onBuildComplete` (retract + readmit) | +25 | Slots 0/1 of the CreateModuleInterface vftable 0x00859428 that GrantUpgradeCreate's ctor stores at +0x10 (the old notes read SupplyWarehouseCreate's primary vftable past its end). GrantUpgradeCreate.cpp 0 -> 17, SupplyWarehouseCreate.cpp 0 -> 8; present_unmatched -3 (the duplicate ZH bodies in GrantUpgradeCreate.cpp). |
+
+Method notes for the next seat:
+
+- Fold alias: `add_match.py NEW RVA SIZE SRC --icf-owner OLD` admits the real
+  name beside the old one; `add_match.py OLD RVA SIZE SRC --replace-existing
+  --icf-owner NEW --notes "...;icf-owner=NEW"` rewrites the old row after it.
+  tu_map takes the first ledger row per address; link_census, allowed_symbols
+  and dup_defs skip `icf-owner=` rows as identities. Use it only while other
+  units still call the old spelling.
+- Retract + readmit (class or constness change): drop the row by key with
+  `ledger_io.rewrite`, `add_match.py` the new name, append a `Renamed to ...`
+  tombstone to `reverse/deleted_rows.csv`, `re_log.py record OLD ... refuted`.
+- Always rerun the in-memory map after a fix: a TU that loses its main cluster
+  falls back to its next cluster, which may be another misnamed row
+  (CDManager.cpp above).
+- Always run link_check on the touched units: a placeholder that receives a
+  real name can collide with an unmatched donor body of that name elsewhere
+  (GrantUpgradeCreate.cpp above showed `duplicate`).
+- Adding a function to a unit renumbers its funclets' `$L` labels; the gate
+  verifies them past the renumbering (prints "verified past a renumbered $L
+  label") and the commit passes, but the `object-symbol=$L<n>` notes of
+  LivingWorldCampaignActOrders.cpp's and AudioEventRTSClassification.cpp's
+  funclet rows are now stale spellings.
+
+Checked and left alone:
+
+- 0x004D7726 (`TurretStateMachine::getGoalObject`, really
+  `StateMachine::getGoalObject`; pinned under that name, with an /alternatename
+  in TurretAI_friendGetTurretTarget.cpp): +1 row only, and about 39 units
+  spell the TurretStateMachine name, so an owner/alias swap would turn their
+  relocation verdicts to unknown. 0x004D7735 (+0x34 lookup, no callers, no
+  absolute pointer): identity unknown, +1.
+- 0x002D9BC1 (`Rva002D9BC1AsciiField::get`, the +0x20 getter that is
+  `AudioEventRTS::getDecayFilename`): placeholder, so tu_map ignores it;
+  naming only, eight callers.
+- GameClient.cpp (`??0WindowTranslator` 0x002390E8) and LANAPI.cpp
+  (`??0LANGameSlot@@QAE@ABV0@@Z` 0x0044B27F): correct names that tu_map's rules
+  place in another TU (header-inline in BFME 2; copy constructor keyed with the
+  default constructor's Z). Same class of blocker: BoneFXDamage.cpp
+  (`?GetSnapshotName@DamageModule@@MBEPBDXZ` 0x004B9735, an inline returning
+  "DamageModule" emitted in BoneFXDamage's object). Tool/maintainer decisions.
+- AIDock.cpp (67): the AIHarvestPrepareSiteState rows' hint merges into
+  AIDock.cpp and the AIHarvest.cpp `__FILE__` row (0x00544C62) then breaks it;
+  not a single-row fix.
+
+Remaining single-intruder leads (in-memory map at `8f5546775f`): W3DTankDraw.cpp
++30 (`?updateTreadPositions@W3DTankTruckDraw` 0x000CDFC8), Win32GameEngine.cpp
++28 (`??1W3DModuleFactory` 0x00042100), Anim2D.cpp +46
+(`?parseAnim2DDefinition@INI` 0x002D7554), W3DDynamicLight.cpp +23
+(`?Peek_Inner_Scale_Channel@RingRenderObjClass` 0x0006E12F),
+SalvageCrateCollide.cpp +19 (`?xfer@HealCrateCollide` 0x004BD2F9),
+RubbleRiseUpdate.cpp +17 (`?doCollapseDoneStuff@StructureCollapseUpdate`
+0x004A4DBE), W3DStatusCircle.cpp +15 / W3DTerrainTracks.cpp +10 (each other's
+rows), StreamingArchiveFile.cpp +9 (`?close@LocalFile` 0x00605A7D), aabox.cpp
++7 (`??1GridLinkClass` 0x00719CC0).
