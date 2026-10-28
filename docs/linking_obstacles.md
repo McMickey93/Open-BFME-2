@@ -6968,6 +6968,7 @@ Clearance: source consolidation and scoped byte/data/EH checks only. Full select
 ### LINK-133: ICF-twin rows moved objects ahead in link order, so their wrong COMDAT copies became the kept copy
 
 Status: Open; Render2DSentenceDrawBFME2.cpp repair landed / awaiting census. Updated: 2026-10-28; inspected revision: `3868d198bf`; index 41c28839bf (census c8734bec0c).
+Status: Duplicate of LINK-132 (same cause, filed in parallel); new results are tracked under LINK-132, and this entry keeps the whole-ledger simulation history. Updated: 2026-10-28; inspected revision: `1e9d0f5a75`; index 73061d9452.
 
 Evidence / affected units: `link_census.link_order` places each object by the lowest RVA of any of its rows. The post-census ICF-twin row commits (760b73e4df, a0c3cb8b6a, 991302b1d0, 547b34bc57, 34fbfc03e0) gave several units a row at a low folded address (an 8-byte destructor fold such as 0x00001E13, 0x0006C94B or 0x0007FAB3), so those objects now link far earlier than at the census. Where such an object carries a non-retail COMDAT copy, that copy is now the first one in link order: link.exe keeps it, and `judge_selected` charges every unit touching the name. Ordinary `link_check` cannot see this (it keeps the census positions and only checks the units passed). A scratch whole-ledger simulation (all 21,940 current objects in current `link_order`, census `check_object`/`wrong_selected` rules, census `/MAP` exceptions remapped as `--current-ledger` does) finds 131 census-linked units, 279,690 B, failing only for this reason:
 
