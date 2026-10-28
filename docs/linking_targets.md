@@ -627,3 +627,14 @@ still absent from freshly fetched index `54b83e4f69`; await the normal census
 before retrying. No source-path move or new census gain is claimed.
 [Evidence and remaining private views](../reverse/attempt_support/bezier-projectile-consolidation-20261028-codexb4.md),
 LINK-131.
+
+### LINK-132 Object-pointer vector destructor follow-up outside the original snapshot
+
+2026-10-28, control `3bb77a8a89`, ordinary-preview index `54b83e4f69`:
+SplitHordeSpecialPower_doSpecialPower.cpp's selected vector destructor comes
+from AIBuilder.cpp ahead of existing retail providers. Five source trials
+failed to preserve the parent or unwind bytes and were reverted. Restored
+verification passes 42/42 rows and seven EXACT EH graphs; the indexed 18-unit
+cohort preview remains 0/18 with unchanged blockers. No link gain is claimed.
+[Evidence and remaining allocator-lifetime prerequisite](../reverse/attempt_support/object-vector-destructor-selection-20261028-codex3.md),
+LINK-132.

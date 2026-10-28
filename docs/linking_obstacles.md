@@ -6684,3 +6684,15 @@ Remaining / next check: the cost donor now passes the supported merge's compile/
 Outgoing audit: INCONCLUSIVE against parent `f7755f211c`; index `54b83e4f69` predates that base and affected consumer `Common/0CreateAHeroManager21FE49.cpp` lacks a current receipt. Both scoped providers have refreshed strict receipts (9/9 exact). Carry this consumer and scope into the next normal census.
 
 Clearance: unchanged prerequisite bytes/bindings only. Composition and selected-consumer coverage remain unverified; no linked-byte, source-file, debt, runtime or ownership gain is claimed.
+
+### LINK-132: AIBuilder selects a non-retail Object-pointer vector destructor
+
+Status: Blocked; five clean-C++ configurations rejected and reverted. Updated: 2026-10-28; inspected revision: `3bb77a8a89`; ordinary-preview index: `54b83e4f69`.
+
+Evidence / affected units: the default SplitHordeSpecialPower::doSpecialPower pick byte-matches but selects AIBuilder.cpp's 14-byte vector destructor before the existing retail five-byte providers. AIBuilder's normal upgrade-check cleanup inlines deallocation while unwind 0x007928AC jumps to the vector destructor. [Target facts, trial configurations and restored checks](../reverse/attempt_support/object-vector-destructor-selection-20261028-codex3.md).
+
+Completed: tested destructor suppression/declaration and the existing provider's allocator model under both EH configurations. The closest allocator trial makes both standalone destructors retail-correct but changes the parent body. All trials were reverted. Restored AIBuilder, target and existing waypoint provider pass 42/42 rows and seven EXACT EH graphs; AIBuilder's external object facts equal the original. The 18-unit indexed consumer preview remains 0/18 with identical blockers.
+
+Remaining / next check: reconcile allocator temporary lifetime and normal inline cleanup with the out-of-line unwind target together. Repeating destructor-only suppression changes either the parent or its unwind. Other container-operation blockers remain in the cohort; this is not a whole-family clearance. Carry a future verified provider repair and consumers into the normal census.
+
+Clearance: none; no source edit retained, debt retired or new linked bytes claimed. Census confirmation: no new result.
