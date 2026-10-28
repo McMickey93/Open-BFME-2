@@ -1,0 +1,19 @@
+{
+  "source": "Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp",
+  "before_object_sha256": "0e65edf91b50be5296974e56d70109343c2a1f047c0983cab95e63c453be341b",
+  "after_object_sha256": "45f2e4eac173ac00c59dc42cd2a62902511633d969cb2031ff6c50b4e849a0f7",
+  "external_comdats": 29,
+  "changed_digests": {
+    "?parseFormationSelectionCriteriaRva00424185@@YAXPAVINI@@PAX1PBX@Z": [
+      "62b2bc369c69",
+      "7dbd2939e48b"
+    ]
+  },
+  "all_bodies_and_relocations_equal_after_alias_resolution": true,
+  "removed_undefined": [
+    "?append@Rva00424185Deque@@QAEXABURva00424185Criteria@@@Z"
+  ],
+  "added_undefined": [
+    "?push_back@?$deque@UBfmeE12@@V?$allocator@UBfmeE12@@@_STL@@@_STL@@QAEXABUBfmeE12@@@Z"
+  ]
+}

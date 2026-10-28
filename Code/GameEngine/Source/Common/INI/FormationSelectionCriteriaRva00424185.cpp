@@ -40,7 +40,16 @@ enum NameKeyType {NAMEKEY_INVALID=0};
 class NameKeyGenerator {public:NameKeyType nameToKey(const AsciiString&);};
 extern NameKeyGenerator* TheNameKeyGenerator;
 struct Rva00424185Criteria {int templateIndex;float maxDragLength;int maxUnitsSelected;};
-class Rva00424185Deque {public:void append(const Rva00424185Criteria&);};
+// The native append call reaches the existing deque<BfmeE12>
+// push_back owner at 0x00423BFD. Keep its call-only declaration: the
+// 12-byte record's original C++ identity is still unknown.
+struct BfmeE12;
+namespace _STL {
+template <class T, class Alloc = allocator<T> > class deque {
+public:
+ void push_back(const T&);
+};
+}
 // Native map header and deque storage occupy zero-filled .bss here. These
 // address-derived names describe storage, not the original global identities.
 // The map's 12-byte view agrees with the rowed lookup at 0x00422D1C;
@@ -48,14 +57,13 @@ class Rva00424185Deque {public:void append(const Rva00424185Criteria&);};
 unsigned int g_Va00E0319C[3];
 // The deque at 0x00A031A8 is defined by stlport_deque_e12_findnode.cpp, whose
 // view names its first iterator; this unit only needs its address.
-struct BfmeE12;
 namespace _STL {
 template <class _Tp> struct _Nonconst_traits;
 template <class _Tp, class _Traits> struct _Deque_iterator;
 }
 extern _STL::_Deque_iterator<BfmeE12, _STL::_Nonconst_traits<BfmeE12> > g_00E031A8;
 #define criteriaTemplates (*reinterpret_cast<_STL::map<int,int>*>(g_Va00E0319C))
-#define criteriaEntries (*reinterpret_cast<Rva00424185Deque*>(&g_00E031A8))
+#define criteriaEntries (*reinterpret_cast<_STL::deque<BfmeE12>*>(&g_00E031A8))
 void parseFormationSelectionCriteriaRva00424185(INI* ini,void*,void*,const void*) {
  AsciiString name=ini->getNextQuotedAsciiString();
  if(name.isEmpty())throw INIException(3,"Must specify name of formation template for selection criteria at %s:%d",ini->getFilename().str(),ini->getLineNum());
@@ -71,7 +79,5 @@ void parseFormationSelectionCriteriaRva00424185(INI* ini,void*,void*,const void*
  {0,0,0,0}};
  ini->initFromINI(&limits,fields);
  Rva00424185Criteria entry={limits.index,limits.length,limits.count};
- criteriaEntries.append(entry);
+ criteriaEntries.push_back(reinterpret_cast<const BfmeE12&>(entry));
 }
-
-#pragma comment(linker, "/alternatename:?append@Rva00424185Deque@@QAEXABURva00424185Criteria@@@Z=?push_back@?$deque@UBfmeE12@@V?$allocator@UBfmeE12@@@_STL@@@_STL@@QAEXABUBfmeE12@@@Z")
