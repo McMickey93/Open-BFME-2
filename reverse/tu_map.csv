@@ -34669,16 +34669,16 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0042E00F,5,code,,,-,,Code/GameEngine/Source/Common/StrategicHUD.cpp
 0x0042E014,1801,code,,,-,,Code/GameEngine/Source/Common/StrategicHUD.cpp
 0x0042E71D,66,code,,,-,,Code/GameEngine/Source/Common/StrategicHUD.cpp
-0x0042E75F,165,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp W=Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
-0x0042E804,88,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
-0x0042E85C,79,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
-0x0042E8AB,22,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,C,C=0x0042E85C..0x0042E8C1 provisional,Code/GameEngine/Source/Common/Bfme5TinyFive6.cpp
-0x0042E8C1,44,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
+0x0042E75F,165,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp W=Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E804,88,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E85C,79,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E8AB,22,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,C,C=0x0042E85C..0x0042E8C1 provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E8C1,44,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
 0x0042E8ED,18,code,,displaced,-,S=Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp N=Code/Libraries/Source/WWVegas/WW3D2/LinearOffsetTextureMapperClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/dx8renderer.cpp
-0x0042E8FF,39,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,C,C=0x0042E8C1..0x0042E926 provisional,Code/GameEngine/Source/Common/Bfme/Rva005B5440ClearFlags.cpp
-0x0042E926,170,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp W=Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
-0x0042E9D0,28,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-x7q-f4c9.cpp
-0x0042E9EC,2087,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp W=Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
+0x0042E8FF,39,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,C,C=0x0042E8C1..0x0042E926 provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E926,170,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp W=Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E9D0,28,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
+0x0042E9EC,2087,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,N,N=Code/GameEngine/Source/Common/BfmeOwnVVD.cpp W=Code/GameEngine/Source/GameClient/MessageStream/LookAtXlat.cpp provisional,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
 0x0042F213,1958,code,Code/GameEngine/Source/GameClient/MessageStream/BfmeOwnVVD.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/MessageStream/BfmeOwnVVD.cpp,Code/GameEngine/Source/GameClient/MessageStream/BfmeOwnVVDScrollUpdate.cpp
 0x0042F9B9,13,code,,,-,,Code/GameEngine/Source/Common/DispByteFieldSetters.cpp
 0x0042F9C6,20,code,,,-,,Code/GameEngine/Source/GameClient/InGameUI_Rva0042F9C6.cpp
@@ -78246,7 +78246,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007879C0,10,code,,,-,,Code/GameEngine/Source/Common/StrategicHUD.cpp
 0x007879CA,10,code,,,-,,Code/GameEngine/Source/Common/StrategicHUD.cpp
 0x007879D4,8,code,,,-,,Code/gen_small/uw_gen_012.cpp
-0x007879DC,10,code,,,-,,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp
+0x007879DC,10,code,,,-,,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp
 0x007879E6,8,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,P,P=0x0042E9EC@FuncInfo0x009351E0 provisional,Code/gen_small/uw_gen_005.cpp
 0x007879EE,10,code,Code/GameEngine/Source/Common/BfmeOwnVVD.cpp,approved,P,P=0x0042E9EC@FuncInfo0x009351E0 provisional,Code/GameEngine/Source/GameClient/MessageStream/BfmeOwnVVDTranslateGameMessage.cpp
 0x007879F8,8,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Rva0042FB8F.cpp

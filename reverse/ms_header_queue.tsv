@@ -657,7 +657,6 @@ Code/GameEngine/Source/Common/BfmeConv2008.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0
 Code/GameEngine/Source/Common/BfmeConv2039.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<math.h>	no	no	hand			floor:abi
 Code/GameEngine/Source/Common/BfmeConv2040.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<math.h>	no	no	hand			floor:abi
 Code/GameEngine/Source/Common/BfmeConv796.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<string.h>	no	no	hand			_strcmpi:abi
-Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp	conflicting	mangle	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand			timeGetTime:same
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftyOne.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<string.h>	no	no	hand			memmove:abi
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftyTwo.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<string.h>	no	no	hand			memmove:abi
 Code/GameEngine/Source/Common/DamageFX.cpp	conflicting	abi	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	815: Code/GameEngine/Source/Common/DamageFX.cpp:64 Common/INI.h(unknown); Code/GameEngine/Source/Common/DamageFX.cpp:65 Common/ThingFactory.h(unknown); Code/GameEngine/Source/Common/DamageFX.cpp:66 Common/ThingTemplate.h(unknown)		stricmp:source
@@ -1008,3 +1007,4 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DFloorBuffer.cpp	drop-in can
 Code/GameEngine/Source/GameClient/GlobalLanguage.cpp	conflicting	abi	16	6	8	1	0	0	1	0	0	0	0	<windows.h>,<mbstring.h>,<math.h>	yes	yes	hand			floor:abi,HMODULE:unknown,_mbscat:source,LoadLibraryA:source,GetProcAddress:source,FreeLibrary:source,CreateDirectoryA:source,GetTempFileNameA:source,CreateFileA:source,WriteFile:source,HANDLE:same,DWORD:same,BOOL:same,GetTempPathA:same,CloseHandle:same,DeleteFileA:same
 Code/Libraries/Source/WWVegas/WW3D2/AnimationAsset.cpp	conflicting	abi	2	1	0	0	0	0	1	0	0	0	0	<mbstring.h>,<string.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	_mbscpy:abi,_strlwr:same
 Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdate.cpp	unverified	unverified	2	1	1	0	0	0	0	0	0	0	0	<math.h>,<string.h>	no	yes	hand	27: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		atan2:source,memset:same
+Code/GameEngine/Source/Common/BfmeOwnVVD.cpp	conflicting	mangle	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand			timeGetTime:same
