@@ -22,7 +22,6 @@ struct TreeKey00242F5E;
 void Rva000BBA47Construct(TreeKey00242F5E *destination, const TreeKey00242F5E &source);
 
 
-#define BFME_ASCII_DTOR_DECL
 #include "../../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 namespace _STL
