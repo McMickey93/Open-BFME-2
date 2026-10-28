@@ -13,6 +13,11 @@
 
 #include "DetachableRiderXferPrefix.h"
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class Xfer::Version
 {
 public:
@@ -52,6 +57,9 @@ private:
 
 class DetachableRiderUpdate : public UpdateModule
 {
+public:
+	virtual NameKeyType getModuleNameKey() const;
+
 protected:
 	virtual void xfer(Xfer *xfer);
 
