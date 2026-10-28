@@ -460,6 +460,17 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-004: missing or incompatible shared providers and declarations
 
+- **AutoHeal current-input triage (2026-10-28, `2fd3f18efc`):**
+  The four matched rows in `AutoHealBehavior.cpp` remain exact, and the
+  frozen-file check passes. The ordinary preview against published index
+  `14dc3d2467` still reports zero of its 142 authored bytes linked, with the
+  same seven unresolved names. The rowed `UpgradeMux::attemptUpgrade` takes
+  its mask by const reference while this donor view declares it by value;
+  the rowed particle factory returns `BfmeParticleSystemHandle` while the
+  donor view expects a pointer. Reconcile the shared contracts and their
+  provider and consumer bindings before retrying; no source trial or census
+  gain is claimed. The function-level triage is recorded at 0x004523B6.
+
 - **ScriptEngine whole-source Xfer follow-up (2026-10-27, inspected `e43a9aad40`):**
   [The retained adoption](../reverse/attempt_support/script-engine-xfer-header-20261027-codex5.md)
   replaces ScriptEngineDoXfer.cpp's private Xfer with the canonical interface.
