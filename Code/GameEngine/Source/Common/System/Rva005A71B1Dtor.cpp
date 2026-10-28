@@ -9,6 +9,7 @@
 // import: read <stdlib.h> without dllimport.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 class Rva005A66B8Elem
@@ -100,7 +101,6 @@ Rva005A71B1::Rva005A71B1()
 // via operator delete 0x0002FD60, destroys global at 0x00A063B0 via slot0
 // with 0 then deletes and nulls it, then destroys Rva005A71B1 at +0x28 via
 // rowed 0x005A71B1. Unblocks ??_G at 0x005A73C2.
-void __cdecl operator delete(void *block);
 
 struct Rva00A063B0Obj
 {
@@ -121,7 +121,6 @@ struct Rva005A721CSlot
 };
 class FirewallHelperClass;
 FirewallHelperClass *Rva00595143Get();
-void *__cdecl operator new(unsigned int size);
 
 class Rva005A734B
 {
