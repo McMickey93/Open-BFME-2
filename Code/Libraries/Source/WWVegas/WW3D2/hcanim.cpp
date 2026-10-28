@@ -159,6 +159,7 @@ void _bfme_debugRecordCallsite(int kind);
 #include <string.h>
 #include "nstrdup.h"
 #define W3D_CHUNK_BFME2_MOTION_CHANNEL	(W3D_CHUNK_COMPRESSED_BIT_CHANNEL + 1)
+#include <new>
 
 // The normalized quaternion lerp at 0x00717550 (ledger
 // ?BFME2_Nlerp@@YAXAAVQuaternion@@ABV1@1M@Z) that BFME2 blends with where Zero
@@ -276,14 +277,6 @@ public:
 	int Type, Pivot, Count, Components;
 };
 
-struct BFME2CompressedMotionChannels
-{
-	BFME2CompressedMotionChannels();
-	~BFME2CompressedMotionChannels();
-	BFME2MotionChannel *			Channels[5];		// X, Y, Z, Q, fade
-	TimeCodedBitChannelClass *	Visibility;
-};
-
 // The factory at 0x001A46B4 (BFME2MotionChannelFactory.cpp).
 BFME2MotionChannel * Load_BFME2MotionChannel(ChunkLoadClass & cload);
 
@@ -340,6 +333,20 @@ class Rva0018F900FramePrefix {
  unsigned int frame;
 public: Rva0018F900FramePrefix *reset();
 };
+
+struct BFME2CompressedMotionChannels {
+    BFME2MotionChannel *Channels[5];
+    TimeCodedBitChannelClass *Visibility;
+    BFME2CompressedMotionChannels();
+    ~BFME2CompressedMotionChannels();
+    int Get_Channel_Memory_Usage();
+};
+
+typedef char FirstNodeStrideIs28[(sizeof(NodeCompressedMotionStruct) == 28) ? 1 : -1];
+
+typedef char SecondNodeStrideIs24[(sizeof(BFME2CompressedMotionChannels) == 24) ? 1 : -1];
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/hcanim.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/hcanim.cpp
 
@@ -1350,6 +1357,26 @@ Vector4 &bfmeAnchorMatrix3DSubscript(Matrix3D &m, int i)
 
 // eof - hcanim.cpp
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/MotionCacheFrameReset.cpp
+
+Rva0018F900FramePrefix *Rva0018F900FramePrefix::reset() {
+ frame=0x0fffffff;
+ return this;
+}
+
 // tu-skeleton: 0x0018F180 4B ?get@Rva0018F180FloatField@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatFieldGetters.cpp (not merged yet)
 
 // tu-skeleton: 0x0018F3F0 80B ?Get_Transform@HCompressedAnimClass@@UBEXAAVMatrix3D@@HM@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimTransform.cpp (not merged yet)
@@ -1370,25 +1397,50 @@ Vector4 &bfmeAnchorMatrix3DSubscript(Matrix3D &m, int i)
 
 // tu-skeleton: 0x0018F640 54B ?Has_VisibilityF@HCompressedAnimClass@@QBE_NH@Z -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesX.cpp (not merged yet)
 
-// tu-skeleton: 0x0018F850 22B ??0BFME2CompressedMotionChannels@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp
 
-// tu-skeleton: 0x0018F870 70B ??1BFME2CompressedMotionChannels@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp (not merged yet)
+// Retail compressed-animation cleanup at RVA 0x0018FE30.
+// The second node type has no recovered source name; the BFME2 prefix marks
+// a descriptive reconstruction, not a claim about its original spelling.
 
-// tu-skeleton: 0x0018F8C0 60B ?Get_Channel_Memory_Usage@BFME2CompressedMotionChannels@@QAEHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp (not merged yet)
+BFME2CompressedMotionChannels::BFME2CompressedMotionChannels() : Visibility(0)
+{
+    for (int i = 0; i < 5; ++i) Channels[i] = 0;
+}
 
-// ---- from Code/Libraries/Source/WWVegas/WW3D2/MotionCacheFrameReset.cpp
+BFME2CompressedMotionChannels::~BFME2CompressedMotionChannels()
+{
+    if (Visibility) delete Visibility;
+    for (int i = 0; i < 5; ++i) ::delete Channels[i];
+}
 
-Rva0018F900FramePrefix *Rva0018F900FramePrefix::reset() {
- frame=0x0fffffff;
- return this;
+void HCompressedAnimClass::Free()
+{
+    delete[] NodeMotion;
+    NodeMotion = 0;
+    delete[] VectorMotion;
+    VectorMotion = 0;
+}
+
+// ?Get_Channel_Memory_Usage@BFME2CompressedMotionChannels@@QAEHXZ @0x0018F8C0 60B
+// Retail single VectorMotion node (24B: 5 channels + visibility at +0x14) memory sum.
+// Evidence: BFME1 hcanim.cpp NodeCompressedMotionStruct::Get_Channel_Memory_Usage pattern;
+// rowed TimeCodedBitChannel 0x00195EE0 callee; virtual channel slot 6 offset 0x18;
+// stride 24 proven by Free array delete and ctor/dtor rows; callers 0; BFME2 prefix descriptive.
+int BFME2CompressedMotionChannels::Get_Channel_Memory_Usage()
+{
+    int size = 0;
+    for (int i = 0; i < 5; ++i) {
+        if (Channels[i])
+            size += Channels[i]->UnknownSlot6();
+    }
+    if (Visibility)
+        size += Visibility->Get_Channel_Memory_Usage();
+    return size;
 }
 
 // tu-skeleton: 0x0018F9C0 222B ??$decompress@$03@AdaptiveDeltaMotionChannelClass@@AAEXKPAMK0@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/hcanimGetFrame4.cpp (not merged yet)
 
-// tu-skeleton: 0x0018FB10 84B ??_EBFME2CompressedMotionChannels@@QAEPAXI@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp (not merged yet)
-
 // tu-skeleton: 0x0018FB70 166B ?rva0018FB70@HCompressedAnimClass@@UAEHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimMemory.cpp (not merged yet)
 
 // tu-skeleton: 0x0018FCC0 194B ??$getframe@$03@AdaptiveDeltaMotionChannelClass@@AAEXKAAU?$AdaptiveDeltaCacheStruct@$03@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/hcanimGetFrame4.cpp (not merged yet)
-
-// tu-skeleton: 0x0018FE30 93B ?Free@HCompressedAnimClass@@AAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp (not merged yet)
