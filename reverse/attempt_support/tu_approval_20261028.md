@@ -301,3 +301,102 @@ Left alone (no workable seat-level fix with good evidence):
   hint merged into it), AIPlayer.cpp (24 AISkirmishPlayer rows), LANGameInfo.cpp
   (33 LANAPI rows), SupplyCenterDockUpdate.cpp (9 RepairDockUpdate rows),
   streakrender.cpp (52 streak.cpp rows), W3DTankTruckDraw.cpp (8 W3DTruckDraw rows).
+
+## Session 4 (seat halilkkaya-tue1, base `1e9d0f5a75`): TU-evidence lane, vendored libraries
+
+Counts are approved code rows from `tools/tu_map.py` `build()` in memory over
+the previous commit's ledger and over the working tree (never written),
+cross-checked with `tu_skeleton.py --plan` and `tu_map.py --dir`. Total
+43,287 -> 43,561 (+274, none lost or retargeted); 275 rows and 13 sources
+newly given a TU (`next_work.py --tier tu-evidence`: 2,445 runs / 8,180
+sources -> 2,443 / 8,167; runs re-split around the new anchors). L held-out
+gate 785/785 -> 1,033/1,033; self-check 0 contradicted.
+
+| Commit | Change | Approved |
+|---|---|---:|
+| `37a2c5dd73` | `vendored=gamespy-2004` on 249 rows of qr2.c, qr2regkeys.c, sb_queryengine.c, sb_server.c, sb_serverbrowsing.c, sb_serverlist.c, ghttpMain.c, ghttpProcess.c, ghttpConnection.c, available.c | +115 |
+| `3705697a67` | 0x0069E220 owned by peerCallbacks.c `_piGetPlayerInfoFree`, sb_server.c `_RefStringFree` fold alias | +43 (sb_server.c) |
+| `448090d6f0` | `vendored=lua-4.0.1` on 114 rows of lcode.c, lgc.c, lmathlib.c, lstrlib.c, lobject.c | +115 |
+| `0f4e067a6e` | `vendored=zlib-1.1.4` on adler32 | +1 |
+
+### Why vendored C runs had no TU, and the supported fix
+
+C rows carry no class, so N/U (naming hints) and the provisional rule never
+reach them, and F/Z/S do not exist for library code. Their only signal is L,
+and `upstream_candidates()` reads only files where some ledger row carries
+`vendored=<lib>-<ver>` with lib in `UPSTREAM_TU_LIBS`. Many whole upstream
+files had never been tagged (GameSpy/PROVENANCE.txt says so for qr2/, ghttp/
+and serverbrowsing/). Tagging is a fact about the row, so it is per row:
+
+1. Fetch the upstream text the file's header names (GameSpy: the Area 51
+   carrier, github.com/bisc67/Area51 `Support/NetworkMgr/GameSpy/<path>`;
+   Lua: lua.org lua-4.0.1.tar.gz; zlib: zlib.net fossil zlib-1.1.4.tar.gz)
+   into a scratch directory; diff it against our file (expect header + the
+   deltas PROVENANCE lists).
+2. Tag a row only when `tu_map.c_definitions()` over the UPSTREAM text
+   defines `tu_map.c_symbol(row name)`. That leaves out our renames
+   (`_qr2_get_sockaddrin` for the carrier's static `get_sockaddrin`),
+   object-symbol alias names (`_get_sockaddrin__available`), later-API names
+   (`_ghttpSetRequestProxy`), EA additions (`_codepushbool`), and whole
+   reconstructed files (ghttpCallbacks.c).
+3. Edit notes in place through `ledger_io.split_records` (prefix
+   `vendored=<tag>; `, the existing spelling), `./build.sh` the sources,
+   then rebuild the map in memory; tu_map's own gates (unique definer, whole
+   file, retail-order hold-out >= 99%) decide the TU.
+
+A tag can expose a misattributed ICF fold: sb_server.c only approved once
+0x0069E220 (free member of callbackFuncs[] types 3/6/7/8/15/23/24, kept in
+peerCallbacks.c's run at piGetPlayerInfoCopy+61) was owned by the peer row.
+
+### Rule changes that would unlock more (maintainer decision; not made)
+
+Simulated by patching `tu_map` in memory over this tree (scratch scripts,
+never committed; the map was never written).
+
+- **A. Upstream manifest instead of the stem test for carve-outs.**
+  `upstream_files()` calls a candidate carved when a sibling stem prefixes
+  its stem and its text never names itself. Five candidates fail it; two are
+  real carve-outs (peerCallbacksFinished.c, liolib_bfme1.c, neither exists
+  upstream) and three are real upstream files (qr2regkeys.c beside qr2.c;
+  sb_serverbrowsing.c and sb_serverlist.c beside sb_server.c; the
+  serverbrowsing banners never name the file). Rule: a candidate is whole
+  when the upstream release's file list (a checked-in manifest per
+  `vendored=` tag) contains its basename; else the stem test. Simulated
+  (those three exempted): **+92** (sb_serverlist.c 58, sb_serverbrowsing.c 30,
+  qr2regkeys.c 4), 0 lost; L held-out 1,033/1,033 -> 1,118/1,118.
+- **B. Reconstruction signal for chat/ and peer/.** PROVENANCE.txt records
+  that these 2007-SDK transcriptions carry no `vendored=` tag, so tagging is
+  not open to a seat. 571 of their 608 rows have a name exactly one file of
+  the 2007 public SDK module defines (nitrocaster/GameSpy `src/GameSpy/Peer`
+  and `Chat`; 325 in a file of that name, 246 in a fragment such as
+  peerMainBlockingOperations.c whose upstream file is peerMain.c). Rule: such
+  a row takes `<dir>/<upstream file>` as an L-like candidate under L's gate.
+  Simulated: **+609**, 0 lost; held-out 1,563/1,564. The one miss,
+  0x006A6430 `_piPlayerUTMFree` (callbackFuncs type 14 free), sits in
+  peerKeys.c's run: probably another fold kept in another object, the
+  0x0069E220 pattern. TU paths would be upstream names (peer/peerMain.c 102,
+  peer/peerCallbacks.c 92, chat/chatHandlers.c 86, chat/chatMain.c 68, ...);
+  the merge would create files that do not exist yet.
+- **C. Benchmark (BYTEmark nbench) as an upstream-TU library.** ZH ships only
+  Benchmark.dsp and benchmark.h; our wrapper units `#include "nbench1.c"`, so
+  c_definitions sees no names. Rough simulation (each Benchmark row's own
+  file as L): **+83** (nbench1.cpp 67, sysspecFile.cpp 8, nbench0.cpp 6),
+  held-out 1,114/1,115. Needs `UPSTREAM_TU_LIBS` += nbench, tags, and
+  definitions read through the include.
+- Small: lzio.c's luaZ_mopen/sopen/Fopen/read (4 rows) are upstream functions
+  defined as zmopen/zsopen/zFopen/zread under lzio.h macros, invisible to
+  c_definitions; C++ free functions (NoxCompress.cpp's CompressFile,
+  DecompressFile, ...) never get Z because Z needs `Class::`.
+
+### Not cheap / left alone
+
+- DirtySock runs (0x00686F10.., 0x0067EED0..): EA's library, rows are
+  placeholder-named (`_Rva0081B010`), no upstream text in hand and DirtySock
+  is not in `UPSTREAM_TU_LIBS`; interleaved with linker import thunks.
+- 0x007Axxxx runs (StrategicHUD*MovieClip.cpp, Rva005F8CB0Dtor.cpp, ...):
+  `.text$x` funclets, no name signal by design (tu_evidence E/P territory).
+- `_StringHash` 0x006A8230 is rowed under sb_server.c but lies in
+  sb_serverlist.c's run (static helper both files define; fold kept there).
+  It is `displaced` and breaks nothing today.
+- ghttpCallbacks.c (3 rows): upstream names, but PROVENANCE calls the bodies
+  reconstructions in no public text; left untagged.
