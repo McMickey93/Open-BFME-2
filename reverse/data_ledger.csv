@@ -21811,9 +21811,9 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A1D078,304,.data,global,_CollisionContext,Code/Libraries/Source/WWVegas/WWMath/colmathaabtri.cpp,owned,,1,321
 0x00A1D1A8,224,.data,global,_IntersectContext,Code/Libraries/Source/WWVegas/WWMath/colmathaabtri.cpp,owned,,1,101
 0x00A1D288,8200,.data,global,?buffer@?7??gpiProcessCurrentFile@@9@9,Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiTransfer.c,owned,,1,3
-0x00A1F290,4,.data,global,?g_bfmeCountAtE1F290@@3HA,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp,owned,,1,2
-0x00A1F294,4,.data,global,?g_bfmeObj1AtE1F294@@3PAXA,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp,owned,,1,2
-0x00A1F298,32,.data,global,?g_bfmeObj2AtE1F298@@3PAXA,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp,owned,,1,2
+0x00A1F290,4,.data,global,?g_bfmeCountAtE1F290@@3HA,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,owned,,1,2
+0x00A1F294,4,.data,global,?g_bfmeObj1AtE1F294@@3PAXA,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,owned,,1,2
+0x00A1F298,32,.data,global,?g_bfmeObj2AtE1F298@@3PAXA,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,owned,,1,2
 0x00A1F2B8,552,.data,global,?g_Va00A1F2B8@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,1
 0x00A1F4E0,8,.data,global,?g_Va00E1F4E0@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E1F4E0.cpp,owned,,1,2
 0x00A1F4E8,80,.data,global,?g_Va00A1F4E8@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,1

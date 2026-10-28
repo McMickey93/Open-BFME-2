@@ -60309,11 +60309,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0073F833,12,code,,,-,,Code/GameEngine/Source/Common/Rva0073F778Thread.cpp
 0x0073F83F,30,code,,,-,,Code/GameEngine/Source/Common/Rva0073F778Thread.cpp
 0x0073F85D,56,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,proposed,K,K=Rva0073F96A,Code/GameEngine/Source/Common/Rva0073F96ACtor.cpp
-0x0073F895,213,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,N,N=Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp provisional,Code/GameEngine/Source/Common/Rva0073F895Fade.cpp
-0x0073F96A,103,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,C,C=0x0073F895..0x0073F9D1 provisional,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp
+0x0073F895,213,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,N,N=Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x0073F96A,103,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,C,C=0x0073F895..0x0073F9D1 provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
 0x0073F9D1,35,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,C,C=0x0073F895..0x0073F9F4 provisional,Code/GameEngine/Source/Common/BfmeConv1309.cpp
-0x0073F9F4,28,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,C,C=0x0073F895..0x0073FA10 provisional,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp
-0x0073FA10,1807,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,N,N=Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp provisional,Code/GameEngine/Source/Common/Rva0073F895Fade.cpp
+0x0073F9F4,28,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,C,C=0x0073F895..0x0073FA10 provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x0073FA10,1807,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,N,N=Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
 0x0074011F,43,code,,,-,,Code/GameEngine/Source/Common/Rva0074011FRelease.cpp
 0x0074014A,13,code,,,-,,Code/GameEngine/Source/Common/DispByteFieldSetters.cpp
 0x00740157,18,code,Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp,proposed,K,K=Rva00740555,Code/GameEngine/Source/Common/Rva00740555Ctor.cpp
@@ -92530,12 +92530,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007AB3F5,8,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/AsyncServiceQueueWorker.cpp
 0x007AB3FD,8,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/AsyncServiceQueueWorker.cpp
 0x007AB405,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/AsyncServiceQueueWorker.cpp
-0x007AB40F,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073F96A@FuncInfo0x00964C9C provisional,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp
-0x007AB417,10,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073F96A@FuncInfo0x00964C9C provisional,Code/GameEngine/Source/Common/Rva0073F96ADtor.cpp
-0x007AB421,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/Rva0073F895Fade.cpp
-0x007AB429,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/Rva0073F895Fade.cpp
-0x007AB431,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/Rva0073F895Fade.cpp
-0x007AB439,10,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/Rva0073F895Fade.cpp
+0x007AB40F,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073F96A@FuncInfo0x00964C9C provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x007AB417,10,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073F96A@FuncInfo0x00964C9C provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x007AB421,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x007AB429,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x007AB431,8,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
+0x007AB439,10,code,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp,approved,P,P=0x0073FA10@FuncInfo0x00964CD0 provisional,Code/GameEngine/Source/Common/W3DGlowOutlineMaterialPassClass.cpp
 0x007AB443,8,code,Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp,approved,P,P=0x007401F6@FuncInfo0x00964CF4 provisional,Code/gen_small/uw_gen_012.cpp
 0x007AB44B,10,code,Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp,approved,P,P=0x007401F6@FuncInfo0x00964CF4 provisional,Code/GameEngine/Source/Common/Rva007401F6Dtor.cpp
 0x007AB455,8,code,Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp,approved,P,P=0x00740242@FuncInfo0x00964D20 provisional,Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp
