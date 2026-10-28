@@ -23,24 +23,12 @@ enum StateExitType
 {
 	EXIT_NORMAL = 0
 };
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "GameLogicObjectLookupView.h"
 enum UpdateSleepTime
 {
 	UPDATE_SLEEP_NONE = 1
 };
 
-class GameLogic
-{
-public:
-	Object *getFirstObject();
-	Object *findObjectByID(ObjectID id);
-	void destroyObject(Object *obj);
-	char m_pad00[0x40];
-	UnsignedInt m_frame; // +0x40
-};
 extern GameLogic *TheGameLogic;
 
 class Object
@@ -360,7 +348,7 @@ void Rva004835FB::rva004835FB(Int)
 		if (obj)
 		{
 			logic->destroyObject(obj);
-			m_workerID = INVALID_ID;
+			m_workerID = INVALID_OBJECT_ID;
 		}
 	}
 }

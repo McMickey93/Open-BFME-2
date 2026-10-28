@@ -74,7 +74,7 @@ public:
 	virtual ~BfmeGateModuleBase();
 };
 
-enum ObjectID { OBJECTID_INVALID = 0 };
+#include "../Common/GameLogicObjectLookupView.h"
 
 class Player;
 
@@ -124,18 +124,6 @@ class ControlBar;
 class BfmeWorldRV { public: void rva0031AA34(int); };
 
 extern ControlBar *TheControlBar;
-
-// upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/GameLogic.h
-class GameLogic
-{
-public:
-	__declspec(dllimport) __forceinline unsigned int getFrame() { return m_frame; }
-	Object *findObjectByID(ObjectID id);
-
-private:
-	unsigned char m_unmodelled000[0x40];
-	unsigned int m_frame;									// +0x40
-};
 
 extern GameLogic *TheGameLogic;
 
@@ -393,7 +381,7 @@ extern class MessageStream *TheMessageStream;
 
 bool Rva00498CB1Owner::invoke()
 {
-	if (m_objectID == OBJECTID_INVALID)
+	if (m_objectID == INVALID_OBJECT_ID)
 		return false;
 	Object *obj = TheGameLogic->findObjectByID(m_objectID);
 	if (!obj)
