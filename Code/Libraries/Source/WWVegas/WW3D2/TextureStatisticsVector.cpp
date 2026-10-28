@@ -243,8 +243,8 @@ extern "C" { int lightmap_texture_memory; }
 extern "C" { int lightmap_texture_count; }
 extern "C" { int procedural_texture_memory; }
 extern "C" { int procedural_texture_count; }
-static int record_count;
-static int texture_change_count;
+extern "C" { int record_count; }
+extern "C" { int texture_change_count; }
 static RefCountPtr<TextureClass> latest_texture;
 static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
 

@@ -200,8 +200,9 @@ extern "C" int lightmap_texture_memory;
 extern "C" int lightmap_texture_count;
 extern "C" int procedural_texture_memory;
 extern "C" int procedural_texture_count;
-static int record_count;
-static int texture_change_count;
+// The reset unit owns these current-frame counters.
+extern "C" int record_count;
+extern "C" int texture_change_count;
 static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
 // The reporting getters in statistics.cpp own these same retail counters.
 extern int last_frame_texture_memory;

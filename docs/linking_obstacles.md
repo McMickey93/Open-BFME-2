@@ -1455,6 +1455,17 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   remain prerequisites. This clears only the six-counter binding subset,
   without family closure, census gain or an image-ownership claim.
 
+  Reporting-counter follow-up (2026-10-28, control `c5dcd40bdf`):
+  [the bounded two-unit repair](../reverse/attempt_support/texture-report-counter-data-20261028.md)
+  shares record/change counters between the reset owner and reporting consumer,
+  retiring two reporting duplicate-def keys through the owning tool. All 21
+  rows, both EH graphs and all 38 emitted executable sections retain their
+  bytes and symbolic code references. Enforced data checking finds no new
+  keys. The recording function's known alias/load blocker and its private
+  counters remain; reporting mode and lifetime storage also remain open.
+  Census index `73061d9452` predates this control revision; no family closure,
+  new census-linked bytes or image-ownership result is claimed.
+
 - **Evidence / scope:** the [linking handoff](../reverse/attempt_support/link-seat-20261025-final.md)
   identifies missing shader/filter root objects and the unowned 52-byte
   ScreenBWFilter group at `0x009B5B54`. Complete native objects and vtables are
