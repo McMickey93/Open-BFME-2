@@ -3,6 +3,15 @@
 
 // ?Rva004C7542Destroy@@YAXPAU?$pair@$$CBW4LocomotorSetType@@V?$vector@PBVLocomotorTemplate@@V?$allocator@PBVLocomotorTemplate@@@_STL@@@_STL@@@_STL@@0@Z RVA 0x004C7542 size 25
 // Evidence: callee pair dtor rowed at 0x000796BC; callers at 0x004C7781 and 0x004C77AE; stride 0x10 proves 16-byte pair; explicit loop exact mod reloc.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include <vector>
 #include <map>
 
@@ -44,7 +53,6 @@ void Rva004C7542Destroy(LocoPair *first, LocoPair *last)
 
 // ?rva004C77A6@Rva004C77A6@@QAEXXZ RVA 0x004C77A6 size 30
 // Evidence: calls Rva004C7542Destroy rowed at 0x004C7542 plus _free rowed at 0x00030830; caller at 0x004C785A; chain lane unblocks 0x004C77C4; exact mod reloc.
-extern "C" void __cdecl free(void *p);
 
 class Rva004C77A6
 {

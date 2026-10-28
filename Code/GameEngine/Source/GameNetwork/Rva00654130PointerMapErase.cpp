@@ -2,9 +2,16 @@
 // stlport
 // Open-BFME5: erase one owned pointer payload from the map at +0x5c.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include <map>
 // The allocator binds to the engine's direct free provider.
-extern "C" void __cdecl free(void *);
 // Keep __node_alloc<true,0>::deallocate inline-only: every call here is inlined,
 // and this TU's /O1 COMDAT copy differs from the copy the link keeps.
 namespace _STL {

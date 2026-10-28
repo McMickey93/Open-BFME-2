@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /Ireference/shims/bfmealloc /O1 /EHsc /MD /arch:SSE /ICode/Libraries/Include/Lib /D_STLP_USE_STATIC_LIB
+// cl: /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /Ireference/shims/bfmealloc /O1 /EHs /MD /arch:SSE /ICode/Libraries/Include/Lib /D_STLP_USE_STATIC_LIB
 // stlport
 // Complete334B constructor3F3967..3F3AB5 RET12. Target parser210620
 // independently allocates1B4 and passes definition owner/id/name. Existing
@@ -18,6 +18,15 @@
 // child cleanup preserves the observed C-call context. Full ctor334 stays exact.
 // The name getter in slot 2 identifies the region; member names remain neutral.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree. /EHs lets free throw, preserving
+// retail's unwind states.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include <vector>
 #include "ascii_string.h"
 #include "Coord2D.h"
@@ -25,7 +34,6 @@
 #define xfer DoXfer
 #include "Common/Snapshot.h"
 #undef xfer
-extern "C" void __cdecl free(void*);
 void Rva00030830FreeAllocation(void*);
 #include "../../../../../Libraries/Include/Lib/BfmeE16.h"
 namespace _STL{template<>void allocator<BfmeE16>::deallocate(pointer p,size_type)const{Rva00030830FreeAllocation(p);}template<>__declspec(nothrow) __declspec(noinline) _Vector_base<BfmeE16,allocator<BfmeE16> >::_Vector_base(const allocator<BfmeE16>&a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){}}

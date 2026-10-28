@@ -6,6 +6,15 @@
 // Rowed Rva00395D77 dtor destroys the leading string pair; tail word is trivial.
 // Callers are owning ranges at 0x39977A 0x3997CD 0x399800.
 // Same 25B loop shape as rowed _Destroy at 0x331FF1 and 0x40DCF1.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include <vector>
 
 struct Rva00395D77
@@ -15,8 +24,6 @@ struct Rva00395D77
 };
 
 template void _STL::_Destroy<Rva00395D77 *>(Rva00395D77 *, Rva00395D77 *);
-
-extern "C" void free(void *ptr);
 
 // ??1Rva00399800@@QAE@XZ @0x00399800 30B
 // Owning two-pointer range over Rva00395D77: destroy via rowed _Destroy 0x00399336 then free via 0x00030830.

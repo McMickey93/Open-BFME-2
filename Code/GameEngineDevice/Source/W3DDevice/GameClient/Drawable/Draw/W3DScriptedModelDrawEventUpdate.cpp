@@ -1,8 +1,18 @@
-// cl: /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib /O1 /G7 /arch:SSE /DNDEBUG /MD /EHs
 // Native BD6C2..BDA40, 894B. W3DScriptedModelDraw particle/event update.
 // WB945CC0 supplies the debug control-flow twin, not the original method name.
 // ZH W3DModelDraw::handleWeaponFireFX guides the FX emission relationship;
 // BF1 cee35b7d8 scripted model source has no recovered counterpart.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree. /EHs lets free throw, preserving
+// retail's unwind states.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #include "Coord3D.h"
 #include <new>
@@ -52,7 +62,6 @@ void Rva000B9887Init(void*,BfmePod32*);
 struct ListNode {ListNode*next,*prev;void *value;};
 struct Rva000BC0DBElement {double word;};
 struct BfmeStringRecord000B757D {~BfmeStringRecord000B757D();};
-extern "C" void __cdecl free(void*);
 namespace _STL {
  template<class T>class allocator;
  template<class T,class A=allocator<T> >class _List_base {public:ListNode*node;~_List_base();};

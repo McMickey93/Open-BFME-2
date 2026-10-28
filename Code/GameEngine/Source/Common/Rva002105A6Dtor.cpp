@@ -9,9 +9,15 @@
 // via Snapshot ctor row 0x000053A6; callers 0x00210607 0x002108BF 0x00210B1F;
 // layout from sibling clear 0x00210749.
 
-#include <vector>
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
 
-extern "C" void __cdecl free(void *p);
+#include <vector>
 
 #define BFME_STRINGBASE_PUBLIC_DTOR
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
