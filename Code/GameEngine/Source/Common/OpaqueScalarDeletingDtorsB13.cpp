@@ -346,7 +346,7 @@ class BaseA
 public:
     virtual void Register(Object *, void *) = 0;
     virtual void UnRegister(Object *) = 0;
-    virtual ~BaseA();
+    virtual ~BaseA() {}
     int m_04;
     int m_08;
 };
