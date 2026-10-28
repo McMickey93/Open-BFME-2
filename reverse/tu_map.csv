@@ -43150,9 +43150,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00508925,21,code,,,-,,Code/GameEngine/Source/Common/VslotSmallBodiesAD_Rva00349D02.cpp
 0x0050893A,77,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Made002CC64BParse.cpp
 0x00508987,535,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/AttributeModifierNuggetEffect.cpp
-0x00508B9E,71,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/AttributeModifierNuggetSlots.cpp
+0x00508B9E,71,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp
 0x00508BE5,97,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Made002CC64B.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Made002CC64BCtor.cpp
-0x00508C46,149,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/AttributeModifierNuggetSlots.cpp
+0x00508C46,149,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp
 0x00508CDB,28,code,,,-,,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-p7k-0128.cpp
 0x00508CF7,56,code,,,-,,Code/GameEngine/Source/Common/Rva00508CF7Dtor.cpp
 0x00508D2F,77,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Made002CC6AEParse.cpp
@@ -83327,8 +83327,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079423E,10,code,Code/GameEngine/Source/GameLogic/Object/DamageNugget.cpp,approved,P,P=0x00508684@FuncInfo0x00947178 provisional,Code/GameEngine/Source/GameLogic/Object/Made002CC5E1Ctor.cpp
 0x00794248,8,code,Code/GameEngine/Source/GameLogic/Object/DamageNugget.cpp,approved,P,P=0x00508862@FuncInfo0x0094719C provisional,Code/GameEngine/Source/GameLogic/Object/Made002CC5E1DamageScalar.cpp
 0x00794250,10,code,Code/GameEngine/Source/GameLogic/Object/DamageNugget.cpp,approved,P,P=0x00508862@FuncInfo0x0094719C provisional,Code/GameEngine/Source/GameLogic/Object/Made002CC5E1DamageScalar.cpp
-0x0079425A,8,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,P,P=0x00508C46@FuncInfo0x009471C0 provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/AttributeModifierNuggetSlots.cpp
-0x00794262,10,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,P,P=0x00508C46@FuncInfo0x009471C0 provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/AttributeModifierNuggetSlots.cpp
+0x0079425A,8,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,P,P=0x00508C46@FuncInfo0x009471C0 provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp
+0x00794262,10,code,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp,approved,P,P=0x00508C46@FuncInfo0x009471C0 provisional,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/Made002CC64B.cpp
 0x0079426C,8,code,,,-,,Code/GameEngine/Source/Common/Rva00508CF7Dtor.cpp
 0x00794274,10,code,,,-,,Code/GameEngine/Source/Common/Rva00508CF7Dtor.cpp
 0x0079427E,8,code,Code/GameEngine/Source/GameLogic/Object/Made002CC6AE.cpp,approved,P,P=0x00508D7C@FuncInfo0x00947208 provisional,Code/GameEngine/Source/GameLogic/Object/Made002CC6AECtor.cpp
