@@ -1,0 +1,64 @@
+{
+  "source": "Code/GameEngine/Source/Common/Rva006BF5E0Overflow.cpp",
+  "normalization": {
+    "?releaseBuffer@BfmeTailBE@@QAEXXZ": "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+  },
+  "object_sha256": {
+    "before": "1fc23babba431ca8b15eef5d158b031dff772b011df15b00cb2e151bbc842527",
+    "after": "0e9c883bfa23034e11a9aea6fbc4e9ebc6fbf142e23ea3294c44a97f353418e6"
+  },
+  "preserved_external_bodies": [
+    "?overflow@BfmeVecBE@@QAEXPAUBfmeElemBE@@ABU2@ABUBfmeFalseBE@@I_N@Z",
+    "??2@YAPAXIPAX@Z"
+  ],
+  "changed_external_bodies": [],
+  "added_external_bodies": {
+    "??_GAsciiString@@QAEPAXI@Z": {
+      "body": "568bf1e800000000f644240801740956e80000000083c4048bc65ec20400",
+      "relocations": [
+        [
+          4,
+          20,
+          "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+        ],
+        [
+          17,
+          20,
+          "??3@YAXPAX@Z"
+        ]
+      ],
+      "size": 30,
+      "digest": "9b4d5ee12f19"
+    },
+    "??1AsciiString@@QAE@XZ": {
+      "body": "e900000000",
+      "relocations": [
+        [
+          1,
+          20,
+          "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+        ]
+      ],
+      "size": 5,
+      "digest": "d08bf29c9c2b"
+    }
+  },
+  "removed_external_bodies": [],
+  "exclusive_definitions": {
+    "removed": [],
+    "added": []
+  },
+  "undefined_externals": {
+    "removed": [
+      "?releaseBuffer@BfmeTailBE@@QAEXXZ"
+    ],
+    "added": [
+      "??3@YAXPAX@Z",
+      "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+    ]
+  },
+  "weak_externals": {
+    "removed": [],
+    "added": []
+  }
+}

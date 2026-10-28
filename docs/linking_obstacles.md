@@ -5428,6 +5428,20 @@ Completed: diagnosis only; no source edit. The record copy is seven dwords, an A
 Remaining / next check: reconcile the vector row and its consumers onto the existing 36-byte record family through the naming lane, preserving the real Money users separately. The three unresolved Money virtuals come only from the wrong whole-vector instantiation; they do not establish missing native Money methods. No new match or independently proven fold pin was established.
 Clearance: pending.
 
+**Overflow cleanup follow-up (2026-10-28, inspected `48da62f9b2`, index
+`41c28839bf`):** the existing 0x006BF5E0 provider now destroys its owned
+AsciiString member directly, retiring one releaseBuffer linker alias.
+Its complete 268-byte row remains exact; the six-unit ordinary preview
+preserves five LINKS and 5,442 authored bytes. MoneyVectorPushBack retains
+its eight identity blockers and its Snapshot queue entry. The two original
+external bodies retain their bytes and alias-resolved relocation targets;
+[verification and helper scope](../reverse/attempt_support/geometry-overflow-string-cleanup-20261028-codex.md).
+The outgoing batch audit is INCONCLUSIVE because the index predates the
+base and Common/0CreateAHeroManager21FE49.cpp lacks a current consumer
+receipt. Carry the removed alias and shared-header helpers into the next
+normal census; full external consumer selection remains unverified.
+No new census-linked coverage is claimed.
+
 ### LINK-093: stale callee views and superseded unrowed reconstructions
 
 Status: Open for the units; six unresolved-name repairs cleared in ordinary-preview scope. Updated: 2026-10-26; inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`.

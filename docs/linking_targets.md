@@ -363,7 +363,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Rva005CEB57Ctor.cpp` | 62 | 3 (U=1, C=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0B8A.cpp` | 61 | 4 (C=2, S=2) | 2026-10-27: providers 0x002EE9E0/0x002EEA09 renamed to their STLport `clear()`/`~_Rb_tree_base()` names; ordinary preview LINKS (0 -> 53 B) at index 73061d9452, LINK-048; census confirmation pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0BB5.cpp` | 61 | 4 (C=2, S=2) | 2026-10-27: unit now declares `clear()`/`~_Rb_tree_base()` instead of emitting copies; providers 0x002EEA1D/0x002EEA46 renamed to their STLport names; ordinary preview LINKS (0 -> 53 B) at index 73061d9452, LINK-048; census confirmation pending. |
-| `Code/GameEngine/Source/Common/MoneyVectorPushBack.cpp` | 59 | 8 (U=3, C=3, S=2) | Open |
+| `Code/GameEngine/Source/Common/MoneyVectorPushBack.cpp` | 59 | 8 (U=3, C=3, S=2) | 2026-10-28 at 48da62f9b2: all eight blockers remain; the actual overflow provider retires its string-release alias while preserving its 268-byte row and the six-unit preview. Record/container identity remains LINK-092. [Evidence](../reverse/attempt_support/geometry-overflow-string-cleanup-20261028-codex.md). |
 | `Code/Libraries/Source/WWVegas/WWLib/StlContainerRva0073E4C0.cpp` | 59 | 5 (U=3, C=1, S=1) | 2026-10-26 at `2a45addda1`: Native payload/template identity differs from the rowed two-word Construct and deque auxiliary (LINK-002). Whole-unit clearance and census confirmation pending. |
 | `Code/GameEngine/Source/GameClient/SelectionInfo.cpp` | 58 | 4 (U=2, C=2) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/ringobj.cpp` | 57 | 8 (U=7, C=1) | Open |

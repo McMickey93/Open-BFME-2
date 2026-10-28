@@ -10,15 +10,17 @@
 // Record application identity remains unknown. These are 36-byte ABI views;
 // the nested group preserves the donor constructor-worker layout, and the
 // existing named constructor supplies copy behavior independently of it.
+// The owned string at +0x1C now uses the shared AsciiString destructor.
+// Destroying each string member calls retail releaseBuffer directly, without the
+// old BfmeTailBE linker alias; the complete overflow body remains exact.
 // cl: /Ob1 /GX- /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc_alloconly
 // stlport
 #include <memory>
-#pragma comment(linker, "/alternatename:?releaseBuffer@BfmeTailBE@@QAEXXZ=?releaseBuffer@?$StringBase@D@@AAEXXZ")
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 struct BfmeFalseBE {};
-struct BfmeStringRecord00063BE4 { int words[7]; void *text; unsigned char tail[2]; BfmeStringRecord00063BE4(const BfmeStringRecord00063BE4 &); };
-struct BfmeTailBE { char *m_p; void releaseBuffer(); };
-struct BfmeGroup10BE { int m_10, m_14, m_18; BfmeTailBE m_1C; char m_20, m_21; };
+struct BfmeStringRecord00063BE4 { int words[7]; AsciiString text; unsigned char tail[2]; BfmeStringRecord00063BE4(const BfmeStringRecord00063BE4 &); };
+struct BfmeGroup10BE { int m_10, m_14, m_18; AsciiString m_1C; char m_20, m_21; };
 struct BfmeElemBE {
     int m_00, m_04, m_08, m_0C;
     BfmeGroup10BE m_10;
@@ -54,7 +56,7 @@ void BfmeVecBE::overflow(BfmeElemBE *pos, const BfmeElemBE &value,
     BfmeElemBE *last = _M_finish;
     BfmeElemBE *first = _M_start;
     for (; first != last; ++first)
-        first->m_10.m_1C.releaseBuffer();
+        first->m_10.m_1C.~AsciiString();
     if (_M_start != 0)
         ::free(_M_start);
     _M_start = newStart;
